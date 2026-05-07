@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+:root {
+  --navy: #0b1628;
+  --navy-2: #112040;
+  --gold: #c8a85a;
+  --gold-2: #e8c87a;
+  --cream: #f5efe0;
+  --offwhite: #faf6ee;
+  --text: #1a1a2e;
+  --muted: #6b7080;
+  --border: rgba(200, 168, 90, 0.25);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: var(--offwhite);
+  color: var(--text);
+  font-family: var(--font-jost), sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-cormorant), serif;
+}
+
+.font-display {
+  font-family: var(--font-cinzel), serif;
+}
+
+.container-shell {
+  margin-inline: auto;
+  width: min(1120px, calc(100% - 2rem));
+}
+
+.section-padding {
+  padding-block: 5rem;
+}
+
+.eyebrow {
+  font-family: var(--font-cinzel), serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.hero-panel {
+  background:
+    radial-gradient(circle at top, rgba(200, 168, 90, 0.16), transparent 36%),
+    linear-gradient(180deg, var(--navy), var(--navy-2));
+  color: var(--cream);
+}
+
+.card-surface {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(10px);
+}
+
+.dark-strip {
+  background: var(--navy);
+  color: var(--cream);
+}
+
+a {
+  color: inherit;
+}
