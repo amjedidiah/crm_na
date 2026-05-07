@@ -4,6 +4,14 @@ This document defines the **product**, **information architecture**, and **conte
 
 Implementation steps live in [`docs/app_scaffold_checklist.md`](./app_scaffold_checklist.md).
 
+## Implementation Status Snapshot
+
+- [x] Phase 1 shell work is implemented in the repo: Next.js app shell, shared layout, route scaffold, and design-reference-driven frontend structure.
+- [x] Phase 2 structured mock content is implemented in the repo for churches, ministries, leaders, events, media, publications, and About content.
+- [x] Phase 3 local WordPress scaffolding is present in the repo through `server/docker-compose.yml`, `server/README.md`, `server/DATA_MODELLING_GUIDE.md`, and the revalidation mu-plugin.
+- [x] Phase 4 seams are partially implemented in the repo through redirects, metadata routes, sitemap/robots files, contact server actions, and a `client/lib/wordpress.ts` abstraction.
+- [ ] Live WordPress GraphQL queries have **not** replaced mock data yet; the current `client/lib/wordpress.ts` is still mock-data-backed.
+
 ## Recommendation
 
 Rebuild `https://crm-na.org/` as a **Next.js frontend** backed by **WordPress**, using `crmusa2026-convention/` as the primary visual reference.
@@ -114,7 +122,7 @@ Non-negotiable design direction:
 | `/ministries/` | Structurally confused and mixed with church-location behavior. | Rebuild as a true ministries hub. |
 | `/cwl-charismatic-women-league/` | Empty. | Migrate into `ministry` content and redirect to `/ministries/cwl-charismatic-women-league`. |
 | `/kings-men/` | Empty. | Migrate into `ministry` content and redirect to `/ministries/kings-men`. |
-| `/youths/` | One of the strongest ministry pages on the site. | Keep as a prominent route and model it as ministry-backed content. |
+| `/youths/` | One of the strongest ministry pages on the site. | Migrate this content into `ministry` and redirect the legacy route to `/ministries/youths`. |
 | `/media/` | Empty. | Keep and scaffold now as the hub for sermons, livestream replays, and publications. |
 | `/contact-us/` | Contact route exists, but with placeholder content. | Replace with `/contact` and redirect the legacy slug. |
 
@@ -132,7 +140,7 @@ Non-negotiable design direction:
 - `/churches/[slug]`
 - `/ministries`
 - `/ministries/[slug]`
-- `/youths`
+- `/ministries/youths`
 - `/events`
 - `/events/[slug]`
 - `/watch-us-live`
@@ -152,6 +160,7 @@ Legacy flat routes remain as redirects only:
 - `/cwl-charismatic-women-league/` -> `/ministries/cwl-charismatic-women-league`
 - `/kings-men/` -> `/ministries/kings-men`
 - `/contact-us/` -> `/contact`
+- `/youths/` -> `/ministries/youths`
 - `/sermon/` -> `/media`
 
 ### IA rules
@@ -159,6 +168,7 @@ Legacy flat routes remain as redirects only:
 - There is **no `/about` route** in the initial spec.
 - `/who-we-are/` is the About landing page.
 - `/watch-us-live/` stays a dedicated route in v1.
+- Youth content lives at `/ministries/youths`, not as a flat top-level route.
 - `/publications/`, `/media/`, and `/watch-us-live/` are all scaffolded in v1.
 - Churches and ministries must remain separate models and separate public listings.
 
@@ -198,20 +208,38 @@ Legacy flat routes remain as redirects only:
 - build the shared layout and route shell in Next.js
 - scaffold the canonical routes above
 
+Current repo status:
+
+- [x] implemented
+
 ### Phase 2 — Structured Mock Content
 
 - convert the audited CRM NA content into typed mock data
 - build churches, ministries, leadership, media, and event templates against that data
+
+Current repo status:
+
+- [x] implemented with typed mock content and route templates
 
 ### Phase 3 — WordPress Content Model
 
 - configure WordPress with the required content types and taxonomies
 - model churches, ministries, leaders, events, media, and publications in ACF/WPGraphQL
 
+Current repo status:
+
+- [x] local server scaffold and modelling docs are present
+- [ ] actual CMS/plugin configuration is still a manual setup step
+
 ### Phase 4 — Integration
 
 - replace mock data with WordPress queries
 - add redirects, revalidation, sitemap behavior, and metadata completion
+
+Current repo status:
+
+- [x] redirects, sitemap, robots, metadata routes, and revalidation seam are present
+- [ ] live WordPress query integration is not complete
 
 ## Defaults And Assumptions
 
@@ -219,3 +247,4 @@ Legacy flat routes remain as redirects only:
 - Default About strategy: `/who-we-are` is the About landing page.
 - Default thin-page strategy: scaffold `/watch-us-live`, `/publications`, and `/media` now.
 - Default sermon handling: `/sermon` redirects to `/media`.
+- Default youth handling: `/youths` redirects to `/ministries/youths`.

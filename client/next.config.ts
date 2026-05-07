@@ -44,7 +44,7 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/ministries/youths",
+        source: "/youths",
         destination: "/ministries/youths",
         permanent: true,
       },
