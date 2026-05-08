@@ -6,6 +6,8 @@ import type {
   MediaItem,
   Ministry,
   Publication,
+  SiteContact,
+  SocialLink,
   TimelineEntry,
 } from "@/lib/types";
 
@@ -14,9 +16,23 @@ export const SITE_TITLE = "CRM NA — Charismatic Renewal Ministries";
 export const SITE_DESCRIPTION =
   "Charismatic Renewal Ministries North America gathers churches, families, students, and leaders to preach Jesus boldly, welcome the ministry of the Holy Spirit, and form disciples who can carry revival into everyday life.";
 
-export const CONTACT_EMAIL = "hello@crm-na.org";
-export const CONTACT_PHONE = "+1 (800) 123-1234";
+export const SITE_CONTACT: SiteContact = {
+  name: "CRM North America National Contact",
+  email: "hello@crm-na.org",
+  phone: "+1 (203) 987-7729",
+  addressLabel: "Serving churches across the United States, Canada, and Mexico",
+  note: "Use this national channel for prayer requests, ministry questions, and first-time connections.",
+};
+
+export const CONTACT_EMAIL = SITE_CONTACT.email;
+export const CONTACT_PHONE = SITE_CONTACT.phone;
 export const GIVING_URL = "https://crm-na.org/give/";
+export const SOCIAL_LINKS: SocialLink[] = [
+  {
+    label: "YouTube",
+    href: "https://youtube.com/@crmna",
+  },
+];
 
 export const leaders: Leader[] = [
   {
@@ -402,11 +418,26 @@ export const HOMEPAGE_MINISTRY_SLUGS: readonly string[] = [
   "kings-men",
 ];
 
+export const HOMEPAGE_LEADER_IDS: readonly string[] = [
+  "peter-ezekwenna",
+  "marcel-odimgbe",
+  "chizo-nwaneri",
+];
+
 export function getMinistriesFeaturedOnHome(): Ministry[] {
   const list: Ministry[] = [];
   for (const slug of HOMEPAGE_MINISTRY_SLUGS) {
     const ministry = getMinistryBySlug(slug);
     if (ministry) list.push(ministry);
+  }
+  return list;
+}
+
+export function getLeadersFeaturedOnHome(): Leader[] {
+  const list: Leader[] = [];
+  for (const id of HOMEPAGE_LEADER_IDS) {
+    const leader = getLeaderById(id);
+    if (leader) list.push(leader);
   }
   return list;
 }

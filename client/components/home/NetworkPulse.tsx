@@ -7,15 +7,15 @@ import {
   ArrowRight,
   CalendarRange,
   Church,
-  Mic2,
-  PenSquare,
+  HandCoins,
+  Shapes,
 } from "lucide-react";
 import Motion from "@/components/shared/Motion";
 
 interface NetworkPulseProps {
   churchCount: number;
   eventCount: number;
-  publicationCount: number;
+  ministryCount: number;
 }
 
 const cards = [
@@ -31,6 +31,17 @@ const cards = [
       "Browse branch communities across North America and find pastors, service times, and local rhythms.",
   },
   {
+    key: "ministries",
+    label: "Ministries",
+    headline: "Serve with a team",
+    href: "/ministries",
+    icon: Shapes,
+    accentClass: "bg-(--color-bg-overlay-accent-spotlight)",
+    count: "ministryCount",
+    description:
+      "Move quickly into youth, women, men, and other discipleship pathways where service and growth meet.",
+  },
+  {
     key: "events",
     label: "Events",
     headline: "Gathering calendar",
@@ -42,26 +53,15 @@ const cards = [
       "Track conferences, youth nights, strategy gatherings, and prayer moments across the network.",
   },
   {
-    key: "media",
-    label: "Media",
-    headline: "Teaching archive",
-    href: "/media#live",
-    icon: Mic2,
-    accentClass: "bg-(--color-bg-overlay-accent-spotlight)",
-    count: "live",
-    description:
-      "Step straight into the live section, featured sermons, and replay-driven discipleship content.",
-  },
-  {
-    key: "corner",
-    label: "Pastor's Corner",
-    headline: "Pastoral reflections",
-    href: "/publications",
-    icon: PenSquare,
+    key: "give",
+    label: "Give",
+    headline: "Support the mission",
+    href: "/give",
+    icon: HandCoins,
     accentClass: "bg-(--color-bg-overlay-emphasis-subtle)",
-    count: "publicationCount",
+    count: "support",
     description:
-      "Read long-form encouragement and conviction from CRM North America leadership.",
+      "Back church life, outreach, media, and pastoral care through clear generosity pathways.",
   },
 ] as const;
 
@@ -92,11 +92,11 @@ function resolveCount(
   key: (typeof cards)[number]["count"],
   counts: Pick<
     NetworkPulseProps,
-    "churchCount" | "eventCount" | "publicationCount"
+    "churchCount" | "eventCount" | "ministryCount"
   >,
   reduceMotion: boolean | null,
 ) {
-  if (key === "live") return "Live";
+  if (key === "support") return "Care";
   const n = counts[key];
   return reduceMotion ? n.toString() : <CountUp to={n} />;
 }
@@ -104,9 +104,9 @@ function resolveCount(
 function NetworkPulse({
   churchCount,
   eventCount,
-  publicationCount,
+  ministryCount,
 }: Readonly<NetworkPulseProps>) {
-  const counts = { churchCount, eventCount, publicationCount };
+  const counts = { churchCount, eventCount, ministryCount };
   const reduceMotion = useReducedMotion();
 
   return (
@@ -126,8 +126,8 @@ function NetworkPulse({
                 </h2>
                 <p className="max-w-2xl text-base leading-7 text-(--color-fg-inverse-soft) md:text-lg md:leading-8">
                   Move quickly from discovery to participation: locate a church,
-                  catch a sermon, scan the calendar, or read a pastoral word for
-                  the week.
+                  join a ministry lane, scan the calendar, or support the work
+                  happening across the network.
                 </p>
               </div>
             </div>

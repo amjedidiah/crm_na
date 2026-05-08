@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import ContactStrip from "@/components/home/ContactStrip";
 import EventsArea from "@/components/home/EventsArea";
 import FeaturedChurches from "@/components/home/FeaturedChurches";
 import GiveBanner from "@/components/home/GiveBanner";
 import HeroSection from "@/components/home/HeroSection";
+import LatestSermonsSection from "@/components/home/LatestSermonsSection";
 import LatestReflectionSection from "@/components/home/LatestReflectionSection";
+import LeadershipSpotlightSection from "@/components/home/LeadershipSpotlightSection";
 import NetworkPulse from "@/components/home/NetworkPulse";
 import PlanYourVisit from "@/components/home/PlanYourVisit";
 import PrayerRequestBanner from "@/components/home/PrayerRequestBanner";
@@ -11,8 +14,18 @@ import ServeWithMinistries from "@/components/home/ServeWithMinistries";
 import WatchLiveSection from "@/components/home/WatchLiveSection";
 import WelcomeSection from "@/components/home/WelcomeSection";
 import FadeInWhenVisible from "@/components/shared/FadeInWhenVisible";
-import { getMinistriesFeaturedOnHome, SITE_DESCRIPTION, SITE_TITLE } from "@/lib/mock-data";
-import { getChurches, getEvents, getPublications } from "@/lib/wordpress";
+import {
+  getLeadersFeaturedOnHome,
+  getMinistriesFeaturedOnHome,
+  SITE_DESCRIPTION,
+  SITE_TITLE,
+} from "@/lib/mock-data";
+import {
+  getChurches,
+  getEvents,
+  getMediaItems,
+  getMinistries,
+} from "@/lib/wordpress";
 
 export const metadata: Metadata = {
   title: { absolute: SITE_TITLE },
@@ -25,11 +38,20 @@ export const metadata: Metadata = {
 
 async function HomePage() {
   const featuredMinistries = getMinistriesFeaturedOnHome();
-  const [churches, events, publications] = await Promise.all([
+  const featuredLeaders = getLeadersFeaturedOnHome();
+  const [churches, events, mediaItems, ministries] = await Promise.all([
     getChurches(),
     getEvents(),
-    getPublications(),
+    getMediaItems(),
+    getMinistries(),
   ]);
+  const latestSermons = [...mediaItems]
+    .filter((item) => item.type === "sermon")
+    .sort(
+      (left, right) =>
+        new Date(right.publishedAt).getTime() - new Date(left.publishedAt).getTime(),
+    )
+    .slice(0, 3);
 
   return (
     <div className="overflow-x-clip bg-(--color-bg-canvas) text-(--color-fg-primary)">
@@ -37,7 +59,7 @@ async function HomePage() {
       <NetworkPulse
         churchCount={churches.length}
         eventCount={events.length}
-        publicationCount={publications.length}
+        ministryCount={ministries.length}
       />
       <div className="relative">
         <div
@@ -70,13 +92,19 @@ async function HomePage() {
         </FadeInWhenVisible>
       </div>
       <FadeInWhenVisible>
-        <PrayerRequestBanner />
+        <LeadershipSpotlightSection leaders={featuredLeaders} />
       </FadeInWhenVisible>
       <div style={{ backgroundImage: "var(--gradient-page-highlight-band)" }}>
         <FadeInWhenVisible>
           <EventsArea previewCount={3} />
         </FadeInWhenVisible>
       </div>
+      <FadeInWhenVisible>
+        <PrayerRequestBanner />
+      </FadeInWhenVisible>
+      <FadeInWhenVisible>
+        <LatestSermonsSection sermons={latestSermons} />
+      </FadeInWhenVisible>
       <div className="relative">
         <div
           aria-hidden
@@ -95,6 +123,9 @@ async function HomePage() {
       </FadeInWhenVisible>
       <FadeInWhenVisible>
         <GiveBanner />
+      </FadeInWhenVisible>
+      <FadeInWhenVisible>
+        <ContactStrip />
       </FadeInWhenVisible>
     </div>
   );

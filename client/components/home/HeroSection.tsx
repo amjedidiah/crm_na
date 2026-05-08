@@ -321,11 +321,11 @@ function HeroSection() {
             </HeroMotionButtonWrap>
             <HeroMotionButtonWrap reduceMotion={reduceMotion}>
               <Button
-                href="/publications"
+                href="/contact"
                 variant="outline"
                 className={inverseOutlineClass}
               >
-                Read Pastor&apos;s Corner
+                Contact CRM NA
               </Button>
             </HeroMotionButtonWrap>
           </Motion>

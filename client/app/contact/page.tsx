@@ -13,7 +13,7 @@ async function ContactPage({
       <PageHeader
         eyebrow="Contact"
         title="Contact CRM NA"
-        description="This route replaces the legacy `/contact-us/` page and removes the placeholder contact content found in the old site."
+        description="Reach CRM North America for prayer, church connections, ministry questions, and first-visit support."
       />
       <ContactFormSection initialPurpose={purpose} />
     </div>

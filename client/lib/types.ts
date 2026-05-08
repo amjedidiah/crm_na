@@ -105,8 +105,22 @@ export interface TimelineEntry {
   description: string;
 }
 
+export interface SiteContact {
+  name: string;
+  email: string;
+  phone: string;
+  addressLabel: string;
+  note?: string;
+}
+
+export interface SocialLink {
+  label: string;
+  href: string;
+}
+
 export type ContactFormPurpose =
   | "general"
+  | "plan-visit"
   | "prayer-request"
   | "churches"
   | "ministries"

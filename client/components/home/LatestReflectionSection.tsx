@@ -17,19 +17,19 @@ async function LatestReflectionSection() {
       <div className="container-shell grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch">
         <div className="rounded-[1.75rem] bg-(--color-bg-emphasis) p-8 text-(--color-fg-inverse) md:p-10">
           <SectionHeader
-            eyebrow="Pastor&apos;s corner"
-            title="A word for the house"
-            description="Read the latest pastoral reflection from CRM North America leadership—written to strengthen faith, clarity, and hunger for revival."
+            eyebrow="Devotionals"
+            title="A devotional word for the week"
+            description="Read the latest pastoral reflection from CRM North America leadership—written to strengthen faith, clarity, and hunger for revival in ordinary life."
             inverse
           />
           <div className="mt-10 flex items-end justify-between gap-6">
             <div>
               <p className="font-display text-[0.68rem] tracking-[0.26em] uppercase text-(--color-fg-accent-strong)">
-                Latest voice
+                Featured reading
               </p>
               <p className="mt-3 text-sm leading-7 text-(--color-fg-inverse-soft)">
-                Long-form encouragement for households, workers, and church
-                members who want pastoral clarity beyond the service hour.
+                Short pastoral reading for households, workers, and church
+                members who want spiritual direction beyond the service hour.
               </p>
             </div>
             <span className="font-display text-6xl leading-none text-(--color-fg-accent-strong)/60">
@@ -64,7 +64,7 @@ async function LatestReflectionSection() {
             </time>
           </div>
           <p className="text-(--color-fg-accent-text) font-display text-xs tracking-[0.26em] uppercase">
-            Read full reflection
+            Read the devotional
           </p>
         </Link>
       </div>
