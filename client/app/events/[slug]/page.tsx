@@ -21,14 +21,14 @@ async function EventDetailPage({
   }
 
   return (
-    <>
+    <div className="bg-(--color-bg-canvas) text-(--color-fg-primary)">
       <PageHeader
         eyebrow="Event"
         title={event.title}
         description={event.summary}
       />
       <EventDetailContent event={event} />
-    </>
+    </div>
   );
 }
 

@@ -7,7 +7,7 @@ function LivestreamEmbed({ url }: Readonly<{ url: string }>) {
         href={url}
         target="_blank"
         rel="noreferrer"
-        className="mt-4 inline-block text-(--gold) underline"
+        className="mt-4 inline-block text-(--color-fg-accent) underline"
       >
         Open stream
       </a>

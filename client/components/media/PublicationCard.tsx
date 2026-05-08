@@ -15,8 +15,8 @@ function PublicationCard({
     >
       <p className="eyebrow">Publication</p>
       <h3 className="text-3xl">{publication.title}</h3>
-      <p className="text-(--muted)">{publication.summary}</p>
-      <p className="text-sm text-(--muted)">
+      <p className="text-(--color-fg-secondary)">{publication.summary}</p>
+      <p className="text-sm text-(--color-fg-secondary)">
         {formatDate(publication.publishedAt)}
       </p>
     </a>

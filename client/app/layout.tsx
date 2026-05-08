@@ -52,7 +52,7 @@ function RootLayout({ children }: Readonly<PropsWithChildren>) {
       lang="en"
       className={`${cinzel.variable} ${cormorant.variable} ${jost.variable}`}
     >
-      <body className="min-h-screen">
+      <body className="min-h-screen bg-(--color-bg-canvas) text-(--color-fg-primary)">
         <Navbar />
         <main>
           <PageTransition>{children}</PageTransition>

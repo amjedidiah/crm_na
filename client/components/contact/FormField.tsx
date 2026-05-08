@@ -17,10 +17,10 @@ function FormField(props: FormFieldProps) {
     const { label, name, textarea, className, ...rest } = props;
     return (
       <label className="grid gap-2">
-        <span className="text-sm text-(--muted)">{label}</span>
+        <span className="text-sm text-(--color-fg-secondary)">{label}</span>
         <textarea
           name={name}
-          className="min-h-32 border border-(--border) bg-white px-4 py-3"
+          className="min-h-32 border border-(--color-border-subtle) bg-(--color-bg-input) px-4 py-3"
           {...rest}
         />
       </label>
@@ -31,10 +31,10 @@ function FormField(props: FormFieldProps) {
 
   return (
     <label className="grid gap-2">
-      <span className="text-sm text-(--muted)">{label}</span>
+      <span className="text-sm text-(--color-fg-secondary)">{label}</span>
       <input
         name={name}
-        className="border border-(--border) bg-white px-4 py-3"
+        className="border border-(--color-border-subtle) bg-(--color-bg-input) px-4 py-3"
         {...rest}
       />
     </label>

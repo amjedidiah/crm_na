@@ -20,11 +20,11 @@ function ContactForm() {
       <FormField label="Name" name="name" required />
       <FormField label="Email" name="email" type="email" required />
       <label className="grid gap-2">
-        <span className="text-sm text-(--muted)">Purpose</span>
+        <span className="text-sm text-(--color-fg-secondary)">Purpose</span>
         <select
           name="purpose"
           defaultValue="general"
-          className="border border-(--border) bg-white px-4 py-3"
+          className="border border-(--color-border-subtle) bg-(--color-bg-input) px-4 py-3"
         >
           <option value="general">General</option>
           <option value="prayer-request">Prayer Request</option>

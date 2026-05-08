@@ -7,14 +7,14 @@ import WelcomeSection from "@/components/home/WelcomeSection";
 
 function HomePage() {
   return (
-    <>
+    <div className="bg-(--color-bg-canvas) text-(--color-fg-primary)">
       <HeroSection />
       <WelcomeSection />
       <FeaturedChurches />
       <EventsArea />
       <WatchLiveSection />
       <GiveBanner />
-    </>
+    </div>
   );
 }
 

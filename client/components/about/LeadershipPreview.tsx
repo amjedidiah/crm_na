@@ -14,7 +14,7 @@ function LeadershipPreview() {
           </div>
           <Link
             href="/our-pastors"
-            className="font-display text-xs tracking-[0.2em] uppercase text-(--gold)"
+            className="font-display text-xs tracking-[0.2em] uppercase text-(--color-fg-accent)"
           >
             View leadership
           </Link>
@@ -24,7 +24,7 @@ function LeadershipPreview() {
             <article key={leader.id} className="card-surface space-y-3 p-6">
               <p className="eyebrow">{leader.region ?? "CRM NA"}</p>
               <h3 className="text-3xl">{leader.name}</h3>
-              <p className="text-(--muted)">{leader.title}</p>
+              <p className="text-(--color-fg-secondary)">{leader.title}</p>
             </article>
           ))}
         </div>

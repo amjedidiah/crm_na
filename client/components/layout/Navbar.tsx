@@ -18,7 +18,7 @@ function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-(--border) bg-(--offwhite)/95 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-(--color-border-subtle) bg-(--color-bg-canvas-elevated) backdrop-blur">
       <div className="container-shell flex items-center justify-between py-4">
         <Link
           href="/"
@@ -37,7 +37,9 @@ function Navbar() {
                 href={link.href}
                 className={cn(
                   "font-display text-xs tracking-[0.2em] uppercase transition-colors",
-                  active ? "text-(--gold)" : "text-(--text)",
+                  active
+                    ? "text-(--color-fg-accent)"
+                    : "text-(--color-fg-primary)",
                 )}
               >
                 {link.label}
@@ -47,7 +49,7 @@ function Navbar() {
         </nav>
         <Link
           href="/give"
-          className="font-display border border-(--gold) px-3 py-2 text-xs tracking-[0.2em] uppercase text-(--gold)"
+          className="font-display border border-(--color-border-accent) px-3 py-2 text-xs tracking-[0.2em] uppercase text-(--color-fg-accent)"
         >
           Give
         </Link>

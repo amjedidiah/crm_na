@@ -6,7 +6,7 @@ function MapEmbed({ query }: Readonly<MapEmbedProps>) {
   const src = `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
 
   return (
-    <div className="overflow-hidden border border-(--border)">
+    <div className="overflow-hidden border border-(--color-border-subtle)">
       <iframe
         title="Location map"
         src={src}

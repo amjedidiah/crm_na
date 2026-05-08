@@ -5,10 +5,10 @@ function MinistryCard({ ministry }: Readonly<{ ministry: Ministry }>) {
   return (
     <article className="card-surface space-y-4 p-6">
       <h3 className="text-3xl">{ministry.name}</h3>
-      <p className="text-(--muted)">{ministry.summary}</p>
+      <p className="text-(--color-fg-secondary)">{ministry.summary}</p>
       <Link
         href={`/ministries/${ministry.slug}`}
-        className="font-display inline-block text-xs tracking-[0.2em] uppercase text-(--gold)"
+        className="font-display inline-block text-xs tracking-[0.2em] uppercase text-(--color-fg-accent)"
       >
         View ministry
       </Link>

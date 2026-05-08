@@ -7,7 +7,7 @@ interface ComingSoonProps {
 
 function ComingSoon({ title, description }: Readonly<ComingSoonProps>) {
   return (
-    <section className="section-padding">
+    <section className="section-padding text-(--color-fg-primary)">
       <div className="container-shell">
         <div className="card-surface p-8 md:p-12">
           <SectionHeader

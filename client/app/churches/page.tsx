@@ -8,19 +8,19 @@ async function ChurchesPage() {
   const regions = [...new Set(churches.map((church) => church.region))];
 
   return (
-    <>
+    <div className="bg-(--color-bg-canvas) text-(--color-fg-primary)">
       <PageHeader
         eyebrow="Churches"
         title="Church directory"
         description="Canonical church detail pages live under `/churches/[slug]`, with legacy flat branch URLs redirected into them."
       />
-      <section className="section-padding">
+      <section className="section-padding text-(--color-fg-primary)">
         <div className="container-shell space-y-8">
           <ChurchFilterBar regions={regions} />
           <ChurchGrid churches={churches} />
         </div>
       </section>
-    </>
+    </div>
   );
 }
 

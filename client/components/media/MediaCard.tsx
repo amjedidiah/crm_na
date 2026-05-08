@@ -11,8 +11,10 @@ function MediaCard({ item }: Readonly<{ item: MediaItem }>) {
     >
       <p className="eyebrow">{item.type}</p>
       <h3 className="text-3xl">{item.title}</h3>
-      <p className="text-(--muted)">{item.summary}</p>
-      <p className="text-sm text-(--muted)">{formatDate(item.publishedAt)}</p>
+      <p className="text-(--color-fg-secondary)">{item.summary}</p>
+      <p className="text-sm text-(--color-fg-secondary)">
+        {formatDate(item.publishedAt)}
+      </p>
     </a>
   );
 }

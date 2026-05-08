@@ -12,14 +12,14 @@ function Footer() {
     <footer className="dark-strip mt-20 py-12">
       <div className="container-shell space-y-5">
         <p className="eyebrow">CRM North America</p>
-        <div className="flex flex-wrap gap-4 text-sm text-(--cream)/80">
+        <div className="flex flex-wrap gap-4 text-sm text-(--color-fg-inverse-soft)">
           {links.map((link) => (
             <Link key={link.href} href={link.href}>
               {link.label}
             </Link>
           ))}
         </div>
-        <p className="text-sm text-(--cream)/55">
+        <p className="text-sm text-(--color-fg-inverse-muted)">
           CRM NA rebuild scaffold using Next.js and WordPress.
         </p>
       </div>

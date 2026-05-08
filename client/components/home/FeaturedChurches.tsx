@@ -22,7 +22,7 @@ async function FeaturedChurches() {
             >
               <p className="eyebrow">{church.region}</p>
               <h3 className="text-3xl">{church.name}</h3>
-              <p className="text-(--muted)">
+              <p className="text-(--color-fg-secondary)">
                 {church.city}, {church.stateOrProvince}
               </p>
             </Link>

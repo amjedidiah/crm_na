@@ -4,7 +4,7 @@ import SectionHeader from "@/components/shared/SectionHeader";
 
 function EventListSection({ events }: Readonly<{ events: Event[] }>) {
   return (
-    <section className="section-padding">
+    <section className="section-padding text-(--color-fg-primary)">
       <div className="container-shell space-y-8">
         <SectionHeader
           eyebrow="Events"

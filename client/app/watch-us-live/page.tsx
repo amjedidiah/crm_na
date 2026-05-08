@@ -7,18 +7,18 @@ function WatchUsLivePage() {
     mediaItems.find((item) => item.type === "livestream") ?? mediaItems[0];
 
   return (
-    <>
+    <div className="bg-(--color-bg-canvas) text-(--color-fg-primary)">
       <PageHeader
         eyebrow="Watch Us Live"
         title="Dedicated livestream route"
         description="The initial scaffold keeps watch-us-live as a standalone page rather than folding it into media navigation."
       />
-      <section className="section-padding">
+      <section className="section-padding text-(--color-fg-primary)">
         <div className="container-shell">
           <LivestreamEmbed url={stream.url} />
         </div>
       </section>
-    </>
+    </div>
   );
 }
 

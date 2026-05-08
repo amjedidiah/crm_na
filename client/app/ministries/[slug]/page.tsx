@@ -28,7 +28,7 @@ async function MinistryDetailPage({
   );
 
   return (
-    <>
+    <div className="bg-(--color-bg-canvas) text-(--color-fg-primary)">
       <PageHeader
         eyebrow="Ministry"
         title={ministry.name}
@@ -39,7 +39,7 @@ async function MinistryDetailPage({
         leaders={leaders}
         events={events}
       />
-    </>
+    </div>
   );
 }
 

@@ -8,7 +8,7 @@ function CoreValuesGrid() {
           <article key={value.title} className="card-surface space-y-4 p-8">
             <p className="eyebrow">{value.scripture}</p>
             <h2 className="text-4xl">{value.title}</h2>
-            <p className="text-lg leading-8 text-(--muted)">
+            <p className="text-lg leading-8 text-(--color-fg-secondary)">
               {value.description}
             </p>
           </article>

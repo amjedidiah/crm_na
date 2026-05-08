@@ -13,7 +13,7 @@ function GivePage() {
       <section className="section-padding">
         <div className="container-shell">
           <div className="card-surface space-y-5 p-8">
-            <p className="text-lg leading-8 text-(--muted)">
+            <p className="text-lg leading-8 text-(--color-fg-secondary)">
               This is the initial giving-page scaffold. Replace the placeholder
               destination with the final giving workflow when the payment path
               is confirmed.

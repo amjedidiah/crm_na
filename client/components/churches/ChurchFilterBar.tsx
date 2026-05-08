@@ -6,7 +6,7 @@ function ChurchFilterBar({ regions }: Readonly<{ regions: Region[] }>) {
       {regions.map((region) => (
         <span
           key={region}
-          className="font-display border border-(--border) px-4 py-2 text-xs tracking-[0.2em] uppercase text-(--muted)"
+          className="font-display border border-(--color-border-subtle) px-4 py-2 text-xs tracking-[0.2em] uppercase text-(--color-fg-secondary)"
         >
           {region}
         </span>

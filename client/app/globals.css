@@ -1,15 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  --navy: #0b1628;
-  --navy-2: #112040;
-  --gold: #c8a85a;
-  --gold-2: #e8c87a;
-  --cream: #f5efe0;
-  --offwhite: #faf6ee;
-  --text: #1a1a2e;
-  --muted: #6b7080;
-  --border: rgba(200, 168, 90, 0.25);
+  --color-bg-canvas: #faf6ee;
+  --color-bg-canvas-elevated: rgba(250, 246, 238, 0.95);
+  --color-bg-surface: rgba(255, 255, 255, 0.78);
+  --color-bg-surface-subtle: #f5efe0;
+  --color-bg-input: #ffffff;
+  --color-bg-emphasis: #0b1628;
+  --color-bg-emphasis-strong: #112040;
+  --color-bg-accent: #c8a85a;
+  --color-bg-accent-strong: #e8c87a;
+  --color-bg-accent-soft: rgba(200, 168, 90, 0.16);
+  --color-fg-primary: #1a1a2e;
+  --color-fg-secondary: #6b7080;
+  --color-fg-inverse: #f5efe0;
+  --color-fg-inverse-soft: rgba(245, 239, 224, 0.8);
+  --color-fg-inverse-muted: rgba(245, 239, 224, 0.55);
+  --color-fg-accent: #c8a85a;
+  --color-fg-accent-strong: #e8c87a;
+  --color-fg-on-accent: #0b1628;
+  --color-border-subtle: rgba(200, 168, 90, 0.25);
+  --color-border-accent: #c8a85a;
 }
 
 html {
@@ -30,8 +41,8 @@ html {
 }
 
 body {
-  background: var(--offwhite);
-  color: var(--text);
+  background: var(--color-bg-canvas);
+  color: var(--color-fg-primary);
   font-family: var(--font-jost), sans-serif;
 }
 
@@ -60,25 +71,33 @@ h4 {
   font-size: 0.75rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--color-fg-accent);
 }
 
 .hero-panel {
   background:
-    radial-gradient(circle at top, rgba(200, 168, 90, 0.16), transparent 36%),
-    linear-gradient(180deg, var(--navy), var(--navy-2));
-  color: var(--cream);
+    radial-gradient(
+      circle at top,
+      var(--color-bg-accent-soft),
+      transparent 36%
+    ),
+    linear-gradient(
+      180deg,
+      var(--color-bg-emphasis),
+      var(--color-bg-emphasis-strong)
+    );
+  color: var(--color-fg-inverse);
 }
 
 .card-surface {
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-bg-surface);
   backdrop-filter: blur(10px);
 }
 
 .dark-strip {
-  background: var(--navy);
-  color: var(--cream);
+  background: var(--color-bg-emphasis);
+  color: var(--color-fg-inverse);
 }
 
 a {

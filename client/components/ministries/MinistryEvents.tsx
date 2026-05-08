@@ -7,7 +7,7 @@ function MinistryEvents({ events }: Readonly<{ events: Event[] }>) {
   }
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-5 text-(--color-fg-primary)">
       <h3 className="text-3xl">Related events</h3>
       <EventGrid events={events} />
     </div>

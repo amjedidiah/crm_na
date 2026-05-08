@@ -26,14 +26,14 @@ async function ChurchDetailPage({
   );
 
   return (
-    <>
+    <div className="bg-(--color-bg-canvas) text-(--color-fg-primary)">
       <PageHeader
         eyebrow="Church"
         title={church.name}
         description={church.summary}
       />
       <ChurchDetailContent church={church} leaders={leaders} />
-    </>
+    </div>
   );
 }
 

@@ -6,13 +6,13 @@ function ChurchCard({ church }: Readonly<{ church: Church }>) {
     <article className="card-surface space-y-4 p-6">
       <p className="eyebrow">{church.region}</p>
       <h3 className="text-3xl">{church.name}</h3>
-      <p className="text-(--muted)">
+      <p className="text-(--color-fg-secondary)">
         {church.city}, {church.stateOrProvince}
       </p>
-      <p className="text-(--muted)">{church.summary}</p>
+      <p className="text-(--color-fg-secondary)">{church.summary}</p>
       <Link
         href={`/churches/${church.slug}`}
-        className="font-display inline-block text-xs tracking-[0.2em] uppercase text-(--gold)"
+        className="font-display inline-block text-xs tracking-[0.2em] uppercase text-(--color-fg-accent)"
       >
         View church
       </Link>

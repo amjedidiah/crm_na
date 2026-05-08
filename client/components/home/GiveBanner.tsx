@@ -2,7 +2,7 @@ import Button from "@/components/shared/Button";
 
 function GiveBanner() {
   return (
-    <section className="section-padding">
+    <section className="section-padding text-(--color-fg-primary)">
       <div className="container-shell">
         <div className="dark-strip flex flex-col gap-6 p-8 md:p-12 lg:flex-row lg:items-end lg:justify-between">
           <div className="space-y-3">

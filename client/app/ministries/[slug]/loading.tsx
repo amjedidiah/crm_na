@@ -1,6 +1,6 @@
 function LoadingMinistryPage() {
   return (
-    <div className="container-shell section-padding text-(--muted)">
+    <div className="container-shell section-padding text-(--color-fg-secondary)">
       Loading ministry...
     </div>
   );

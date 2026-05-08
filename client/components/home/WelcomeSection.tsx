@@ -11,7 +11,7 @@ function WelcomeSection() {
           description={whoWeAreIntro.summary}
         />
         <div className="card-surface p-8">
-          <ul className="space-y-4 text-lg leading-8 text-(--muted)">
+          <ul className="space-y-4 text-lg leading-8 text-(--color-fg-secondary)">
             {whoWeAreIntro.points.map((point) => (
               <li key={point}>{point}</li>
             ))}

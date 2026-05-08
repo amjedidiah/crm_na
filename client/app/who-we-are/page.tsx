@@ -4,7 +4,7 @@ import PageHeader from "@/components/shared/PageHeader";
 
 function WhoWeArePage() {
   return (
-    <>
+    <div className="bg-(--color-bg-canvas) text-(--color-fg-primary)">
       <PageHeader
         eyebrow="About"
         title="Who We Are"
@@ -12,7 +12,7 @@ function WhoWeArePage() {
       />
       <AboutOverview />
       <LeadershipPreview />
-    </>
+    </div>
   );
 }
 

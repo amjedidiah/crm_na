@@ -12,9 +12,9 @@ interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-[var(--gold)] text-[var(--navy)] hover:bg-[var(--gold-2)] border border-[var(--gold)]",
+    "bg-[var(--color-bg-accent)] text-[var(--color-fg-on-accent)] hover:bg-[var(--color-bg-accent-strong)] border border-[var(--color-border-accent)]",
   outline:
-    "border border-[var(--gold)] text-[var(--gold)] hover:bg-[var(--gold)] hover:text-[var(--navy)]",
+    "border border-[var(--color-border-accent)] text-[var(--color-fg-accent)] hover:bg-[var(--color-bg-accent)] hover:text-[var(--color-fg-on-accent)]",
 };
 
 function Button({

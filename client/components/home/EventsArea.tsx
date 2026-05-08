@@ -17,7 +17,7 @@ async function EventsArea() {
         <EventGrid events={events} />
         <Link
           href="/events"
-          className="font-display inline-block text-xs tracking-[0.2em] uppercase text-(--gold)"
+          className="font-display inline-block text-xs tracking-[0.2em] uppercase text-(--color-fg-accent)"
         >
           View all events
         </Link>

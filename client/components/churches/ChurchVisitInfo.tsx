@@ -7,11 +7,11 @@ function ServiceTimes({ times }: Readonly<{ times: ChurchServiceTime[] }>) {
       {times.map((time) => (
         <div key={`${time.label}-${time.day}`} className="card-surface p-4">
           <h4 className="text-xl">{time.label}</h4>
-          <p className="text-(--muted)">
+          <p className="text-(--color-fg-secondary)">
             {time.day} — {time.time}
           </p>
           {time.note ? (
-            <p className="text-sm text-(--muted)">{time.note}</p>
+            <p className="text-sm text-(--color-fg-secondary)">{time.note}</p>
           ) : null}
         </div>
       ))}
@@ -19,15 +19,13 @@ function ServiceTimes({ times }: Readonly<{ times: ChurchServiceTime[] }>) {
   );
 }
 
-function ChurchVisitInfo({
-  church,
-}: Readonly<{ church: Church }>) {
+function ChurchVisitInfo({ church }: Readonly<{ church: Church }>) {
   return (
     <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
       <div className="space-y-5">
         <div className="card-surface p-6">
           <h3 className="text-2xl">Visit information</h3>
-          <div className="mt-4 space-y-2 text-(--muted)">
+          <div className="mt-4 space-y-2 text-(--color-fg-secondary)">
             <p>{church.address}</p>
             <p>{church.phone}</p>
             <p>{church.email}</p>

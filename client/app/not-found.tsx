@@ -8,12 +8,12 @@ function NotFound() {
         <h1 className="text-5xl">
           This route is not part of the CRM NA scaffold.
         </h1>
-        <p className="mx-auto max-w-2xl text-lg text-(--muted)">
+        <p className="mx-auto max-w-2xl text-lg text-(--color-fg-secondary)">
           The initial implementation keeps the canonical route map narrow and
           uses redirects for the legacy flat URLs.
         </p>
         <Link
-          className="font-display text-sm tracking-[0.2em] text-(--gold) uppercase"
+          className="font-display text-sm tracking-[0.2em] text-(--color-fg-accent) uppercase"
           href="/"
         >
           Return home

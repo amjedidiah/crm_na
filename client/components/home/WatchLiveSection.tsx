@@ -3,7 +3,7 @@ import SectionHeader from "@/components/shared/SectionHeader";
 
 function WatchLiveSection() {
   return (
-    <section className="dark-strip section-padding">
+    <section className="dark-strip section-padding text-(--color-fg-inverse)">
       <div className="container-shell flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <SectionHeader
           eyebrow="Livestream"

@@ -9,12 +9,12 @@ function HistoryTimeline() {
             key={entry.year}
             className="card-surface grid gap-4 p-8 md:grid-cols-[160px_1fr]"
           >
-            <p className="font-display text-sm tracking-[0.2em] uppercase text-(--gold)">
+            <p className="font-display text-sm tracking-[0.2em] uppercase text-(--color-fg-accent)">
               {entry.year}
             </p>
             <div className="space-y-2">
               <h2 className="text-3xl">{entry.title}</h2>
-              <p className="text-lg leading-8 text-(--muted)">
+              <p className="text-lg leading-8 text-(--color-fg-secondary)">
                 {entry.description}
               </p>
             </div>

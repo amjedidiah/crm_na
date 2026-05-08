@@ -10,7 +10,7 @@ function HeroSection() {
           Revival centers, ministries, and media shaped by a clearer digital
           home.
         </h1>
-        <p className="max-w-3xl text-lg leading-8 text-(--cream)/80 md:text-xl">
+        <p className="max-w-3xl text-lg leading-8 text-(--color-fg-inverse-soft) md:text-xl">
           {SITE_DESCRIPTION}
         </p>
         <div className="flex flex-wrap gap-4">

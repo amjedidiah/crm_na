@@ -14,7 +14,7 @@ function VisionContent() {
           {visionContent.body.map((paragraph) => (
             <p
               key={paragraph}
-              className="max-w-4xl text-lg leading-8 text-(--muted)"
+              className="max-w-4xl text-lg leading-8 text-(--color-fg-secondary)"
             >
               {paragraph}
             </p>

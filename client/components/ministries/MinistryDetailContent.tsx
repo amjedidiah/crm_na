@@ -16,7 +16,7 @@ function MinistryDetailContent({
         <div className="space-y-4">
           <p className="eyebrow">Ministry</p>
           <h1 className="text-5xl">{ministry.name}</h1>
-          <p className="max-w-3xl text-lg leading-8 text-(--muted)">
+          <p className="max-w-3xl text-lg leading-8 text-(--color-fg-secondary)">
             {ministry.summary}
           </p>
         </div>
@@ -24,7 +24,7 @@ function MinistryDetailContent({
           {ministry.description.map((paragraph) => (
             <p
               key={paragraph}
-              className="max-w-4xl text-lg leading-8 text-(--muted)"
+              className="max-w-4xl text-lg leading-8 text-(--color-fg-secondary)"
             >
               {paragraph}
             </p>
@@ -37,14 +37,14 @@ function MinistryDetailContent({
               {leaders.map((leader) => (
                 <div key={leader.id}>
                   <h3 className="text-2xl">{leader.name}</h3>
-                  <p className="text-(--muted)">{leader.title}</p>
+                  <p className="text-(--color-fg-secondary)">{leader.title}</p>
                 </div>
               ))}
             </div>
           </div>
           <div className="card-surface p-6">
             <h2 className="text-3xl">Meeting rhythm</h2>
-            <ul className="mt-4 space-y-3 text-(--muted)">
+            <ul className="mt-4 space-y-3 text-(--color-fg-secondary)">
               {ministry.meetingSchedule.map((item) => (
                 <li key={item}>{item}</li>
               ))}
