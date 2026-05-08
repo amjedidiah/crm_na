@@ -51,6 +51,8 @@ const nextConfig: NextConfig = {
       { source: "/sermon", destination: "/media", permanent: true },
     ];
   },
+  // Hostnames only (not full URLs). Origin `http://127.0.0.1:3000` → hostname `127.0.0.1`.
+  allowedDevOrigins: ["127.0.0.1"],
 };
 
 export default nextConfig;
