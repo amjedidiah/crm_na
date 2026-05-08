@@ -2,8 +2,10 @@ import Link from "next/link";
 
 const links = [
   { href: "/who-we-are", label: "Who We Are" },
-  { href: "/our-pastors", label: "Our Pastors" },
+  { href: "/who-we-are#leadership", label: "Leadership" },
   { href: "/churches", label: "Churches" },
+  { href: "/media#live", label: "Watch Live" },
+  { href: "/publications", label: "Publications" },
   { href: "/give", label: "Give" },
 ];
 

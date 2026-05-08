@@ -8,8 +8,14 @@ function GiveBanner() {
           <div className="space-y-3">
             <p className="eyebrow">Give</p>
             <h2 className="text-4xl md:text-5xl">
-              Support the work of CRM North America.
+              Support prayer, discipleship, and church planting across CRM
+              North America.
             </h2>
+            <p className="max-w-2xl text-lg leading-8 text-(--color-fg-inverse)">
+              Your generosity helps local branches serve families, raise
+              leaders, stream teaching, and gather believers for conferences,
+              outreach, and pastoral care.
+            </p>
           </div>
           <Button href="/give">Open giving page</Button>
         </div>

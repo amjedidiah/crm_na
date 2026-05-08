@@ -5,6 +5,7 @@ import {
   getChurchBySlug,
   getEventBySlug,
   getMinistryBySlug,
+  getPublicationBySlug,
   historyTimeline,
   leaders,
   mediaItems,
@@ -70,4 +71,8 @@ export async function getMediaItems() {
 
 export async function getPublications() {
   return publications;
+}
+
+export async function getPublication(slug: string) {
+  return getPublicationBySlug(slug) ?? null;
 }

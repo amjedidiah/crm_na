@@ -13,7 +13,7 @@ function LeadershipPreview() {
             </h2>
           </div>
           <Link
-            href="/our-pastors"
+            href="/who-we-are#leadership"
             className="font-display text-xs tracking-[0.2em] uppercase text-(--color-fg-accent)"
           >
             View leadership

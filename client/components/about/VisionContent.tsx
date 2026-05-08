@@ -1,9 +1,9 @@
 import SectionHeader from "@/components/shared/SectionHeader";
 import { visionContent } from "@/lib/mock-data";
 
-function VisionContent() {
+function VisionContent({ id }: Readonly<{ id?: string }>) {
   return (
-    <section className="section-padding">
+    <section id={id} className="section-padding">
       <div className="container-shell space-y-8">
         <SectionHeader
           eyebrow="Vision"

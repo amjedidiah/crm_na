@@ -4,6 +4,7 @@ import type { PropsWithChildren } from "react";
 import Footer from "@/components/layout/Footer";
 import FloatingGiveButton from "@/components/layout/FloatingGiveButton";
 import Navbar from "@/components/layout/Navbar";
+import NavOffset from "@/components/layout/NavOffset";
 import PageTransition from "@/components/layout/PageTransition";
 import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/mock-data";
 import "./globals.css";
@@ -54,6 +55,7 @@ function RootLayout({ children }: Readonly<PropsWithChildren>) {
     >
       <body className="min-h-screen bg-(--color-bg-canvas) text-(--color-fg-primary)">
         <Navbar />
+        <NavOffset />
         <main>
           <PageTransition>{children}</PageTransition>
         </main>

@@ -12,7 +12,7 @@ import type {
 export const SITE_NAME = "CRM NA";
 export const SITE_TITLE = "CRM NA — Charismatic Renewal Ministries";
 export const SITE_DESCRIPTION =
-  "A Next.js rebuild scaffold for CRM North America, using the convention microsite design language and a WordPress backend.";
+  "Charismatic Renewal Ministries North America gathers churches, families, students, and leaders to preach Jesus boldly, welcome the ministry of the Holy Spirit, and form disciples who can carry revival into everyday life.";
 
 export const CONTACT_EMAIL = "hello@crm-na.org";
 export const CONTACT_PHONE = "+1 (800) 123-1234";
@@ -79,8 +79,8 @@ export const churches: Church[] = [
     country: "United States",
     summary: "A revival church center serving families in Woodbridge, Virginia.",
     story: [
-      "CRM Word of Life serves as one of the established CRM NA church centers in the United States.",
-      "Its public page centers on pastoral leadership, weekly services, and livestream access.",
+      "CRM Word of Life serves families in Northern Virginia through prayer, Bible teaching, and pastoral care rooted in charismatic renewal.",
+      "The church gathers worshipers who want strong preaching, spiritual family, and a practical path into service and discipleship.",
     ],
     address: "12827 Chandon Cross Road, Woodbridge, VA 22193",
     phone: CONTACT_PHONE,
@@ -105,8 +105,8 @@ export const churches: Church[] = [
     country: "United States",
     summary: "A CRM NA branch with strong ministry programming and regional leadership presence.",
     story: [
-      "Praise Center was inaugurated in 2005 and grew from rented meeting space into a stable local church center.",
-      "Its legacy page contains church story, ministry programs, and pastor profile content that should be normalized into structured fields.",
+      "CRM Praise Center was inaugurated in 2005 and has grown into a stable New Haven church family with regional influence.",
+      "The branch is known for worship, deliverance prayer, pastoral leadership, and ministry opportunities that keep members engaged through the week.",
     ],
     address: "16 Norton St, New Haven, CT 06511",
     phone: "+1 203-987-7729",
@@ -133,8 +133,8 @@ export const churches: Church[] = [
     country: "United States",
     summary: "A newer CRM NA church center with a strong revival and discipleship emphasis.",
     story: [
-      "CRM Rhode Island started in 2020 and should use the same canonical church template as the more mature branches.",
-      "The rebuild should remove content inconsistencies inherited from the old page-builder template.",
+      "CRM Rhode Island started in 2020 with a strong burden for revival, prayer, and discipleship in the Northeast corridor.",
+      "The branch serves believers looking for intimate worship, practical teaching, and a church family that grows people in faith.",
     ],
     address: "Rhode Island, United States",
     phone: CONTACT_PHONE,
@@ -154,8 +154,8 @@ export const churches: Church[] = [
     country: "United States",
     summary: "A Houston-based church center with resident and senior leadership functions.",
     story: [
-      "Grace & Glory Sanctuary is one of the core United States branches in the current CRM NA network.",
-      "Its existing page is rich enough to migrate into structured church, leader, and program content.",
+      "Grace & Glory Sanctuary is one of the core CRM NA branches in the United States and a key gathering point for regional believers.",
+      "The Houston church centers its life around worship, leadership formation, intercession, and faithful pastoral presence.",
     ],
     address: "Houston, TX, United States",
     phone: CONTACT_PHONE,
@@ -173,8 +173,8 @@ export const ministries: Ministry[] = [
     name: "Youths",
     summary: "CRM NA youth ministry with weekly virtual Bible study and leadership development.",
     description: [
-      "The CRM NA youth ministry is one of the most developed ministry pages on the legacy site.",
-      "It already includes leadership, support team, and recurring study schedules that can be normalized into reusable fields.",
+      "The youth ministry gathers students and young adults for Bible study, peer discipleship, and leadership formation across branches.",
+      "Its rhythms are designed to help younger believers grow in Scripture, purity, service, and confidence in the gifts of the Spirit.",
     ],
     leaderIds: ["prudent-okoli"],
     meetingSchedule: [
@@ -190,7 +190,7 @@ export const ministries: Ministry[] = [
     name: "CWL (Charismatic Women League)",
     summary: "Women-focused discipleship and fellowship ministry.",
     description: [
-      "The legacy page is empty, so the initial scaffold should establish structure rather than depend on migrated content.",
+      "The Charismatic Women League strengthens women through prayer, mentoring, fellowship, and practical support for every season of life.",
     ],
     leaderIds: [],
     meetingSchedule: ["Quarterly fellowship", "Prayer and support gatherings"],
@@ -202,7 +202,7 @@ export const ministries: Ministry[] = [
     name: "King’s Men",
     summary: "Men’s ministry focused on spiritual maturity, leadership, and family life.",
     description: [
-      "The legacy page is empty, so the rebuild should create a proper ministry detail template ready for future content.",
+      "King's Men calls men into prayer, spiritual maturity, accountability, and courageous leadership at home, in church, and in the marketplace.",
     ],
     leaderIds: [],
     meetingSchedule: ["Quarterly fellowship", "Leadership and accountability gatherings"],
@@ -216,8 +216,8 @@ export const events: Event[] = [
     title: "National Prayer Conference",
     summary: "A network-wide prayer and teaching gathering for CRM NA leaders and members.",
     description: [
-      "This is mock content used to scaffold the events archive and event detail route.",
-      "Real event data should be sourced from WordPress through WPGraphQL once the backend is ready.",
+      "Believers from multiple branches gather for preaching, intercession, and practical strategy around the future of CRM North America.",
+      "The conference strengthens local workers, reconnects families across regions, and stirs hunger for revival in each church center.",
     ],
     startDate: "2026-08-14",
     endDate: "2026-08-16",
@@ -230,7 +230,7 @@ export const events: Event[] = [
     title: "Youth Revival Night",
     summary: "A youth-focused night of worship, Bible teaching, and intercession.",
     description: [
-      "Connected to the CRM NA youth ministry and designed to exercise the ministry/event relationship.",
+      "Young people from across the network come together online for worship, honest prayer, and preaching aimed at bold discipleship.",
     ],
     startDate: "2026-06-20",
     location: "Online",
@@ -242,7 +242,7 @@ export const events: Event[] = [
     title: "Leaders Roundtable",
     summary: "A strategy and pastoral care session for regional and branch leaders.",
     description: [
-      "Used to scaffold the leadership and events relationship in the frontend.",
+      "Regional and branch leaders gather to pray, care for one another, and align around the spiritual and practical needs of the network.",
     ],
     startDate: "2026-05-24",
     location: "New Haven, Connecticut",
@@ -253,18 +253,18 @@ export const events: Event[] = [
 export const mediaItems: MediaItem[] = [
   {
     slug: "national-overseer-message-april-2026",
-    title: "National Overseer Message",
+    title: "Standing Firm in the Day of Visitation",
     type: "video",
-    summary: "A sample teaching video entry for the media hub scaffold.",
+    summary: "Dr. Peter Ezekwenna exhorts the church to combine spiritual hunger with steady obedience in this season of open doors.",
     url: "https://youtube.com/@crmna",
     speaker: "Dr. Peter Ezekwenna",
     publishedAt: "2026-04-21",
   },
   {
     slug: "weekly-livestream",
-    title: "Weekly Livestream Replay",
+    title: "Sunday Worship Broadcast",
     type: "livestream",
-    summary: "Replay entry for the watch live and media sections.",
+    summary: "Join the current broadcast or catch the latest replay from CRM North America worship and teaching gatherings.",
     url: "https://youtube.com/@crmna",
     publishedAt: "2026-05-01",
   },
@@ -272,7 +272,7 @@ export const mediaItems: MediaItem[] = [
     slug: "faith-and-revival",
     title: "Faith and Revival",
     type: "sermon",
-    summary: "Sample sermon entry replacing the stale placeholder content on the legacy site.",
+    summary: "Pastor Marcel Odimgbe preaches on the kind of faith that keeps revival alive in homes, churches, and weary hearts.",
     url: "https://youtube.com/@crmna",
     speaker: "Pastor Marcel Odimgbe",
     publishedAt: "2026-03-18",
@@ -281,18 +281,32 @@ export const mediaItems: MediaItem[] = [
 
 export const publications: Publication[] = [
   {
-    slug: "crm-na-vision-guide",
-    title: "CRM NA Vision Guide",
-    summary: "Starter publication entry for the publications route scaffold.",
-    url: "https://crm-na.org/publications/",
+    slug: "stewarding-revival-in-a-new-season",
+    title: "Stewarding Revival in a New Season",
+    synopsis:
+      "A pastoral reflection on protecting spiritual hunger while building a stronger public witness for CRM North America.",
+    content: [
+      "Revival is never sustained by momentum alone. It is sustained when a people remain yielded to the Spirit, disciplined in prayer, and accountable to the assignment God has given them.",
+      "As CRM North America grows, we must resist the temptation to confuse visibility with fruitfulness. The Lord is calling us to deeper consecration, clearer discipleship, and stronger local churches that can carry revival without losing simplicity.",
+      "The work ahead is not only organizational. It is spiritual. We are being asked to build structures that serve the move of God rather than compete with it. That means our media, leadership, and church life must all point back to Christ and to the harvest before us.",
+    ],
     publishedAt: "2026-01-15",
+    authorName: "Dr. Peter Ezekwenna",
+    authorTitle: "National Overseer",
   },
   {
-    slug: "leadership-prayer-notes",
-    title: "Leadership Prayer Notes",
-    summary: "Example downloadable publication record for WordPress modeling.",
-    url: "https://crm-na.org/publications/",
+    slug: "building-healthy-altars-at-home",
+    title: "Building Healthy Altars at Home",
+    synopsis:
+      "A Pastor's Corner meditation on how families can cultivate consistent prayer, Scripture, and worship beyond Sunday gatherings.",
+    content: [
+      "Many believers want strong homes, but strong homes are not built accidentally. They are built when families choose patterns that welcome the presence of God into ordinary days.",
+      "An altar at home does not need performance. It needs consistency. A short time of prayer, a shared Scripture reading, and a habit of thanksgiving can begin to reshape the atmosphere of a household over time.",
+      "When family altars are healthy, church life becomes stronger. Members arrive already stirred, children grow up hearing the language of faith, and the testimony of Christ becomes visible in daily relationships.",
+    ],
     publishedAt: "2026-02-10",
+    authorName: "Pastor Chizo Nwaneri",
+    authorTitle: "Lead Pastor, CRM Praise Center",
   },
 ];
 
@@ -343,20 +357,21 @@ export const historyTimeline: TimelineEntry[] = [
 ];
 
 export const whoWeAreIntro = {
-  title: "We Charismatics Make The Devil Cry",
+  title: "We charismatics still make the devil tremble",
   summary:
-    "CRM NA is a revival movement with a church network, ministries, and media presence across North America.",
+    "CRM NA is a Pentecost-friendly family of churches and ministries pressing after Jesus with joy, integrity, and courageous faith in the power of the Holy Spirit.",
   points: [
-    "We are rebuilding the public site around real CRM NA content rather than page-builder fragments.",
-    "The new frontend will be shaped by the convention microsite's visual language and a cleaner content model.",
+    "We plant and strengthen local church centers that preach the full gospel, train disciples, and prioritize prayer, worship, and Spirit-led witness.",
+    "We resource leaders, youth, women, and men with teaching, media, and relational care that keeps revival accountable to Scripture.",
+    "We welcome newcomers, returning believers, and long-time members into a clearer picture of the churches, ministries, gatherings, and pastoral voices shaping CRM in North America.",
   ],
 };
 
 export const visionContent = {
   title: "Preparing men for the great harvest",
   body: [
-    "The legacy vision page mixes CRM-wide history, Catholic charismatic context, and the original prophetic mandate.",
-    "The rebuilt page should preserve that history but present it with clearer editorial structure and readable sections.",
+    "CRM North America exists to raise disciples who know Christ, move in the power of the Holy Spirit, and carry the gospel into homes, campuses, cities, and nations.",
+    "Our vision is not only to gather meetings, but to prepare men and women whose lives, convictions, and service can help sustain a genuine harvest for the kingdom of God.",
   ],
 };
 
@@ -372,6 +387,26 @@ export function getEventBySlug(slug: string) {
   return events.find((event) => event.slug === slug);
 }
 
+export function getPublicationBySlug(slug: string) {
+  return publications.find((publication) => publication.slug === slug);
+}
+
 export function getLeaderById(id: string) {
   return leaders.find((leader) => leader.id === id);
+}
+
+/** Highlighted on the home page “Serve with us” band. */
+export const HOMEPAGE_MINISTRY_SLUGS: readonly string[] = [
+  "youths",
+  "cwl-charismatic-women-league",
+  "kings-men",
+];
+
+export function getMinistriesFeaturedOnHome(): Ministry[] {
+  const list: Ministry[] = [];
+  for (const slug of HOMEPAGE_MINISTRY_SLUGS) {
+    const ministry = getMinistryBySlug(slug);
+    if (ministry) list.push(ministry);
+  }
+  return list;
 }

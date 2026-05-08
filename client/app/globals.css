@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+  --nav-height: 4.75rem;
   --color-bg-canvas: #faf6ee;
   --color-bg-canvas-elevated: rgba(250, 246, 238, 0.95);
   --color-bg-surface: rgba(255, 255, 255, 0.78);

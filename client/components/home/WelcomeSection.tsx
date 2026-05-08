@@ -1,22 +1,136 @@
+"use client";
+
+import { useReducedMotion } from "framer-motion";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { whoWeAreIntro } from "@/lib/mock-data";
+import Motion from "@/components/shared/Motion";
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 function WelcomeSection() {
+  const reduceMotion = useReducedMotion();
+
   return (
-    <section className="section-padding">
-      <div className="container-shell grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-        <SectionHeader
-          eyebrow="Welcome"
-          title={whoWeAreIntro.title}
-          description={whoWeAreIntro.summary}
-        />
-        <div className="card-surface p-8">
-          <ul className="space-y-4 text-lg leading-8 text-(--color-fg-secondary)">
+    <section className="section-padding pt-16 md:pt-24">
+      <div className="container-shell grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+        <Motion
+          initial={reduceMotion ? false : { opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.28 }}
+          transition={{ duration: reduceMotion ? 0.01 : 0.55, ease }}
+        >
+          <div className="space-y-6">
+            <SectionHeader
+              eyebrow="Welcome"
+              title={whoWeAreIntro.title}
+              description={whoWeAreIntro.summary}
+            />
+            <div className="grid gap-4 sm:grid-cols-2">
+              {[
+                {
+                  label: "Prayer",
+                  body: "Intercession remains central to how branches gather, pastor, and respond to need.",
+                },
+                {
+                  label: "Discipleship",
+                  body: "Churches, ministries, and media now connect into one clearer pathway for growth.",
+                },
+              ].map((item) => (
+                <Motion
+                  key={item.label}
+                  className="rounded-[1.35rem] border border-(--color-border-subtle) bg-(--color-bg-canvas) p-5"
+                  initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: reduceMotion ? 0.01 : 0.42, ease }}
+                >
+                  <p className="font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent)">
+                    {item.label}
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-(--color-fg-secondary)">
+                    {item.body}
+                  </p>
+                </Motion>
+              ))}
+            </div>
+          </div>
+        </Motion>
+
+        <Motion
+          className="card-surface relative overflow-hidden rounded-[1.8rem] p-8 md:p-10"
+          initial={reduceMotion ? false : { opacity: 0, y: 32, rotateX: 4 }}
+          whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+          viewport={{ once: true, amount: 0.22 }}
+          transition={{ duration: reduceMotion ? 0.01 : 0.58, ease }}
+          whileHover={
+            reduceMotion
+              ? undefined
+              : {
+                  y: -4,
+                  boxShadow: "0 28px 60px -28px rgba(11, 22, 40, 0.22)",
+                  transition: { type: "spring", stiffness: 320, damping: 22 },
+                }
+          }
+          style={{ transformPerspective: 980 }}
+        >
+          <span
+            aria-hidden
+            className="pointer-events-none absolute -right-12 top-8 h-40 w-40 rounded-full bg-[radial-gradient(circle,rgba(200,168,90,0.18),transparent_68%)] blur-2xl"
+          />
+          <div className="relative mb-8 flex items-end justify-between gap-4 border-b border-(--color-border-subtle) pb-6">
+            <div>
+              <p className="font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent)">
+                Why this matters
+              </p>
+              <h3 className="mt-2 text-3xl md:text-4xl">
+                A clearer front door for the whole network
+              </h3>
+            </div>
+            <div className="hidden rounded-full border border-(--color-border-subtle) px-4 py-2 md:block">
+              <span className="font-display text-[0.65rem] tracking-[0.22em] uppercase text-(--color-fg-secondary)">
+                North America
+              </span>
+            </div>
+          </div>
+          <Motion
+            as="ul"
+            className="relative space-y-4 text-lg leading-8 text-(--color-fg-secondary)"
+            initial={reduceMotion ? false : "hidden"}
+            whileInView="show"
+            viewport={{ once: true, amount: 0.35 }}
+            variants={{
+              hidden: {},
+              show: {
+                transition: {
+                  staggerChildren: reduceMotion ? 0 : 0.09,
+                  delayChildren: reduceMotion ? 0 : 0.08,
+                },
+              },
+            }}
+          >
             {whoWeAreIntro.points.map((point) => (
-              <li key={point}>{point}</li>
+              <Motion
+                as="li"
+                key={point}
+                variants={{
+                  hidden: { opacity: 0, x: reduceMotion ? 0 : -12 },
+                  show: {
+                    opacity: 1,
+                    x: 0,
+                    transition: { duration: reduceMotion ? 0.01 : 0.42, ease },
+                  },
+                }}
+                className="relative flex gap-3"
+              >
+                <span
+                  aria-hidden
+                  className="mt-2.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-(--color-bg-accent)"
+                />
+                <span>{point}</span>
+              </Motion>
             ))}
-          </ul>
-        </div>
+          </Motion>
+        </Motion>
       </div>
     </section>
   );

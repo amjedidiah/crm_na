@@ -105,15 +105,15 @@ Non-negotiable design direction:
 
 | Legacy page | Current state on live site | Rebuild recommendation |
 | --- | --- | --- |
-| `/who-we-are/` | Strong overview page with welcome messaging and About teasers. | Keep as the primary About landing page. |
-| `/vision/` | Long-form CRM-wide history and prophecy content. | Keep as a long-form editorial page. |
-| `/core-values/` | Empty. | Rebuild as a proper values page with real CRM NA content. |
-| `/history/` | Strong CRM NA-specific history. | Keep as the canonical North America history page. |
-| `/our-pastors/` | Useful leadership content, weak structure. | Preserve this as the public leadership route and rebuild it on structured leader records. |
+| `/who-we-are/` | Strong overview page with welcome messaging and About teasers. | Keep as the canonical About route and consolidate vision, history, values, and leadership into anchored sections. |
+| `/vision/` | Long-form CRM-wide history and prophecy content. | Redirect to `/who-we-are#vision` after migrating the content into the consolidated About page. |
+| `/core-values/` | Empty. | Redirect to `/who-we-are#core-values` after rebuilding values as an anchored About section. |
+| `/history/` | Strong CRM NA-specific history. | Redirect to `/who-we-are#history` after migrating the content into the consolidated About page. |
+| `/our-pastors/` | Useful leadership content, weak structure. | Redirect to `/who-we-are#leadership` after rebuilding leadership on structured leader records inside the About page. |
 | `/events/` | Plugin-heavy archive with no upcoming events during audit. | Keep as a first-class route, but replace the public UI with custom Next.js pages. |
 | `/sermon/` | Empty. | Redirect this legacy route to `/media`. |
-| `/watch-us-live/` | Contains stale theme-demo sermon/audio content. | Keep as a dedicated livestream route in v1. |
-| `/publications/` | Empty. | Scaffold the route now; content depth and nav prominence can be refined later. |
+| `/watch-us-live/` | Contains stale theme-demo sermon/audio content. | Remove it as a standalone destination and redirect it to `/media#live`. |
+| `/publications/` | Empty. | Keep the URL, but rebuild it as a Pastor's Corner-style editorial archive with detail pages under `/publications/[slug]`. |
 | `/churches/` | Real directory intent, weak execution. | Keep as the canonical church directory. |
 | `/crm-word-of-life/` | Good branch-page content model. | Migrate into `church` content and redirect to `/churches/crm-word-of-life`. |
 | `/crm-praise-center/` | Rich branch-page content model. | Migrate into `church` content and redirect to `/churches/crm-praise-center`. |
@@ -123,7 +123,7 @@ Non-negotiable design direction:
 | `/cwl-charismatic-women-league/` | Empty. | Migrate into `ministry` content and redirect to `/ministries/cwl-charismatic-women-league`. |
 | `/kings-men/` | Empty. | Migrate into `ministry` content and redirect to `/ministries/kings-men`. |
 | `/youths/` | One of the strongest ministry pages on the site. | Migrate this content into `ministry` and redirect the legacy route to `/ministries/youths`. |
-| `/media/` | Empty. | Keep and scaffold now as the hub for sermons, livestream replays, and publications. |
+| `/media/` | Empty. | Keep as the canonical media hub, make it sermon-first, and host the permanent live section at `#live`. |
 | `/contact-us/` | Contact route exists, but with placeholder content. | Replace with `/contact` and redirect the legacy slug. |
 
 ## Canonical IA And Routing Defaults
@@ -132,10 +132,6 @@ Non-negotiable design direction:
 
 - `/`
 - `/who-we-are`
-- `/vision`
-- `/core-values`
-- `/history`
-- `/our-pastors`
 - `/churches`
 - `/churches/[slug]`
 - `/ministries`
@@ -143,8 +139,8 @@ Non-negotiable design direction:
 - `/ministries/youths`
 - `/events`
 - `/events/[slug]`
-- `/watch-us-live`
 - `/publications`
+- `/publications/[slug]`
 - `/media`
 - `/contact`
 - `/give`
@@ -162,14 +158,20 @@ Legacy flat routes remain as redirects only:
 - `/contact-us/` -> `/contact`
 - `/youths/` -> `/ministries/youths`
 - `/sermon/` -> `/media`
+- `/vision/` -> `/who-we-are#vision`
+- `/history/` -> `/who-we-are#history`
+- `/core-values/` -> `/who-we-are#core-values`
+- `/our-pastors/` -> `/who-we-are#leadership`
+- `/watch-us-live/` -> `/media#live`
 
 ### IA rules
 
 - There is **no `/about` route** in the initial spec.
-- `/who-we-are/` is the About landing page.
-- `/watch-us-live/` stays a dedicated route in v1.
+- `/who-we-are/` is the About landing page and the canonical home for vision, history, core values, and leadership through anchored sections.
+- `/media/` is the media hub and owns the permanent livestream destination at `#live`.
 - Youth content lives at `/ministries/youths`, not as a flat top-level route.
-- `/publications/`, `/media/`, and `/watch-us-live/` are all scaffolded in v1.
+- `/publications/` stays the canonical URL, but the user-facing editorial label is Pastor's Corner.
+- `/publications/[slug]` is the canonical publication detail route.
 - Churches and ministries must remain separate models and separate public listings.
 
 ## Content Model
@@ -199,6 +201,7 @@ Legacy flat routes remain as redirects only:
 - a ministry owns demographic or functional fellowship information
 - events can relate to a church, a ministry, or both
 - media should support sermons, livestream replays, and general teaching content
+- publications should support long-form editorial content with slug-backed detail pages and author metadata
 
 ## High-Level Implementation Phases
 
@@ -244,7 +247,8 @@ Current repo status:
 ## Defaults And Assumptions
 
 - Default route strategy: nested canonical routes with legacy redirects.
-- Default About strategy: `/who-we-are` is the About landing page.
-- Default thin-page strategy: scaffold `/watch-us-live`, `/publications`, and `/media` now.
+- Default About strategy: `/who-we-are` is the consolidated About page with anchored sub-sections.
+- Default live strategy: `/watch-us-live` is retired and redirected to `/media#live`.
+- Default publications strategy: keep `/publications` as the canonical URL for a Pastor's Corner-style archive and use `/publications/[slug]` for detail pages.
 - Default sermon handling: `/sermon` redirects to `/media`.
 - Default youth handling: `/youths` redirects to `/ministries/youths`.

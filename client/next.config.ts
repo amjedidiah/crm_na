@@ -48,6 +48,31 @@ const nextConfig: NextConfig = {
         destination: "/ministries/youths",
         permanent: true,
       },
+      {
+        source: "/vision",
+        destination: "/who-we-are#vision",
+        permanent: true,
+      },
+      {
+        source: "/history",
+        destination: "/who-we-are#history",
+        permanent: true,
+      },
+      {
+        source: "/core-values",
+        destination: "/who-we-are#core-values",
+        permanent: true,
+      },
+      {
+        source: "/our-pastors",
+        destination: "/who-we-are#leadership",
+        permanent: true,
+      },
+      {
+        source: "/watch-us-live",
+        destination: "/media#live",
+        permanent: true,
+      },
       { source: "/sermon", destination: "/media", permanent: true },
     ];
   },

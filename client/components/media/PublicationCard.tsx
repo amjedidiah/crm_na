@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Publication } from "@/lib/types";
 import { formatDate } from "@/lib/utils";
 
@@ -7,19 +8,14 @@ function PublicationCard({
   publication: Publication;
 }>) {
   return (
-    <a
-      href={publication.url}
-      target="_blank"
-      rel="noreferrer"
-      className="card-surface block space-y-4 p-6"
-    >
-      <p className="eyebrow">Publication</p>
+    <Link href={`/publications/${publication.slug}`} className="card-surface block space-y-4 p-6">
+      <p className="eyebrow">Pastor&apos;s Corner</p>
       <h3 className="text-3xl">{publication.title}</h3>
-      <p className="text-(--color-fg-secondary)">{publication.summary}</p>
+      <p className="text-(--color-fg-secondary)">{publication.synopsis}</p>
       <p className="text-sm text-(--color-fg-secondary)">
         {formatDate(publication.publishedAt)}
       </p>
-    </a>
+    </Link>
   );
 }
 

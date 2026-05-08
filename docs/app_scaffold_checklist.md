@@ -63,10 +63,6 @@ Use the same repo shape as `/Users/jay/Projects/freelance/crm_praise_center`:
 
 - [x] `/`
 - [x] `/who-we-are`
-- [x] `/vision`
-- [x] `/core-values`
-- [x] `/history`
-- [x] `/our-pastors`
 - [x] `/churches`
 - [x] `/churches/[slug]`
 - [x] `/ministries`
@@ -74,8 +70,8 @@ Use the same repo shape as `/Users/jay/Projects/freelance/crm_praise_center`:
 - [x] `/ministries/youths`
 - [x] `/events`
 - [x] `/events/[slug]`
-- [x] `/watch-us-live`
 - [x] `/publications`
+- [x] `/publications/[slug]`
 - [x] `/media`
 - [x] `/contact`
 - [x] `/give`
@@ -97,6 +93,7 @@ Use the same repo shape as `/Users/jay/Projects/freelance/crm_praise_center`:
 - [x] `client/app/ministries/[slug]/loading.tsx`
 - [x] `client/app/events/loading.tsx`
 - [x] `client/app/events/[slug]/loading.tsx`
+- [x] `client/app/publications/[slug]/loading.tsx`
 
 ## Redirect Scaffold
 
@@ -111,6 +108,11 @@ These are redirects, not co-equal public routes:
 - [x] `/kings-men` -> `/ministries/kings-men`
 - [x] `/youths` -> `/ministries/youths`
 - [x] `/sermon` -> `/media`
+- [x] `/vision` -> `/who-we-are#vision`
+- [x] `/history` -> `/who-we-are#history`
+- [x] `/core-values` -> `/who-we-are#core-values`
+- [x] `/our-pastors` -> `/who-we-are#leadership`
+- [x] `/watch-us-live` -> `/media#live`
 
 Implementation location:
 
@@ -150,6 +152,7 @@ Implementation location:
 - [x] `client/components/about/CoreValuesGrid.tsx`
 - [x] `client/components/about/HistoryTimeline.tsx`
 - [x] `client/components/about/LeadershipPreview.tsx`
+- [x] `client/components/about/LeadershipSection.tsx`
 
 ### Churches
 
@@ -188,6 +191,8 @@ Implementation location:
 - [x] `client/components/media/MediaGrid.tsx`
 - [x] `client/components/media/LivestreamEmbed.tsx`
 - [x] `client/components/media/PublicationCard.tsx`
+- [x] `client/components/media/FeaturedSermon.tsx`
+- [x] `client/components/publications/PublicationDetailContent.tsx`
 
 ### Contact
 
@@ -227,9 +232,10 @@ Implementation location:
 
 ### Mock-data expectations
 
-- [x] seed mock content for all canonical routes, including `/watch-us-live`, `/publications`, and `/media`
+- [x] seed mock content for all canonical routes, including sermon-first `/media`, anchored `/who-we-are`, and `/publications/[slug]`
 - [x] keep mock content entity-based, not page-builder-fragment based
 - [x] normalize legacy content into structured records for churches, ministries, leaders, events, and media
+- [x] model publications as editorial content with body copy and author metadata, not outbound placeholders
 
 ## WordPress Server Checklist
 
@@ -274,7 +280,8 @@ Implementation location:
 
 - [ ] map branch pages into `church`
 - [ ] map legacy `/youths`, `/cwl-charismatic-women-league`, and `/kings-men` content into `ministry`
-- [ ] map `/our-pastors` into `leader` records plus a leadership landing page
+- [ ] map legacy `/vision`, `/history`, `/core-values`, and `/our-pastors` into anchored sections on `/who-we-are`
+- [ ] map legacy `/publications` content into slug-backed editorial entries for `/publications/[slug]`
 - [ ] remove placeholder/demo content during migration entry
 
 ## Testing Checklist
@@ -300,20 +307,20 @@ Implementation location:
 - [x] Next.js bootstrap
 - [x] layout shell, fonts, globals, navbar, footer
 - [x] homepage shell
-- [x] About routes
+- [x] About route shell
 
 ### Sprint 2
 
 - [x] churches listing and detail
 - [x] ministries listing and detail
 - [x] `/ministries/youths`
-- [x] `/our-pastors`
+- [x] consolidated About sections inside `/who-we-are`
 
 ### Sprint 3
 
 - [x] events
-- [x] `/watch-us-live`
 - [x] `/publications`
+- [x] `/publications/[slug]`
 - [x] `/media`
 - [x] `/contact`
 - [x] `/give`

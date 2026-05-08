@@ -6,12 +6,17 @@ function WatchLiveSection() {
     <section className="dark-strip section-padding text-(--color-fg-inverse)">
       <div className="container-shell flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <SectionHeader
-          eyebrow="Livestream"
-          title="A dedicated watch-live route stays in the initial scaffold."
-          description="The rebuild replaces the legacy placeholder audio/demo content with a proper livestream hub tied to media records."
+          eyebrow="Watch &amp; listen"
+          title="Tune in wherever this week finds you"
+          description="Teaching, altar ministry, worship sets, and special services stream from CRM NA campuses and circulate through our media archive. Pause the rush, declare Jesus Lord again, and let the preached Word reset your posture."
+          inverse
         />
-        <Button href="/watch-us-live" variant="outline">
-          Open watch live
+        <Button
+          href="/media#live"
+          variant="outline"
+          className="border-(--color-fg-inverse-soft) text-(--color-fg-inverse) hover:bg-(--color-bg-accent-strong) hover:text-(--color-fg-on-accent)"
+        >
+          Jump to live section
         </Button>
       </div>
     </section>

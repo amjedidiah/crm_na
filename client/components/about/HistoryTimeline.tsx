@@ -1,8 +1,8 @@
 import { historyTimeline } from "@/lib/mock-data";
 
-function HistoryTimeline() {
+function HistoryTimeline({ id }: Readonly<{ id?: string }>) {
   return (
-    <section className="section-padding">
+    <section id={id} className="section-padding">
       <div className="container-shell space-y-6">
         {historyTimeline.map((entry) => (
           <article

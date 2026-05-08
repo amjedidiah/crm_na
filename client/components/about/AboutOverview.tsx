@@ -1,9 +1,9 @@
 import SectionHeader from "@/components/shared/SectionHeader";
 import { whoWeAreIntro } from "@/lib/mock-data";
 
-function AboutOverview() {
+function AboutOverview({ id }: Readonly<{ id?: string }>) {
   return (
-    <section className="section-padding">
+    <section id={id} className="section-padding">
       <div className="container-shell grid gap-8 lg:grid-cols-[1fr_1fr]">
         <SectionHeader
           eyebrow="Who We Are"

@@ -1,7 +1,13 @@
 import ContactFormSection from "@/components/contact/ContactFormSection";
 import PageHeader from "@/components/shared/PageHeader";
 
-function ContactPage() {
+async function ContactPage({
+  searchParams,
+}: Readonly<{
+  searchParams: Promise<{ purpose?: string }>;
+}>) {
+  const { purpose } = await searchParams;
+
   return (
     <div className="bg-(--color-bg-canvas) text-(--color-fg-primary)">
       <PageHeader
@@ -9,7 +15,7 @@ function ContactPage() {
         title="Contact CRM NA"
         description="This route replaces the legacy `/contact-us/` page and removes the placeholder contact content found in the old site."
       />
-      <ContactFormSection />
+      <ContactFormSection initialPurpose={purpose} />
     </div>
   );
 }

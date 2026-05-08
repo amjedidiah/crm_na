@@ -84,9 +84,13 @@ export interface MediaItem {
 export interface Publication {
   slug: string;
   title: string;
-  summary: string;
-  url: string;
+  synopsis: string;
+  content: string[];
   publishedAt: string;
+  authorName: string;
+  authorTitle: string;
+  imageSrc?: string;
+  externalUrl?: string;
 }
 
 export interface CoreValue {
