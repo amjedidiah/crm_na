@@ -54,10 +54,10 @@ function Navbar() {
     }
 
     if (active) {
-      return cn(base, "text-(--color-fg-accent)");
+      return cn(base, "text-(--color-fg-accent-text)");
     }
 
-    return cn(base, "text-(--color-fg-primary) hover:text-(--color-fg-accent)");
+    return cn(base, "text-(--color-fg-primary) hover:text-(--color-fg-accent-text)");
   }
 
   return (
@@ -111,7 +111,7 @@ function Navbar() {
             "font-display border px-3 py-2 text-xs tracking-[0.2em] uppercase transition-colors",
             transparent
               ? "border-(--color-fg-accent-strong) text-(--color-fg-inverse) hover:bg-(--color-bg-accent-strong) hover:text-(--color-fg-on-accent)"
-              : "border-(--color-border-accent) text-(--color-fg-accent) hover:bg-(--color-bg-accent-soft)",
+              : "border-(--color-fg-accent-text) text-(--color-fg-accent-text) hover:bg-(--color-bg-accent-soft)",
           )}
         >
           Give

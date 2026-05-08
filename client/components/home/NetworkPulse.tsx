@@ -132,12 +132,12 @@ function NetworkPulse({
                               aria-hidden
                             />
                           </div>
-                          <span className="font-display text-[0.72rem] tracking-[0.26em] uppercase text-(--color-fg-accent)">
+                          <span className="font-display text-[0.72rem] tracking-[0.26em] uppercase text-(--color-fg-accent-text)">
                             {resolveCount(card.count, counts)}
                           </span>
                         </div>
                         <div className="space-y-2">
-                          <p className="font-display text-[0.7rem] tracking-[0.26em] uppercase text-(--color-fg-accent)">
+                          <p className="font-display text-[0.7rem] tracking-[0.26em] uppercase text-(--color-fg-accent-text)">
                             {card.label}
                           </p>
                           <h3 className="text-2xl leading-tight">
@@ -148,7 +148,7 @@ function NetworkPulse({
                           </p>
                         </div>
                       </div>
-                      <span className="mt-6 inline-flex items-center gap-2 font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent)">
+                      <span className="mt-6 inline-flex items-center gap-2 font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent-text)">
                         Open
                         <ArrowRight
                           className="size-4 transition-transform duration-300 group-hover:translate-x-1"

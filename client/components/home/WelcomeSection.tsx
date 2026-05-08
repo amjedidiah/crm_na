@@ -2,7 +2,7 @@
 
 import { useReducedMotion } from "framer-motion";
 import SectionHeader from "@/components/shared/SectionHeader";
-import { whoWeAreIntro } from "@/lib/mock-data";
+import { visionContent, whoWeAreIntro } from "@/lib/mock-data";
 import Motion from "@/components/shared/Motion";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -44,7 +44,7 @@ function WelcomeSection() {
                   viewport={{ once: true, amount: 0.4 }}
                   transition={{ duration: reduceMotion ? 0.01 : 0.42, ease }}
                 >
-                  <p className="font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent)">
+                  <p className="font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent-text)">
                     {item.label}
                   </p>
                   <p className="mt-3 text-sm leading-7 text-(--color-fg-secondary)">
@@ -79,11 +79,11 @@ function WelcomeSection() {
           />
           <div className="relative mb-8 flex items-end justify-between gap-4 border-b border-(--color-border-subtle) pb-6">
             <div>
-              <p className="font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent)">
-                Why this matters
+              <p className="font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent-text)">
+                Our vision
               </p>
               <h3 className="mt-2 text-3xl md:text-4xl">
-                A clearer front door for the whole network
+                {visionContent.title}
               </h3>
             </div>
             <div className="hidden rounded-full border border-(--color-border-subtle) px-4 py-2 md:block">
@@ -108,10 +108,10 @@ function WelcomeSection() {
               },
             }}
           >
-            {whoWeAreIntro.points.map((point) => (
+            {visionContent.body.map((paragraph) => (
               <Motion
                 as="li"
-                key={point}
+                key={paragraph}
                 variants={{
                   hidden: { opacity: 0, x: reduceMotion ? 0 : -12 },
                   show: {
@@ -126,7 +126,7 @@ function WelcomeSection() {
                   aria-hidden
                   className="mt-2.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-(--color-bg-accent)"
                 />
-                <span>{point}</span>
+                <span>{paragraph}</span>
               </Motion>
             ))}
           </Motion>

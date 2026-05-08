@@ -22,6 +22,8 @@
   --color-fg-on-accent: #0b1628;
   --color-border-subtle: rgba(200, 168, 90, 0.25);
   --color-border-accent: #c8a85a;
+  /* Darker amber for accent text on light backgrounds — meets WCAG AA 4.5:1 on --color-bg-canvas */
+  --color-fg-accent-text: #7a5215;
 }
 
 html {
@@ -72,7 +74,7 @@ h4 {
   font-size: 0.75rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--color-fg-accent);
+  color: var(--color-fg-accent-text);
 }
 
 .hero-panel {

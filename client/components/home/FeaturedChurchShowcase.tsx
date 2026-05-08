@@ -204,11 +204,11 @@ function SpotlightBranchCard({
         <div className="relative flex h-full flex-col justify-between gap-8">
           <div className="space-y-4">
             <div className="flex items-center justify-between gap-4">
-              <p className="font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent)">
+              <p className="font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent-text)">
                 Branch spotlight
               </p>
               <Sparkles
-                className="size-5 text-(--color-fg-accent)"
+                className="size-5 text-(--color-fg-accent-text)"
                 aria-hidden
               />
             </div>
@@ -228,7 +228,7 @@ function SpotlightBranchCard({
             <p className="text-sm leading-7 text-(--color-fg-secondary)">
               {storyLead}
             </p>
-            <span className="inline-flex items-center gap-2 font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent)">
+            <span className="inline-flex items-center gap-2 font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent-text)">
               Explore branch
               <ArrowRight
                 className="size-4 transition-transform duration-300 group-hover:translate-x-1"
@@ -268,7 +268,7 @@ function SupportingChurchTile({
         />
         <div className="relative flex h-full flex-col justify-between gap-8">
           <div className="space-y-3">
-            <p className="eyebrow">{church.region}</p>
+            <p className="eyebrow text-(--color-fg-accent-text)">{church.region}</p>
             <h3 className="text-3xl transition-transform duration-300 group-hover:translate-x-0.5">
               {church.name}
             </h3>
@@ -283,7 +283,7 @@ function SupportingChurchTile({
             <p className="text-(--color-fg-secondary) text-sm leading-7">
               {service?.label ?? "Sunday worship"}: {service?.time ?? "10:00 AM"}
             </p>
-            <span className="inline-flex items-center gap-2 font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent)">
+            <span className="inline-flex items-center gap-2 font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent-text)">
               See church details
               <ArrowRight
                 className="size-4 transition-transform duration-300 group-hover:translate-x-1"

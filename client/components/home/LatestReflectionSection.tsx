@@ -45,8 +45,8 @@ async function LatestReflectionSection() {
             aria-hidden
             className="pointer-events-none absolute right-0 top-0 h-40 w-40 rounded-full bg-[radial-gradient(circle,rgba(200,168,90,0.18),transparent_70%)] blur-2xl"
           />
-          <p className="eyebrow">Latest essay</p>
-          <h3 className="text-3xl leading-tight group-hover:text-(--color-fg-accent) md:text-4xl">
+          <p className="eyebrow text-(--color-fg-accent-text)">Latest essay</p>
+          <h3 className="text-3xl leading-tight group-hover:text-(--color-fg-accent-text) md:text-4xl">
             {latest.title}
           </h3>
           <p className="text-(--color-fg-secondary) text-lg leading-8">
@@ -62,7 +62,7 @@ async function LatestReflectionSection() {
               {formatDate(latest.publishedAt)}
             </time>
           </div>
-          <p className="text-(--color-fg-accent) font-display text-xs tracking-[0.26em] uppercase">
+          <p className="text-(--color-fg-accent-text) font-display text-xs tracking-[0.26em] uppercase">
             Read full reflection
           </p>
         </Link>

@@ -26,7 +26,7 @@ async function EventsArea({ previewCount }: Readonly<{ previewCount?: number }>)
         <EventGrid events={displayEvents} />
         <Link
           href="/events"
-          className="font-display inline-block text-xs tracking-[0.2em] uppercase text-(--color-fg-accent)"
+          className="font-display inline-block text-xs tracking-[0.2em] uppercase text-(--color-fg-accent-text)"
         >
           View all events
         </Link>

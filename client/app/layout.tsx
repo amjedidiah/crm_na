@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     locale: "en_US",
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/logo-light.svg",
   },
   twitter: {
     card: "summary_large_image",
