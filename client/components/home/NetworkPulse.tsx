@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useRef } from "react";
+import { animate, useInView, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
   CalendarRange,
@@ -34,7 +36,7 @@ const cards = [
     headline: "Gathering calendar",
     href: "/events",
     icon: CalendarRange,
-    accentClass: "bg-[rgba(17,32,64,0.1)]",
+    accentClass: "bg-(--color-bg-overlay-emphasis-soft)",
     count: "eventCount",
     description:
       "Track conferences, youth nights, strategy gatherings, and prayer moments across the network.",
@@ -45,7 +47,7 @@ const cards = [
     headline: "Teaching archive",
     href: "/media#live",
     icon: Mic2,
-    accentClass: "bg-[rgba(232,200,122,0.14)]",
+    accentClass: "bg-(--color-bg-overlay-accent-spotlight)",
     count: "live",
     description:
       "Step straight into the live section, featured sermons, and replay-driven discipleship content.",
@@ -56,12 +58,35 @@ const cards = [
     headline: "Pastoral reflections",
     href: "/publications",
     icon: PenSquare,
-    accentClass: "bg-[rgba(11,22,40,0.08)]",
+    accentClass: "bg-(--color-bg-overlay-emphasis-subtle)",
     count: "publicationCount",
     description:
       "Read long-form encouragement and conviction from CRM North America leadership.",
   },
 ] as const;
+
+function CountUp({ to }: Readonly<{ to: number }>) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true });
+  const reduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    if (!inView || reduceMotion) {
+      if (ref.current) ref.current.textContent = to.toString();
+      return;
+    }
+    const controls = animate(0, to, {
+      duration: 1.4,
+      ease: [0.16, 1, 0.3, 1],
+      onUpdate: (v) => {
+        if (ref.current) ref.current.textContent = Math.round(v).toString();
+      },
+    });
+    return () => controls.stop();
+  }, [inView, to, reduceMotion]);
+
+  return <span ref={ref}>0</span>;
+}
 
 function resolveCount(
   key: (typeof cards)[number]["count"],
@@ -69,12 +94,11 @@ function resolveCount(
     NetworkPulseProps,
     "churchCount" | "eventCount" | "publicationCount"
   >,
+  reduceMotion: boolean | null,
 ) {
-  if (key === "live") {
-    return "Live";
-  }
-
-  return counts[key];
+  if (key === "live") return "Live";
+  const n = counts[key];
+  return reduceMotion ? n.toString() : <CountUp to={n} />;
 }
 
 function NetworkPulse({
@@ -83,14 +107,16 @@ function NetworkPulse({
   publicationCount,
 }: Readonly<NetworkPulseProps>) {
   const counts = { churchCount, eventCount, publicationCount };
+  const reduceMotion = useReducedMotion();
 
   return (
     <section className="relative z-10 -mt-18 px-4 md:-mt-24">
       <div className="container-shell">
-        <div className="overflow-hidden rounded-[1.75rem] border border-(--color-border-subtle) bg-(--color-bg-canvas-elevated) shadow-[0_26px_80px_-36px_rgba(11,22,40,0.45)] backdrop-blur-xl">
+        <div className="shadow-overlap-panel overflow-hidden rounded-[1.75rem] border border-(--color-border-subtle) bg-(--color-bg-canvas-elevated) backdrop-blur-xl">
           <div className="grid gap-px bg-(--color-border-subtle) lg:grid-cols-[1.15fr_0.85fr]">
+            {/* Left: heading panel */}
             <div className="bg-(--color-bg-emphasis) px-6 py-8 text-(--color-fg-inverse) md:px-8 md:py-10">
-              <Motion className="space-y-5 text-(--color-fg-inverse)">
+              <div className="space-y-5 text-(--color-fg-inverse)">
                 <p className="font-display text-[0.72rem] tracking-[0.3em] uppercase text-(--color-fg-accent-strong)">
                   Network pulse
                 </p>
@@ -103,37 +129,46 @@ function NetworkPulse({
                   catch a sermon, scan the calendar, or read a pastoral word for
                   the week.
                 </p>
-              </Motion>
+              </div>
             </div>
-            <div className="grid gap-px bg-(--color-border-subtle) sm:grid-cols-2">
-              {cards.map((card, index) => {
-                const Icon = card.icon;
 
+            {/* Right: card grid */}
+            <div className="grid gap-px bg-(--color-border-subtle) sm:grid-cols-2">
+              {cards.map((card) => {
+                const Icon = card.icon;
                 return (
                   <Motion
                     key={card.key}
-                    className="h-full text-(--color-fg-primary)"
-                    transition={{
-                      duration: 0.42 + index * 0.04,
-                      ease: "easeOut",
-                    }}
+                    whileHover={
+                      reduceMotion
+                        ? undefined
+                        : {
+                            y: -3,
+                            transition: {
+                              type: "spring",
+                              stiffness: 380,
+                              damping: 22,
+                            },
+                          }
+                    }
+                    className="h-full"
                   >
                     <Link
                       href={card.href}
-                      className="group flex h-full flex-col justify-between bg-(--color-bg-canvas) p-6 transition-colors duration-300 hover:bg-(--color-bg-surface-subtle)"
+                      className="shadow-card-hover-subtle group flex h-full flex-col justify-between bg-(--color-bg-canvas) p-6 transition-[background-color,box-shadow] duration-300 hover:bg-(--color-bg-surface-subtle)"
                     >
                       <div className="space-y-4">
                         <div className="flex items-start justify-between gap-4">
                           <div
-                            className={`flex size-12 items-center justify-center rounded-2xl ${card.accentClass}`}
+                            className={`flex size-12 items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-105 ${card.accentClass}`}
                           >
                             <Icon
                               className="size-5 text-(--color-fg-primary)"
                               aria-hidden
                             />
                           </div>
-                          <span className="font-display text-[0.72rem] tracking-[0.26em] uppercase text-(--color-fg-accent-text)">
-                            {resolveCount(card.count, counts)}
+                          <span className="font-display text-[0.72rem] tracking-[0.26em] uppercase text-(--color-fg-accent-text) tabular-nums">
+                            {resolveCount(card.count, counts, reduceMotion)}
                           </span>
                         </div>
                         <div className="space-y-2">

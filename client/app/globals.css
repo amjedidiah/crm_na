@@ -24,6 +24,225 @@
   --color-border-accent: #c8a85a;
   /* Darker amber for accent text on light backgrounds — meets WCAG AA 4.5:1 on --color-bg-canvas */
   --color-fg-accent-text: #7a5215;
+  --color-bg-overlay-emphasis-soft: rgba(17, 32, 64, 0.1);
+  --color-bg-overlay-emphasis-subtle: rgba(11, 22, 40, 0.08);
+  --color-bg-overlay-emphasis-veil: rgba(17, 32, 64, 0.3);
+  --color-bg-overlay-cool-glow: rgba(17, 32, 64, 0.06);
+  --color-bg-overlay-cool-glow-strong: rgba(17, 32, 64, 0.95);
+  --color-bg-overlay-accent-haze: rgba(200, 168, 90, 0.08);
+  --color-bg-overlay-accent-soft-subtle: rgba(200, 168, 90, 0.12);
+  --color-bg-overlay-accent-glow: rgba(200, 168, 90, 0.18);
+  --color-bg-overlay-accent-glow-strong: rgba(200, 168, 90, 0.35);
+  --color-bg-overlay-accent-veil: rgba(232, 200, 122, 0.07);
+  --color-bg-overlay-accent-spotlight: rgba(232, 200, 122, 0.14);
+  --color-bg-overlay-accent-strong-glow: rgba(232, 200, 122, 0.2);
+  --color-bg-overlay-warm-top: rgba(200, 168, 90, 0.1);
+  --color-bg-overlay-canvas-soft: rgba(250, 246, 238, 0.35);
+  --color-bg-overlay-surface-strong: rgba(245, 239, 224, 0.88);
+  --color-bg-overlay-inverse-subtle: rgba(245, 239, 224, 0.06);
+  --color-bg-overlay-inverse-faint: rgba(245, 239, 224, 0.04);
+  --color-bg-overlay-emphasis-rich: rgba(11, 22, 40, 0.92);
+  --color-bg-overlay-emphasis-rich-strong: rgba(17, 32, 64, 0.98);
+  --color-border-accent-soft: rgba(232, 200, 122, 0.25);
+  --color-fg-overlay-grid: rgba(245, 239, 224, 0.08);
+  --color-fg-overlay-grid-strong: rgba(245, 239, 224, 1);
+  --color-status-live: #f87171;
+  --color-status-live-soft: #fca5a5;
+  --gradient-hero-panel:
+    radial-gradient(
+      circle at top,
+      var(--color-bg-accent-soft),
+      transparent 36%
+    ),
+    linear-gradient(
+      180deg,
+      var(--color-bg-emphasis),
+      var(--color-bg-emphasis-strong)
+    );
+  --gradient-hero-grid:
+    linear-gradient(
+      to right,
+      var(--color-fg-overlay-grid) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      var(--color-fg-overlay-grid) 1px,
+      transparent 1px
+    );
+  --mask-hero-grid-fade:
+    radial-gradient(ellipse at center, black 10%, transparent 72%);
+  --gradient-hero-orb-primary:
+    radial-gradient(
+      circle,
+      var(--color-bg-overlay-accent-glow-strong),
+      transparent 68%
+    );
+  --gradient-hero-orb-secondary:
+    radial-gradient(
+      circle,
+      var(--color-bg-overlay-cool-glow-strong),
+      transparent 70%
+    );
+  --gradient-hero-orb-tertiary:
+    radial-gradient(
+      circle,
+      var(--color-bg-overlay-accent-spotlight),
+      transparent 70%
+    );
+  --gradient-hero-rule:
+    linear-gradient(to right, var(--color-bg-accent-strong), transparent);
+  --gradient-page-warm-top-glow:
+    radial-gradient(
+      circle at top,
+      var(--color-bg-overlay-warm-top),
+      transparent 68%
+    );
+  --gradient-page-surface-band:
+    linear-gradient(
+      180deg,
+      transparent,
+      var(--color-bg-canvas-elevated) 18%,
+      var(--color-bg-canvas-elevated) 82%,
+      transparent
+    );
+  --gradient-page-cool-center-glow:
+    radial-gradient(
+      circle,
+      var(--color-bg-overlay-cool-glow),
+      transparent 68%
+    );
+  --gradient-page-highlight-band:
+    linear-gradient(
+      180deg,
+      transparent,
+      var(--color-bg-surface) 16%,
+      transparent 100%
+    );
+  --gradient-page-dual-glow:
+    radial-gradient(
+      circle at 12% 18%,
+      var(--color-bg-overlay-accent-haze),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 85% 40%,
+      var(--color-bg-overlay-cool-glow),
+      transparent 28%
+    );
+  --gradient-plan-sheen:
+    linear-gradient(
+      115deg,
+      transparent 0%,
+      var(--color-bg-overlay-accent-veil) 42%,
+      transparent 78%
+    );
+  --gradient-welcome-orb:
+    radial-gradient(
+      circle,
+      var(--color-bg-overlay-accent-glow),
+      transparent 68%
+    );
+  --gradient-reflection-orb:
+    radial-gradient(
+      circle,
+      var(--color-bg-overlay-accent-glow),
+      transparent 70%
+    );
+  --gradient-featured-card-overlay:
+    radial-gradient(
+      circle at top right,
+      var(--color-bg-overlay-accent-strong-glow),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      var(--color-bg-overlay-emphasis-veil),
+      transparent 55%
+    );
+  --gradient-spotlight-card-overlay:
+    linear-gradient(
+      180deg,
+      var(--color-bg-overlay-canvas-soft),
+      var(--color-bg-overlay-surface-strong)
+    );
+  --gradient-support-card-overlay:
+    linear-gradient(
+      135deg,
+      var(--color-bg-overlay-accent-soft-subtle),
+      transparent 52%,
+      var(--color-bg-overlay-emphasis-subtle)
+    );
+  --gradient-serve-backdrop:
+    radial-gradient(
+      circle at 20% -10%,
+      transparent 52%,
+      var(--color-bg-canvas) 70%
+    );
+  --gradient-give-warm-orb:
+    radial-gradient(
+      circle,
+      var(--color-bg-overlay-accent-glow),
+      transparent 62%
+    );
+  --gradient-give-dark-orb:
+    radial-gradient(
+      circle,
+      rgba(17, 32, 64, 0.9),
+      transparent 68%
+    );
+  --gradient-give-divider:
+    linear-gradient(
+      to right,
+      transparent,
+      var(--color-border-accent-soft),
+      transparent
+    );
+  --gradient-live-top-glow:
+    radial-gradient(
+      ellipse,
+      rgba(232, 200, 122, 0.06),
+      transparent 72%
+    );
+  --gradient-live-preview-screen:
+    linear-gradient(
+      135deg,
+      var(--color-bg-overlay-emphasis-rich),
+      var(--color-bg-overlay-emphasis-rich-strong)
+    );
+  --gradient-live-preview-grid:
+    linear-gradient(
+      var(--color-fg-overlay-grid-strong) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to right,
+      var(--color-fg-overlay-grid-strong) 1px,
+      transparent 1px
+    );
+  --gradient-live-preview-glow:
+    radial-gradient(
+      circle at center,
+      var(--color-bg-overlay-warm-top),
+      transparent 60%
+    );
+  --gradient-prayer-accent-glow:
+    radial-gradient(
+      circle at top right,
+      var(--color-bg-overlay-accent-spotlight),
+      transparent 68%
+    );
+  --shadow-nav: 0 18px 45px -30px rgba(11, 22, 40, 0.42);
+  --shadow-overlap-panel: 0 26px 80px -36px rgba(11, 22, 40, 0.45);
+  --shadow-tile-hover-subtle: 0 12px 32px -16px rgba(11, 22, 40, 0.18);
+  --shadow-card-hover: 0 24px 60px -30px rgba(11, 22, 40, 0.35);
+  --shadow-card-hover-strong: 0 26px 70px -34px rgba(11, 22, 40, 0.45);
+  --shadow-card-hover-soft: 0 22px 55px -28px rgba(11, 22, 40, 0.35);
+  --shadow-panel-hover-emphasis: 0 24px 60px -28px rgba(11, 22, 40, 0.5);
+  --shadow-featured-card: 0 26px 70px -34px rgba(11, 22, 40, 0.6);
+  --shadow-featured-card-hover: 0 34px 80px -34px rgba(11, 22, 40, 0.68);
+  --shadow-welcome-lift: 0 28px 60px -28px rgba(11, 22, 40, 0.22);
+  --shadow-accent-cta: 0 18px 44px -12px rgba(232, 200, 122, 0.55);
 }
 
 html {
@@ -78,17 +297,7 @@ h4 {
 }
 
 .hero-panel {
-  background:
-    radial-gradient(
-      circle at top,
-      var(--color-bg-accent-soft),
-      transparent 36%
-    ),
-    linear-gradient(
-      180deg,
-      var(--color-bg-emphasis),
-      var(--color-bg-emphasis-strong)
-    );
+  background: var(--gradient-hero-panel);
   color: var(--color-fg-inverse);
 }
 
@@ -103,6 +312,55 @@ h4 {
   color: var(--color-fg-inverse);
 }
 
+.shadow-nav {
+  box-shadow: var(--shadow-nav);
+}
+
+.shadow-overlap-panel {
+  box-shadow: var(--shadow-overlap-panel);
+}
+
+.shadow-card-hover:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.shadow-card-hover-subtle:hover {
+  box-shadow: var(--shadow-tile-hover-subtle);
+}
+
+.shadow-card-hover-strong:hover {
+  box-shadow: var(--shadow-card-hover-strong);
+}
+
+.shadow-card-hover-soft:hover {
+  box-shadow: var(--shadow-card-hover-soft);
+}
+
+.shadow-panel-hover-emphasis:hover {
+  box-shadow: var(--shadow-panel-hover-emphasis);
+}
+
+.shadow-featured-card {
+  box-shadow: var(--shadow-featured-card);
+}
+
+.shadow-featured-card:hover {
+  box-shadow: var(--shadow-featured-card-hover);
+}
+
+.shadow-accent-cta:hover {
+  box-shadow: var(--shadow-accent-cta);
+}
+
 a {
   color: inherit;
+}
+
+@keyframes marquee-slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }

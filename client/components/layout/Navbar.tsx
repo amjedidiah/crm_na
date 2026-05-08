@@ -66,7 +66,7 @@ function Navbar() {
         "fixed top-0 left-0 right-0 z-50 transition-[background-color,border-color,backdrop-filter,color,box-shadow] duration-300",
         transparent
           ? "border-transparent border-b bg-transparent backdrop-blur-none"
-          : "border-(--color-border-subtle) border-b bg-(--color-bg-canvas-elevated) shadow-[0_18px_45px_-30px_rgba(11,22,40,0.42)] backdrop-blur-md",
+          : "shadow-nav border-(--color-border-subtle) border-b bg-(--color-bg-canvas-elevated) backdrop-blur-md",
       )}
       style={{ minHeight: "var(--nav-height)" }}
     >

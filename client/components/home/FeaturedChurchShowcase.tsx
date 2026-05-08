@@ -87,15 +87,12 @@ function FeaturedLargeCard({
     >
       <Link
         href={`/churches/${church.slug}`}
-        className="group relative block overflow-hidden rounded-4xl border border-(--color-border-accent) bg-(--color-bg-emphasis) p-8 text-(--color-fg-inverse) shadow-[0_26px_70px_-34px_rgba(11,22,40,0.6)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:shadow-[0_34px_80px_-34px_rgba(11,22,40,0.68)] md:p-10"
+        className="shadow-featured-card group relative block overflow-hidden rounded-4xl border border-(--color-border-accent) bg-(--color-bg-emphasis) p-8 text-(--color-fg-inverse) transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 md:p-10"
       >
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-90"
-          style={{
-            background:
-              "radial-gradient(circle at top right, rgba(232,200,122,0.2), transparent 28%), linear-gradient(135deg, rgba(17,32,64,0.3), transparent 55%)",
-          }}
+          style={{ background: "var(--gradient-featured-card-overlay)" }}
         />
         <div className="relative flex flex-col gap-8">
           <div className="flex flex-wrap items-start justify-between gap-4">
@@ -132,7 +129,7 @@ function FeaturedLargeCard({
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-1">
-              <div className="rounded-[1.35rem] border border-(--color-fg-inverse-muted) bg-[rgba(245,239,224,0.06)] p-5">
+              <div className="rounded-[1.35rem] border border-(--color-fg-inverse-muted) bg-(--color-bg-overlay-inverse-subtle) p-5">
                 <p className="font-display text-[0.66rem] tracking-[0.24em] uppercase text-(--color-fg-accent-strong)">
                   Next gathering
                 </p>
@@ -144,7 +141,7 @@ function FeaturedLargeCard({
                   {primaryService?.time ?? "10:00 AM"}
                 </p>
               </div>
-              <div className="rounded-[1.35rem] border border-(--color-fg-inverse-muted) bg-[rgba(245,239,224,0.06)] p-5">
+              <div className="rounded-[1.35rem] border border-(--color-fg-inverse-muted) bg-(--color-bg-overlay-inverse-subtle) p-5">
                 <p className="font-display text-[0.66rem] tracking-[0.24em] uppercase text-(--color-fg-accent-strong)">
                   Local emphasis
                 </p>
@@ -191,15 +188,12 @@ function SpotlightBranchCard({
     >
       <Link
         href={`/churches/${church.slug}`}
-        className="card-surface group relative block h-full overflow-hidden rounded-4xl p-7 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-(--color-border-accent) hover:shadow-[0_26px_70px_-34px_rgba(11,22,40,0.45)] md:p-8"
+        className="card-surface shadow-card-hover-strong group relative block h-full overflow-hidden rounded-4xl p-7 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-(--color-border-accent) md:p-8"
       >
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(250,246,238,0.35), rgba(245,239,224,0.88))",
-          }}
+          style={{ background: "var(--gradient-spotlight-card-overlay)" }}
         />
         <div className="relative flex h-full flex-col justify-between gap-8">
           <div className="space-y-4">
@@ -256,15 +250,12 @@ function SupportingChurchTile({
     >
       <Link
         href={`/churches/${church.slug}`}
-        className="card-surface group relative block h-full overflow-hidden rounded-[1.75rem] p-6 transition-[box-shadow,border-color,transform] duration-300 hover:-translate-y-1 hover:border-(--color-border-accent) hover:shadow-[0_22px_55px_-28px_rgba(11,22,40,0.35)]"
+        className="card-surface shadow-card-hover-soft group relative block h-full overflow-hidden rounded-[1.75rem] p-6 transition-[box-shadow,border-color,transform] duration-300 hover:-translate-y-1 hover:border-(--color-border-accent)"
       >
         <span
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-          style={{
-            background:
-              "linear-gradient(135deg, rgba(200,168,90,0.12), transparent 52%, rgba(17,32,64,0.08))",
-          }}
+          style={{ background: "var(--gradient-support-card-overlay)" }}
         />
         <div className="relative flex h-full flex-col justify-between gap-8">
           <div className="space-y-3">

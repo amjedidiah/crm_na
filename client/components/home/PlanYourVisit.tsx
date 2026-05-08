@@ -48,8 +48,7 @@ function PlanYourVisit() {
             : { duration: 28, repeat: Infinity, ease: "linear" }
         }
         style={{
-          backgroundImage:
-            "linear-gradient(115deg, transparent 0%, rgba(232,200,122,0.07) 42%, transparent 78%)",
+          backgroundImage: "var(--gradient-plan-sheen)",
           backgroundSize: "200% 200%",
         }}
       />

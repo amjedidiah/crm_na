@@ -11,7 +11,10 @@ interface ServeWithMinistriesProps {
 function ServeWithMinistries({ ministries }: Readonly<ServeWithMinistriesProps>) {
   return (
     <section className="relative overflow-hidden">
-      <div className="from-(--color-bg-accent-soft)/40 pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_-10%,transparent_52%,rgba(250,246,238,1)_70%)] to-transparent" />
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{ backgroundImage: "var(--gradient-serve-backdrop)" }}
+      />
 
       <div className="section-padding relative">
         <div className="container-shell grid gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">

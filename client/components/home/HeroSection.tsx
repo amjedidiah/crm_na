@@ -13,6 +13,18 @@ import { SITE_DESCRIPTION } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 import Motion from "@/components/shared/Motion";
 
+const MARQUEE_ITEMS = [
+  "CRM Word of Life",
+  "CRM Praise Center",
+  "CRM Rhode Island",
+  "Grace & Glory Sanctuary",
+  "Youths Ministry",
+  "King's Men",
+  "Charismatic Women League",
+  "National Prayer Conference",
+  "CRM North America",
+];
+
 const contentEase = [0.22, 1, 0.36, 1] as const;
 const inverseOutlineClass =
   "border-(--color-fg-inverse-soft) text-(--color-fg-inverse) hover:bg-(--color-bg-accent-strong) hover:text-(--color-fg-on-accent)";
@@ -23,13 +35,9 @@ function HeroGridOverlay() {
       aria-hidden
       className="pointer-events-none absolute inset-0 opacity-[0.72]"
       style={{
-        backgroundImage: `
-            linear-gradient(to right, rgba(245,239,224,0.08) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(245,239,224,0.08) 1px, transparent 1px)
-          `,
+        backgroundImage: "var(--gradient-hero-grid)",
         backgroundSize: "56px 56px",
-        maskImage:
-          "radial-gradient(ellipse at center, black 10%, transparent 72%)",
+        maskImage: "var(--mask-hero-grid-fade)",
       }}
     />
   );
@@ -43,7 +51,7 @@ function HeroCursorSpotlight({
   const sx = useSpring(mx, { stiffness: 64, damping: 18, mass: 0.6 });
   const sy = useSpring(my, { stiffness: 64, damping: 18, mass: 0.6 });
 
-  const spotlight = useMotionTemplate`radial-gradient(620px circle at ${sx}px ${sy}px, rgba(232,200,122,0.14), transparent 65%)`;
+  const spotlight = useMotionTemplate`radial-gradient(620px circle at ${sx}px ${sy}px, var(--color-bg-overlay-accent-spotlight), transparent 65%)`;
 
   useEffect(() => {
     if (reduceMotion) return;
@@ -79,7 +87,8 @@ function HeroFloatingOrbs({
     <>
       <Motion
         aria-hidden
-        className="pointer-events-none absolute -left-24 top-[-18%] h-[min(52vw,420px)] w-[min(52vw,420px)] rounded-full bg-[radial-gradient(circle,rgba(200,168,90,0.35),transparent_68%)] blur-3xl"
+        className="pointer-events-none absolute -left-24 top-[-18%] h-[min(52vw,420px)] w-[min(52vw,420px)] rounded-full blur-3xl"
+        style={{ background: "var(--gradient-hero-orb-primary)" }}
         animate={
           reduceMotion
             ? undefined
@@ -93,7 +102,8 @@ function HeroFloatingOrbs({
       />
       <Motion
         aria-hidden
-        className="pointer-events-none absolute -right-32 bottom-[-28%] h-[min(62vw,520px)] w-[min(62vw,520px)] rounded-full bg-[radial-gradient(circle,rgba(17,32,64,0.95),transparent_70%)] blur-3xl"
+        className="pointer-events-none absolute -right-32 bottom-[-28%] h-[min(62vw,520px)] w-[min(62vw,520px)] rounded-full blur-3xl"
+        style={{ background: "var(--gradient-hero-orb-secondary)" }}
         animate={
           reduceMotion
             ? undefined
@@ -109,7 +119,8 @@ function HeroFloatingOrbs({
       />
       <Motion
         aria-hidden
-        className="pointer-events-none absolute left-[42%] top-[58%] h-40 w-40 rounded-full bg-[radial-gradient(circle,rgba(232,200,122,0.22),transparent_70%)] blur-2xl md:h-52 md:w-52"
+        className="pointer-events-none absolute left-[42%] top-[58%] h-40 w-40 rounded-full blur-2xl md:h-52 md:w-52"
+        style={{ background: "var(--gradient-hero-orb-tertiary)" }}
         animate={
           reduceMotion
             ? undefined
@@ -194,20 +205,51 @@ function fadeUpVariants(
   };
 }
 
+function BranchMarquee({
+  reduceMotion,
+}: Readonly<{ reduceMotion: boolean | null }>) {
+  return (
+    <div
+      aria-hidden
+      className="pointer-events-none overflow-hidden border-t border-(--color-fg-inverse)/10 py-3"
+    >
+      <div
+        className="flex whitespace-nowrap"
+        style={
+          reduceMotion
+            ? undefined
+            : { animation: "marquee-slide 32s linear infinite" }
+        }
+      >
+        {([0, 1] as const).flatMap((setIdx) =>
+          MARQUEE_ITEMS.map((name) => (
+            <span
+              key={`${setIdx}-${name}`}
+              className="mx-8 font-display text-[0.58rem] tracking-[0.3em] uppercase text-(--color-fg-inverse-muted)"
+            >
+              {name}
+            </span>
+          )),
+        )}
+      </div>
+    </div>
+  );
+}
+
 function HeroSection() {
   const reduceMotion = useReducedMotion();
 
   return (
     <section
       className={cn(
-        "hero-panel relative overflow-hidden rounded-b-[clamp(1.25rem,4vw,2.75rem)] pb-28 pt-[calc(var(--nav-height)+2rem)] md:pb-32 md:pt-[calc(var(--nav-height)+2.75rem)]",
+        "hero-panel relative overflow-hidden rounded-b-[clamp(1.25rem,4vw,2.75rem)] pt-[calc(var(--nav-height)+2rem)] md:pt-[calc(var(--nav-height)+2.75rem)]",
       )}
     >
       <HeroGridOverlay />
       <HeroCursorSpotlight reduceMotion={reduceMotion} />
       <HeroFloatingOrbs reduceMotion={reduceMotion} />
 
-      <div className="container-shell relative mx-auto space-y-10">
+      <div className="container-shell relative mx-auto space-y-10 pb-20 md:pb-24">
         <Motion
           className="space-y-8"
           initial={reduceMotion ? false : "hidden"}
@@ -232,7 +274,8 @@ function HeroSection() {
             <Motion
               as="span"
               aria-hidden
-              className="block h-px max-w-28 origin-left bg-[linear-gradient(to_right,var(--color-bg-accent-strong),transparent)]"
+              className="block h-px max-w-28 origin-left"
+              style={{ backgroundImage: "var(--gradient-hero-rule)" }}
               initial={reduceMotion ? false : { scaleX: 0.15, opacity: 0.35 }}
               animate={{ scaleX: 1, opacity: 1 }}
               transition={{
@@ -290,6 +333,9 @@ function HeroSection() {
 
         <HeroScrollCue reduceMotion={reduceMotion} />
       </div>
+
+      {/* Full-width branch marquee */}
+      <BranchMarquee reduceMotion={reduceMotion} />
     </section>
   );
 }

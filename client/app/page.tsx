@@ -42,7 +42,8 @@ async function HomePage() {
       <div className="relative">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-12 h-72 bg-[radial-gradient(circle_at_top,rgba(200,168,90,0.1),transparent_68%)]"
+          className="pointer-events-none absolute inset-x-0 top-12 h-72"
+          style={{ backgroundImage: "var(--gradient-page-warm-top-glow)" }}
         />
         <FadeInWhenVisible>
           <WelcomeSection />
@@ -51,7 +52,8 @@ async function HomePage() {
       <div className="relative">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(245,239,224,0.95)_18%,rgba(245,239,224,0.95)_82%,transparent)]"
+          className="pointer-events-none absolute inset-0"
+          style={{ backgroundImage: "var(--gradient-page-surface-band)" }}
         />
         <FadeInWhenVisible>
           <PlanYourVisit />
@@ -60,7 +62,8 @@ async function HomePage() {
       <div className="relative">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-3xl -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(17,32,64,0.06),transparent_68%)] blur-3xl lg:block"
+          className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-3xl -translate-x-1/2 rounded-full blur-3xl lg:block"
+          style={{ backgroundImage: "var(--gradient-page-cool-center-glow)" }}
         />
         <FadeInWhenVisible>
           <FeaturedChurches />
@@ -69,7 +72,7 @@ async function HomePage() {
       <FadeInWhenVisible>
         <PrayerRequestBanner />
       </FadeInWhenVisible>
-      <div className="bg-[linear-gradient(180deg,transparent,rgba(255,255,255,0.55)_16%,transparent_100%)]">
+      <div style={{ backgroundImage: "var(--gradient-page-highlight-band)" }}>
         <FadeInWhenVisible>
           <EventsArea previewCount={3} />
         </FadeInWhenVisible>
@@ -77,7 +80,8 @@ async function HomePage() {
       <div className="relative">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 h-full bg-[radial-gradient(circle_at_12%_18%,rgba(200,168,90,0.08),transparent_32%),radial-gradient(circle_at_85%_40%,rgba(11,22,40,0.06),transparent_28%)]"
+          className="pointer-events-none absolute inset-x-0 top-0 h-full"
+          style={{ backgroundImage: "var(--gradient-page-dual-glow)" }}
         />
         <FadeInWhenVisible>
           <LatestReflectionSection />

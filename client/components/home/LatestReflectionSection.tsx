@@ -39,11 +39,12 @@ async function LatestReflectionSection() {
         </div>
         <Link
           href={`/publications/${latest.slug}`}
-          className="card-surface group relative block overflow-hidden rounded-[1.75rem] space-y-5 p-8 transition-[transform,box-shadow,border-color] hover:-translate-y-1 hover:border-(--color-border-accent) hover:shadow-[0_24px_60px_-30px_rgba(11,22,40,0.35)] md:p-10"
+          className="card-surface shadow-card-hover group relative block overflow-hidden rounded-[1.75rem] space-y-5 p-8 transition-[transform,box-shadow,border-color] hover:-translate-y-1 hover:border-(--color-border-accent) md:p-10"
         >
           <span
             aria-hidden
-            className="pointer-events-none absolute right-0 top-0 h-40 w-40 rounded-full bg-[radial-gradient(circle,rgba(200,168,90,0.18),transparent_70%)] blur-2xl"
+            className="pointer-events-none absolute right-0 top-0 h-40 w-40 rounded-full blur-2xl"
+            style={{ background: "var(--gradient-reflection-orb)" }}
           />
           <p className="eyebrow text-(--color-fg-accent-text)">Latest essay</p>
           <h3 className="text-3xl leading-tight group-hover:text-(--color-fg-accent-text) md:text-4xl">

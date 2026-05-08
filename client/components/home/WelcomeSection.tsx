@@ -67,7 +67,7 @@ function WelcomeSection() {
               ? undefined
               : {
                   y: -4,
-                  boxShadow: "0 28px 60px -28px rgba(11, 22, 40, 0.22)",
+                  boxShadow: "var(--shadow-welcome-lift)",
                   transition: { type: "spring", stiffness: 320, damping: 22 },
                 }
           }
@@ -75,7 +75,8 @@ function WelcomeSection() {
         >
           <span
             aria-hidden
-            className="pointer-events-none absolute -right-12 top-8 h-40 w-40 rounded-full bg-[radial-gradient(circle,rgba(200,168,90,0.18),transparent_68%)] blur-2xl"
+            className="pointer-events-none absolute -right-12 top-8 h-40 w-40 rounded-full blur-2xl"
+            style={{ background: "var(--gradient-welcome-orb)" }}
           />
           <div className="relative mb-8 flex items-end justify-between gap-4 border-b border-(--color-border-subtle) pb-6">
             <div>
