@@ -14,7 +14,7 @@ function PageHeader({
   children,
 }: Readonly<PageHeaderProps>) {
   return (
-    <section className="hero-panel section-padding">
+    <section className="hero-panel relative -mt-(--nav-height) pt-[calc(var(--nav-height)+2rem)] pb-20 md:pt-[calc(var(--nav-height)+2.75rem)] md:pb-24">
       <div className="container-shell space-y-5 py-10">
         {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
         <h1 className="max-w-4xl text-5xl leading-none md:text-7xl">{title}</h1>

@@ -6,16 +6,15 @@ interface SiteLogoProps {
 }
 
 function SiteLogo({
-  variant = "on-dark",
   className = "",
 }: Readonly<SiteLogoProps>) {
   return (
     <Image
-      src={variant === "on-dark" ? "/logo-dark.svg" : "/logo-light.svg"}
+      src="/crm-logo.png"
       alt=""
       aria-hidden="true"
-      width={40}
-      height={40}
+      width={650}
+      height={650}
       className={className}
     />
   );

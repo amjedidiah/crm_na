@@ -15,7 +15,8 @@ type MotionProps =
   | (HTMLMotionProps<"h2"> & { as: "h2"; children?: ReactNode })
   | (HTMLMotionProps<"p"> & { as: "p"; children?: ReactNode })
   | (HTMLMotionProps<"ul"> & { as: "ul"; children?: ReactNode })
-  | (HTMLMotionProps<"li"> & { as: "li"; children?: ReactNode });
+  | (HTMLMotionProps<"li"> & { as: "li"; children?: ReactNode })
+  | (HTMLMotionProps<"button"> & { as: "button"; children?: ReactNode });
 
 function Motion(props: MotionProps) {
   if (!("as" in props)) {
@@ -60,6 +61,10 @@ function Motion(props: MotionProps) {
     case "li": {
       const { as: _a, ...rest } = props;
       return <motion.li {...rest} />;
+    }
+    case "button": {
+      const { as: _a, ...rest } = props;
+      return <motion.button {...rest} />;
     }
   }
 }

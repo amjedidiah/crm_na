@@ -1,6 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useReducedMotion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { visionContent, whoWeAreIntro } from "@/lib/mock-data";
 import Motion from "@/components/shared/Motion";
@@ -52,6 +54,22 @@ function WelcomeSection() {
                   </p>
                 </Motion>
               ))}
+            </div>
+            <div className="flex flex-wrap gap-5 pt-1">
+              <Link
+                href="/who-we-are#leadership"
+                className="font-display inline-flex items-center gap-2 text-xs tracking-[0.22em] uppercase text-(--color-fg-accent-text)"
+              >
+                Meet our leadership
+                <ArrowRight className="size-4" aria-hidden />
+              </Link>
+              <Link
+                href="/publications"
+                className="font-display inline-flex items-center gap-2 text-xs tracking-[0.22em] uppercase text-(--color-fg-secondary)"
+              >
+                Read a devotional
+                <ArrowRight className="size-4" aria-hidden />
+              </Link>
             </div>
           </div>
         </Motion>

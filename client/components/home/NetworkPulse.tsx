@@ -110,7 +110,10 @@ function NetworkPulse({
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative z-10 -mt-18 px-4 md:-mt-24">
+    <section
+      id="explore"
+      className="relative z-10 scroll-mt-[calc(var(--nav-height)+0.75rem)] -mt-18 px-4 md:-mt-24"
+    >
       <div className="container-shell">
         <div className="shadow-overlap-panel overflow-hidden rounded-[1.75rem] border border-(--color-border-subtle) bg-(--color-bg-canvas-elevated) backdrop-blur-xl">
           <div className="grid gap-px bg-(--color-border-subtle) lg:grid-cols-[1.15fr_0.85fr]">

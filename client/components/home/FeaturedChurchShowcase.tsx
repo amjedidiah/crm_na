@@ -65,7 +65,7 @@ function FeaturedShowcaseIntro({
     >
       <SectionHeader
         eyebrow="Churches"
-        title="Locate a charismatic renewal community near you"
+        title="Locate a Charismatic Renewal community near you"
         description="From New England to Houston, CRM NA churches proclaim Jesus, honor the Holy Spirit, and disciple families across everyday life. Explore a few branch stories below, then step into the church directory for service times, pastoral oversight, and livestream access."
       />
     </Motion>

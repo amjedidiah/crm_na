@@ -23,24 +23,24 @@ function LatestSermonsSection({
               href={featuredSermon.url}
               target="_blank"
               rel="noreferrer"
-              className="dark-strip group flex h-full flex-col justify-between rounded-[1.9rem] p-8 md:p-10"
+              className="border border-(--color-border-subtle) bg-(--color-bg-surface-subtle) text-(--color-fg-primary) group flex h-full flex-col justify-between rounded-[1.9rem] p-8 md:p-10 transition-[border-color] duration-300 hover:border-(--color-border-accent)"
             >
               <div className="space-y-5">
-                <div className="flex items-center gap-3 text-(--color-fg-accent-strong)">
+                <div className="flex items-center gap-3 text-(--color-fg-accent-text)">
                   <PlayCircle className="size-5" aria-hidden />
                   <p className="font-display text-[0.68rem] tracking-[0.28em] uppercase">
                     Featured sermon
                   </p>
                 </div>
                 <div className="space-y-3">
-                  <h3 className="text-4xl text-(--color-fg-inverse) md:text-5xl">
+                  <h3 className="text-4xl md:text-5xl">
                     {featuredSermon.title}
                   </h3>
-                  <p className="max-w-2xl text-base leading-8 text-(--color-fg-inverse-soft) md:text-lg">
+                  <p className="max-w-2xl text-base leading-8 text-(--color-fg-secondary) md:text-lg">
                     {featuredSermon.summary}
                   </p>
                 </div>
-                <div className="flex flex-wrap items-center gap-3 text-sm text-(--color-fg-inverse-soft)">
+                <div className="flex flex-wrap items-center gap-3 text-sm text-(--color-fg-secondary)">
                   {featuredSermon.speaker ? (
                     <span>{featuredSermon.speaker}</span>
                   ) : null}
@@ -48,7 +48,7 @@ function LatestSermonsSection({
                   <span>{formatDate(featuredSermon.publishedAt)}</span>
                 </div>
               </div>
-              <span className="font-display text-(--color-fg-accent-strong) mt-8 inline-flex items-center gap-2 text-xs tracking-[0.24em] uppercase">
+              <span className="font-display text-(--color-fg-accent-text) mt-8 inline-flex items-center gap-2 text-xs tracking-[0.24em] uppercase">
                 Watch message
                 <ArrowUpRight className="size-4" aria-hidden />
               </span>
@@ -97,13 +97,22 @@ function LatestSermonsSection({
             </p>
           </div>
         )}
-        <Link
-          href="/media"
-          className="font-display text-(--color-fg-accent-text) inline-flex items-center gap-2 text-xs tracking-[0.24em] uppercase"
-        >
-          Browse the full media hub
-          <ArrowRight className="size-4" aria-hidden />
-        </Link>
+        <div className="flex flex-wrap items-center gap-5">
+          <Link
+            href="/media"
+            className="font-display text-(--color-fg-accent-text) inline-flex items-center gap-2 text-xs tracking-[0.24em] uppercase"
+          >
+            Browse the full media hub
+            <ArrowRight className="size-4" aria-hidden />
+          </Link>
+          <Link
+            href="/media#live"
+            className="font-display text-(--color-fg-secondary) inline-flex items-center gap-2 text-xs tracking-[0.24em] uppercase"
+          >
+            Watch live
+            <ArrowRight className="size-4" aria-hidden />
+          </Link>
+        </div>
       </div>
     </section>
   );

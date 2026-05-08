@@ -28,29 +28,29 @@ async function EventsArea({ previewCount }: Readonly<{ previewCount?: number }>)
         />
         {featuredEvent ? (
           <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
-            <article className="dark-strip flex h-full flex-col justify-between rounded-[1.85rem] p-8">
+            <article className="border border-(--color-border-subtle) bg-(--color-bg-surface-subtle) text-(--color-fg-primary) flex h-full flex-col justify-between rounded-[1.85rem] p-8">
               <div className="space-y-5">
-                <div className="flex items-center gap-3 text-(--color-fg-accent-strong)">
+                <div className="flex items-center gap-3 text-(--color-fg-accent-text)">
                   <CalendarDays className="size-5" aria-hidden />
                   <p className="font-display text-[0.68rem] tracking-[0.28em] uppercase">
                     Next gathering
                   </p>
                 </div>
                 <div className="space-y-3">
-                  <h3 className="text-4xl text-(--color-fg-inverse) md:text-5xl">
+                  <h3 className="text-4xl md:text-5xl">
                     {featuredEvent.title}
                   </h3>
-                  <p className="text-(--color-fg-accent-strong) text-base leading-7">
+                  <p className="text-(--color-fg-accent-text) text-base leading-7">
                     {formatDate(featuredEvent.startDate)}
                     {featuredEvent.endDate
                       ? ` to ${formatDate(featuredEvent.endDate)}`
                       : ""}
                   </p>
                 </div>
-                <p className="max-w-2xl text-base leading-8 text-(--color-fg-inverse-soft) md:text-lg">
+                <p className="max-w-2xl text-base leading-8 text-(--color-fg-secondary) md:text-lg">
                   {featuredEvent.summary}
                 </p>
-                <div className="flex items-center gap-3 text-sm text-(--color-fg-inverse-soft)">
+                <div className="flex items-center gap-3 text-sm text-(--color-fg-secondary)">
                   <MapPin className="size-4 shrink-0" aria-hidden />
                   <span>{featuredEvent.location}</span>
                 </div>
@@ -68,7 +68,7 @@ async function EventsArea({ previewCount }: Readonly<{ previewCount?: number }>)
                     href={featuredEvent.livestreamUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="font-display inline-flex items-center gap-2 border border-(--color-fg-inverse-muted) px-5 py-3 text-xs tracking-[0.2em] uppercase text-(--color-fg-inverse)"
+                    className="font-display inline-flex items-center gap-2 border border-(--color-border-subtle) px-5 py-3 text-xs tracking-[0.2em] uppercase text-(--color-fg-primary)"
                   >
                     Join online
                     <ArrowUpRight className="size-4" aria-hidden />

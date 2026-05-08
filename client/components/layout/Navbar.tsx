@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 const SCROLL_SOLID_AFTER = 32;
 
 const navLinks = [
+  { href: "/", label: "Home" },
   { href: "/who-we-are", label: "About" },
   { href: "/churches", label: "Churches" },
   { href: "/ministries", label: "Ministries" },
@@ -20,7 +21,6 @@ const navLinks = [
 
 function Navbar() {
   const pathname = usePathname();
-  const onHomeHero = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -29,17 +29,12 @@ function Navbar() {
     };
 
     onScroll();
-
-    if (pathname !== "/") {
-      return;
-    }
-
     globalThis.window.addEventListener("scroll", onScroll, { passive: true });
 
     return () => globalThis.window.removeEventListener("scroll", onScroll);
   }, [pathname]);
 
-  const transparent = onHomeHero && !scrolled;
+  const transparent = !scrolled;
 
   function navLinkClassName(active: boolean) {
     const base =
@@ -50,7 +45,7 @@ function Navbar() {
     }
 
     if (transparent) {
-      return cn(base, "text-(--color-fg-inverse-soft) hover:text-(--color-fg-inverse)");
+      return cn(base, "hover:text-(--color-fg-accent-strong)");
     }
 
     if (active) {
@@ -89,7 +84,12 @@ function Navbar() {
             {SITE_NAME}
           </span>
         </Link>
-        <nav className="hidden gap-6 md:flex">
+        <nav
+          className={cn(
+            "hidden gap-6 md:flex",
+            transparent && "text-(--color-fg-inverse-bright)",
+          )}
+        >
           {navLinks.map((link) => {
             const active =
               pathname === link.href || pathname.startsWith(`${link.href}/`);

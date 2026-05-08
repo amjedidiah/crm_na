@@ -9,20 +9,24 @@ import {
 import { ChevronDown } from "lucide-react";
 import { useEffect, type ReactNode } from "react";
 import Button from "@/components/shared/Button";
-import { SITE_DESCRIPTION } from "@/lib/mock-data";
+import {
+  churches,
+  events,
+  leaders,
+  ministries,
+  SITE_DESCRIPTION,
+} from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 import Motion from "@/components/shared/Motion";
 
 const MARQUEE_ITEMS = [
-  "CRM Word of Life",
-  "CRM Praise Center",
-  "CRM Rhode Island",
-  "Grace & Glory Sanctuary",
-  "Youths Ministry",
-  "King's Men",
-  "Charismatic Women League",
-  "National Prayer Conference",
-  "CRM North America",
+  `${churches.length} church centers across the network`,
+  `${ministries.length} ministry pathways for service and discipleship`,
+  `${events.length} upcoming network gatherings`,
+  `${leaders.length} pastoral and ministry leaders`,
+  "Serving the United States, Canada, and Mexico",
+  "Prayer, worship, discipleship, and revival",
+  "Livestream, sermons, devotionals, and pastoral care",
 ];
 
 const contentEase = [0.22, 1, 0.36, 1] as const;
@@ -157,9 +161,19 @@ function HeroMotionButtonWrap({
 function HeroScrollCue({
   reduceMotion,
 }: Readonly<{ reduceMotion: boolean | null }>) {
+  function scrollToExplore() {
+    document.getElementById("explore")?.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+      block: "start",
+    });
+  }
+
   return (
     <Motion
-      className="flex flex-col items-center gap-2 pt-4 text-(--color-fg-inverse-muted)"
+      as="button"
+      type="button"
+      aria-label="Scroll to explore more below"
+      onClick={scrollToExplore}
       initial={reduceMotion ? false : { opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
@@ -167,6 +181,9 @@ function HeroScrollCue({
         duration: reduceMotion ? 0.01 : 0.45,
         ease: contentEase,
       }}
+      whileHover={reduceMotion ? undefined : { scale: 1.03 }}
+      whileTap={reduceMotion ? undefined : { scale: 0.97 }}
+      className="flex cursor-pointer flex-col items-center gap-2 pt-4 text-(--color-fg-inverse-muted) transition-colors hover:text-(--color-fg-inverse-soft) focus-visible:rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--color-fg-accent-strong) mx-auto"
     >
       <span className="font-display text-[0.65rem] tracking-[0.28em] uppercase">
         Explore
@@ -317,15 +334,6 @@ function HeroSection() {
                 className={inverseOutlineClass}
               >
                 Watch us live
-              </Button>
-            </HeroMotionButtonWrap>
-            <HeroMotionButtonWrap reduceMotion={reduceMotion}>
-              <Button
-                href="/contact"
-                variant="outline"
-                className={inverseOutlineClass}
-              >
-                Contact CRM NA
               </Button>
             </HeroMotionButtonWrap>
           </Motion>
