@@ -15,7 +15,7 @@ Implementation steps live in [`docs/app_scaffold_checklist.md`](./app_scaffold_c
 
 ## Recommendation
 
-Rebuild `https://crm-na.org/` as a **Next.js frontend** backed by **WordPress**, using `crmusa2026-convention/` as the primary visual reference.
+Rebuild `https://www.crm-na.org/` as a **Next.js frontend** backed by **WordPress**, using `crmusa2026-convention/` as the primary visual reference.
 
 This is the right direction because:
 
