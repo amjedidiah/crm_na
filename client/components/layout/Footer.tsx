@@ -100,8 +100,11 @@ function Footer() {
             </p>
           </div>
         </div>
-        <div className="border-t border-(--color-fg-inverse-muted) pt-5 text-sm text-(--color-fg-inverse-muted)">
-          <p>CRM North America.</p>
+        <div className="border-t border-(--color-fg-inverse-muted) pt-5 text-center text-sm text-(--color-fg-inverse-muted)">
+          <p>
+            © {new Date().getFullYear()} Charismatic Renewal Ministries North
+            America. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
