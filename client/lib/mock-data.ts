@@ -514,8 +514,10 @@ export const events: Event[] = [
     registrationUrl: buildConventionRegistrationUrl({
       returnTo: "/events/crm-usa-national-convention-2026",
     }),
+    // imageSrc:
+    //   "https://i.ibb.co/RGqCTRFN/Whats-App-Image-2026-05-09-at-17-37-05-1.jpg",
     imageSrc:
-      "https://i.ibb.co/RGqCTRFN/Whats-App-Image-2026-05-09-at-17-37-05-1.jpg",
+      "https://i.ibb.co/gLnr5K3z/Whats-App-Image-2026-05-09-at-17-37-05.jpg",
     galleryImages: [],
   },
 ];
