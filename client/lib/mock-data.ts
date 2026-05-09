@@ -1,4 +1,4 @@
-import { CONVENTION_REGISTRATION_URL } from "@/lib/convention-public";
+import { buildConventionRegistrationUrl } from "@/lib/convention-public";
 import type {
   Church,
   CoreValue,
@@ -28,7 +28,9 @@ export const SITE_CONTACT: SiteContact = {
 
 export const CONTACT_EMAIL = SITE_CONTACT.email;
 export const CONTACT_PHONE = SITE_CONTACT.phone;
-export const GIVING_URL = "https://crm-na.org/give/";
+/** Primary online giving destination (Zeffy), aligned with crmusa2026-convention. */
+export const GIVING_URL =
+  "https://www.zeffy.com/en-US/donation-form/donate-to-facilitate-the-work-of-this-ministry";
 export const SOCIAL_LINKS: SocialLink[] = [
   // {
   //   label: "YouTube",
@@ -479,7 +481,9 @@ export const events: Event[] = [
     endDate: "2026-08-02",
     location:
       "Holiday Inn NW Houston, 3539 N Sam Houston Pkwy West, Houston, TX 77086",
-    registrationUrl: CONVENTION_REGISTRATION_URL,
+    registrationUrl: buildConventionRegistrationUrl({
+      returnTo: "/events/crm-usa-national-convention-2026",
+    }),
     imageSrc:
       "https://i.ibb.co/RGqCTRFN/Whats-App-Image-2026-05-09-at-17-37-05-1.jpg",
     galleryImages: [],

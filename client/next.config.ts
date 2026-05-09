@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "placehold.co" },
       { protocol: "https", hostname: "**.ytimg.com" },
       { protocol: "https", hostname: "**.ibb.co" },
+      { protocol: "https", hostname: "api.qrserver.com" },
       { protocol: "http", hostname: "localhost", port: "8080" },
     ],
     dangerouslyAllowLocalIP: true,

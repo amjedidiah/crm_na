@@ -7,6 +7,9 @@ type ButtonVariant = "primary" | "outline";
 interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   variant?: ButtonVariant;
   href?: string;
+  /** Applied when `href` is set (e.g. external payment links). */
+  target?: string;
+  rel?: string;
   children: ReactNode;
 }
 
@@ -20,6 +23,8 @@ const variantClasses: Record<ButtonVariant, string> = {
 function Button({
   variant = "primary",
   href,
+  target,
+  rel,
   className,
   children,
   ...props
@@ -32,7 +37,7 @@ function Button({
 
   if (href) {
     return (
-      <Link href={href} className={classes}>
+      <Link href={href} className={classes} target={target} rel={rel}>
         {children}
       </Link>
     );
