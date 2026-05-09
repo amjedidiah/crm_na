@@ -1,10 +1,11 @@
 import Link from "next/link";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import type { Event } from "@/lib/types";
+import { getEventListingHref } from "@/lib/event-utils";
 
 interface EventLinkProps
   extends Omit<ComponentPropsWithoutRef<"a">, "children" | "href"> {
-  event: Pick<Event, "slug" | "registrationUrl">;
+  event: Pick<Event, "slug" | "mode" | "externalUrl">;
   children: ReactNode;
 }
 
@@ -14,12 +15,12 @@ function EventLink({
   className,
   ...props
 }: Readonly<EventLinkProps>) {
-  const href = event.registrationUrl ?? `/events/${event.slug}`;
+  const target = getEventListingHref(event);
 
-  if (event.registrationUrl) {
+  if (target.external) {
     return (
       <a
-        href={href}
+        href={target.href}
         className={className}
         target="_blank"
         rel="noreferrer"
@@ -31,7 +32,7 @@ function EventLink({
   }
 
   return (
-    <Link href={href} className={className} {...props}>
+    <Link href={target.href} className={className} {...props}>
       {children}
     </Link>
   );

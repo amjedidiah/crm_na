@@ -22,7 +22,17 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/crm-praise-center",
-        destination: "/churches/crm-praise-center",
+        destination: "https://www.crmpraisecenter.org/",
+        permanent: true,
+      },
+      {
+        source: "/crm-ottawa",
+        destination: "https://crm-can.org/",
+        permanent: true,
+      },
+      {
+        source: "/churches/crm-ottawa",
+        destination: "https://crm-can.org/",
         permanent: true,
       },
       {

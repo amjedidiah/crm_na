@@ -4,9 +4,9 @@ import PageHeader from "@/components/shared/PageHeader";
 async function ContactPage({
   searchParams,
 }: Readonly<{
-  searchParams: Promise<{ purpose?: string }>;
+  searchParams: Promise<{ purpose?: string; churchSlug?: string }>;
 }>) {
-  const { purpose } = await searchParams;
+  const { purpose, churchSlug } = await searchParams;
 
   return (
     <div className="bg-(--color-bg-canvas) text-(--color-fg-primary)">
@@ -15,7 +15,10 @@ async function ContactPage({
         title="Contact CRM NA"
         description="Reach CRM North America for prayer, church connections, ministry questions, and first-visit support."
       />
-      <ContactFormSection initialPurpose={purpose} />
+      <ContactFormSection
+        initialPurpose={purpose}
+        initialChurchSlug={churchSlug}
+      />
     </div>
   );
 }

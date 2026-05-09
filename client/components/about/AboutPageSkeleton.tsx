@@ -1,40 +1,45 @@
+import PageHeaderSkeleton from "@/components/shared/PageHeaderSkeleton";
+
 function AboutPageSkeleton() {
   return (
-    <div className="bg-page-canvas text-fg-primary">
-      <section className="hero-panel relative -mt-[calc(var(--nav-height)+var(--site-banner-height))] pt-[calc(var(--nav-height)+var(--site-banner-height)+2rem)] pb-20 md:pt-[calc(var(--nav-height)+var(--site-banner-height)+2.75rem)] md:pb-24">
-        <div className="container-shell space-y-5 py-10">
-          <div className="h-4 w-28 animate-pulse rounded bg-shimmer-emphasis" />
-          <div className="h-16 max-w-2xl animate-pulse rounded bg-shimmer-emphasis-muted md:h-20" />
-          <div className="h-8 max-w-3xl animate-pulse rounded bg-shimmer-emphasis-muted" />
-          <div className="flex flex-wrap gap-3 pt-2">
-            {Array.from({ length: 7 }).map((_, index) => (
-              <div
-                key={`${index.toString()}`}
-                className="h-10 w-28 animate-pulse rounded border border-shimmer-emphasis bg-shimmer-emphasis-muted"
-              />
-            ))}
-          </div>
+    <div className="overflow-x-clip bg-page-canvas text-fg-primary">
+      <PageHeaderSkeleton descriptionLineCount={3}>
+        <div className="flex flex-wrap gap-3 pt-2">
+          {Array.from({ length: 7 }).map((_, index) => (
+            <div
+              key={`${index.toString()}`}
+              className="h-10 w-28 animate-pulse rounded border border-shimmer-emphasis bg-shimmer-emphasis-muted"
+            />
+          ))}
         </div>
-      </section>
-      <section className="section-padding">
-        <div className="container-shell grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="space-y-4">
-            <div className="h-4 w-24 animate-pulse rounded bg-shimmer-canvas" />
-            <div className="h-24 animate-pulse rounded bg-shimmer-canvas" />
-          </div>
-          <div className="space-y-6">
-            <div className="card-surface h-56 animate-pulse p-8" />
-            <div className="grid gap-4 sm:grid-cols-3">
-              {Array.from({ length: 3 }).map((_, index) => (
-                <div
-                  key={`${index.toString()}`}
-                  className="card-surface h-32 animate-pulse p-6"
-                />
-              ))}
+      </PageHeaderSkeleton>
+      {/* AboutOverview + warm glow */}
+      <div className="relative">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-10 h-64 bg-gradient-page-warm-top-glow"
+        />
+        <section className="section-padding">
+          <div className="container-shell grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+            <div className="space-y-4">
+              <div className="h-4 w-32 animate-pulse rounded bg-shimmer-canvas" />
+              <div className="h-10 max-w-md animate-pulse rounded bg-shimmer-canvas" />
+              <div className="h-4 max-w-sm animate-pulse rounded bg-shimmer-canvas" />
+            </div>
+            <div className="space-y-6">
+              <div className="card-surface h-56 animate-pulse p-8" />
+              <div className="grid gap-4 sm:grid-cols-3">
+                {Array.from({ length: 3 }).map((_, index) => (
+                  <div
+                    key={`${index.toString()}`}
+                    className="card-surface h-32 animate-pulse p-6"
+                  />
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
       <section className="section-padding bg-surface-subtle">
         <div className="container-shell grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="space-y-4">
@@ -53,8 +58,12 @@ function AboutPageSkeleton() {
           </div>
         </div>
       </section>
-      <section className="dark-strip section-padding">
-        <div className="container-shell space-y-8">
+      <section className="dark-strip section-padding relative overflow-hidden">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-gradient-live-top-glow opacity-70"
+        />
+        <div className="container-shell relative space-y-8">
           <div className="space-y-4">
             <div className="h-4 w-48 animate-pulse rounded bg-shimmer-emphasis" />
             <div className="h-12 max-w-xl animate-pulse rounded bg-shimmer-emphasis-muted" />

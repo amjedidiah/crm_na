@@ -1,18 +1,36 @@
-/** Loading placeholder for the home route — mirrors section rhythm of `app/page.tsx`. */
+/** Loading placeholder for the home route — mirrors section rhythm of `app/page.tsx` / `HeroSection`. */
 function HomePageSkeleton() {
   return (
     <div className="overflow-x-clip bg-page-canvas text-fg-primary">
-      {/* HeroSection */}
-      <section className="hero-panel relative -mt-[calc(var(--nav-height)+var(--site-banner-height))] pt-[calc(var(--nav-height)+var(--site-banner-height)+2rem)] pb-24 md:pt-[calc(var(--nav-height)+var(--site-banner-height)+3rem)] md:pb-28">
-        <div className="container-shell space-y-8 py-10">
-          <div className="space-y-4">
-            <div className="h-4 w-32 animate-pulse rounded bg-shimmer-emphasis-muted" />
-            <div className="h-14 max-w-3xl animate-pulse rounded bg-shimmer-emphasis md:h-20" />
-            <div className="h-6 max-w-2xl animate-pulse rounded bg-shimmer-emphasis-muted" />
+      {/* HeroSection — matches `HeroSection` outer shell + `container-shell ... pb-20 md:pb-24` */}
+      <section
+        className="hero-panel relative -mt-[calc(var(--nav-height)+var(--site-banner-height))] overflow-hidden rounded-b-[clamp(1.25rem,4vw,2.75rem)] pt-[calc(var(--nav-height)+var(--site-banner-height)+2rem)] md:pt-[calc(var(--nav-height)+var(--site-banner-height)+5.5rem)]"
+      >
+        <div className="container-shell relative mx-auto space-y-10 pb-20 md:pb-24">
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <div className="h-4 w-36 animate-pulse rounded bg-shimmer-emphasis-muted" />
+              <div className="h-14 max-w-4xl animate-pulse rounded bg-shimmer-emphasis md:h-[clamp(3.25rem,8vw,4.75rem)]" />
+              <div className="h-6 max-w-2xl animate-pulse rounded bg-shimmer-emphasis-muted" />
+            </div>
+            <div className="flex flex-wrap gap-4 pt-2">
+              <div className="h-12 w-44 animate-pulse rounded bg-shimmer-emphasis-muted" />
+              <div className="h-12 w-44 animate-pulse rounded bg-shimmer-emphasis-muted" />
+            </div>
           </div>
-          <div className="flex flex-wrap gap-4 pt-4">
-            <div className="h-12 w-44 animate-pulse rounded bg-shimmer-emphasis-muted" />
-            <div className="h-12 w-44 animate-pulse rounded bg-shimmer-emphasis-muted" />
+        </div>
+        {/* BranchMarquee */}
+        <div
+          aria-hidden
+          className="overflow-hidden border-t border-(--color-fg-inverse)/10 py-3"
+        >
+          <div className="flex flex-wrap justify-center gap-x-10 gap-y-2 px-6">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <div
+                key={`marquee-${i.toString()}`}
+                className="h-3 w-28 animate-pulse rounded-full bg-shimmer-emphasis-muted opacity-70 md:w-36"
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -49,14 +67,14 @@ function HomePageSkeleton() {
         </div>
       </section>
 
-      {/* WelcomeSection + warm glow */}
+      {/* WelcomeSection + warm glow — matches `WelcomeSection` pt + grid */}
       <div className="relative">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-x-0 top-12 h-72 bg-gradient-page-warm-top-glow"
         />
-        <section className="section-padding">
-          <div className="container-shell grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center">
+        <section className="section-padding pt-16 md:pt-24">
+          <div className="container-shell grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
             <div className="space-y-4">
               <div className="h-4 w-40 animate-pulse rounded bg-shimmer-canvas" />
               <div className="h-16 max-w-xl animate-pulse rounded bg-shimmer-canvas" />
@@ -67,7 +85,7 @@ function HomePageSkeleton() {
         </section>
       </div>
 
-      {/* FeaturedChurches */}
+      {/* FeaturedChurches — matches `FeaturedChurchShowcase` xl:grid-cols-12 layout */}
       <div className="relative bg-surface-subtle">
         <div
           aria-hidden
@@ -79,19 +97,11 @@ function HomePageSkeleton() {
               <div className="h-4 w-48 animate-pulse rounded bg-shimmer-canvas" />
               <div className="h-12 max-w-2xl animate-pulse rounded bg-shimmer-canvas" />
             </div>
-            <div className="grid gap-6 md:grid-cols-3">
-              {Array.from({ length: 3 }).map((_, i) => (
-                <div
-                  key={`feat-${i.toString()}`}
-                  className="card-surface overflow-hidden"
-                >
-                  <div className="aspect-4/3 animate-pulse bg-shimmer-canvas" />
-                  <div className="space-y-3 p-5">
-                    <div className="h-5 w-3/4 animate-pulse rounded bg-shimmer-canvas" />
-                    <div className="h-4 w-full animate-pulse rounded bg-shimmer-canvas" />
-                  </div>
-                </div>
-              ))}
+            <div className="grid gap-6 xl:grid-cols-12">
+              <div className="min-h-112 animate-pulse rounded-4xl border border-(--color-border-subtle) bg-shimmer-emphasis-muted xl:col-span-7" />
+              <div className="min-h-96 animate-pulse rounded-4xl bg-shimmer-canvas xl:col-span-5" />
+              <div className="min-h-72 animate-pulse rounded-[1.75rem] bg-shimmer-canvas xl:col-span-6" />
+              <div className="min-h-72 animate-pulse rounded-[1.75rem] bg-shimmer-canvas xl:col-span-6" />
             </div>
           </div>
         </section>

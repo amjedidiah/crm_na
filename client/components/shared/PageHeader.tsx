@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 
 interface PageHeaderProps {
+  /** Renders above the eyebrow (e.g. `BackToListingLink`). */
+  leading?: ReactNode;
   eyebrow?: string;
   title: string;
   description?: string;
@@ -8,6 +10,7 @@ interface PageHeaderProps {
 }
 
 function PageHeader({
+  leading,
   eyebrow,
   title,
   description,
@@ -16,13 +19,14 @@ function PageHeader({
   return (
     <section className="hero-panel relative -mt-[calc(var(--nav-height)+var(--site-banner-height))] pt-[calc(var(--nav-height)+var(--site-banner-height)+2rem)] pb-20 md:pt-[calc(var(--nav-height)+var(--site-banner-height)+2.75rem)] md:pb-24">
       <div className="container-shell space-y-5 py-10">
+        {leading ? <div>{leading}</div> : null}
         {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
         <h1 className="max-w-4xl text-5xl leading-none md:text-7xl">{title}</h1>
-      {description ? (
-        <p className="max-w-3xl text-lg leading-8 text-fg-inverse-soft md:text-xl">
-          {description}
-        </p>
-      ) : null}
+        {description ? (
+          <p className="max-w-3xl text-lg leading-8 text-fg-inverse-soft md:text-xl">
+            {description}
+          </p>
+        ) : null}
         {children}
       </div>
     </section>

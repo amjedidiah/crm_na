@@ -2,6 +2,10 @@ import type { Event } from "@/lib/types";
 import EventLink from "@/components/events/EventLink";
 import { formatDate } from "@/lib/utils";
 
+function eventListingLabel(event: Event): string {
+  return event.mode === "slug-redirect" ? "Open event site" : "View event";
+}
+
 function EventCard({ event }: Readonly<{ event: Event }>) {
   return (
     <article className="card-surface flex h-full flex-col justify-between p-6">
@@ -16,7 +20,7 @@ function EventCard({ event }: Readonly<{ event: Event }>) {
           event={event}
           className="font-display text-xs tracking-[0.2em] uppercase text-(--color-fg-accent)"
         >
-          {event.registrationUrl ? "Register for event" : "View event"}
+          {eventListingLabel(event)}
         </EventLink>
       </div>
     </article>

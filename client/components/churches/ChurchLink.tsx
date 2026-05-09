@@ -1,10 +1,11 @@
 import Link from "next/link";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import type { Church } from "@/lib/types";
+import { getChurchListingHref } from "@/lib/church-utils";
 
 interface ChurchLinkProps
   extends Omit<ComponentPropsWithoutRef<"a">, "children" | "href"> {
-  church: Pick<Church, "slug" | "website">;
+  church: Church;
   children: ReactNode;
 }
 
@@ -14,12 +15,20 @@ function ChurchLink({
   className,
   ...props
 }: Readonly<ChurchLinkProps>) {
-  const href = church.website ?? `/churches/${church.slug}`;
+  const target = getChurchListingHref(church);
 
-  if (church.website) {
+  if (!target) {
+    return (
+      <span className={className} {...props}>
+        {children}
+      </span>
+    );
+  }
+
+  if (target.external) {
     return (
       <a
-        href={href}
+        href={target.href}
         className={className}
         target="_blank"
         rel="noreferrer"
@@ -31,7 +40,7 @@ function ChurchLink({
   }
 
   return (
-    <Link href={href} className={className} {...props}>
+    <Link href={target.href} className={className} {...props}>
       {children}
     </Link>
   );

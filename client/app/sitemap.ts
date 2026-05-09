@@ -1,4 +1,6 @@
 import type { MetadataRoute } from "next";
+import { churchShouldAppearInSitemap } from "@/lib/church-utils";
+import { eventShouldAppearInSitemap } from "@/lib/event-utils";
 import {
   churches,
   events,
@@ -27,18 +29,22 @@ function sitemap(): MetadataRoute.Sitemap {
       url: `${siteUrl}${route}`,
       lastModified: new Date(),
     })),
-    ...churches.map((church) => ({
-      url: `${siteUrl}/churches/${church.slug}`,
-      lastModified: new Date(),
-    })),
+    ...churches
+      .filter(churchShouldAppearInSitemap)
+      .map((church) => ({
+        url: `${siteUrl}/churches/${church.slug}`,
+        lastModified: new Date(),
+      })),
     ...ministries.map((ministry) => ({
       url: `${siteUrl}/ministries/${ministry.slug}`,
       lastModified: new Date(),
     })),
-    ...events.map((event) => ({
-      url: `${siteUrl}/events/${event.slug}`,
-      lastModified: new Date(),
-    })),
+    ...events
+      .filter(eventShouldAppearInSitemap)
+      .map((event) => ({
+        url: `${siteUrl}/events/${event.slug}`,
+        lastModified: new Date(),
+      })),
     ...galleryAlbums.map((album) => ({
       url: `${siteUrl}/gallery/${album.slug}`,
       lastModified: new Date(album.date ?? "2026-01-01"),

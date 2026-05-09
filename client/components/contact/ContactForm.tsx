@@ -31,13 +31,17 @@ function normalizePurpose(raw: unknown): PurposeOption | undefined {
 
 function ContactForm({
   initialPurpose,
-}: Readonly<{ initialPurpose?: string }>) {
+  initialChurchSlug,
+}: Readonly<{ initialPurpose?: string; initialChurchSlug?: string }>) {
   const [state, formAction] = useActionState(submitContactAction, initialState);
   const purposeDefault = normalizePurpose(initialPurpose) ?? "general";
 
   return (
     <form action={formAction} className="card-surface grid gap-5 p-6">
       {state.message ? <SuccessMessage message={state.message} /> : null}
+      {initialChurchSlug ? (
+        <input type="hidden" name="churchSlug" value={initialChurchSlug} />
+      ) : null}
       <FormField label="Name" name="name" required />
       <FormField label="Email" name="email" type="email" required />
       <label className="grid gap-2">

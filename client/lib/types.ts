@@ -1,5 +1,11 @@
 export type Region = "USA" | "Canada" | "Mexico";
 
+export type ChurchMode =
+  | "internal-page"
+  | "slug-redirect"
+  | "external-link-only"
+  | "listing-only";
+
 export interface ChurchServiceTime {
   label: string;
   day: string;
@@ -16,6 +22,9 @@ export interface ChurchProgram {
 export interface Church {
   slug: string;
   name: string;
+  mode: ChurchMode;
+  /** Sort key for directory and home surfaces (lower first). */
+  directoryOrder: number;
   legacyPath?: string;
   region: Region;
   city: string;
@@ -28,7 +37,7 @@ export interface Church {
   email: string;
   website?: string;
   livestreamUrl?: string;
-  pastorId: string;
+  pastorId?: string;
   leaderIds?: string[];
   serviceTimes: ChurchServiceTime[];
   programs: ChurchProgram[];
@@ -59,8 +68,11 @@ export interface Ministry {
   galleryImages?: GalleryImage[];
 }
 
+export type EventMode = "internal-page" | "slug-redirect";
+
 export interface Event {
   slug: string;
+  mode: EventMode;
   title: string;
   summary: string;
   description: string[];
@@ -69,6 +81,7 @@ export interface Event {
   location: string;
   churchSlug?: string;
   ministrySlug?: string;
+  externalUrl?: string;
   registrationUrl?: string;
   livestreamUrl?: string;
   imageSrc?: string;

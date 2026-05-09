@@ -14,24 +14,60 @@ function ChurchDetailContent({
   return (
     <section className="section-padding">
       <div className="container-shell space-y-12">
-        <SectionHeader
-          eyebrow={church.region}
-          title={church.name}
-          description={church.summary}
-        />
-        <div className="grid gap-4">
-          {church.story.map((paragraph) => (
-            <p
-              key={paragraph}
-              className="max-w-4xl text-lg leading-8 text-(--color-fg-secondary)"
-            >
-              {paragraph}
-            </p>
-          ))}
-        </div>
-        <ChurchLeadership leaders={leaders} />
-        <ChurchPrograms programs={church.programs} />
-        <ChurchVisitInfo church={church} />
+        {church.story.length > 0 ? (
+          <>
+            <SectionHeader
+              eyebrow="Overview"
+              title="Our story"
+              description="How this branch lives out CRM NA’s call to Spirit-filled worship and discipleship."
+            />
+            <div className="grid gap-4">
+              {church.story.map((paragraph) => (
+                <p
+                  key={paragraph}
+                  className="max-w-4xl text-lg leading-8 text-(--color-fg-secondary)"
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </>
+        ) : null}
+
+        {leaders.length > 0 ? (
+          <>
+            <SectionHeader
+              eyebrow="Leadership"
+              title="Pastoral oversight"
+              description="Leaders who help shepherd this local expression of CRM NA."
+            />
+            <ChurchLeadership leaders={leaders} />
+          </>
+        ) : null}
+
+        {church.programs.length > 0 ? (
+          <>
+            <SectionHeader
+              eyebrow="Rhythms"
+              title="Programs & service life"
+            />
+            <ChurchPrograms programs={church.programs} />
+          </>
+        ) : null}
+
+        {church.serviceTimes.length > 0 ||
+        church.address ||
+        church.phone ||
+        church.email ? (
+          <>
+            <SectionHeader
+              eyebrow="Visit"
+              title="Service times & contact"
+              description="Plan a Sunday, a midweek gathering, or a pastoral conversation."
+            />
+            <ChurchVisitInfo church={church} />
+          </>
+        ) : null}
       </div>
     </section>
   );

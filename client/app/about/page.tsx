@@ -10,11 +10,11 @@ import { aboutSectionLinks } from "@/lib/about-content";
 import { getLeaders } from "@/lib/wordpress";
 
 export const metadata: Metadata = {
-  title: "About Us | CRM NA",
+  title: "About Us",
   description:
     "Learn the history, vision, mission, strategy, and leadership behind Charismatic Renewal Ministries North America.",
   openGraph: {
-    title: "About Us | CRM NA",
+    title: "About Us",
     description:
       "Learn the history, vision, mission, strategy, and leadership behind Charismatic Renewal Ministries North America.",
   },

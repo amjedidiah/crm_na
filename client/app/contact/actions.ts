@@ -13,6 +13,7 @@ export async function submitContactAction(
     email: formData.get("email"),
     purpose: formData.get("purpose"),
     message: formData.get("message"),
+    churchSlug: formData.get("churchSlug"),
   });
 
   if (!parsed.success) {
@@ -22,11 +23,15 @@ export async function submitContactAction(
     };
   }
 
+  const churchSlugForEmail =
+    parsed.data.purpose === "churches" ? parsed.data.churchSlug : undefined;
+
   await sendContactEmail({
     fromEmail: parsed.data.email,
     fromName: parsed.data.name,
     purpose: parsed.data.purpose,
     message: parsed.data.message,
+    churchSlug: churchSlugForEmail,
   });
 
   return {

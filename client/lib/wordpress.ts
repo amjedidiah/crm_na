@@ -1,3 +1,4 @@
+import { sortChurchesByDirectoryOrder } from "@/lib/church-utils";
 import {
   churches,
   coreValues,
@@ -44,7 +45,7 @@ export async function getLeaders() {
 }
 
 export async function getChurches() {
-  return churches;
+  return sortChurchesByDirectoryOrder(churches);
 }
 
 export async function getChurch(slug: string) {

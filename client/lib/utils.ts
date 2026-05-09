@@ -12,3 +12,13 @@ export function formatDate(date: string) {
     year: "numeric",
   }).format(new Date(date));
 }
+
+/** `tel:` URI from a display phone string (digits; leading `+` preserved when present). */
+export function phoneToTelHref(phone: string): string {
+  const digits = phone.replaceAll(/\D/g, "");
+  if (!digits) {
+    return "#";
+  }
+  const hasLeadingPlus = phone.trimStart().startsWith("+");
+  return hasLeadingPlus ? `tel:+${digits}` : `tel:${digits}`;
+}

@@ -6,6 +6,10 @@ import SectionHeader from "@/components/shared/SectionHeader";
 import { formatDate } from "@/lib/utils";
 import { getEvents } from "@/lib/wordpress";
 
+function featuredEventLabel(hasExternalSite: boolean) {
+  return hasExternalSite ? "Open gathering site" : "View gathering";
+}
+
 async function EventsArea({ previewCount }: Readonly<{ previewCount?: number }>) {
   let events = await getEvents();
   events = [...events].sort(
@@ -61,9 +65,7 @@ async function EventsArea({ previewCount }: Readonly<{ previewCount?: number }>)
                   event={featuredEvent}
                   className="font-display inline-flex items-center gap-2 bg-(--color-bg-accent-strong) px-5 py-3 text-xs tracking-[0.2em] uppercase text-(--color-fg-on-accent)"
                 >
-                  {featuredEvent.registrationUrl
-                    ? "Register for gathering"
-                    : "View gathering"}
+                  {featuredEventLabel(featuredEvent.mode === "slug-redirect")}
                   <ArrowRight className="size-4" aria-hidden />
                 </EventLink>
                 {featuredEvent.livestreamUrl ? (

@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import MinistryDetailContent from "@/components/ministries/MinistryDetailContent";
+import BackToListingLink from "@/components/shared/BackToListingLink";
 import PageHeader from "@/components/shared/PageHeader";
 import { getEvents, getLeaders, getMinistry } from "@/lib/wordpress";
 
@@ -30,6 +31,9 @@ async function MinistryDetailPage({
   return (
     <div className="bg-(--color-bg-canvas) text-(--color-fg-primary)">
       <PageHeader
+        leading={
+          <BackToListingLink href="/ministries">Ministries</BackToListingLink>
+        }
         eyebrow="Ministry"
         title={ministry.name}
         description={ministry.summary}
