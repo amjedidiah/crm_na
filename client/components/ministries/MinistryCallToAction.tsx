@@ -1,17 +1,10 @@
 import Button from "@/components/shared/Button";
+import { contactHrefForMinistry } from "@/lib/contact-hrefs";
 
 export type MinistryCallToActionContext = Readonly<{
   name: string;
   slug: string;
 }>;
-
-function contactHrefForMinistry(slug: string): string {
-  const params = new URLSearchParams({
-    purpose: "ministries",
-    ministrySlug: slug,
-  });
-  return `/contact?${params.toString()}`;
-}
 
 function MinistryCallToAction({
   ministryContext,

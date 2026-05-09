@@ -1,6 +1,8 @@
+import Link from "next/link";
 import { MapPin } from "lucide-react";
 import type { Event } from "@/lib/types";
 import EventLink from "@/components/events/EventLink";
+import { contactHrefForEvent } from "@/lib/contact-hrefs";
 import { formatEventDateRange } from "@/lib/utils";
 
 function eventListingLabel(event: Event): string {
@@ -28,7 +30,7 @@ function EventCard({ event }: Readonly<{ event: Event }>) {
         </div>
       </div>
 
-      <div className="mt-6 space-y-4 border-t border-(--color-border-subtle) pt-6">
+      <div className="mt-6 flex flex-col gap-3 border-t border-(--color-border-subtle) pt-6">
         {location ? (
           <div className="flex gap-3">
             <MapPin
@@ -51,6 +53,12 @@ function EventCard({ event }: Readonly<{ event: Event }>) {
         >
           {eventListingLabel(event)}
         </EventLink>
+        <Link
+          href={contactHrefForEvent(event.slug)}
+          className="font-display inline-flex text-xs tracking-[0.2em] uppercase text-(--color-fg-secondary) underline decoration-(--color-border-subtle) underline-offset-4 hover:text-(--color-fg-primary)"
+        >
+          Contact about this event
+        </Link>
       </div>
     </article>
   );

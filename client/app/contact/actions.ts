@@ -1,7 +1,12 @@
 "use server";
 
+import { slugsForContactEmail } from "@/lib/contact-delivery";
+import { buildContactFormSuccessMessage } from "@/lib/contact-submitted-summary";
 import type { ContactFormState } from "@/lib/types";
-import { sendContactEmail } from "@/lib/email";
+import {
+  sendContactConfirmationEmail,
+  sendContactEmail,
+} from "@/lib/email";
 import { contactSchema } from "@/lib/schemas/contact";
 
 export async function submitContactAction(
@@ -15,6 +20,7 @@ export async function submitContactAction(
     message: formData.get("message"),
     churchSlug: formData.get("churchSlug"),
     ministrySlug: formData.get("ministrySlug"),
+    eventSlug: formData.get("eventSlug"),
   });
 
   if (!parsed.success) {
@@ -24,22 +30,61 @@ export async function submitContactAction(
     };
   }
 
-  const churchSlugForEmail =
-    parsed.data.purpose === "churches" ? parsed.data.churchSlug : undefined;
-  const ministrySlugForEmail =
-    parsed.data.purpose === "ministries" ? parsed.data.ministrySlug : undefined;
+  const {
+    churchSlug: churchSlugForEmail,
+    ministrySlug: ministrySlugForEmail,
+    eventSlug: eventSlugForEmail,
+  } = slugsForContactEmail(
+    parsed.data.purpose,
+    parsed.data.churchSlug,
+    parsed.data.ministrySlug,
+    parsed.data.eventSlug,
+  );
 
-  await sendContactEmail({
+  const mail = await sendContactEmail({
     fromEmail: parsed.data.email,
     fromName: parsed.data.name,
     purpose: parsed.data.purpose,
     message: parsed.data.message,
     churchSlug: churchSlugForEmail,
     ministrySlug: ministrySlugForEmail,
+    eventSlug: eventSlugForEmail,
   });
+
+  if (!mail.delivered) {
+    return {
+      success: false,
+      message:
+        mail.preview ??
+        "We could not send your message right now. Please try again later.",
+    };
+  }
+
+  let confirmationSent = false;
+  try {
+    const confirm = await sendContactConfirmationEmail({
+      to: parsed.data.email,
+      name: parsed.data.name,
+      purpose: parsed.data.purpose,
+      message: parsed.data.message,
+      churchSlug: churchSlugForEmail,
+      ministrySlug: ministrySlugForEmail,
+      eventSlug: eventSlugForEmail,
+    });
+    confirmationSent = confirm.sent;
+  } catch {
+    confirmationSent = false;
+  }
 
   return {
     success: true,
-    message: "Your message has been received. This uses the scaffold delivery flow.",
+    message: buildContactFormSuccessMessage(
+      parsed.data.purpose,
+      confirmationSent,
+      parsed.data.email,
+      churchSlugForEmail,
+      ministrySlugForEmail,
+      eventSlugForEmail,
+    ),
   };
 }

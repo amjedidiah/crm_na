@@ -1,24 +1,48 @@
 import ContactForm from "@/components/contact/ContactForm";
-import ChurchInfoSidebar from "@/components/contact/ChurchInfoSidebar";
+import ContactInfoSidebar from "@/components/contact/ContactInfoSidebar";
+import type { ContactPageQueryState } from "@/lib/contact-query";
+import {
+  buildChurchContactSelectOptions,
+  buildEventContactSelectOptions,
+  buildMinistryContactSelectOptions,
+} from "@/lib/contact-select-options";
+import { churches, events, ministries } from "@/lib/mock-data";
 
 function ContactFormSection({
-  initialPurpose,
-  initialChurchSlug,
-  initialMinistrySlug,
+  query,
 }: Readonly<{
-  initialPurpose?: string;
-  initialChurchSlug?: string;
-  initialMinistrySlug?: string;
+  query: ContactPageQueryState;
 }>) {
+  const {
+    purpose,
+    churchSlug,
+    ministrySlug,
+    eventSlug,
+    churchSlugUnresolved,
+    ministrySlugUnresolved,
+    eventSlugUnresolved,
+  } = query;
+
+  const churchSelectOptions = buildChurchContactSelectOptions(churches);
+  const ministrySelectOptions = buildMinistryContactSelectOptions(ministries);
+  const eventSelectOptions = buildEventContactSelectOptions(events);
+
   return (
     <section className="section-padding text-(--color-fg-primary)">
       <div className="container-shell grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
         <ContactForm
-          initialPurpose={initialPurpose}
-          initialChurchSlug={initialChurchSlug}
-          initialMinistrySlug={initialMinistrySlug}
+          churchSelectOptions={churchSelectOptions}
+          ministrySelectOptions={ministrySelectOptions}
+          eventSelectOptions={eventSelectOptions}
+          initialPurpose={purpose}
+          initialChurchSlug={churchSlug}
+          initialMinistrySlug={ministrySlug}
+          initialEventSlug={eventSlug}
+          initialChurchSlugUnresolved={churchSlugUnresolved}
+          initialMinistrySlugUnresolved={ministrySlugUnresolved}
+          initialEventSlugUnresolved={eventSlugUnresolved}
         />
-        <ChurchInfoSidebar />
+        <ContactInfoSidebar />
       </div>
     </section>
   );

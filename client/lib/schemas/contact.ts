@@ -13,7 +13,7 @@ const optionalKebabSlug = z.preprocess(
 );
 
 export const contactSchema = z.object({
-  name: z.string().min(2, "Name is required."),
+  name: z.string().min(4, "Full name is required."),
   email: z.email("A valid email is required."),
   purpose: z.enum([
     "general",
@@ -26,6 +26,7 @@ export const contactSchema = z.object({
   message: z.string().min(10, "Please share a little more detail."),
   churchSlug: optionalKebabSlug,
   ministrySlug: optionalKebabSlug,
+  eventSlug: optionalKebabSlug,
 });
 
 export type ContactSchema = z.infer<typeof contactSchema>;

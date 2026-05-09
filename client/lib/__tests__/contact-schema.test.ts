@@ -66,4 +66,31 @@ describe("contact schema", () => {
 
     expect(result.success).toBe(false);
   });
+
+  test("accepts events purpose with event slug", () => {
+    const result = contactSchema.safeParse({
+      name: "CRM Visitor",
+      email: "visitor@example.com",
+      purpose: "events",
+      message: "I would like more information about this gathering when you reply.",
+      eventSlug: "crm-usa-national-convention-2026",
+    });
+
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.eventSlug).toBe("crm-usa-national-convention-2026");
+    }
+  });
+
+  test("rejects invalid event slug", () => {
+    const result = contactSchema.safeParse({
+      name: "CRM Visitor",
+      email: "visitor@example.com",
+      purpose: "events",
+      message: "I would like more information about this gathering when you reply.",
+      eventSlug: "Bad Slug",
+    });
+
+    expect(result.success).toBe(false);
+  });
 });

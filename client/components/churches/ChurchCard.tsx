@@ -1,19 +1,12 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Church } from "@/lib/types";
+import { contactHrefForChurchListing } from "@/lib/contact-hrefs";
 import {
   getChurchListingHref,
   isDirectoryBranchLinkChurch,
 } from "@/lib/church-utils";
 import ChurchLink from "@/components/churches/ChurchLink";
-
-function contactHrefForChurchListing(slug: string): string {
-  const params = new URLSearchParams({
-    purpose: "churches",
-    churchSlug: slug,
-  });
-  return `/contact?${params.toString()}`;
-}
 
 function branchCtaLabel(church: Church): string {
   return church.mode === "internal-page"

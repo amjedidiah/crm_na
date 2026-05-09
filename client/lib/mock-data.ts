@@ -30,10 +30,10 @@ export const CONTACT_EMAIL = SITE_CONTACT.email;
 export const CONTACT_PHONE = SITE_CONTACT.phone;
 export const GIVING_URL = "https://crm-na.org/give/";
 export const SOCIAL_LINKS: SocialLink[] = [
-  {
-    label: "YouTube",
-    href: "https://youtube.com/@crmna",
-  },
+  // {
+  //   label: "YouTube",
+  //   href: "https://youtube.com/@crmna",
+  // },
 ];
 
 const LEADER_PLACEHOLDER_IMAGE = "https://i.ibb.co/DP3Wjy63/avatar.png";

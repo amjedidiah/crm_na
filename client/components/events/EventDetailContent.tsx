@@ -5,12 +5,12 @@ import Button from "@/components/shared/Button";
 import GalleryPreview from "@/components/gallery/GalleryPreview";
 import MapEmbed from "@/components/shared/MapEmbed";
 import SectionHeader from "@/components/shared/SectionHeader";
+import { contactHrefForEvent } from "@/lib/contact-hrefs";
 import { formatEventDateRange } from "@/lib/utils";
 
 function EventDetailContent({ event }: Readonly<{ event: Event }>) {
   const location = event.location.trim();
   const showMap = location.length > 0;
-  const hasActionRow = Boolean(event.registrationUrl || event.livestreamUrl);
 
   return (
     <section className="section-padding">
@@ -83,18 +83,19 @@ function EventDetailContent({ event }: Readonly<{ event: Event }>) {
           ) : null}
         </div>
 
-        {hasActionRow ? (
-          <div className="flex flex-wrap gap-4">
-            {event.registrationUrl ? (
-              <Button href={event.registrationUrl}>Register for this event</Button>
-            ) : null}
-            {event.livestreamUrl ? (
-              <Button href={event.livestreamUrl} variant="outline">
-                Join livestream
-              </Button>
-            ) : null}
-          </div>
-        ) : null}
+        <div className="flex flex-wrap gap-4">
+          {event.registrationUrl ? (
+            <Button href={event.registrationUrl}>Register for this event</Button>
+          ) : null}
+          {event.livestreamUrl ? (
+            <Button href={event.livestreamUrl} variant="outline">
+              Join livestream
+            </Button>
+          ) : null}
+          <Button href={contactHrefForEvent(event.slug)} variant="outline">
+            Contact us about this event
+          </Button>
+        </div>
 
         {showMap ? (
           <div className="space-y-4">

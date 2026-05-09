@@ -2,8 +2,11 @@
 
 import { useFormStatus } from "react-dom";
 
-function SubmitButton() {
-  const { pending } = useFormStatus();
+function SubmitButton({
+  pending: pendingProp,
+}: Readonly<{ pending?: boolean }> = {}) {
+  const { pending: formPending } = useFormStatus();
+  const pending = pendingProp ?? formPending;
 
   return (
     <button
