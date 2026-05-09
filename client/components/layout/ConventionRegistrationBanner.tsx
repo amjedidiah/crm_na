@@ -1,10 +1,10 @@
 "use client";
 
 import { X } from "lucide-react";
-import { usePathname, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { buildConventionRegistrationUrl } from "@/lib/convention-public";
+import { isConventionHeroPromoEnabled } from "@/lib/convention-hero-promo";
 import { cn } from "@/lib/utils";
+import { useConventionRegistrationHref } from "@/lib/use-convention-registration-href";
 
 const STORAGE_KEY = "crm-na-convention-2026-banner-dismissed";
 /** Same threshold as `Navbar` so the bar turns solid when the header does. */
@@ -19,13 +19,10 @@ function setBannerHeightPx(px: number) {
 
 function ConventionRegistrationBanner() {
   const barRef = useRef<HTMLElement>(null);
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const registerHref = useConventionRegistrationHref();
   const [dismissed, setDismissed] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const search = searchParams.toString();
-  const returnTo = search === "" ? pathname : `${pathname}?${search}`;
-  const registerHref = buildConventionRegistrationUrl({ returnTo });
+  const promoEnabled = isConventionHeroPromoEnabled();
 
   const measure = useCallback(() => {
     const el = barRef.current;
@@ -34,7 +31,7 @@ function ConventionRegistrationBanner() {
   }, []);
 
   useLayoutEffect(() => {
-    if (dismissed) {
+    if (dismissed || !promoEnabled) {
       setBannerHeightPx(0);
       return;
     }
@@ -54,7 +51,7 @@ function ConventionRegistrationBanner() {
     const w = globalThis.window;
     w?.addEventListener("resize", measure, { passive: true });
     return () => w?.removeEventListener("resize", measure);
-  }, [dismissed, measure]);
+  }, [dismissed, measure, promoEnabled]);
 
   const dismiss = useCallback(() => {
     try {
@@ -66,7 +63,7 @@ function ConventionRegistrationBanner() {
   }, []);
 
   useEffect(() => {
-    if (dismissed) return;
+    if (dismissed || !promoEnabled) return;
 
     const onScroll = () => {
       setScrolled(globalThis.window.scrollY > SCROLL_SOLID_AFTER);
@@ -75,9 +72,9 @@ function ConventionRegistrationBanner() {
     onScroll();
     globalThis.window.addEventListener("scroll", onScroll, { passive: true });
     return () => globalThis.window.removeEventListener("scroll", onScroll);
-  }, [dismissed]);
+  }, [dismissed, promoEnabled]);
 
-  if (dismissed) {
+  if (dismissed || !promoEnabled) {
     return null;
   }
 

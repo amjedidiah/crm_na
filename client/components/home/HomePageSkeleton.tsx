@@ -1,23 +1,46 @@
+import { isConventionHeroPromoEnabled } from "@/lib/convention-hero-promo";
+
 /** Loading placeholder for the home route — mirrors section rhythm of `app/page.tsx` / `HeroSection`. */
 function HomePageSkeleton() {
+  const showConventionPromo = isConventionHeroPromoEnabled();
+
   return (
     <div className="overflow-x-clip bg-page-canvas text-fg-primary">
-      {/* HeroSection — matches `HeroSection` outer shell + `container-shell ... pb-20 md:pb-24` */}
-      <section
-        className="hero-panel relative -mt-[calc(var(--nav-height)+var(--site-banner-height))] overflow-hidden rounded-b-[clamp(1.25rem,4vw,2.75rem)] pt-[calc(var(--nav-height)+var(--site-banner-height)+2rem)] md:pt-[calc(var(--nav-height)+var(--site-banner-height)+5.5rem)]"
-      >
+      {/* HeroSection — mirrors tabbed convention-first hero when promo is active. */}
+      <section className="hero-panel relative -mt-[calc(var(--nav-height)+var(--site-banner-height))] overflow-hidden rounded-b-[clamp(1.25rem,4vw,2.75rem)] pt-[calc(var(--nav-height)+var(--site-banner-height)+2rem)] md:pt-[calc(var(--nav-height)+var(--site-banner-height)+5.5rem)]">
         <div className="container-shell relative mx-auto space-y-10 pb-20 md:pb-24">
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <div className="h-4 w-36 animate-pulse rounded bg-shimmer-emphasis-muted" />
-              <div className="h-14 max-w-4xl animate-pulse rounded bg-shimmer-emphasis md:h-[clamp(3.25rem,8vw,4.75rem)]" />
-              <div className="h-6 max-w-2xl animate-pulse rounded bg-shimmer-emphasis-muted" />
+          {showConventionPromo ? (
+            <div className="h-12 w-[20rem] max-w-full animate-pulse rounded-full bg-shimmer-emphasis-muted" />
+          ) : null}
+          {showConventionPromo ? (
+            <div className="grid min-h-112 gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(18rem,0.95fr)] lg:items-center">
+              <div className="space-y-8">
+                <div className="space-y-4">
+                  <div className="h-4 w-40 animate-pulse rounded bg-shimmer-emphasis-muted" />
+                  <div className="h-14 max-w-4xl animate-pulse rounded bg-shimmer-emphasis md:h-[clamp(3.25rem,8vw,4.75rem)]" />
+                  <div className="h-5 w-64 animate-pulse rounded bg-shimmer-emphasis-muted" />
+                  <div className="h-24 max-w-3xl animate-pulse rounded bg-shimmer-emphasis-muted" />
+                </div>
+                <div className="flex flex-wrap gap-4 pt-2">
+                  <div className="h-12 w-44 animate-pulse rounded bg-shimmer-emphasis-muted" />
+                  <div className="h-12 w-44 animate-pulse rounded bg-shimmer-emphasis-muted" />
+                </div>
+              </div>
+              <div className="aspect-4/5 w-full animate-pulse rounded-[1.8rem] bg-shimmer-emphasis-muted" />
             </div>
-            <div className="flex flex-wrap gap-4 pt-2">
-              <div className="h-12 w-44 animate-pulse rounded bg-shimmer-emphasis-muted" />
-              <div className="h-12 w-44 animate-pulse rounded bg-shimmer-emphasis-muted" />
+          ) : (
+            <div className="min-h-112 space-y-8">
+              <div className="space-y-4">
+                <div className="h-4 w-36 animate-pulse rounded bg-shimmer-emphasis-muted" />
+                <div className="h-14 max-w-4xl animate-pulse rounded bg-shimmer-emphasis md:h-[clamp(3.25rem,8vw,4.75rem)]" />
+                <div className="h-6 max-w-2xl animate-pulse rounded bg-shimmer-emphasis-muted" />
+              </div>
+              <div className="flex flex-wrap gap-4 pt-2">
+                <div className="h-12 w-44 animate-pulse rounded bg-shimmer-emphasis-muted" />
+                <div className="h-12 w-44 animate-pulse rounded bg-shimmer-emphasis-muted" />
+              </div>
             </div>
-          </div>
+          )}
         </div>
         {/* BranchMarquee */}
         <div
@@ -116,7 +139,10 @@ function HomePageSkeleton() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {Array.from({ length: 6 }).map((_, i) => (
-              <div key={`min-${i.toString()}`} className="card-surface h-36 animate-pulse p-6">
+              <div
+                key={`min-${i.toString()}`}
+                className="card-surface h-36 animate-pulse p-6"
+              >
                 <div className="h-5 w-2/3 rounded bg-shimmer-canvas" />
                 <div className="mt-4 h-4 w-full rounded bg-shimmer-canvas" />
               </div>

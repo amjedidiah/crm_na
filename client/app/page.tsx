@@ -9,6 +9,7 @@ import PrayerRequestBanner from "@/components/home/PrayerRequestBanner";
 import ServeWithMinistries from "@/components/home/ServeWithMinistries";
 import WelcomeSection from "@/components/home/WelcomeSection";
 import FadeInWhenVisible from "@/components/shared/FadeInWhenVisible";
+import { CONVENTION_EVENT_SLUG } from "@/lib/convention-hero-promo";
 import {
   SITE_DESCRIPTION,
   SITE_TITLE,
@@ -29,6 +30,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const revalidate = 60;
+
 async function HomePage() {
   const [churches, events, galleryAlbums, ministries] = await Promise.all([
     getChurches(),
@@ -36,10 +39,12 @@ async function HomePage() {
     getGalleryAlbums(),
     getMinistries(),
   ]);
+  const conventionEvent =
+    events.find((event) => event.slug === CONVENTION_EVENT_SLUG) ?? null;
 
   return (
     <div className="overflow-x-clip bg-page-canvas text-fg-primary">
-      <HeroSection />
+      <HeroSection conventionEvent={conventionEvent} />
       <NetworkPulse
         churchCount={churches.length}
         eventCount={events.length}
