@@ -1,7 +1,8 @@
-"use client";
-
 import type { ContactFormPurpose } from "@/lib/types";
-import { CONTACT_FORM_PURPOSES, CONTACT_PURPOSE_LABELS } from "@/lib/contact-purposes";
+import {
+  CONTACT_FORM_PURPOSES,
+  CONTACT_PURPOSE_LABELS,
+} from "@/lib/contact-purposes";
 
 function ContactPurposeTabs({
   ariaLabelledBy,
