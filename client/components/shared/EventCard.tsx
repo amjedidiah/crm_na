@@ -30,7 +30,7 @@ function EventCard({ event }: Readonly<{ event: Event }>) {
         </div>
       </div>
 
-      <div className="mt-6 flex flex-col gap-3 border-t border-(--border-default) pt-6">
+      <div className="mt-6 flex flex-col gap-12 border-t border-(--border-default) pt-6">
         {location ? (
           <div className="flex gap-3">
             <MapPin
@@ -47,18 +47,20 @@ function EventCard({ event }: Readonly<{ event: Event }>) {
             </div>
           </div>
         ) : null}
-        <EventLink
-          event={event}
-          className="font-display inline-flex text-xs tracking-[0.2em] uppercase text-(--text-brand)"
-        >
-          {eventListingLabel(event)}
-        </EventLink>
-        <Link
-          href={contactHrefForEvent(event.slug)}
-          className="font-display inline-flex text-xs tracking-[0.2em] uppercase text-(--text-secondary) underline decoration-(--border-default) underline-offset-4 hover:text-(--text-primary)"
-        >
-          Contact about this event
-        </Link>
+        <div className="flex flex-col gap-5">
+          <EventLink
+            event={event}
+            className="font-display inline-flex text-xs tracking-[0.2em] uppercase text-(--text-brand)"
+          >
+            {eventListingLabel(event)}
+          </EventLink>
+          <Link
+            href={contactHrefForEvent(event.slug)}
+            className="font-display inline-flex text-xs tracking-[0.2em] uppercase text-(--text-secondary) underline decoration-(--border-default) underline-offset-4 hover:text-(--text-primary)"
+          >
+            Contact about this event
+          </Link>
+        </div>
       </div>
     </article>
   );
