@@ -15,12 +15,12 @@ function SectionHeader({
   inverse = false,
 }: Readonly<SectionHeaderProps>) {
   return (
-    <div className={cn("space-y-3", inverse && "text-(--color-fg-inverse)")}>
+    <div className={cn("space-y-3", inverse && "text-fg-inverse")}>
       {eyebrow ? (
         <p
           className={cn(
             "eyebrow",
-            inverse && "text-(--color-fg-accent-strong)",
+            inverse && "text-fg-accent-strong",
           )}
         >
           {eyebrow}
@@ -31,9 +31,7 @@ function SectionHeader({
         <p
           className={cn(
             "max-w-3xl text-lg leading-8",
-            inverse
-              ? "text-(--color-fg-inverse-soft)"
-              : "text-(--color-fg-secondary)",
+            inverse ? "text-fg-inverse-soft" : "text-fg-secondary",
           )}
         >
           {description}

@@ -35,7 +35,7 @@ function WelcomeSection() {
                 },
                 {
                   label: "Discipleship",
-                  body: "Churches, ministries, devotionals, and gallery stories now connect into one clearer pathway for growth.",
+                  body: "Believers are encouraged toward maturity through church centers, ministry life, spiritual gifts, and practical service.",
                 },
               ].map((item) => (
                 <Motion
@@ -57,7 +57,7 @@ function WelcomeSection() {
             </div>
             <div className="space-y-5 pt-1">
               <Link
-                href="/who-we-are#leadership"
+                href="/about#leadership"
                 className="font-display inline-flex items-center gap-2 text-xs tracking-[0.22em] uppercase text-(--color-fg-accent-text)"
               >
                 Meet our leadership

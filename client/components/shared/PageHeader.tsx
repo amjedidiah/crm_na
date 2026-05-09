@@ -18,11 +18,11 @@ function PageHeader({
       <div className="container-shell space-y-5 py-10">
         {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
         <h1 className="max-w-4xl text-5xl leading-none md:text-7xl">{title}</h1>
-        {description ? (
-          <p className="max-w-3xl text-lg leading-8 text-(--color-fg-inverse-soft) md:text-xl">
-            {description}
-          </p>
-        ) : null}
+      {description ? (
+        <p className="max-w-3xl text-lg leading-8 text-fg-inverse-soft md:text-xl">
+          {description}
+        </p>
+      ) : null}
         {children}
       </div>
     </section>

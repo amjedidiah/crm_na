@@ -1,13 +1,44 @@
 import type { Leader } from "@/lib/types";
+import { cn } from "@/lib/utils";
+import LeaderPortrait from "@/components/leadership/LeaderPortrait";
 
-function LeaderCard({ leader }: Readonly<{ leader: Leader }>) {
+type LeaderCardVariant = "default" | "compact" | "preview";
+
+function LeaderCard({
+  leader,
+  variant = "default",
+  priority = false,
+}: Readonly<{
+  leader: Leader;
+  variant?: LeaderCardVariant;
+  priority?: boolean;
+}>) {
+  const showBio = variant !== "preview";
+  const headingClassName =
+    variant === "compact" ? "text-2xl" : "text-3xl leading-tight";
+
   return (
-    <article className="card-surface space-y-3 p-6">
-      <h3 className="text-3xl">{leader.name}</h3>
-      <p className="text-(--color-fg-secondary)">{leader.title}</p>
-      <p className="text-sm leading-7 text-(--color-fg-secondary)">
-        {leader.bio}
-      </p>
+    <article className="card-surface overflow-hidden p-4">
+      <div
+        className={cn(
+          "grid gap-4",
+          variant === "compact"
+            ? "sm:grid-cols-[140px_1fr] sm:items-start"
+            : "grid-cols-1",
+        )}
+      >
+        <LeaderPortrait leader={leader} priority={priority} />
+        <div className="space-y-3 p-2">
+          <p className="eyebrow">{leader.region ?? "CRM NA"}</p>
+          <h3 className={headingClassName}>{leader.name}</h3>
+          <p className="text-fg-secondary">{leader.title}</p>
+          {showBio ? (
+            <p className="text-sm leading-7 text-fg-secondary">
+              {leader.bio}
+            </p>
+          ) : null}
+        </div>
+      </div>
     </article>
   );
 }

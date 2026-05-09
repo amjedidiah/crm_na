@@ -39,6 +39,8 @@ export interface Leader {
   name: string;
   title: string;
   bio: string;
+  imageSrc?: string;
+  imageAlt?: string;
   region?: Region;
   churchSlug?: string;
   ministrySlug?: string;

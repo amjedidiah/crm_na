@@ -36,13 +36,18 @@ export const SOCIAL_LINKS: SocialLink[] = [
   },
 ];
 
+const LEADER_PLACEHOLDER_IMAGE = "https://i.ibb.co/DP3Wjy63/avatar.png";
+
 export const leaders: Leader[] = [
   {
     id: "peter-ezekwenna",
     name: "Dr. Peter Ezekwenna",
-    title: "National Overseer",
+    title: "National Overseer, CRM North America",
     region: "USA",
-    bio: "Founding CRM NA leader with oversight responsibility for the North America expression of the ministry.",
+    imageSrc:
+      "https://i0.wp.com/crm-na.org/wp-content/uploads/2016/05/PETER-EZ.jpg",
+    imageAlt: "Portrait placeholder for Dr. Peter Ezekwenna",
+    bio: "Current National Overseer for CRM North America, founding CRM leader, and member of the founding General Core Group.",
   },
   {
     id: "marcel-odimgbe",
@@ -50,7 +55,19 @@ export const leaders: Leader[] = [
     title: "Senior Pastor, CRM Word of Life",
     churchSlug: "crm-word-of-life",
     region: "USA",
-    bio: "Leads CRM Word of Life in Woodbridge, Virginia and serves in national leadership functions.",
+    imageSrc: LEADER_PLACEHOLDER_IMAGE,
+    imageAlt: "Portrait placeholder for Pastor Marcel Odimgbe",
+    bio: "Senior Pastor of Charismatic Renewal Ministries Word of Life Fellowship in Woodbridge, Virginia, serving alongside a strong family and pastoral ministry presence.",
+  },
+  {
+    id: "francisca-odimgbe",
+    name: "Pastor Francisca Odimgbe",
+    title: "Pastoral Leader, CRM Word of Life",
+    churchSlug: "crm-word-of-life",
+    region: "USA",
+    imageSrc: LEADER_PLACEHOLDER_IMAGE,
+    imageAlt: "Portrait placeholder for Pastor Francisca Odimgbe",
+    bio: "Serves within the pastoral leadership of CRM Word of Life and reflects the couple-led ministry presence highlighted in CRM NA public materials.",
   },
   {
     id: "chizo-nwaneri",
@@ -58,7 +75,9 @@ export const leaders: Leader[] = [
     title: "Lead Pastor, CRM Praise Center",
     churchSlug: "crm-praise-center",
     region: "USA",
-    bio: "Leads CRM Praise Center and provides regional coordination support for the northeast.",
+    imageSrc: "https://i.ibb.co/Kzhmd5vh/7D6A1016.jpg",
+    imageAlt: "Portrait placeholder for Pastor Chizo Nwaneri",
+    bio: "Lead Pastor of CRM Praise Center and a regional coordinator focused on cohesion, support, and brotherhood across CRM branches.",
   },
   {
     id: "chinyere-ezeama",
@@ -66,15 +85,32 @@ export const leaders: Leader[] = [
     title: "Campus Elder, CRM Rhode Island",
     churchSlug: "crm-rhode-island",
     region: "USA",
-    bio: "Started CRM Rhode Island in 2020 after many years of pastoral service in Nigeria.",
+    imageSrc:
+      "https://i0.wp.com/crm-na.org/wp-content/uploads/2016/05/Pastor-Chinyere-e1655006200738.jpg",
+    imageAlt: "Portrait placeholder for Pastor Chinyere Ezeama",
+    bio: "Pastored CRM Umuzike in Orlu, Imo State, Nigeria from 2003 to 2019 and helped start CRM Rhode Island in April 2020.",
+  },
+  {
+    id: "mike-ekwem",
+    name: "Pastor Mike Ekwem",
+    title: "Resident Pastor, Grace & Glory Sanctuary",
+    churchSlug: "grace-glory-sanctuary",
+    region: "USA",
+    imageSrc:
+      "https://i0.wp.com/crm-na.org/wp-content/uploads/2022/06/Pastor-Mike-Ekwem-GGS-Houston-scaled-e1655006432178.jpg",
+    imageAlt: "Portrait placeholder for Pastor Mike Ekwem",
+    bio: "Resident Pastor and administrator of Grace & Glory Sanctuary in Houston, Texas, and instrumental to its start-up.",
   },
   {
     id: "solomon-inikori",
     name: "Dr. Solomon Inikori",
-    title: "Senior Pastor, Grace & Glory Sanctuary",
+    title: "Campus Elder, Grace & Glory Sanctuary",
     churchSlug: "grace-glory-sanctuary",
     region: "USA",
-    bio: "Senior pastor of Grace & Glory Sanctuary in Houston, Texas.",
+    imageSrc:
+      "https://i0.wp.com/crm-na.org/wp-content/uploads/2022/04/Dr.-Solomon-O.-Inikori-Snr-Pastor-GGS-Houston-min.jpg",
+    imageAlt: "Portrait placeholder for Dr. Solomon Inikori",
+    bio: "Campus Elder of Grace & Glory Sanctuary in Houston, Texas, with long-standing service in CRM NA leadership.",
   },
   {
     id: "prudent-okoli",
@@ -82,7 +118,46 @@ export const leaders: Leader[] = [
     title: "Youth Leader, CRM NA",
     ministrySlug: "youths",
     region: "USA",
-    bio: "Coordinates the CRM NA youth ministry and virtual Bible study rhythms across regions.",
+    imageSrc:
+      "https://i0.wp.com/crm-na.org/wp-content/uploads/2016/05/Prudential-Okoli-1.jpg",
+    imageAlt: "Portrait placeholder for Pastor Prudent Okoli",
+    bio: "Coordinates CRM NA youth ministry and helped establish the North America youth forum across branches.",
+  },
+  {
+    id: "joe-atodo",
+    name: "Joe Atodo",
+    title: "Lead Pastor, CRM Ottawa",
+    region: "Canada",
+    imageSrc: LEADER_PLACEHOLDER_IMAGE,
+    imageAlt: "Portrait placeholder for Joe Atodo",
+    bio: "Provides local pastoral leadership for CRM Ottawa within the Canadian expression of the ministry.",
+  },
+  {
+    id: "pastor-tony",
+    name: "Pastor Tony",
+    title: "Lead Pastor, CRM Alberta",
+    region: "Canada",
+    imageSrc: LEADER_PLACEHOLDER_IMAGE,
+    imageAlt: "Portrait placeholder for Pastor Tony",
+    bio: "Serves as lead pastor in Alberta and represents CRM NA leadership within western Canada.",
+  },
+  {
+    id: "pastor-matthew",
+    name: "Pastor Matthew",
+    title: "Pastor, CRM North Bay",
+    region: "Canada",
+    imageSrc: LEADER_PLACEHOLDER_IMAGE,
+    imageAlt: "Portrait placeholder for Pastor Matthew",
+    bio: "Pastors the North Bay fellowship and contributes to the ministry's pastoral presence in Canada.",
+  },
+  {
+    id: "ignatius-nwafor",
+    name: "Ignatius Nwafor",
+    title: "CRM Canada National Overseer",
+    region: "Canada",
+    imageSrc: LEADER_PLACEHOLDER_IMAGE,
+    imageAlt: "Portrait placeholder for Ignatius Nwafor",
+    bio: "Provides national oversight for CRM Canada within the wider North American ministry family.",
   },
 ];
 
@@ -95,7 +170,8 @@ export const churches: Church[] = [
     city: "Woodbridge",
     stateOrProvince: "Virginia",
     country: "United States",
-    summary: "A revival church center serving families in Woodbridge, Virginia.",
+    summary:
+      "A revival church center serving families in Woodbridge, Virginia.",
     story: [
       "CRM Word of Life serves families in Northern Virginia through prayer, Bible teaching, and pastoral care rooted in charismatic renewal.",
       "The church gathers worshipers who want strong preaching, spiritual family, and a practical path into service and discipleship.",
@@ -109,9 +185,7 @@ export const churches: Church[] = [
       { label: "Sunday Worship", day: "Sunday", time: "10:00 AM" },
       { label: "Digging Deep / Prayer", day: "Thursday", time: "7:00 PM" },
     ],
-    programs: [
-      { title: "Evangelism", cadence: "Saturday", note: "4:00 PM" },
-    ],
+    programs: [{ title: "Evangelism", cadence: "Saturday", note: "4:00 PM" }],
   },
   {
     slug: "crm-praise-center",
@@ -121,7 +195,8 @@ export const churches: Church[] = [
     city: "New Haven",
     stateOrProvince: "Connecticut",
     country: "United States",
-    summary: "A CRM NA branch with strong ministry programming and regional leadership presence.",
+    summary:
+      "A CRM NA branch with strong ministry programming and regional leadership presence.",
     story: [
       "CRM Praise Center was inaugurated in 2005 and has grown into a stable New Haven church family with regional influence.",
       "The branch is known for worship, deliverance prayer, pastoral leadership, and ministry opportunities that keep members engaged through the week.",
@@ -134,7 +209,11 @@ export const churches: Church[] = [
     pastorId: "chizo-nwaneri",
     serviceTimes: [
       { label: "Sunday Power Service", day: "Sunday", time: "10:00 AM" },
-      { label: "Thursday Miracle & Deliverance", day: "Thursday", time: "7:00 PM" },
+      {
+        label: "Thursday Miracle & Deliverance",
+        day: "Thursday",
+        time: "7:00 PM",
+      },
     ],
     programs: [
       { title: "Weekly House Fellowships", cadence: "Weekly" },
@@ -149,7 +228,8 @@ export const churches: Church[] = [
     city: "Providence",
     stateOrProvince: "Rhode Island",
     country: "United States",
-    summary: "A newer CRM NA church center with a strong revival and discipleship emphasis.",
+    summary:
+      "A newer CRM NA church center with a strong revival and discipleship emphasis.",
     story: [
       "CRM Rhode Island started in 2020 with a strong burden for revival, prayer, and discipleship in the Northeast corridor.",
       "The branch serves believers looking for intimate worship, practical teaching, and a church family that grows people in faith.",
@@ -159,7 +239,9 @@ export const churches: Church[] = [
     email: CONTACT_EMAIL,
     livestreamUrl: "https://youtube.com/@crmna",
     pastorId: "chinyere-ezeama",
-    serviceTimes: [{ label: "Sunday Fellowship", day: "Sunday", time: "10:00 AM" }],
+    serviceTimes: [
+      { label: "Sunday Fellowship", day: "Sunday", time: "10:00 AM" },
+    ],
     programs: [{ title: "Counseling and Prayer", cadence: "By appointment" }],
   },
   {
@@ -170,7 +252,8 @@ export const churches: Church[] = [
     city: "Houston",
     stateOrProvince: "Texas",
     country: "United States",
-    summary: "A Houston-based church center with resident and senior leadership functions.",
+    summary:
+      "A Houston-based church center with resident and senior leadership functions.",
     story: [
       "Grace & Glory Sanctuary is one of the core CRM NA branches in the United States and a key gathering point for regional believers.",
       "The Houston church centers its life around worship, leadership formation, intercession, and faithful pastoral presence.",
@@ -180,7 +263,9 @@ export const churches: Church[] = [
     email: CONTACT_EMAIL,
     livestreamUrl: "https://youtube.com/@crmna",
     pastorId: "solomon-inikori",
-    serviceTimes: [{ label: "Sunday Worship", day: "Sunday", time: "10:00 AM" }],
+    serviceTimes: [
+      { label: "Sunday Worship", day: "Sunday", time: "10:00 AM" },
+    ],
     programs: [{ title: "Prayer and Teaching", cadence: "Weekly" }],
   },
 ];
@@ -189,7 +274,8 @@ export const ministries: Ministry[] = [
   {
     slug: "youths",
     name: "Youths",
-    summary: "CRM NA youth ministry with weekly virtual Bible study and leadership development.",
+    summary:
+      "CRM NA youth ministry with weekly virtual Bible study and leadership development.",
     description: [
       "The youth ministry gathers students and young adults for Bible study, peer discipleship, and leadership formation across branches.",
       "Its rhythms are designed to help younger believers grow in Scripture, purity, service, and confidence in the gifts of the Spirit.",
@@ -254,12 +340,16 @@ export const ministries: Ministry[] = [
     slug: "kings-men",
     legacyPath: "/kings-men/",
     name: "King’s Men",
-    summary: "Men’s ministry focused on spiritual maturity, leadership, and family life.",
+    summary:
+      "Men’s ministry focused on spiritual maturity, leadership, and family life.",
     description: [
       "King's Men calls men into prayer, spiritual maturity, accountability, and courageous leadership at home, in church, and in the marketplace.",
     ],
     leaderIds: [],
-    meetingSchedule: ["Quarterly fellowship", "Leadership and accountability gatherings"],
+    meetingSchedule: [
+      "Quarterly fellowship",
+      "Leadership and accountability gatherings",
+    ],
     focusAreas: ["Men", "Leadership", "Discipleship"],
     imageSrc: "https://placehold.co/1200x800/2F5233/F7F2E8?text=King's+Men",
     galleryImages: [
@@ -297,7 +387,8 @@ export const events: Event[] = [
     location:
       "Holiday Inn NW Houston, 3539 N Sam Houston Pkwy West, Houston, TX 77086",
     registrationUrl: CONVENTION_REGISTRATION_URL,
-    imageSrc: "https://placehold.co/1600x900/6A1B2D/F7F2E8?text=Convention+2026",
+    imageSrc:
+      "https://placehold.co/1600x900/6A1B2D/F7F2E8?text=Convention+2026",
     galleryImages: [
       {
         src: "https://placehold.co/1200x800/6A1B2D/F7F2E8?text=Opening+Night",
@@ -426,66 +517,80 @@ export const publications: Publication[] = [
 
 export const coreValues: CoreValue[] = [
   {
-    title: "Faithfulness",
-    scripture: "1 Corinthians 4:2",
-    description: "We prioritize obedience, consistency, and integrity in ministry stewardship.",
+    title: "Whole Gospel",
+    scripture: "Mark 16:15-18",
+    description:
+      "CRM NA emphasizes preaching and demonstrating the whole gospel through word, prayer, and Spirit-led ministry.",
+  },
+  {
+    title: "Equipping",
+    scripture: "Ephesians 4:11-13",
+    description:
+      "The ministry exists to teach converts, train workers, and equip ministers for faithful service.",
+  },
+  {
+    title: "Care",
+    scripture: "Galatians 6:2",
+    description:
+      "Pastoral care includes practical support for families, singles, the sick, the poor, the unemployed, the bereaved, and the imprisoned.",
   },
   {
     title: "Revival",
     scripture: "Habakkuk 3:2",
-    description: "We exist to carry spiritual renewal into churches, homes, and communities.",
-  },
-  {
-    title: "Love",
-    scripture: "John 13:35",
-    description: "Love is a non-negotiable marker of our life together and our witness.",
-  },
-  {
-    title: "Service",
-    scripture: "Mark 10:45",
-    description: "We develop believers to serve with humility, courage, and spiritual maturity.",
+    description:
+      "CRM NA pursues revival in personal lives, the church, and society through church centers and ministry departments.",
   },
 ];
 
 export const historyTimeline: TimelineEntry[] = [
   {
     year: "1980",
-    title: "CRM Prophetic Beginning",
-    description: "The ministry traces its origin to the prophetic birthing of CRM at the University of Ife.",
+    title: "CRM Is Prophetically Birthed",
+    description:
+      "The ministry traces its origin to the prophetic birthing of CRM at the University of Ife.",
   },
   {
     year: "1985",
     title: "North America Prophecy",
-    description: "A CRM prayer camp prophecy described members being sent out as arrows of revival beyond Nigeria.",
+    description:
+      "A CRM prayer camp prophecy described members being sent out as arrows of revival beyond Nigeria.",
   },
   {
     year: "1997",
     title: "First Missions Conference",
-    description: "Brethren in the United States and United Kingdom gathered for the first missions conference in Missouri.",
+    description:
+      "Brethren in the United States and United Kingdom gathered for the first missions conference in Missouri.",
+  },
+  {
+    year: "1998",
+    title: "First CRM NA Core Group",
+    description:
+      "At the Maryland national conference, the first CRM NA Core Group was constituted and Pastor Chris Akpama headed the team.",
   },
   {
     year: "2002",
     title: "First Formal CRM NA Church Center",
-    description: "The 2002 national conference birthed the first formal CRM NA church center in Maryland.",
+    description:
+      "The 2002 national conference birthed the first formal CRM NA church center, God is Love, in Maryland.",
   },
 ];
 
 export const whoWeAreIntro = {
-  title: "We charismatics still make the devil tremble",
+  title: "We Charismatics Make The Devil Cry",
   summary:
-    "CRM NA is a Pentecost-friendly family of churches and ministries pressing after Jesus with joy, integrity, and courageous faith in the power of the Holy Spirit.",
+    "CRM NA is a revival family shaped by prayer, Spirit-filled worship, plural leadership, and the call to prepare people for the great harvest.",
   points: [
-    "We plant and strengthen local church centers that preach the full gospel, train disciples, and prioritize prayer, worship, and Spirit-led witness.",
-    "We resource leaders, youth, women, and men with teaching, media, and relational care that keeps revival accountable to Scripture.",
-    "We welcome newcomers, returning believers, and long-time members into a clearer picture of the churches, ministries, gatherings, and pastoral voices shaping CRM in North America.",
+    "We build church centers, home clusters, cell groups, and ministry departments as practical revival structures.",
+    "We help believers discover, grow, and mature in their gifts and calling through serving the Lord.",
+    "We welcome newcomers and long-time members into a church family that values Scripture, spiritual gifts, pastoral care, and mission.",
   ],
 };
 
 export const visionContent = {
   title: "Preparing men for the great harvest",
   body: [
-    "CRM North America exists to raise disciples who know Christ, move in the power of the Holy Spirit, and carry the gospel into homes, campuses, cities, and nations.",
-    "Our vision is not only to gather meetings, but to prepare men and women whose lives, convictions, and service can help sustain a genuine harvest for the kingdom of God.",
+    "CRM North America exists to prepare men and women with faithful and obedient hearts for the Lord's harvest.",
+    "That vision is expressed through prayer, discipleship, church centers, and ministries that help believers receive, enjoy, and share God's love and light with humanity.",
   ],
 };
 

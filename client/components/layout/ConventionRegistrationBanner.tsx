@@ -86,16 +86,16 @@ function ConventionRegistrationBanner() {
           : "border-(--color-border-subtle) bg-(--color-bg-canvas-elevated) text-(--color-fg-primary) shadow-nav backdrop-blur-md",
       )}
     >
-      <div className="container-shell flex flex-wrap items-center justify-center gap-x-4 gap-y-2 py-2.5 pr-10 pl-4 sm:justify-between sm:pr-12 sm:pl-6">
+      <div className="container-shell flex flex-col gap-3 py-3 pl-4 pr-14 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-x-4 sm:gap-y-2 sm:py-2.5 sm:pr-12 md:pl-6">
         <p
           className={cn(
-            "text-center text-sm leading-snug transition-colors duration-300 sm:text-left md:text-base",
+            "min-w-0 text-balance text-center text-sm leading-snug transition-colors duration-300 sm:text-left md:text-base",
             scrolled ? "text-(--color-fg-inverse-bright)" : "max-sm:text-(--color-fg-secondary)",
           )}
         >
           <span
             className={cn(
-              "font-display max-sm:mb-1 max-sm:block text-xs tracking-[0.22em] uppercase sm:mr-2 sm:inline",
+              "font-display mb-1 block text-xs tracking-[0.22em] uppercase sm:mb-0 sm:mr-2 sm:inline",
               scrolled
                 ? "text-(--color-fg-accent-strong)"
                 : "text-(--color-fg-accent-text)",
@@ -108,12 +108,14 @@ function ConventionRegistrationBanner() {
               scrolled ? "text-(--color-fg-inverse-soft)" : "text-(--color-fg-primary)",
             )}
           >
-            National Convention 2026 · Houston, Jul 29–Aug 2 — register on the official convention site.
+            National Convention 2026 · Houston,{" "}
+            <wbr />
+            Jul 29–Aug 2 — register on the official convention site.
           </span>
         </p>
         <a
           href={CONVENTION_REGISTRATION_URL}
-          className="font-display shrink-0 border border-(--color-fg-accent-strong) bg-(--color-bg-accent-strong) px-4 py-1.5 text-xs tracking-[0.18em] uppercase text-(--color-fg-on-accent) transition-opacity hover:opacity-95"
+          className="font-display flex w-full min-h-11 shrink-0 items-center justify-center border border-(--color-fg-accent-strong) bg-(--color-bg-accent-strong) px-4 py-2.5 text-xs tracking-[0.18em] uppercase text-(--color-fg-on-accent) transition-opacity hover:opacity-95 sm:w-auto sm:min-h-0 sm:py-1.5"
         >
           Register
         </a>
@@ -122,7 +124,7 @@ function ConventionRegistrationBanner() {
         type="button"
         onClick={dismiss}
         className={cn(
-          "absolute top-1/2 right-2 flex size-9 -translate-y-1/2 items-center justify-center rounded-md transition-colors",
+          "absolute top-1/2 right-2 flex size-11 shrink-0 -translate-y-1/2 items-center justify-center rounded-md transition-colors sm:size-9",
           scrolled
             ? "text-(--color-fg-inverse-muted) hover:bg-(--color-fg-inverse)/10 hover:text-(--color-fg-inverse-bright)"
             : "text-(--color-fg-secondary) hover:bg-(--color-bg-accent-soft) hover:text-(--color-fg-primary)",

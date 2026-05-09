@@ -38,7 +38,7 @@ async function HomePage() {
   ]);
 
   return (
-    <div className="overflow-x-clip bg-(--color-bg-canvas) text-(--color-fg-primary)">
+    <div className="overflow-x-clip bg-page-canvas text-fg-primary">
       <HeroSection />
       <NetworkPulse
         churchCount={churches.length}
@@ -48,18 +48,16 @@ async function HomePage() {
       <div className="relative">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-12 h-72"
-          style={{ backgroundImage: "var(--gradient-page-warm-top-glow)" }}
+          className="pointer-events-none absolute inset-x-0 top-12 h-72 bg-gradient-page-warm-top-glow"
         />
         <FadeInWhenVisible>
           <WelcomeSection />
         </FadeInWhenVisible>
       </div>
-      <div className="relative bg-(--color-bg-surface-subtle)">
+      <div className="relative bg-surface-subtle">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-3xl -translate-x-1/2 rounded-full blur-3xl lg:block"
-          style={{ backgroundImage: "var(--gradient-page-cool-center-glow)" }}
+          className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-3xl -translate-x-1/2 rounded-full bg-gradient-page-cool-center-glow blur-3xl lg:block"
         />
         <FadeInWhenVisible>
           <FeaturedChurches />
@@ -68,12 +66,12 @@ async function HomePage() {
       <FadeInWhenVisible>
         <ServeWithMinistries ministries={ministries} />
       </FadeInWhenVisible>
-      <div style={{ backgroundImage: "var(--gradient-page-highlight-band)" }}>
+      <div className="bg-gradient-page-highlight-band">
         <FadeInWhenVisible>
           <EventsArea previewCount={3} />
         </FadeInWhenVisible>
       </div>
-      <div className="bg-(--color-bg-surface-subtle)">
+      <div className="bg-surface-subtle">
         <FadeInWhenVisible>
           <GalleryHighlightsSection albums={galleryAlbums} />
         </FadeInWhenVisible>

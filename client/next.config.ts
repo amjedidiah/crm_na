@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "i0.wp.com" },
       { protocol: "https", hostname: "placehold.co" },
       { protocol: "https", hostname: "**.ytimg.com" },
+      { protocol: "https", hostname: "**.ibb.co" },
       { protocol: "http", hostname: "localhost", port: "8080" },
     ],
     dangerouslyAllowLocalIP: true,

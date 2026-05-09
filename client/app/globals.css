@@ -247,6 +247,27 @@
   --shadow-featured-card-hover: 0 34px 80px -34px rgba(11, 22, 40, 0.68);
   --shadow-welcome-lift: 0 28px 60px -28px rgba(11, 22, 40, 0.22);
   --shadow-accent-cta: 0 18px 44px -12px rgba(232, 200, 122, 0.55);
+  /* Loading skeletons — mixed from semantic fg tokens (avoid raw zinc/white in TSX) */
+  --color-shimmer-on-emphasis: color-mix(
+    in oklab,
+    var(--color-fg-inverse-bright) 14%,
+    transparent
+  );
+  --color-shimmer-on-emphasis-muted: color-mix(
+    in oklab,
+    var(--color-fg-inverse-bright) 10%,
+    transparent
+  );
+  --color-shimmer-border-emphasis: color-mix(
+    in oklab,
+    var(--color-fg-inverse-bright) 20%,
+    transparent
+  );
+  --color-shimmer-on-canvas: color-mix(
+    in oklab,
+    var(--color-fg-primary) 8%,
+    transparent
+  );
 }
 
 html {
@@ -354,6 +375,171 @@ h4 {
 
 .shadow-accent-cta:hover {
   box-shadow: var(--shadow-accent-cta);
+}
+
+/* Semantic utilities: map class names to design tokens (prefer vs. Tailwind arbitrary var). */
+.text-fg-primary {
+  color: var(--color-fg-primary);
+}
+
+.text-fg-secondary {
+  color: var(--color-fg-secondary);
+}
+
+.text-fg-inverse {
+  color: var(--color-fg-inverse);
+}
+
+.text-fg-inverse-soft {
+  color: var(--color-fg-inverse-soft);
+}
+
+.text-fg-inverse-muted {
+  color: var(--color-fg-inverse-muted);
+}
+
+.text-fg-accent-strong {
+  color: var(--color-fg-accent-strong);
+}
+
+.text-fg-accent-text {
+  color: var(--color-fg-accent-text);
+}
+
+.text-fg-on-accent {
+  color: var(--color-fg-on-accent);
+}
+
+.bg-page-canvas {
+  background-color: var(--color-bg-canvas);
+}
+
+.bg-surface-subtle {
+  background-color: var(--color-bg-surface-subtle);
+}
+
+.bg-emphasis-strong {
+  background-color: var(--color-bg-emphasis-strong);
+}
+
+.bg-canvas-elevated {
+  background-color: var(--color-bg-canvas-elevated);
+}
+
+.bg-brand-accent {
+  background-color: var(--color-bg-accent);
+}
+
+.bg-portrait-well {
+  background-color: var(--color-bg-emphasis);
+}
+
+.border-subtle {
+  border-color: var(--color-border-subtle);
+}
+
+.border-fg-inverse-soft {
+  border-color: var(--color-fg-inverse-soft);
+}
+
+.border-accent-soft {
+  border-color: var(--color-border-accent-soft);
+}
+
+.border-t-accent-soft {
+  border-top-color: var(--color-border-accent-soft);
+}
+
+.scroll-anchor-target {
+  scroll-margin-top: calc(
+    var(--nav-height) + var(--site-banner-height) + 0.75rem
+  );
+}
+
+.bg-gradient-page-warm-top-glow {
+  background-image: var(--gradient-page-warm-top-glow);
+}
+
+.bg-gradient-page-dual-glow {
+  background-image: var(--gradient-page-dual-glow);
+}
+
+.bg-gradient-page-cool-center-glow {
+  background-image: var(--gradient-page-cool-center-glow);
+}
+
+.bg-gradient-page-highlight-band {
+  background-image: var(--gradient-page-highlight-band);
+}
+
+.bg-gradient-live-top-glow {
+  background-image: var(--gradient-live-top-glow);
+}
+
+.heading-fluid-section {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  line-height: 1.25;
+}
+
+.rounded-card-xl {
+  border-radius: 1.8rem;
+}
+
+.rounded-card-lg {
+  border-radius: 1.4rem;
+}
+
+.rounded-card-md {
+  border-radius: 1.2rem;
+}
+
+.panel-inverse-card {
+  border-radius: 1.8rem;
+  border: 1px solid var(--color-border-accent-soft);
+  background-color: var(--color-bg-overlay-inverse-faint);
+}
+
+.panel-inverse-callout {
+  border-radius: 1.2rem;
+  border: 1px solid var(--color-border-accent-soft);
+  background-color: var(--color-bg-overlay-inverse-subtle);
+}
+
+.lane-callout {
+  border-radius: 1.2rem;
+  border: 1px solid var(--color-border-subtle);
+  background-color: var(--color-bg-canvas-elevated);
+}
+
+.surface-band-dual-glow {
+  background-color: var(--color-bg-surface-subtle);
+  background-image: var(--gradient-page-dual-glow);
+}
+
+.nav-jump-pill {
+  border-color: var(--color-border-accent);
+  color: var(--color-fg-accent-strong);
+}
+
+.hover-accent-strong:hover {
+  background-color: var(--color-bg-accent-strong);
+  color: var(--color-fg-on-accent);
+}
+
+.bg-shimmer-emphasis {
+  background-color: var(--color-shimmer-on-emphasis);
+}
+
+.bg-shimmer-emphasis-muted {
+  background-color: var(--color-shimmer-on-emphasis-muted);
+}
+
+.border-shimmer-emphasis {
+  border-color: var(--color-shimmer-border-emphasis);
+}
+
+.bg-shimmer-canvas {
+  background-color: var(--color-shimmer-on-canvas);
 }
 
 @keyframes marquee-slide {

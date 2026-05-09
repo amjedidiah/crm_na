@@ -5,7 +5,7 @@ import { SITE_CONTACT, SITE_NAME, SOCIAL_LINKS } from "@/lib/mock-data";
 
 const primaryLinks = [
   { href: "/", label: "Home" },
-  { href: "/who-we-are", label: "Who We Are" },
+  { href: "/about", label: "About Us" },
   { href: "/churches", label: "Churches" },
   { href: "/ministries", label: "Ministries" },
   { href: "/events", label: "Events" },
@@ -13,7 +13,7 @@ const primaryLinks = [
 ];
 
 const secondaryLinks = [
-  { href: "/who-we-are#leadership", label: "Leadership" },
+  { href: "/about#leadership", label: "Leadership" },
   { href: "/devotionals", label: "Devotionals" },
   { href: "/give", label: "Give" },
   { href: "/contact", label: "Contact" },
@@ -76,10 +76,7 @@ function Footer() {
                 <Phone className="size-4" aria-hidden />
                 <span>{SITE_CONTACT.phone}</span>
               </a>
-              <Link
-                href="/gallery"
-                className="inline-flex items-center gap-3"
-              >
+              <Link href="/gallery" className="inline-flex items-center gap-3">
                 <Camera className="size-4" aria-hidden />
                 <span>View gallery</span>
               </Link>

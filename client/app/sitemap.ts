@@ -1,12 +1,17 @@
 import type { MetadataRoute } from "next";
-import { churches, events, getGalleryAlbums, ministries } from "@/lib/mock-data";
+import {
+  churches,
+  events,
+  getGalleryAlbums,
+  ministries,
+} from "@/lib/mock-data";
 
 function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
   const staticRoutes = [
     "",
-    "/who-we-are",
+    "/about",
     "/churches",
     "/ministries",
     "/events",

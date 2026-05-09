@@ -160,7 +160,7 @@ function PlanYourVisit() {
               </MotionButtonWrap>
               <MotionButtonWrap>
                 <Button
-                  href="/who-we-are"
+                  href="/about"
                   variant="outline"
                   className={inverseOutlineClass}
                 >
