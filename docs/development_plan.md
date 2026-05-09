@@ -140,6 +140,8 @@ Non-negotiable design direction:
 - `/events`
 - `/events/[slug]`
 - `/publications`
+- `/publications/devotionals`
+- `/publications/blog`
 - `/publications/[slug]`
 - `/media`
 - `/contact`
@@ -170,7 +172,7 @@ Legacy flat routes remain as redirects only:
 - `/who-we-are/` is the About landing page and the canonical home for vision, history, core values, and leadership through anchored sections.
 - `/media/` is the media hub and owns the permanent livestream destination at `#live`.
 - Youth content lives at `/ministries/youths`, not as a flat top-level route.
-- `/publications/` stays the canonical URL, but the user-facing editorial label is Pastor's Corner.
+- `/publications/` is the canonical archive URL; type-filtered listings live at `/publications/devotionals` and `/publications/blog`.
 - `/publications/[slug]` is the canonical publication detail route.
 - Churches and ministries must remain separate models and separate public listings.
 
@@ -183,7 +185,8 @@ Legacy flat routes remain as redirects only:
 - `Ministry`
 - `Event`
 - `MediaItem`
-- `Publication`
+- `Publication` — includes a `type: PublicationType` field (`"blog"` | `"devotional"`)
+- `PublicationType`
 - `ContactFormPurpose`
 
 ### WordPress content types
@@ -201,7 +204,7 @@ Legacy flat routes remain as redirects only:
 - a ministry owns demographic or functional fellowship information
 - events can relate to a church, a ministry, or both
 - media should support sermons, livestream replays, and general teaching content
-- publications should support long-form editorial content with slug-backed detail pages and author metadata
+- publications should support long-form editorial content with slug-backed detail pages, author metadata, and a `type` field (`"blog"` | `"devotional"`) for type-filtered sub-listings at `/publications/blog` and `/publications/devotionals`
 
 ## High-Level Implementation Phases
 
@@ -249,6 +252,6 @@ Current repo status:
 - Default route strategy: nested canonical routes with legacy redirects.
 - Default About strategy: `/who-we-are` is the consolidated About page with anchored sub-sections.
 - Default live strategy: `/watch-us-live` is retired and redirected to `/media#live`.
-- Default publications strategy: keep `/publications` as the canonical URL for a Pastor's Corner-style archive and use `/publications/[slug]` for detail pages.
+- Default publications strategy: `/publications` is the canonical archive URL; `/publications/devotionals` and `/publications/blog` are type-filtered sub-listings; `/publications/[slug]` is the detail route. All three listing pages share a single `PublicationsListView` RSC.
 - Default sermon handling: `/sermon` redirects to `/media`.
 - Default youth handling: `/youths` redirects to `/ministries/youths`.

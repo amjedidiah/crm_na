@@ -71,6 +71,8 @@ Use the same repo shape as `/Users/jay/Projects/freelance/crm_praise_center`:
 - [x] `/events`
 - [x] `/events/[slug]`
 - [x] `/publications`
+- [x] `/publications/devotionals`
+- [x] `/publications/blog`
 - [x] `/publications/[slug]`
 - [x] `/media`
 - [x] `/contact`
@@ -94,6 +96,8 @@ Use the same repo shape as `/Users/jay/Projects/freelance/crm_praise_center`:
 - [x] `client/app/events/loading.tsx`
 - [x] `client/app/events/[slug]/loading.tsx`
 - [x] `client/app/publications/[slug]/loading.tsx`
+- [x] `client/app/publications/devotionals/loading.tsx`
+- [x] `client/app/publications/blog/loading.tsx`
 
 ## Redirect Scaffold
 
@@ -190,8 +194,9 @@ Implementation location:
 - [x] `client/components/media/MediaCard.tsx`
 - [x] `client/components/media/MediaGrid.tsx`
 - [x] `client/components/media/LivestreamEmbed.tsx`
-- [x] `client/components/media/PublicationCard.tsx`
 - [x] `client/components/media/FeaturedSermon.tsx`
+- [x] `client/components/publications/PublicationCard.tsx`
+- [x] `client/components/publications/PublicationsListView.tsx`
 - [x] `client/components/publications/PublicationDetailContent.tsx`
 
 ### Contact
@@ -228,6 +233,7 @@ Implementation location:
 - [x] `Event`
 - [x] `MediaItem`
 - [x] `Publication`
+- [x] `PublicationType`
 - [x] `ContactFormPurpose`
 
 ### Mock-data expectations
@@ -275,6 +281,7 @@ Implementation location:
 - [ ] `ministry_category`
 - [ ] `event_category`
 - [ ] `media_type`
+- [ ] `publication_type`
 
 ### Migration mapping
 
@@ -282,6 +289,7 @@ Implementation location:
 - [ ] map legacy `/youths`, `/cwl-charismatic-women-league`, and `/kings-men` content into `ministry`
 - [ ] map legacy `/vision`, `/history`, `/core-values`, and `/our-pastors` into anchored sections on `/who-we-are`
 - [ ] map legacy `/publications` content into slug-backed editorial entries for `/publications/[slug]`
+- [ ] tag each publication record with a `publication_type` value (`blog` or `devotional`) during migration
 - [ ] remove placeholder/demo content during migration entry
 
 ## Testing Checklist

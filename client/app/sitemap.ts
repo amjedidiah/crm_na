@@ -11,6 +11,8 @@ function sitemap(): MetadataRoute.Sitemap {
     "/ministries",
     "/events",
     "/publications",
+    "/publications/devotionals",
+    "/publications/blog",
     "/media",
     "/contact",
     "/give",

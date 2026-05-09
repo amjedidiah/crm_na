@@ -14,6 +14,7 @@ import {
   visionContent,
   whoWeAreIntro,
 } from "@/lib/mock-data";
+import type { PublicationType } from "@/lib/types";
 
 const WORDPRESS_GRAPHQL_ENDPOINT = process.env.WORDPRESS_GRAPHQL_ENDPOINT;
 
@@ -75,4 +76,9 @@ export async function getPublications() {
 
 export async function getPublication(slug: string) {
   return getPublicationBySlug(slug) ?? null;
+}
+
+export async function getPublicationsByType(type: PublicationType) {
+  const all = await getPublications();
+  return all.filter((p) => p.type === type);
 }

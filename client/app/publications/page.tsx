@@ -1,28 +1,38 @@
-import PublicationCard from "@/components/media/PublicationCard";
-import PageHeader from "@/components/shared/PageHeader";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import PublicationsListView from "@/components/publications/PublicationsListView";
 import { getPublications } from "@/lib/wordpress";
 
 async function PublicationsPage() {
   const publications = [...(await getPublications())].sort(
-    (left, right) =>
-      new Date(right.publishedAt).getTime() - new Date(left.publishedAt).getTime(),
+    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+  );
+
+  const filterNav = (
+    <div className="flex flex-wrap gap-5">
+      <Link
+        href="/publications/devotionals"
+        className="font-display inline-flex items-center gap-2 text-xs tracking-[0.22em] uppercase text-(--color-fg-accent-text)"
+      >
+        Devotionals <ArrowRight className="size-3" aria-hidden />
+      </Link>
+      <Link
+        href="/publications/blog"
+        className="font-display inline-flex items-center gap-2 text-xs tracking-[0.22em] uppercase text-(--color-fg-secondary)"
+      >
+        Blog <ArrowRight className="size-3" aria-hidden />
+      </Link>
+    </div>
   );
 
   return (
-    <div className="bg-(--color-bg-canvas) text-(--color-fg-primary)">
-      <PageHeader
-        eyebrow="Publications"
-        title="Pastor&apos;s Corner"
-        description="Read pastoral reflections and leadership meditations in a structured editorial archive rooted at the existing publications URL."
-      />
-      <section className="section-padding text-(--color-fg-primary)">
-        <div className="container-shell grid gap-6 md:grid-cols-2">
-          {publications.map((publication) => (
-            <PublicationCard key={publication.slug} publication={publication} />
-          ))}
-        </div>
-      </section>
-    </div>
+    <PublicationsListView
+      eyebrow="Publications"
+      title="Pastor's Corner"
+      description="Pastoral reflections, devotionals, and editorial writing from CRM North America leadership."
+      publications={publications}
+      filterNav={filterNav}
+    />
   );
 }
 

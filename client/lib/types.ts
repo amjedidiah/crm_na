@@ -71,6 +71,13 @@ export interface Event {
 
 export type MediaType = "livestream" | "sermon" | "video" | "audio";
 
+export type PublicationType = "blog" | "devotional";
+
+export const PUBLICATION_TYPE_LABELS: Record<PublicationType, string> = {
+  blog: "Blog",
+  devotional: "Devotional",
+};
+
 export interface MediaItem {
   slug: string;
   title: string;
@@ -83,6 +90,7 @@ export interface MediaItem {
 
 export interface Publication {
   slug: string;
+  type: PublicationType;
   title: string;
   synopsis: string;
   content: string[];

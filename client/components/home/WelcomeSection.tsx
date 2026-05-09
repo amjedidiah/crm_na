@@ -64,7 +64,7 @@ function WelcomeSection() {
                 <ArrowRight className="size-4" aria-hidden />
               </Link>
               <Link
-                href="/publications"
+                href="/publications/devotionals"
                 className="font-display inline-flex items-center gap-2 text-xs tracking-[0.22em] uppercase text-(--color-fg-secondary)"
               >
                 Read a devotional

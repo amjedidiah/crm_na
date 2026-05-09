@@ -15,6 +15,7 @@
 - `ministry_category`
 - `event_category`
 - `media_type`
+- `publication_type` (values: `blog`, `devotional`)
 
 ## Key relationships
 
@@ -28,6 +29,7 @@
 - church centers and ministries must stay distinct in the model
 - the canonical livestream destination in the Next app is **`/media#live`**, populated from `media_item` entries of type **`livestream`** (see `MediaItem` / `MediaType` in `client/lib/types.ts` and `client/app/media/page.tsx`); legacy **`/watch-us-live`** is redirect-only to `/media#live` (see `client/next.config.ts` and “Default live strategy” in `docs/development_plan.md`)
 - empty legacy pages should not force empty content records; the schema should still support them
+- `publication` records are differentiated by a `publication_type` taxonomy with values `blog` and `devotional`; type-filtered listings live at `/publications/devotionals` and `/publications/blog`
 
 ## CMS vs frontend seams
 

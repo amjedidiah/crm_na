@@ -13,10 +13,6 @@ function PublicationDetailContent({
             <h2 className="text-3xl">{publication.authorName}</h2>
             <p className="text-(--color-fg-secondary)">{publication.authorTitle}</p>
           </div>
-          <p className="text-sm leading-7 text-(--color-fg-secondary)">
-            Pastor&apos;s Corner keeps CRM North America reflections in a
-            structured archive rather than external placeholder links.
-          </p>
           {publication.externalUrl ? (
             <a
               href={publication.externalUrl}
@@ -41,7 +37,7 @@ function PublicationDetailContent({
             href="/publications"
             className="font-display inline-block text-xs tracking-[0.2em] uppercase text-(--color-fg-accent)"
           >
-            Back to Pastor&apos;s Corner
+            Back to Publications
           </Link>
         </div>
       </div>

@@ -13,7 +13,7 @@ const primaryLinks = [
 const secondaryLinks = [
   { href: "/who-we-are", label: "Who We Are" },
   { href: "/who-we-are#leadership", label: "Leadership" },
-  { href: "/publications", label: "Devotionals" },
+  { href: "/publications/devotionals", label: "Devotionals" },
   { href: "/give", label: "Give" },
   { href: "/contact", label: "Contact" },
 ];

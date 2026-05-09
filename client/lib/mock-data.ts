@@ -298,6 +298,7 @@ export const mediaItems: MediaItem[] = [
 export const publications: Publication[] = [
   {
     slug: "stewarding-revival-in-a-new-season",
+    type: "blog" as const,
     title: "Stewarding Revival in a New Season",
     synopsis:
       "A pastoral reflection on protecting spiritual hunger while building a stronger public witness for CRM North America.",
@@ -312,6 +313,7 @@ export const publications: Publication[] = [
   },
   {
     slug: "building-healthy-altars-at-home",
+    type: "devotional" as const,
     title: "Building Healthy Altars at Home",
     synopsis:
       "A Pastor's Corner meditation on how families can cultivate consistent prayer, Scripture, and worship beyond Sunday gatherings.",
