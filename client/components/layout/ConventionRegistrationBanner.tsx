@@ -1,8 +1,9 @@
 "use client";
 
 import { X } from "lucide-react";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { CONVENTION_REGISTRATION_URL } from "@/lib/convention-public";
+import { buildConventionRegistrationUrl } from "@/lib/convention-public";
 import { cn } from "@/lib/utils";
 
 const STORAGE_KEY = "crm-na-convention-2026-banner-dismissed";
@@ -18,8 +19,13 @@ function setBannerHeightPx(px: number) {
 
 function ConventionRegistrationBanner() {
   const barRef = useRef<HTMLElement>(null);
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [dismissed, setDismissed] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const search = searchParams.toString();
+  const returnTo = search === "" ? pathname : `${pathname}?${search}`;
+  const registerHref = buildConventionRegistrationUrl({ returnTo });
 
   const measure = useCallback(() => {
     const el = barRef.current;
@@ -114,7 +120,7 @@ function ConventionRegistrationBanner() {
           </span>
         </p>
         <a
-          href={CONVENTION_REGISTRATION_URL}
+          href={registerHref}
           className="font-display flex w-full min-h-11 shrink-0 items-center justify-center border border-(--color-fg-accent-strong) bg-(--color-bg-accent-strong) px-4 py-2.5 text-xs tracking-[0.18em] uppercase text-(--color-fg-on-accent) transition-opacity hover:opacity-95 sm:w-auto sm:min-h-0 sm:py-1.5"
         >
           Register

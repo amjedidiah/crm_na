@@ -2,6 +2,7 @@
 
 import Button from "@/components/shared/Button";
 import NavbarSolidBackdropHint from "@/components/layout/NavbarSolidBackdropHint";
+import { contactHref } from "@/lib/contact-hrefs";
 
 function AboutError({
   error,
@@ -37,7 +38,7 @@ function AboutError({
               <Button href="/" variant="outline">
                 Return home
               </Button>
-              <Button href="/contact" variant="outline">
+              <Button href={contactHref("general")} variant="outline">
                 Contact us
               </Button>
             </div>

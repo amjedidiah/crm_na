@@ -1,25 +1,30 @@
-/** Deep links into `/contact` with purpose + listing slug (canonical query keys). */
+import type { ContactFormPurpose } from "@/lib/types";
+import {
+  buildContactSearchString,
+  type ContactUrlSlugState,
+} from "@/lib/contact-url";
+
+const CONTACT_PATH = "/contact";
+
+/**
+ * Site-generated href into `/contact` using canonical query keys
+ * (same encoding as client URL sync via `buildContactSearchString`).
+ */
+export function contactHref(
+  purpose: ContactFormPurpose,
+  slugs: ContactUrlSlugState = {},
+): string {
+  return `${CONTACT_PATH}?${buildContactSearchString(purpose, slugs)}`;
+}
 
 export function contactHrefForChurchListing(slug: string): string {
-  const params = new URLSearchParams({
-    purpose: "churches",
-    churchSlug: slug,
-  });
-  return `/contact?${params.toString()}`;
+  return contactHref("churches", { churchSlug: slug });
 }
 
 export function contactHrefForMinistry(slug: string): string {
-  const params = new URLSearchParams({
-    purpose: "ministries",
-    ministrySlug: slug,
-  });
-  return `/contact?${params.toString()}`;
+  return contactHref("ministries", { ministrySlug: slug });
 }
 
 export function contactHrefForEvent(slug: string): string {
-  const params = new URLSearchParams({
-    purpose: "events",
-    eventSlug: slug,
-  });
-  return `/contact?${params.toString()}`;
+  return contactHref("events", { eventSlug: slug });
 }

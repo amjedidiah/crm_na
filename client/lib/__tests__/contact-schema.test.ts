@@ -13,6 +13,24 @@ describe("contact schema", () => {
     expect(result.success).toBe(true);
   });
 
+  test("accepts plan-visit and prayer-request without listing slugs", () => {
+    const plan = contactSchema.safeParse({
+      name: "CRM Visitor",
+      email: "visitor@example.com",
+      purpose: "plan-visit",
+      message: "I would like to plan my first visit to a local branch soon.",
+    });
+    expect(plan.success).toBe(true);
+
+    const prayer = contactSchema.safeParse({
+      name: "CRM Visitor",
+      email: "visitor@example.com",
+      purpose: "prayer-request",
+      message: "Please pray with me for healing and strength this month.",
+    });
+    expect(prayer.success).toBe(true);
+  });
+
   test("accepts churches purpose with church slug", () => {
     const result = contactSchema.safeParse({
       name: "CRM Visitor",

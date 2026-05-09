@@ -3,6 +3,7 @@
 import { useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 import Button from "@/components/shared/Button";
+import { contactHref } from "@/lib/contact-hrefs";
 import { Church } from "lucide-react";
 import Motion from "@/components/shared/Motion";
 
@@ -151,7 +152,7 @@ function PlanYourVisit() {
               </MotionButtonWrap>
               <MotionButtonWrap>
                 <Button
-                  href="/contact?purpose=plan-visit"
+                  href={contactHref("plan-visit")}
                   variant="outline"
                   className={inverseOutlineClass}
                 >

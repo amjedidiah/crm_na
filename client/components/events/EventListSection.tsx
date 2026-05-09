@@ -13,6 +13,7 @@ import {
 import { cn } from "@/lib/utils";
 import Button from "@/components/shared/Button";
 import EventGrid from "@/components/shared/EventGrid";
+import { contactHref } from "@/lib/contact-hrefs";
 
 const TABS: { id: EventLifecycleTab; label: string }[] = [
   { id: "upcoming", label: "Upcoming" },
@@ -124,7 +125,7 @@ function EventListSection({
               gathering on the calendar.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button href="/contact">Contact us</Button>
+              <Button href={contactHref("events")}>Contact us</Button>
               <Button href="/" variant="outline">
                 Return home
               </Button>

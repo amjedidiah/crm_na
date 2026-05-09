@@ -1,4 +1,5 @@
 import Button from "@/components/shared/Button";
+import { contactHref } from "@/lib/contact-hrefs";
 
 function AboutNextSteps() {
   return (
@@ -15,7 +16,7 @@ function AboutNextSteps() {
         <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row sm:flex-wrap">
           <Button href="/churches">Find a church</Button>
           <Button
-            href="/contact"
+            href={contactHref("general")}
             variant="outline"
             className="border-fg-inverse-soft text-fg-inverse hover-accent-strong"
           >

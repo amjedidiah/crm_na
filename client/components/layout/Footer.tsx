@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, Camera, Mail, Phone } from "lucide-react";
 import SiteLogo from "@/components/brand/SiteLogo";
+import { contactHref } from "@/lib/contact-hrefs";
 import { SITE_CONTACT, SITE_NAME, SOCIAL_LINKS } from "@/lib/mock-data";
 
 const primaryLinks = [
@@ -16,7 +17,7 @@ const secondaryLinks = [
   { href: "/about#leadership", label: "Leadership" },
   { href: "/devotionals", label: "Devotionals" },
   { href: "/give", label: "Give" },
-  { href: "/contact", label: "Contact" },
+  { href: contactHref("general"), label: "Contact" },
 ];
 
 function Footer() {

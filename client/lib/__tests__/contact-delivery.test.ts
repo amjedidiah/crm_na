@@ -36,6 +36,33 @@ describe("slugsForContactEmail", () => {
     });
   });
 
+  test("strips all listing slugs for plan-visit and prayer-request", () => {
+    expect(
+      slugsForContactEmail(
+        "plan-visit",
+        "crm-ottawa",
+        "youths",
+        "crm-usa-national-convention-2026",
+      ),
+    ).toEqual({
+      churchSlug: undefined,
+      ministrySlug: undefined,
+      eventSlug: undefined,
+    });
+    expect(
+      slugsForContactEmail(
+        "prayer-request",
+        "crm-ottawa",
+        "youths",
+        "crm-usa-national-convention-2026",
+      ),
+    ).toEqual({
+      churchSlug: undefined,
+      ministrySlug: undefined,
+      eventSlug: undefined,
+    });
+  });
+
   test("keeps event slug only for events purpose", () => {
     expect(
       slugsForContactEmail(

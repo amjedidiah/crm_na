@@ -3,6 +3,7 @@ import MinistryCallToAction from "@/components/ministries/MinistryCallToAction";
 import MinistryGrid from "@/components/ministries/MinistryGrid";
 import Button from "@/components/shared/Button";
 import PageHeader from "@/components/shared/PageHeader";
+import { contactHref } from "@/lib/contact-hrefs";
 import { getLeaders, getMinistries } from "@/lib/wordpress";
 
 export const metadata: Metadata = {
@@ -36,7 +37,7 @@ async function MinistriesPage() {
                 Ministry profiles are temporarily unavailable. Reach out through
                 the contact page and we will connect you with the right team.
               </p>
-              <Button href="/contact?purpose=ministries">Contact the ministry team</Button>
+              <Button href={contactHref("ministries")}>Contact the ministry team</Button>
             </div>
           </div>
         </section>

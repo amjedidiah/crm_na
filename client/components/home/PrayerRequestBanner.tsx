@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { contactHref } from "@/lib/contact-hrefs";
 import { ArrowRight, HandHeart } from "lucide-react";
 import { useReducedMotion } from "framer-motion";
 import Motion from "@/components/shared/Motion";
@@ -20,7 +21,7 @@ function PrayerRequestBanner() {
           transition={{ duration: reduceMotion ? 0.01 : 0.55, ease }}
         >
           <Link
-            href="/contact?purpose=prayer-request"
+            href={contactHref("prayer-request")}
             className="group bg-(--color-bg-surface-subtle) text-(--color-fg-primary) flex flex-col items-start gap-4 rounded-3xl border border-(--color-border-subtle) px-6 py-5 transition-[transform,border-color] duration-300 hover:-translate-y-0.5 hover:border-(--color-border-accent) md:flex-row md:items-center md:justify-between"
           >
             <div className="flex items-center gap-4">

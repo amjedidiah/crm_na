@@ -1,5 +1,5 @@
 import Button from "@/components/shared/Button";
-import { contactHrefForMinistry } from "@/lib/contact-hrefs";
+import { contactHref, contactHrefForMinistry } from "@/lib/contact-hrefs";
 
 export type MinistryCallToActionContext = Readonly<{
   name: string;
@@ -41,7 +41,7 @@ function MinistryCallToAction({
           NA ministries grow stronger when believers step forward to serve.
         </p>
       </div>
-      <Button href="/contact?purpose=ministries">Contact the ministry team</Button>
+      <Button href={contactHref("ministries")}>Contact the ministry team</Button>
     </div>
   );
 }

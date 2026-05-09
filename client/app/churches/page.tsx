@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ChurchesDirectoryClient from "@/components/churches/ChurchesDirectoryClient";
 import Button from "@/components/shared/Button";
 import PageHeader from "@/components/shared/PageHeader";
+import { contactHref } from "@/lib/contact-hrefs";
 import { getChurches } from "@/lib/wordpress";
 
 export const metadata: Metadata = {
@@ -34,7 +35,7 @@ async function ChurchesPage() {
                 Church listings are temporarily empty. Use the contact page and
                 our team will help you plan a visit or find pastoral coverage.
               </p>
-              <Button href="/contact?purpose=churches">Contact CRM NA</Button>
+              <Button href={contactHref("churches")}>Contact CRM NA</Button>
             </div>
           </div>
         </section>
@@ -73,7 +74,7 @@ async function ChurchesPage() {
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Button href="/contact?purpose=churches">Contact</Button>
+            <Button href={contactHref("churches")}>Contact</Button>
             <Button href="/about" variant="outline">
               About CRM NA
             </Button>

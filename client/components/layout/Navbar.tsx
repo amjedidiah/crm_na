@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useState } from "react";
 import SiteLogo from "@/components/brand/SiteLogo";
+import { contactHref } from "@/lib/contact-hrefs";
 import { SITE_NAME } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 
@@ -17,7 +18,7 @@ const navLinks = [
   { href: "/events", label: "Events" },
   { href: "/devotionals", label: "Devotionals" },
   { href: "/gallery", label: "Gallery" },
-  { href: "/contact", label: "Contact" },
+  { href: contactHref("general"), label: "Contact" },
 ];
 
 function Navbar() {

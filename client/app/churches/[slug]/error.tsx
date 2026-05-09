@@ -2,6 +2,7 @@
 
 import Button from "@/components/shared/Button";
 import NavbarSolidBackdropHint from "@/components/layout/NavbarSolidBackdropHint";
+import { contactHref } from "@/lib/contact-hrefs";
 
 function ChurchSlugError({
   error,
@@ -36,7 +37,7 @@ function ChurchSlugError({
               <Button href="/churches" variant="outline">
                 Church directory
               </Button>
-              <Button href="/contact" variant="outline">
+              <Button href={contactHref("churches")} variant="outline">
                 Contact us
               </Button>
             </div>

@@ -1,4 +1,5 @@
 import Button from "@/components/shared/Button";
+import { contactHref } from "@/lib/contact-hrefs";
 
 function ChurchSlugNotFound() {
   return (
@@ -16,7 +17,7 @@ function ChurchSlugNotFound() {
           </p>
           <div className="flex flex-wrap justify-center gap-3 pt-2">
             <Button href="/churches">Church directory</Button>
-            <Button href="/contact" variant="outline">
+            <Button href={contactHref("churches")} variant="outline">
               Contact us
             </Button>
           </div>

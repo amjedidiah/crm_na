@@ -1,4 +1,5 @@
 import Button from "@/components/shared/Button";
+import { contactHref } from "@/lib/contact-hrefs";
 
 function EventDetailNotFound() {
   return (
@@ -15,7 +16,7 @@ function EventDetailNotFound() {
           </p>
           <div className="flex flex-wrap justify-center gap-3 pt-2">
             <Button href="/events">All events</Button>
-            <Button href="/contact" variant="outline">
+            <Button href={contactHref("events")} variant="outline">
               Contact us
             </Button>
           </div>

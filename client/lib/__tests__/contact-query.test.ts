@@ -173,4 +173,27 @@ describe("resolveContactPageQuery", () => {
     });
     expect(r.ministrySlug).toBeUndefined();
   });
+
+  test("plan-visit and prayer-request normalize without contextual slugs", () => {
+    const visit = resolveContactPageQuery({ purpose: "plan-visit" });
+    expect(visit.purpose).toBe("plan-visit");
+    expect(visit.churchSlug).toBeUndefined();
+
+    const prayer = resolveContactPageQuery({ purpose: "prayer-request" });
+    expect(prayer.purpose).toBe("prayer-request");
+    expect(prayer.eventSlug).toBeUndefined();
+  });
+
+  test("plan-visit ignores listing slugs in query", () => {
+    const r = resolveContactPageQuery({
+      purpose: "plan-visit",
+      churchSlug: "crm-ottawa",
+      ministrySlug: "youths",
+      eventSlug: "crm-usa-national-convention-2026",
+    });
+    expect(r.purpose).toBe("plan-visit");
+    expect(r.churchSlug).toBeUndefined();
+    expect(r.ministrySlug).toBeUndefined();
+    expect(r.eventSlug).toBeUndefined();
+  });
 });
