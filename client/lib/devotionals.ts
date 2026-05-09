@@ -1,4 +1,5 @@
 import type { Devotional } from "@/lib/types";
+import mayRemainder from "@/lib/devotionals-may-2026-remainder.json";
 
 const devotionals: Devotional[] = [
   {
@@ -69,6 +70,7 @@ const devotionals: Devotional[] = [
     ],
     bibleReading: "Psalms 120-124",
   },
+  ...(mayRemainder as Devotional[]),
 ];
 
 export function getDevotionalByDate(date: string): Devotional | null {
