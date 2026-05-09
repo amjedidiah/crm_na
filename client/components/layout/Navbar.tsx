@@ -11,12 +11,12 @@ const SCROLL_SOLID_AFTER = 32;
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/who-we-are", label: "About" },
+  { href: "/who-we-are", label: "Who We Are" },
   { href: "/churches", label: "Churches" },
   { href: "/ministries", label: "Ministries" },
   { href: "/events", label: "Events" },
-  { href: "/publications", label: "Publications" },
-  { href: "/media", label: "Media" },
+  { href: "/devotionals", label: "Devotionals" },
+  { href: "/gallery", label: "Gallery" },
   { href: "/contact", label: "Contact" },
 ];
 

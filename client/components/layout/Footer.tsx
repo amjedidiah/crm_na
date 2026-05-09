@@ -1,19 +1,20 @@
 import Link from "next/link";
-import { ArrowUpRight, Mail, Phone, Radio } from "lucide-react";
+import { ArrowUpRight, Camera, Mail, Phone } from "lucide-react";
 import SiteLogo from "@/components/brand/SiteLogo";
 import { SITE_CONTACT, SITE_NAME, SOCIAL_LINKS } from "@/lib/mock-data";
 
 const primaryLinks = [
+  { href: "/", label: "Home" },
+  { href: "/who-we-are", label: "Who We Are" },
   { href: "/churches", label: "Churches" },
   { href: "/ministries", label: "Ministries" },
   { href: "/events", label: "Events" },
-  { href: "/media", label: "Media" },
+  { href: "/gallery", label: "Gallery" },
 ];
 
 const secondaryLinks = [
-  { href: "/who-we-are", label: "Who We Are" },
   { href: "/who-we-are#leadership", label: "Leadership" },
-  { href: "/publications/devotionals", label: "Devotionals" },
+  { href: "/devotionals", label: "Devotionals" },
   { href: "/give", label: "Give" },
   { href: "/contact", label: "Contact" },
 ];
@@ -31,8 +32,8 @@ function Footer() {
               </p>
             </div>
             <p className="max-w-sm text-sm leading-7 text-(--color-fg-inverse-soft)">
-              Revival churches, pastoral care, gatherings, and media pathways
-              for believers across North America.
+              Revival churches, pastoral care, gatherings, and devotional
+              pathways for believers across North America.
             </p>
           </div>
 
@@ -76,11 +77,11 @@ function Footer() {
                 <span>{SITE_CONTACT.phone}</span>
               </a>
               <Link
-                href="/media#live"
+                href="/gallery"
                 className="inline-flex items-center gap-3"
               >
-                <Radio className="size-4" aria-hidden />
-                <span>Watch live</span>
+                <Camera className="size-4" aria-hidden />
+                <span>View gallery</span>
               </Link>
               {SOCIAL_LINKS.map((link) => (
                 <a

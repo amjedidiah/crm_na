@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, CalendarDays, MapPin } from "lucide-react";
+import EventLink from "@/components/events/EventLink";
 import EventGrid from "@/components/shared/EventGrid";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { formatDate } from "@/lib/utils";
@@ -56,13 +57,15 @@ async function EventsArea({ previewCount }: Readonly<{ previewCount?: number }>)
                 </div>
               </div>
               <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  href={`/events/${featuredEvent.slug}`}
+                <EventLink
+                  event={featuredEvent}
                   className="font-display inline-flex items-center gap-2 bg-(--color-bg-accent-strong) px-5 py-3 text-xs tracking-[0.2em] uppercase text-(--color-fg-on-accent)"
                 >
-                  View gathering
+                  {featuredEvent.registrationUrl
+                    ? "Register for gathering"
+                    : "View gathering"}
                   <ArrowRight className="size-4" aria-hidden />
-                </Link>
+                </EventLink>
                 {featuredEvent.livestreamUrl ? (
                   <a
                     href={featuredEvent.livestreamUrl}

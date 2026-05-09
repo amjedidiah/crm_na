@@ -29,6 +29,14 @@ function ChurchVisitInfo({ church }: Readonly<{ church: Church }>) {
             <p>{church.address}</p>
             <p>{church.phone}</p>
             <p>{church.email}</p>
+            {church.website ? (
+              <a
+                href={church.website}
+                className="font-display inline-block pt-2 text-xs tracking-[0.2em] uppercase text-(--color-fg-accent-text)"
+              >
+                Visit church website
+              </a>
+            ) : null}
           </div>
         </div>
         <ServiceTimes times={church.serviceTimes} />

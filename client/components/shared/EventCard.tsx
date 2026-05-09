@@ -1,5 +1,5 @@
-import Link from "next/link";
 import type { Event } from "@/lib/types";
+import EventLink from "@/components/events/EventLink";
 import { formatDate } from "@/lib/utils";
 
 function EventCard({ event }: Readonly<{ event: Event }>) {
@@ -12,12 +12,12 @@ function EventCard({ event }: Readonly<{ event: Event }>) {
       </div>
       <div className="mt-6 space-y-3">
         <p className="text-sm text-(--color-fg-secondary)">{event.location}</p>
-        <Link
+        <EventLink
+          event={event}
           className="font-display text-xs tracking-[0.2em] uppercase text-(--color-fg-accent)"
-          href={`/events/${event.slug}`}
         >
-          View event
-        </Link>
+          {event.registrationUrl ? "Register for event" : "View event"}
+        </EventLink>
       </div>
     </article>
   );

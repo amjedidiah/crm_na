@@ -53,6 +53,8 @@ export interface Ministry {
   leaderIds: string[];
   meetingSchedule: string[];
   focusAreas: string[];
+  imageSrc?: string;
+  galleryImages?: GalleryImage[];
 }
 
 export interface Event {
@@ -67,9 +69,41 @@ export interface Event {
   ministrySlug?: string;
   registrationUrl?: string;
   livestreamUrl?: string;
+  imageSrc?: string;
+  galleryImages?: GalleryImage[];
 }
 
-export type MediaType = "livestream" | "sermon" | "video" | "audio";
+export interface GalleryImage {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+export type GalleryCategory = "all" | "events" | "ministries" | "general";
+
+export interface GalleryAlbum {
+  id: string;
+  slug: string;
+  title: string;
+  date?: string;
+  category: Exclude<GalleryCategory, "all">;
+  coverImage: GalleryImage;
+  images: GalleryImage[];
+  sourceHref?: string;
+}
+
+export interface Devotional {
+  date: string;
+  dayLabel: string;
+  title: string;
+  scriptureRef: string;
+  scriptureText: string;
+  message: string[];
+  memoryVerse: string;
+  actionPoint: string;
+  prayerPoints: string[];
+  bibleReading: string;
+}
 
 export type PublicationType = "blog" | "devotional";
 
@@ -77,16 +111,6 @@ export const PUBLICATION_TYPE_LABELS: Record<PublicationType, string> = {
   blog: "Blog",
   devotional: "Devotional",
 };
-
-export interface MediaItem {
-  slug: string;
-  title: string;
-  type: MediaType;
-  summary: string;
-  url: string;
-  speaker?: string;
-  publishedAt: string;
-}
 
 export interface Publication {
   slug: string;

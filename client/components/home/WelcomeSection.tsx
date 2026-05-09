@@ -35,7 +35,7 @@ function WelcomeSection() {
                 },
                 {
                   label: "Discipleship",
-                  body: "Churches, ministries, and media now connect into one clearer pathway for growth.",
+                  body: "Churches, ministries, devotionals, and gallery stories now connect into one clearer pathway for growth.",
                 },
               ].map((item) => (
                 <Motion
@@ -55,7 +55,7 @@ function WelcomeSection() {
                 </Motion>
               ))}
             </div>
-            <div className="flex flex-wrap gap-5 pt-1">
+            <div className="space-y-5 pt-1">
               <Link
                 href="/who-we-are#leadership"
                 className="font-display inline-flex items-center gap-2 text-xs tracking-[0.22em] uppercase text-(--color-fg-accent-text)"
@@ -64,11 +64,31 @@ function WelcomeSection() {
                 <ArrowRight className="size-4" aria-hidden />
               </Link>
               <Link
-                href="/publications/devotionals"
-                className="font-display inline-flex items-center gap-2 text-xs tracking-[0.22em] uppercase text-(--color-fg-secondary)"
+                href="/devotionals"
+                className="group relative flex flex-col justify-between gap-4 overflow-hidden rounded-3xl border border-(--color-border-subtle) bg-(--color-bg-canvas-elevated) p-6 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-(--color-border-accent)"
               >
-                Read a devotional
-                <ArrowRight className="size-4" aria-hidden />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute right-0 top-0 h-full w-28 opacity-70"
+                  style={{ background: "var(--gradient-support-card-overlay)" }}
+                />
+                <div className="relative space-y-3">
+                  <p className="font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent-text)">
+                    Daily Devotional
+                  </p>
+                  <h3 className="text-3xl">Start your day with God.</h3>
+                  <p className="max-w-2xl text-sm leading-7 text-(--color-fg-secondary)">
+                    Open today&apos;s devotional for a focused word of faith,
+                    hope, and encouragement shaped for everyday obedience.
+                  </p>
+                </div>
+                <span className="relative font-display inline-flex items-center gap-2 text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent-text)">
+                  Read today&apos;s devotional
+                  <ArrowRight
+                    className="size-4 transition-transform duration-300 group-hover:translate-x-1"
+                    aria-hidden
+                  />
+                </span>
               </Link>
             </div>
           </div>

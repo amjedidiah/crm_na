@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { churches, events, ministries, publications } from "@/lib/mock-data";
+import { churches, events, getGalleryAlbums, ministries } from "@/lib/mock-data";
 
 function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
@@ -10,13 +10,12 @@ function sitemap(): MetadataRoute.Sitemap {
     "/churches",
     "/ministries",
     "/events",
-    "/publications",
-    "/publications/devotionals",
-    "/publications/blog",
-    "/media",
+    "/devotionals",
+    "/gallery",
     "/contact",
     "/give",
   ];
+  const galleryAlbums = getGalleryAlbums();
 
   return [
     ...staticRoutes.map((route) => ({
@@ -35,9 +34,9 @@ function sitemap(): MetadataRoute.Sitemap {
       url: `${siteUrl}/events/${event.slug}`,
       lastModified: new Date(),
     })),
-    ...publications.map((publication) => ({
-      url: `${siteUrl}/publications/${publication.slug}`,
-      lastModified: new Date(publication.publishedAt),
+    ...galleryAlbums.map((album) => ({
+      url: `${siteUrl}/gallery/${album.slug}`,
+      lastModified: new Date(album.date ?? "2026-01-01"),
     })),
   ];
 }

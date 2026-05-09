@@ -12,7 +12,8 @@ function AboutOverview({ id }: Readonly<{ id?: string }>) {
         />
         <div className="card-surface p-8 text-lg leading-8 text-(--color-fg-secondary)">
           CRM NA is being rebuilt around structured church, ministry, event,
-          leadership, and media content rather than page-builder fragments.
+          leadership, gallery, and devotional content rather than page-builder
+          fragments.
         </div>
       </div>
     </section>

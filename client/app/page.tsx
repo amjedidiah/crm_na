@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import EventsArea from "@/components/home/EventsArea";
 import FeaturedChurches from "@/components/home/FeaturedChurches";
+import GalleryHighlightsSection from "@/components/home/GalleryHighlightsSection";
 import GiveBanner from "@/components/home/GiveBanner";
 import HeroSection from "@/components/home/HeroSection";
-import LatestSermonsSection from "@/components/home/LatestSermonsSection";
 import NetworkPulse from "@/components/home/NetworkPulse";
 import PrayerRequestBanner from "@/components/home/PrayerRequestBanner";
+import ServeWithMinistries from "@/components/home/ServeWithMinistries";
 import WelcomeSection from "@/components/home/WelcomeSection";
 import FadeInWhenVisible from "@/components/shared/FadeInWhenVisible";
 import {
@@ -15,7 +16,7 @@ import {
 import {
   getChurches,
   getEvents,
-  getMediaItems,
+  getGalleryAlbums,
   getMinistries,
 } from "@/lib/wordpress";
 
@@ -29,19 +30,12 @@ export const metadata: Metadata = {
 };
 
 async function HomePage() {
-  const [churches, events, mediaItems, ministries] = await Promise.all([
+  const [churches, events, galleryAlbums, ministries] = await Promise.all([
     getChurches(),
     getEvents(),
-    getMediaItems(),
+    getGalleryAlbums(),
     getMinistries(),
   ]);
-  const latestSermons = [...mediaItems]
-    .filter((item) => item.type === "sermon")
-    .sort(
-      (left, right) =>
-        new Date(right.publishedAt).getTime() - new Date(left.publishedAt).getTime(),
-    )
-    .slice(0, 3);
 
   return (
     <div className="overflow-x-clip bg-(--color-bg-canvas) text-(--color-fg-primary)">
@@ -71,6 +65,9 @@ async function HomePage() {
           <FeaturedChurches />
         </FadeInWhenVisible>
       </div>
+      <FadeInWhenVisible>
+        <ServeWithMinistries ministries={ministries} />
+      </FadeInWhenVisible>
       <div style={{ backgroundImage: "var(--gradient-page-highlight-band)" }}>
         <FadeInWhenVisible>
           <EventsArea previewCount={3} />
@@ -78,7 +75,7 @@ async function HomePage() {
       </div>
       <div className="bg-(--color-bg-surface-subtle)">
         <FadeInWhenVisible>
-          <LatestSermonsSection sermons={latestSermons} />
+          <GalleryHighlightsSection albums={galleryAlbums} />
         </FadeInWhenVisible>
       </div>
       <FadeInWhenVisible>

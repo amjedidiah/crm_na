@@ -3,7 +3,13 @@ import type { Publication } from "@/lib/types";
 
 function PublicationDetailContent({
   publication,
-}: Readonly<{ publication: Publication }>) {
+  backHref = "/devotionals",
+  backLabel = "Back to Devotionals",
+}: Readonly<{
+  publication: Publication;
+  backHref?: string;
+  backLabel?: string;
+}>) {
   return (
     <section className="section-padding text-(--color-fg-primary)">
       <div className="container-shell grid gap-8 lg:grid-cols-[0.7fr_1.3fr]">
@@ -34,10 +40,10 @@ function PublicationDetailContent({
             </p>
           ))}
           <Link
-            href="/publications"
+            href={backHref}
             className="font-display inline-block text-xs tracking-[0.2em] uppercase text-(--color-fg-accent)"
           >
-            Back to Publications
+            {backLabel}
           </Link>
         </div>
       </div>

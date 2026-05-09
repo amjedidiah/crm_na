@@ -3,8 +3,9 @@ import type {
   Church,
   CoreValue,
   Event,
+  GalleryAlbum,
+  GalleryCategory,
   Leader,
-  MediaItem,
   Ministry,
   Publication,
   SiteContact,
@@ -200,6 +201,24 @@ export const ministries: Ministry[] = [
       "Connecticut Youths Bible Study — Fridays, 8:00 PM EST",
     ],
     focusAreas: ["Discipleship", "Bible study", "Peer leadership"],
+    imageSrc: "https://placehold.co/1200x800/23395B/F7F2E8?text=CRM+NA+Youths",
+    galleryImages: [
+      {
+        src: "https://placehold.co/1200x800/23395B/F7F2E8?text=Youth+Prayer+Night",
+        alt: "CRM NA youths gathering for prayer night",
+        caption: "Prayer night and peer discipleship",
+      },
+      {
+        src: "https://placehold.co/1200x800/406E8E/F7F2E8?text=Bible+Study",
+        alt: "Youth Bible study discussion group",
+        caption: "Weekly Bible study rhythms",
+      },
+      {
+        src: "https://placehold.co/1200x800/8EA8C3/1B1B1B?text=Youth+Leadership",
+        alt: "Young leaders serving during a CRM NA gathering",
+        caption: "Leadership formation across branches",
+      },
+    ],
   },
   {
     slug: "cwl-charismatic-women-league",
@@ -212,6 +231,24 @@ export const ministries: Ministry[] = [
     leaderIds: [],
     meetingSchedule: ["Quarterly fellowship", "Prayer and support gatherings"],
     focusAreas: ["Women", "Prayer", "Mentorship"],
+    imageSrc: "https://placehold.co/1200x800/8C3B3B/F7F2E8?text=CWL+Gathering",
+    galleryImages: [
+      {
+        src: "https://placehold.co/1200x800/8C3B3B/F7F2E8?text=CWL+Prayer",
+        alt: "Women praying together during a CWL gathering",
+        caption: "Prayer and support gatherings",
+      },
+      {
+        src: "https://placehold.co/1200x800/B85C38/F7F2E8?text=Women's+Fellowship",
+        alt: "CWL fellowship table and conversation",
+        caption: "Encouragement across every season of life",
+      },
+      {
+        src: "https://placehold.co/1200x800/D9A441/1B1B1B?text=Mentoring+Circle",
+        alt: "Women gathered in a mentoring circle",
+        caption: "Mentoring and discipleship",
+      },
+    ],
   },
   {
     slug: "kings-men",
@@ -224,6 +261,24 @@ export const ministries: Ministry[] = [
     leaderIds: [],
     meetingSchedule: ["Quarterly fellowship", "Leadership and accountability gatherings"],
     focusAreas: ["Men", "Leadership", "Discipleship"],
+    imageSrc: "https://placehold.co/1200x800/2F5233/F7F2E8?text=King's+Men",
+    galleryImages: [
+      {
+        src: "https://placehold.co/1200x800/2F5233/F7F2E8?text=Men's+Prayer",
+        alt: "Men praying together in a CRM NA meeting",
+        caption: "Prayer and accountability",
+      },
+      {
+        src: "https://placehold.co/1200x800/5C7A29/F7F2E8?text=Leadership+Talk",
+        alt: "Men listening during a leadership teaching session",
+        caption: "Leadership and family life conversations",
+      },
+      {
+        src: "https://placehold.co/1200x800/A1C181/1B1B1B?text=Fellowship",
+        alt: "Men in fellowship after a ministry gathering",
+        caption: "Brotherhood and follow-through",
+      },
+    ],
   },
 ];
 
@@ -242,35 +297,97 @@ export const events: Event[] = [
     location:
       "Holiday Inn NW Houston, 3539 N Sam Houston Pkwy West, Houston, TX 77086",
     registrationUrl: CONVENTION_REGISTRATION_URL,
+    imageSrc: "https://placehold.co/1600x900/6A1B2D/F7F2E8?text=Convention+2026",
+    galleryImages: [
+      {
+        src: "https://placehold.co/1200x800/6A1B2D/F7F2E8?text=Opening+Night",
+        alt: "Convention opening night worship gathering",
+        caption: "Opening night worship",
+      },
+      {
+        src: "https://placehold.co/1200x800/0F4C5C/F7F2E8?text=Teaching+Session",
+        alt: "Delegates gathered during a teaching session",
+        caption: "Teaching and ministry moments",
+      },
+      {
+        src: "https://placehold.co/1200x800/E36414/F7F2E8?text=Prayer+Altar",
+        alt: "Prayer ministry at the convention altar",
+        caption: "Prayer and response time",
+      },
+      {
+        src: "https://placehold.co/1200x800/FB8B24/1B1B1B?text=Fellowship+Hall",
+        alt: "Convention fellowship and networking moments",
+        caption: "Fellowship across the network",
+      },
+    ],
   },
 ];
 
-export const mediaItems: MediaItem[] = [
+export const GALLERY_CATEGORIES: { value: GalleryCategory; label: string }[] = [
+  { value: "all", label: "All albums" },
+  { value: "events", label: "Events" },
+  { value: "ministries", label: "Ministries" },
+  { value: "general", label: "General" },
+];
+
+export const standaloneGalleryAlbums: GalleryAlbum[] = [
   {
-    slug: "national-overseer-message-april-2026",
-    title: "Standing Firm in the Day of Visitation",
-    type: "video",
-    summary: "Dr. Peter Ezekwenna exhorts the church to combine spiritual hunger with steady obedience in this season of open doors.",
-    url: "https://youtube.com/@crmna",
-    speaker: "Dr. Peter Ezekwenna",
-    publishedAt: "2026-04-21",
+    id: "general-prayer-retreat",
+    slug: "prayer-retreat-weekend",
+    title: "Prayer Retreat Weekend",
+    date: "2026-03-07",
+    category: "general",
+    coverImage: {
+      src: "https://placehold.co/1200x800/5A189A/F7F2E8?text=Prayer+Retreat",
+      alt: "CRM NA prayer retreat worship session",
+      caption: "Retreat worship and intercession",
+    },
+    images: [
+      {
+        src: "https://placehold.co/1200x800/5A189A/F7F2E8?text=Retreat+Worship",
+        alt: "Worship during the prayer retreat",
+        caption: "Extended worship sessions",
+      },
+      {
+        src: "https://placehold.co/1200x800/7B2CBF/F7F2E8?text=Morning+Prayer",
+        alt: "Morning prayer circle during the retreat",
+        caption: "Morning prayer watches",
+      },
+      {
+        src: "https://placehold.co/1200x800/9D4EDD/F7F2E8?text=Teaching+Circle",
+        alt: "Teaching circle during the retreat weekend",
+        caption: "Word, prayer, and response",
+      },
+    ],
   },
   {
-    slug: "weekly-livestream",
-    title: "Sunday Worship Broadcast",
-    type: "livestream",
-    summary: "Join the current broadcast or catch the latest replay from CRM North America worship and teaching gatherings.",
-    url: "https://youtube.com/@crmna",
-    publishedAt: "2026-05-01",
-  },
-  {
-    slug: "faith-and-revival",
-    title: "Faith and Revival",
-    type: "sermon",
-    summary: "Pastor Marcel Odimgbe preaches on the kind of faith that keeps revival alive in homes, churches, and weary hearts.",
-    url: "https://youtube.com/@crmna",
-    speaker: "Pastor Marcel Odimgbe",
-    publishedAt: "2026-03-18",
+    id: "general-network-fellowship",
+    slug: "network-fellowship-summer",
+    title: "Network Fellowship Summer",
+    date: "2025-08-16",
+    category: "general",
+    coverImage: {
+      src: "https://placehold.co/1200x800/1D3557/F7F2E8?text=Network+Fellowship",
+      alt: "CRM NA fellowship table and conversation",
+      caption: "Summer fellowship across branches",
+    },
+    images: [
+      {
+        src: "https://placehold.co/1200x800/1D3557/F7F2E8?text=Shared+Meal",
+        alt: "Shared meal during a CRM NA network fellowship",
+        caption: "Shared meals and reconnection",
+      },
+      {
+        src: "https://placehold.co/1200x800/457B9D/F7F2E8?text=Families+Together",
+        alt: "Families gathered together in fellowship",
+        caption: "Families across the network",
+      },
+      {
+        src: "https://placehold.co/1200x800/A8DADC/1B1B1B?text=Prayer+Circle",
+        alt: "Closing prayer circle after a fellowship event",
+        caption: "Closing prayer and encouragement",
+      },
+    ],
   },
 ];
 
@@ -382,6 +499,39 @@ export function getMinistryBySlug(slug: string) {
 
 export function getEventBySlug(slug: string) {
   return events.find((event) => event.slug === slug);
+}
+
+export function getGalleryAlbums() {
+  const eventAlbums: GalleryAlbum[] = events
+    .filter((event) => event.galleryImages?.length)
+    .map((event) => ({
+      id: `event-${event.slug}`,
+      slug: event.slug,
+      title: event.title,
+      date: event.startDate,
+      category: "events",
+      coverImage: event.galleryImages![0],
+      images: event.galleryImages!,
+      sourceHref: `/events/${event.slug}`,
+    }));
+
+  const ministryAlbums: GalleryAlbum[] = ministries
+    .filter((ministry) => ministry.galleryImages?.length)
+    .map((ministry) => ({
+      id: `ministry-${ministry.slug}`,
+      slug: ministry.slug,
+      title: ministry.name,
+      category: "ministries",
+      coverImage: ministry.galleryImages![0],
+      images: ministry.galleryImages!,
+      sourceHref: `/ministries/${ministry.slug}`,
+    }));
+
+  return [...eventAlbums, ...ministryAlbums, ...standaloneGalleryAlbums];
+}
+
+export function getAlbumBySlug(slug: string) {
+  return getGalleryAlbums().find((album) => album.slug === slug);
 }
 
 export function getPublicationBySlug(slug: string) {

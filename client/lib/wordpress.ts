@@ -2,13 +2,14 @@ import {
   churches,
   coreValues,
   events,
+  getAlbumBySlug,
   getChurchBySlug,
   getEventBySlug,
+  getGalleryAlbums as getGalleryAlbumsFromMockData,
   getMinistryBySlug,
   getPublicationBySlug,
   historyTimeline,
   leaders,
-  mediaItems,
   ministries,
   publications,
   visionContent,
@@ -66,8 +67,12 @@ export async function getEvent(slug: string) {
   return getEventBySlug(slug) ?? null;
 }
 
-export async function getMediaItems() {
-  return mediaItems;
+export async function getGalleryAlbums() {
+  return getGalleryAlbumsFromMockData();
+}
+
+export async function getGalleryAlbum(slug: string) {
+  return getAlbumBySlug(slug) ?? null;
 }
 
 export async function getPublications() {

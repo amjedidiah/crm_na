@@ -1,8 +1,8 @@
 "use client";
 
 import { useReducedMotion } from "framer-motion";
-import Link from "next/link";
 import { ArrowRight, MapPin, Radio, Sparkles } from "lucide-react";
+import ChurchLink from "@/components/churches/ChurchLink";
 import SectionHeader from "@/components/shared/SectionHeader";
 import type { Church } from "@/lib/types";
 import Motion from "@/components/shared/Motion";
@@ -66,7 +66,7 @@ function FeaturedShowcaseIntro({
       <SectionHeader
         eyebrow="Churches"
         title="Locate a Charismatic Renewal community near you"
-        description="From New England to Houston, CRM NA churches proclaim Jesus, honor the Holy Spirit, and disciple families across everyday life. Explore a few branch stories below, then step into the church directory for service times, pastoral oversight, and livestream access."
+        description="From New England to Houston, CRM NA churches proclaim Jesus, honor the Holy Spirit, and disciple families across everyday life. Explore a few branch stories below, then step into the church directory for service times, pastoral oversight, and local rhythms."
       />
     </Motion>
   );
@@ -85,8 +85,8 @@ function FeaturedLargeCard({
       whileHover={cardLiftHover(reduceMotion)}
       className="xl:col-span-7"
     >
-      <Link
-        href={`/churches/${church.slug}`}
+      <ChurchLink
+        church={church}
         className="shadow-featured-card group relative block overflow-hidden rounded-4xl border border-(--color-border-accent) bg-(--color-bg-emphasis) p-8 text-(--color-fg-inverse) transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 md:p-10"
       >
         <div
@@ -156,14 +156,14 @@ function FeaturedLargeCard({
           </div>
 
           <span className="inline-flex items-center gap-2 font-display text-[0.7rem] tracking-[0.24em] uppercase text-(--color-fg-accent-strong)">
-            Open church page
+            {church.website ? "Visit church website" : "Open church page"}
             <ArrowRight
               className="size-4 transition-transform duration-300 group-hover:translate-x-1"
               aria-hidden
             />
           </span>
         </div>
-      </Link>
+      </ChurchLink>
     </Motion>
   );
 }
@@ -186,8 +186,8 @@ function SpotlightBranchCard({
       whileHover={cardLiftHover(reduceMotion)}
       className="xl:col-span-5"
     >
-      <Link
-        href={`/churches/${church.slug}`}
+      <ChurchLink
+        church={church}
         className="card-surface shadow-card-hover-strong group relative block h-full overflow-hidden rounded-4xl p-7 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-(--color-border-accent) md:p-8"
       >
         <div
@@ -223,7 +223,7 @@ function SpotlightBranchCard({
               {storyLead}
             </p>
             <span className="inline-flex items-center gap-2 font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent-text)">
-              Explore branch
+              {church.website ? "Visit branch website" : "Explore branch"}
               <ArrowRight
                 className="size-4 transition-transform duration-300 group-hover:translate-x-1"
                 aria-hidden
@@ -231,7 +231,7 @@ function SpotlightBranchCard({
             </span>
           </div>
         </div>
-      </Link>
+      </ChurchLink>
     </Motion>
   );
 }
@@ -248,8 +248,8 @@ function SupportingChurchTile({
       whileHover={cardLiftHover(reduceMotion)}
       className="md:col-span-1 xl:col-span-6"
     >
-      <Link
-        href={`/churches/${church.slug}`}
+      <ChurchLink
+        church={church}
         className="card-surface shadow-card-hover-soft group relative block h-full overflow-hidden rounded-[1.75rem] p-6 transition-[box-shadow,border-color,transform] duration-300 hover:-translate-y-1 hover:border-(--color-border-accent)"
       >
         <span
@@ -259,7 +259,9 @@ function SupportingChurchTile({
         />
         <div className="relative flex h-full flex-col justify-between gap-8">
           <div className="space-y-3">
-            <p className="eyebrow text-(--color-fg-accent-text)">{church.region}</p>
+            <p className="eyebrow text-(--color-fg-accent-text)">
+              {church.region}
+            </p>
             <h3 className="text-3xl transition-transform duration-300 group-hover:translate-x-0.5">
               {church.name}
             </h3>
@@ -272,10 +274,11 @@ function SupportingChurchTile({
           </div>
           <div className="space-y-3">
             <p className="text-(--color-fg-secondary) text-sm leading-7">
-              {service?.label ?? "Sunday worship"}: {service?.time ?? "10:00 AM"}
+              {service?.label ?? "Sunday worship"}:{" "}
+              {service?.time ?? "10:00 AM"}
             </p>
             <span className="inline-flex items-center gap-2 font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent-text)">
-              See church details
+              {church.website ? "Visit church website" : "See church details"}
               <ArrowRight
                 className="size-4 transition-transform duration-300 group-hover:translate-x-1"
                 aria-hidden
@@ -283,7 +286,7 @@ function SupportingChurchTile({
             </span>
           </div>
         </div>
-      </Link>
+      </ChurchLink>
     </Motion>
   );
 }

@@ -26,6 +26,7 @@ crmusa2026-convention/node_modules/
 client/.next/
 out/
 client/out/
+client/next-env.d.ts
 
 # Vercel / deployment state
 .vercel/

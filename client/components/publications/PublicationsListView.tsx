@@ -10,6 +10,7 @@ interface PublicationsListViewProps {
   description: string;
   /** Optional content rendered between the PageHeader and the publication grid (e.g. filter links). */
   filterNav?: ReactNode;
+  basePath?: string;
 }
 
 function PublicationsListView({
@@ -18,6 +19,7 @@ function PublicationsListView({
   title,
   description,
   filterNav,
+  basePath,
 }: Readonly<PublicationsListViewProps>) {
   return (
     <div className="bg-(--color-bg-canvas) text-(--color-fg-primary)">
@@ -36,7 +38,11 @@ function PublicationsListView({
           ) : (
             <div className="grid gap-6 md:grid-cols-2">
               {publications.map((publication) => (
-                <PublicationCard key={publication.slug} publication={publication} />
+                <PublicationCard
+                  key={publication.slug}
+                  publication={publication}
+                  basePath={basePath}
+                />
               ))}
             </div>
           )}

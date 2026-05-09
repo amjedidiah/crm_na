@@ -26,7 +26,7 @@ const MARQUEE_ITEMS = [
   `${leaders.length} pastoral and ministry leaders`,
   "Serving the United States, Canada, and Mexico",
   "Prayer, worship, discipleship, and revival",
-  "Livestream, sermons, devotionals, and pastoral care",
+  "Churches, ministries, gallery moments, and devotional care",
 ];
 
 const contentEase = [0.22, 1, 0.36, 1] as const;
@@ -329,11 +329,11 @@ function HeroSection() {
             </HeroMotionButtonWrap>
             <HeroMotionButtonWrap reduceMotion={reduceMotion}>
               <Button
-                href="/media#live"
+                href="/gallery"
                 variant="outline"
                 className={inverseOutlineClass}
               >
-                Watch us live
+                Browse the gallery
               </Button>
             </HeroMotionButtonWrap>
           </Motion>

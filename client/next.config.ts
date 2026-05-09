@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "crm-na.org" },
       { protocol: "https", hostname: "i0.wp.com" },
+      { protocol: "https", hostname: "placehold.co" },
       { protocol: "https", hostname: "**.ytimg.com" },
       { protocol: "http", hostname: "localhost", port: "8080" },
     ],
@@ -70,10 +71,32 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/watch-us-live",
-        destination: "/media#live",
+        destination: "/gallery",
         permanent: true,
       },
-      { source: "/sermon", destination: "/media", permanent: true },
+      { source: "/sermon", destination: "/gallery", permanent: true },
+      { source: "/media", destination: "/gallery", permanent: true },
+      { source: "/publications", destination: "/devotionals", permanent: true },
+      {
+        source: "/publications/devotionals",
+        destination: "/devotionals",
+        permanent: true,
+      },
+      {
+        source: "/publications/blog",
+        destination: "/devotionals",
+        permanent: true,
+      },
+      {
+        source: "/publications/:slug",
+        destination: "/devotionals",
+        permanent: true,
+      },
+      {
+        source: "/devotionals/:slug",
+        destination: "/devotionals",
+        permanent: true,
+      },
     ];
   },
   // Hostnames only (not full URLs). Origin `http://127.0.0.1:3000` → hostname `127.0.0.1`.

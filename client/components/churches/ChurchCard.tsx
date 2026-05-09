@@ -1,5 +1,5 @@
-import Link from "next/link";
 import type { Church } from "@/lib/types";
+import ChurchLink from "@/components/churches/ChurchLink";
 
 function ChurchCard({ church }: Readonly<{ church: Church }>) {
   return (
@@ -10,12 +10,12 @@ function ChurchCard({ church }: Readonly<{ church: Church }>) {
         {church.city}, {church.stateOrProvince}
       </p>
       <p className="text-(--color-fg-secondary)">{church.summary}</p>
-      <Link
-        href={`/churches/${church.slug}`}
+      <ChurchLink
+        church={church}
         className="font-display inline-block text-xs tracking-[0.2em] uppercase text-(--color-fg-accent)"
       >
-        View church
-      </Link>
+        {church.website ? "Visit church website" : "View church"}
+      </ChurchLink>
     </article>
   );
 }

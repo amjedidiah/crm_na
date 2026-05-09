@@ -1,4 +1,7 @@
+import Image from "next/image";
 import type { Event, Leader, Ministry } from "@/lib/types";
+import GalleryPreview from "@/components/gallery/GalleryPreview";
+import MinistryCallToAction from "@/components/ministries/MinistryCallToAction";
 import MinistryEvents from "@/components/ministries/MinistryEvents";
 
 function MinistryDetailContent({
@@ -13,12 +16,26 @@ function MinistryDetailContent({
   return (
     <section className="section-padding">
       <div className="container-shell space-y-10">
-        <div className="space-y-4">
-          <p className="eyebrow">Ministry</p>
-          <h1 className="text-5xl">{ministry.name}</h1>
-          <p className="max-w-3xl text-lg leading-8 text-(--color-fg-secondary)">
-            {ministry.summary}
-          </p>
+        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+          <div className="space-y-4">
+            <p className="eyebrow">Ministry</p>
+            <h1 className="text-5xl">{ministry.name}</h1>
+            <p className="max-w-3xl text-lg leading-8 text-(--color-fg-secondary)">
+              {ministry.summary}
+            </p>
+          </div>
+          {ministry.imageSrc ? (
+            <div className="overflow-hidden rounded-[1.8rem] border border-(--color-border-subtle)">
+              <Image
+                src={ministry.imageSrc}
+                alt={ministry.name}
+                width={1600}
+                height={1200}
+                className="aspect-4/3 h-full w-full object-cover"
+                unoptimized
+              />
+            </div>
+          ) : null}
         </div>
         <div className="grid gap-4">
           {ministry.description.map((paragraph) => (
@@ -52,6 +69,16 @@ function MinistryDetailContent({
           </div>
         </div>
         <MinistryEvents events={events} />
+        {ministry.galleryImages?.length ? (
+          <div className="card-surface p-6">
+            <GalleryPreview
+              images={ministry.galleryImages}
+              href={`/gallery/${ministry.slug}`}
+              title="Photos from this ministry"
+            />
+          </div>
+        ) : null}
+        <MinistryCallToAction />
       </div>
     </section>
   );

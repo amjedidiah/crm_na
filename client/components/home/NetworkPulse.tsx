@@ -61,7 +61,7 @@ const cards = [
     accentClass: "bg-(--color-bg-overlay-emphasis-subtle)",
     count: "support",
     description:
-      "Back church life, outreach, media, and pastoral care through clear generosity pathways.",
+      "Back church life, outreach, ministry work, and pastoral care through clear generosity pathways.",
   },
 ] as const;
 
