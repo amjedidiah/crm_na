@@ -129,6 +129,7 @@ export const leaders: Leader[] = [
     id: "okezie-ofoegbu",
     name: "Pastor Okezie Ofoegbu",
     title: "Youth Coordinator — Grace Life Center, Maryland",
+    churchSlug: "grace-life-center",
     ministrySlug: "youths",
     region: "USA",
     imageSrc: LEADER_PLACEHOLDER_IMAGE,
@@ -247,9 +248,38 @@ export const churches: Church[] = [
     ],
   },
   {
+    slug: "grace-life-center",
+    mode: "slug-redirect",
+    directoryOrder: 3,
+    name: "Grace Life Center",
+    region: "USA",
+    city: "Laurel",
+    stateOrProvince: "Maryland",
+    country: "United States",
+    summary:
+      "A Charismatic Renewal Ministries church family in Laurel—Sunday worship, prayer, and discipleship with visit details and media on the branch website.",
+    story: [
+      "Grace Life Center gathers believers in Laurel, Maryland, as part of the wider CRM NA family—passionate about becoming like Jesus and sharing God’s love in everyday life.",
+      "Sunday worship, prayer rhythms, Scripture growth groups, and community outreach extend the church’s welcome to neighbors and newcomers.",
+      "Schedules, visitor information, sermons, and giving are maintained on Grace Life Center’s own site.",
+    ],
+    address: "8730 Cherry Lane, Suite A5, Laurel, MD 20707",
+    phone: "",
+    email: "pastor@gracelifecenter.com",
+    website: "https://gracelifecenter.com/",
+    pastorId: "okezie-ofoegbu",
+    serviceTimes: [
+      { label: "Sunday Worship", day: "Sunday", time: "10:00 AM" },
+    ],
+    programs: [
+      { title: "Prayer gatherings", cadence: "Weekly" },
+      { title: "Bible study & discipleship", cadence: "Weekly" },
+    ],
+  },
+  {
     slug: "crm-rhode-island",
     mode: "internal-page",
-    directoryOrder: 3,
+    directoryOrder: 4,
     legacyPath: "/crm-rhode-island/",
     name: "CRM Rhode Island",
     region: "USA",
@@ -274,7 +304,7 @@ export const churches: Church[] = [
   {
     slug: "grace-glory-sanctuary",
     mode: "internal-page",
-    directoryOrder: 4,
+    directoryOrder: 5,
     legacyPath: "/grace-glory-sanctuary/",
     name: "Grace & Glory Sanctuary",
     region: "USA",
@@ -322,7 +352,7 @@ export const churches: Church[] = [
   {
     slug: "crm-brampton",
     mode: "slug-redirect",
-    directoryOrder: 5,
+    directoryOrder: 6,
     name: "CRM Brampton",
     region: "Canada",
     city: "Brampton",
@@ -344,7 +374,7 @@ export const churches: Church[] = [
   {
     slug: "crm-ottawa",
     mode: "external-link-only",
-    directoryOrder: 6,
+    directoryOrder: 7,
     name: "CRM Ottawa",
     region: "Canada",
     city: "Ottawa",
@@ -369,7 +399,7 @@ export const churches: Church[] = [
   {
     slug: "crm-north-bay",
     mode: "listing-only",
-    directoryOrder: 7,
+    directoryOrder: 8,
     name: "CRM North Bay",
     region: "Canada",
     city: "North Bay",
@@ -388,7 +418,7 @@ export const churches: Church[] = [
   {
     slug: "crm-mexico-city",
     mode: "listing-only",
-    directoryOrder: 8,
+    directoryOrder: 9,
     name: "CRM Mexico City",
     region: "Mexico",
     city: "Mexico City",

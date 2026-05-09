@@ -201,10 +201,7 @@ function SpotlightBranchCard({
               <p className="font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--text-accent)">
                 Branch spotlight
               </p>
-              <Sparkles
-                className="size-5 text-(--text-accent)"
-                aria-hidden
-              />
+              <Sparkles className="size-5 text-(--text-accent)" aria-hidden />
             </div>
             <h3 className="text-4xl leading-tight">{church.name}</h3>
             <p className="text-lg leading-8 text-(--text-secondary)">
@@ -223,7 +220,7 @@ function SpotlightBranchCard({
               {storyLead}
             </p>
             <span className="inline-flex items-center gap-2 font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--text-accent)">
-              {church.website ? "Visit branch website" : "Explore branch"}
+              {church.website ? "Visit church website" : "Explore church"}
               <ArrowRight
                 className="size-4 transition-transform duration-300 group-hover:translate-x-1"
                 aria-hidden

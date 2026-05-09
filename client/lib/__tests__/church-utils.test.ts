@@ -54,6 +54,7 @@ describe("church utils", () => {
     const slugs = params.map((p) => p.slug);
     expect(slugs).toContain("crm-word-of-life");
     expect(slugs).toContain("crm-praise-center");
+    expect(slugs).toContain("grace-life-center");
     expect(slugs).toContain("crm-brampton");
     expect(slugs).not.toContain("crm-ottawa");
     expect(slugs).not.toContain("crm-north-bay");
