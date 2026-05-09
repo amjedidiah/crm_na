@@ -411,23 +411,7 @@ export const ministries: Ministry[] = [
     ],
     focusAreas: ["Discipleship", "Bible study", "Peer leadership"],
     imageSrc: "https://placehold.co/1200x800/23395B/F7F2E8?text=CRM+NA+Youths",
-    galleryImages: [
-      {
-        src: "https://placehold.co/1200x800/23395B/F7F2E8?text=Youth+Prayer+Night",
-        alt: "CRM NA youths gathering for prayer night",
-        caption: "Prayer night and peer discipleship",
-      },
-      {
-        src: "https://placehold.co/1200x800/406E8E/F7F2E8?text=Bible+Study",
-        alt: "Youth Bible study discussion group",
-        caption: "Weekly Bible study rhythms",
-      },
-      {
-        src: "https://placehold.co/1200x800/8EA8C3/1B1B1B?text=Youth+Leadership",
-        alt: "Young leaders serving during a CRM NA gathering",
-        caption: "Leadership formation across branches",
-      },
-    ],
+    galleryImages: [],
   },
   {
     slug: "cwl-charismatic-women-league",
@@ -441,23 +425,7 @@ export const ministries: Ministry[] = [
     meetingSchedule: ["Quarterly fellowship", "Prayer and support gatherings"],
     focusAreas: ["Women", "Prayer", "Mentorship"],
     imageSrc: "https://placehold.co/1200x800/8C3B3B/F7F2E8?text=CWL+Gathering",
-    galleryImages: [
-      {
-        src: "https://placehold.co/1200x800/8C3B3B/F7F2E8?text=CWL+Prayer",
-        alt: "Women praying together during a CWL gathering",
-        caption: "Prayer and support gatherings",
-      },
-      {
-        src: "https://placehold.co/1200x800/B85C38/F7F2E8?text=Women's+Fellowship",
-        alt: "CWL fellowship table and conversation",
-        caption: "Encouragement across every season of life",
-      },
-      {
-        src: "https://placehold.co/1200x800/D9A441/1B1B1B?text=Mentoring+Circle",
-        alt: "Women gathered in a mentoring circle",
-        caption: "Mentoring and discipleship",
-      },
-    ],
+    galleryImages: [],
   },
   {
     slug: "kings-men",
@@ -475,23 +443,7 @@ export const ministries: Ministry[] = [
     ],
     focusAreas: ["Men", "Leadership", "Discipleship"],
     imageSrc: "https://placehold.co/1200x800/2F5233/F7F2E8?text=King's+Men",
-    galleryImages: [
-      {
-        src: "https://placehold.co/1200x800/2F5233/F7F2E8?text=Men's+Prayer",
-        alt: "Men praying together in a CRM NA meeting",
-        caption: "Prayer and accountability",
-      },
-      {
-        src: "https://placehold.co/1200x800/5C7A29/F7F2E8?text=Leadership+Talk",
-        alt: "Men listening during a leadership teaching session",
-        caption: "Leadership and family life conversations",
-      },
-      {
-        src: "https://placehold.co/1200x800/A1C181/1B1B1B?text=Fellowship",
-        alt: "Men in fellowship after a ministry gathering",
-        caption: "Brotherhood and follow-through",
-      },
-    ],
+    galleryImages: [],
   },
 ];
 

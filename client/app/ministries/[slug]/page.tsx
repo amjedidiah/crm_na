@@ -1,12 +1,33 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import MinistryDetailContent from "@/components/ministries/MinistryDetailContent";
 import BackToListingLink from "@/components/shared/BackToListingLink";
 import PageHeader from "@/components/shared/PageHeader";
-import { getEvents, getLeaders, getMinistry } from "@/lib/wordpress";
+import { getEvents, getLeaders, getMinistries, getMinistry } from "@/lib/wordpress";
 
 export async function generateStaticParams() {
   const { ministries } = await import("@/lib/mock-data");
   return ministries.map((ministry) => ({ slug: ministry.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: Readonly<{
+  params: Promise<{ slug: string }>;
+}>): Promise<Metadata> {
+  const { slug } = await params;
+  const ministry = await getMinistry(slug);
+  if (!ministry) {
+    return { title: "Ministry" };
+  }
+  return {
+    title: ministry.name,
+    description: ministry.summary,
+    openGraph: {
+      title: ministry.name,
+      description: ministry.summary,
+    },
+  };
 }
 
 async function MinistryDetailPage({
@@ -15,13 +36,17 @@ async function MinistryDetailPage({
   params: Promise<{ slug: string }>;
 }>) {
   const { slug } = await params;
-  const ministry = await getMinistry(slug);
+  const [ministry, allMinistries, allLeaders] = await Promise.all([
+    getMinistry(slug),
+    getMinistries(),
+    getLeaders(),
+  ]);
 
   if (!ministry) {
     notFound();
   }
 
-  const leaders = (await getLeaders()).filter((leader) =>
+  const leaders = allLeaders.filter((leader) =>
     ministry.leaderIds.includes(leader.id),
   );
   const events = (await getEvents()).filter(
@@ -29,7 +54,7 @@ async function MinistryDetailPage({
   );
 
   return (
-    <div className="bg-(--color-bg-canvas) text-(--color-fg-primary)">
+    <div className="overflow-x-clip bg-page-canvas text-(--color-fg-primary)">
       <PageHeader
         leading={
           <BackToListingLink href="/ministries">Ministries</BackToListingLink>
@@ -38,11 +63,18 @@ async function MinistryDetailPage({
         title={ministry.name}
         description={ministry.summary}
       />
-      <MinistryDetailContent
-        ministry={ministry}
-        leaders={leaders}
-        events={events}
-      />
+      <div className="relative">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-gradient-page-warm-top-glow opacity-80"
+        />
+        <MinistryDetailContent
+          ministry={ministry}
+          leaders={leaders}
+          events={events}
+          allMinistries={allMinistries}
+        />
+      </div>
     </div>
   );
 }

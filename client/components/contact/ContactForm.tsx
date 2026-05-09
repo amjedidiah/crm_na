@@ -32,7 +32,12 @@ function normalizePurpose(raw: unknown): PurposeOption | undefined {
 function ContactForm({
   initialPurpose,
   initialChurchSlug,
-}: Readonly<{ initialPurpose?: string; initialChurchSlug?: string }>) {
+  initialMinistrySlug,
+}: Readonly<{
+  initialPurpose?: string;
+  initialChurchSlug?: string;
+  initialMinistrySlug?: string;
+}>) {
   const [state, formAction] = useActionState(submitContactAction, initialState);
   const purposeDefault = normalizePurpose(initialPurpose) ?? "general";
 
@@ -41,6 +46,9 @@ function ContactForm({
       {state.message ? <SuccessMessage message={state.message} /> : null}
       {initialChurchSlug ? (
         <input type="hidden" name="churchSlug" value={initialChurchSlug} />
+      ) : null}
+      {initialMinistrySlug ? (
+        <input type="hidden" name="ministrySlug" value={initialMinistrySlug} />
       ) : null}
       <FormField label="Name" name="name" required />
       <FormField label="Email" name="email" type="email" required />

@@ -46,7 +46,7 @@ function GalleryPreview({
         href={href}
         className="font-display inline-flex items-center gap-2 text-xs tracking-[0.22em] uppercase text-(--color-fg-accent-text)"
       >
-        View all {images.length} photos
+        View more in gallery
         <ArrowRight className="size-4" aria-hidden />
       </Link>
     </div>

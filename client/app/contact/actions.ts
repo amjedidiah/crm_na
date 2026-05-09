@@ -14,6 +14,7 @@ export async function submitContactAction(
     purpose: formData.get("purpose"),
     message: formData.get("message"),
     churchSlug: formData.get("churchSlug"),
+    ministrySlug: formData.get("ministrySlug"),
   });
 
   if (!parsed.success) {
@@ -25,6 +26,8 @@ export async function submitContactAction(
 
   const churchSlugForEmail =
     parsed.data.purpose === "churches" ? parsed.data.churchSlug : undefined;
+  const ministrySlugForEmail =
+    parsed.data.purpose === "ministries" ? parsed.data.ministrySlug : undefined;
 
   await sendContactEmail({
     fromEmail: parsed.data.email,
@@ -32,6 +35,7 @@ export async function submitContactAction(
     purpose: parsed.data.purpose,
     message: parsed.data.message,
     churchSlug: churchSlugForEmail,
+    ministrySlug: ministrySlugForEmail,
   });
 
   return {

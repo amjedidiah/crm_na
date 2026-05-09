@@ -39,4 +39,31 @@ describe("contact schema", () => {
 
     expect(result.success).toBe(false);
   });
+
+  test("accepts ministries purpose with ministry slug", () => {
+    const result = contactSchema.safeParse({
+      name: "CRM Visitor",
+      email: "visitor@example.com",
+      purpose: "ministries",
+      message: "I would like to volunteer with the youth ministry when you reply.",
+      ministrySlug: "youths",
+    });
+
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.ministrySlug).toBe("youths");
+    }
+  });
+
+  test("rejects invalid ministry slug", () => {
+    const result = contactSchema.safeParse({
+      name: "CRM Visitor",
+      email: "visitor@example.com",
+      purpose: "ministries",
+      message: "I would like to volunteer with the youth ministry when you reply.",
+      ministrySlug: "Bad Slug",
+    });
+
+    expect(result.success).toBe(false);
+  });
 });

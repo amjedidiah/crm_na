@@ -7,6 +7,18 @@ export interface SendContactEmailInput {
   message: string;
   /** Directory church slug when contacting about a specific listing. */
   churchSlug?: string;
+  /** Ministry profile slug when contacting about a specific lane. */
+  ministrySlug?: string;
+}
+
+function contactFormEmailSubject(input: SendContactEmailInput): string {
+  if (input.purpose === "churches" && input.churchSlug) {
+    return `CRM NA contact form: churches (${input.churchSlug})`;
+  }
+  if (input.purpose === "ministries" && input.ministrySlug) {
+    return `CRM NA contact form: ministries (${input.ministrySlug})`;
+  }
+  return `CRM NA contact form: ${input.purpose}`;
 }
 
 export async function sendContactEmail(input: SendContactEmailInput) {
@@ -27,20 +39,23 @@ export async function sendContactEmail(input: SendContactEmailInput) {
     auth: { user: SMTP_USER, pass: SMTP_PASS },
   });
 
-  const slugLine =
+  const churchLine =
     input.purpose === "churches" && input.churchSlug
       ? `\nChurch listing slug: ${input.churchSlug}`
       : "";
+  const ministryLine =
+    input.purpose === "ministries" && input.ministrySlug
+      ? `\nMinistry profile slug: ${input.ministrySlug}`
+      : "";
+  const slugLines = `${churchLine}${ministryLine}`;
+  const subject = contactFormEmailSubject(input);
 
   await transporter.sendMail({
     to: CONTACT_EMAIL_TO ?? "info@crm-na.org",
     from: SMTP_USER,
     replyTo: input.fromEmail,
-    subject:
-      input.purpose === "churches" && input.churchSlug
-        ? `CRM NA contact form: churches (${input.churchSlug})`
-        : `CRM NA contact form: ${input.purpose}`,
-    text: `${input.fromName} <${input.fromEmail}>${slugLine}\n\n${input.message}`,
+    subject,
+    text: `${input.fromName} <${input.fromEmail}>${slugLines}\n\n${input.message}`,
   });
 
   return { delivered: true };

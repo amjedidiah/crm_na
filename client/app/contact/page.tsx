@@ -4,9 +4,13 @@ import PageHeader from "@/components/shared/PageHeader";
 async function ContactPage({
   searchParams,
 }: Readonly<{
-  searchParams: Promise<{ purpose?: string; churchSlug?: string }>;
+  searchParams: Promise<{
+    purpose?: string;
+    churchSlug?: string;
+    ministrySlug?: string;
+  }>;
 }>) {
-  const { purpose, churchSlug } = await searchParams;
+  const { purpose, churchSlug, ministrySlug } = await searchParams;
 
   return (
     <div className="bg-(--color-bg-canvas) text-(--color-fg-primary)">
@@ -18,6 +22,7 @@ async function ContactPage({
       <ContactFormSection
         initialPurpose={purpose}
         initialChurchSlug={churchSlug}
+        initialMinistrySlug={ministrySlug}
       />
     </div>
   );
