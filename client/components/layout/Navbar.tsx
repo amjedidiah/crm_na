@@ -5,6 +5,8 @@ import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useState } from "react";
 import SiteLogo from "@/components/brand/SiteLogo";
+import ThemePopover from "@/components/layout/ThemePopover";
+import ThemeSegmentedControl from "@/components/layout/ThemeSegmentedControl";
 import { contactHref } from "@/lib/contact-hrefs";
 import { SITE_NAME } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
@@ -120,10 +122,7 @@ function Navbar() {
           className="flex min-w-0 shrink-0 items-center gap-3 transition-opacity hover:opacity-95"
           aria-label={`${SITE_NAME} home`}
         >
-          <SiteLogo
-            className="h-10 w-10 shrink-0"
-            variant={transparent ? "on-dark" : "on-light"}
-          />
+          <SiteLogo className="h-10 w-10 shrink-0" />
           <span
             className={cn(
               "font-display truncate text-xs tracking-[0.26em] uppercase sm:text-sm",
@@ -138,7 +137,7 @@ function Navbar() {
         <nav
           aria-label="Primary"
           className={cn(
-            "hidden gap-6 lg:flex",
+            "hidden gap-6 xl:flex",
             transparent && "text-(--text-on-inverse-bright)",
           )}
         >
@@ -158,6 +157,9 @@ function Navbar() {
           })}
         </nav>
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <div className="hidden xl:block">
+            <ThemePopover transparent={transparent} />
+          </div>
           <Link
             href="/give"
             className={cn(
@@ -172,7 +174,7 @@ function Navbar() {
           <button
             type="button"
             className={cn(
-              "flex size-10 items-center justify-center rounded-md border transition-colors lg:hidden",
+              "flex size-10 items-center justify-center rounded-md border transition-colors xl:hidden",
               transparent
                 ? "border-(--text-on-inverse-muted) text-(--text-on-inverse-bright) hover:border-(--text-brand-strong) hover:text-(--text-brand-strong)"
                 : "border-(--border-default) text-(--text-primary) hover:border-(--text-accent) hover:text-(--text-accent)",
@@ -195,7 +197,7 @@ function Navbar() {
       <div
         id={mobileNavId}
         className={cn(
-          "absolute top-full right-0 left-0 z-50 border-b lg:hidden",
+          "absolute top-full right-0 left-0 z-50 border-b xl:hidden",
           transparent
             ? "border-(--border-brand-soft) bg-(--surface-inverse) text-(--text-on-inverse-bright)"
             : "border-(--border-default) bg-(--surface-page-elevated) shadow-nav backdrop-blur-md",
@@ -206,6 +208,16 @@ function Navbar() {
           aria-label="Primary mobile"
           className="container-shell flex max-h-[min(70vh,28rem)] flex-col gap-1 overflow-y-auto py-4"
         >
+          <div
+            className={cn(
+              "pb-3",
+              transparent
+                ? "border-b border-(--border-brand-soft)"
+                : "border-b border-(--border-default)",
+            )}
+          >
+            <ThemeSegmentedControl transparent={transparent} />
+          </div>
           {navLinks.map((link) => {
             const active =
               pathname === link.href || pathname.startsWith(`${link.href}/`);

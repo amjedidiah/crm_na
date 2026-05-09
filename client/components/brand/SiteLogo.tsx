@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 interface SiteLogoProps {
-  variant?: "on-dark" | "on-light";
   className?: string;
 }
 

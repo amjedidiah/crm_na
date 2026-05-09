@@ -292,10 +292,10 @@
 }
 
 /*
- * Dark theme overrides (toggle with html[data-theme="dark"]).
+ * Dark theme overrides (next-themes adds class "dark" on html).
  * Default remains light; gradients/shimmers derive from these primitives.
  */
-html[data-theme="dark"] {
+html.dark {
   color-scheme: dark;
   --surface-page: #0f141c;
   --surface-page-elevated: rgba(22, 28, 38, 0.94);
