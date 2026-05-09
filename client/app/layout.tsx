@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cinzel, Cormorant_Garamond, Jost } from "next/font/google";
 import type { PropsWithChildren } from "react";
+import ConventionRegistrationBanner from "@/components/layout/ConventionRegistrationBanner";
 import Footer from "@/components/layout/Footer";
 import FloatingGiveButton from "@/components/layout/FloatingGiveButton";
 import Navbar from "@/components/layout/Navbar";
@@ -54,6 +55,7 @@ function RootLayout({ children }: Readonly<PropsWithChildren>) {
       className={`${cinzel.variable} ${cormorant.variable} ${jost.variable}`}
     >
       <body className="min-h-screen bg-(--color-bg-canvas) text-(--color-fg-primary)">
+        <ConventionRegistrationBanner />
         <Navbar />
         <NavOffset />
         <main>

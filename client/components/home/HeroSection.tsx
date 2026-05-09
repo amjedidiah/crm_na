@@ -259,7 +259,7 @@ function HeroSection() {
   return (
     <section
       className={cn(
-        "hero-panel relative -mt-(--nav-height) overflow-hidden rounded-b-[clamp(1.25rem,4vw,2.75rem)] pt-[calc(var(--nav-height)+2rem)] md:pt-[calc(var(--nav-height)+2.75rem)]",
+        "hero-panel relative -mt-[calc(var(--nav-height)+var(--site-banner-height))] overflow-hidden rounded-b-[clamp(1.25rem,4vw,2.75rem)] pt-[calc(var(--nav-height)+var(--site-banner-height)+2rem)] md:pt-[calc(var(--nav-height)+var(--site-banner-height)+5.5rem)]",
       )}
     >
       <HeroGridOverlay />

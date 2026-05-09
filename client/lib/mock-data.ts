@@ -1,3 +1,4 @@
+import { CONVENTION_REGISTRATION_URL } from "@/lib/convention-public";
 import type {
   Church,
   CoreValue,
@@ -228,41 +229,19 @@ export const ministries: Ministry[] = [
 
 export const events: Event[] = [
   {
-    slug: "national-prayer-conference",
-    title: "National Prayer Conference",
-    summary: "A network-wide prayer and teaching gathering for CRM NA leaders and members.",
+    slug: "crm-usa-national-convention-2026",
+    title: "CRM USA National Convention 2026",
+    summary:
+      "Five days of renewal, worship, and community in Houston — July 29 through August 2. Theme: Bringing In The Harvest.",
     description: [
-      "Believers from multiple branches gather for preaching, intercession, and practical strategy around the future of CRM North America.",
-      "The conference strengthens local workers, reconnects families across regions, and stirs hunger for revival in each church center.",
+      "The CRM National Convention is our annual gathering of believers from across the United States and beyond — coming together for powerful worship, Spirit-led teaching, healing prayer, and the deepening of our charismatic faith.",
+      "Whether you are new to the renewal or have walked in it for decades, this is a week set apart to seek a fresh outpouring of the Holy Spirit, encounter God's presence together, and return home renewed and equipped for Kingdom work.",
     ],
-    startDate: "2026-08-14",
-    endDate: "2026-08-16",
-    location: "Houston, Texas",
-    churchSlug: "grace-glory-sanctuary",
-    registrationUrl: "https://crm-na.org/events/",
-  },
-  {
-    slug: "youth-revival-night",
-    title: "Youth Revival Night",
-    summary: "A youth-focused night of worship, Bible teaching, and intercession.",
-    description: [
-      "Young people from across the network come together online for worship, honest prayer, and preaching aimed at bold discipleship.",
-    ],
-    startDate: "2026-06-20",
-    location: "Online",
-    ministrySlug: "youths",
-    livestreamUrl: "https://youtube.com/@crmna",
-  },
-  {
-    slug: "leaders-roundtable",
-    title: "Leaders Roundtable",
-    summary: "A strategy and pastoral care session for regional and branch leaders.",
-    description: [
-      "Regional and branch leaders gather to pray, care for one another, and align around the spiritual and practical needs of the network.",
-    ],
-    startDate: "2026-05-24",
-    location: "New Haven, Connecticut",
-    churchSlug: "crm-praise-center",
+    startDate: "2026-07-29",
+    endDate: "2026-08-02",
+    location:
+      "Holiday Inn NW Houston, 3539 N Sam Houston Pkwy West, Houston, TX 77086",
+    registrationUrl: CONVENTION_REGISTRATION_URL,
   },
 ];
 

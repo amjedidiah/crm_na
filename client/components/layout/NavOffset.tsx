@@ -3,7 +3,7 @@ function NavOffset() {
     <div
       aria-hidden
       style={{
-        height: "var(--nav-height)",
+        height: "calc(var(--nav-height) + var(--site-banner-height))",
       }}
       className="shrink-0"
     />

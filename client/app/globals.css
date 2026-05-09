@@ -2,6 +2,8 @@
 
 :root {
   --nav-height: 4.75rem;
+  /* Set by ConventionRegistrationBanner when visible; keeps fixed chrome aligned */
+  --site-banner-height: 0px;
   --color-bg-canvas: #faf6ee;
   --color-bg-canvas-elevated: rgba(250, 246, 238, 0.95);
   --color-bg-surface: rgba(255, 255, 255, 0.78);

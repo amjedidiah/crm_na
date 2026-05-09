@@ -59,7 +59,7 @@ function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-[background-color,border-color,backdrop-filter,color,box-shadow] duration-300",
+        "fixed top-(--site-banner-height) right-0 left-0 z-50 transition-[background-color,border-color,backdrop-filter,color,box-shadow,top] duration-300",
         transparent
           ? "border-transparent border-b bg-transparent backdrop-blur-none"
           : "shadow-nav border-(--color-border-subtle) border-b bg-(--color-bg-canvas-elevated) backdrop-blur-md",
