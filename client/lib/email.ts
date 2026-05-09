@@ -26,7 +26,7 @@ export async function sendContactEmail(input: SendContactEmailInput) {
   });
 
   await transporter.sendMail({
-    to: CONTACT_EMAIL_TO ?? "hello@crm-na.org",
+    to: CONTACT_EMAIL_TO ?? "info@crm-na.org",
     from: SMTP_USER,
     replyTo: input.fromEmail,
     subject: `CRM NA contact form: ${input.purpose}`,

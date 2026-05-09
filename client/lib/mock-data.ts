@@ -20,7 +20,7 @@ export const SITE_DESCRIPTION =
 
 export const SITE_CONTACT: SiteContact = {
   name: "CRM North America National Contact",
-  email: "hello@crm-na.org",
+  email: "info@crm-na.org",
   phone: "+1 (203) 987-7729",
   addressLabel: "Serving churches across the United States, Canada, and Mexico",
   note: "Use this national channel for prayer requests, ministry questions, and first-time connections.",
