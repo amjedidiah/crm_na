@@ -14,7 +14,7 @@ const contactOgTheme = {
   subtitle: "--text-brand-strong",
 } as const;
 
-function ContactOpengraphImage() {
+async function ContactOpengraphImage() {
   return buildOgImage(
     "Contact",
     "Prayer, visits, churches, ministries, and events — reach CRM North America.",

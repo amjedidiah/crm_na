@@ -14,11 +14,12 @@ const defaultOgTheme = {
   subtitle: "--text-brand-strong",
 } as const;
 
-function OpengraphImage() {
+async function OpengraphImage() {
   return buildOgImage(
-    "CRM NA",
-    "Next.js + WordPress rebuild scaffold",
+    "Revival across North America",
+    "Prayer · Worship · Discipleship · Revival",
     defaultOgTheme,
+    { location: "United States · Canada · Mexico" },
   );
 }
 
