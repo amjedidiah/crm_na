@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Event, Leader, Ministry } from "@/lib/types";
 import GalleryPreview from "@/components/gallery/GalleryPreview";
 import MinistryCallToAction from "@/components/ministries/MinistryCallToAction";
@@ -5,6 +6,62 @@ import MinistryEvents from "@/components/ministries/MinistryEvents";
 import MinistryMediaBlock from "@/components/ministries/MinistryMediaBlock";
 import MinistryNavigation from "@/components/ministries/MinistryNavigation";
 import SectionHeader from "@/components/shared/SectionHeader";
+
+function leaderInitialsFromName(name: string): string {
+  const stripped = name.replace(/^(pastor|dr\.?|rev\.?|mr\.?|mrs\.?|ms\.?)\s+/i, "");
+  const parts = stripped.trim().split(/\s+/).filter(Boolean);
+  if (parts.length >= 2) {
+    const a = parts[0]?.[0];
+    const b = parts.at(-1)?.[0];
+    if (a && b) {
+      return `${a}${b}`.toUpperCase();
+    }
+  }
+  const compact = stripped.replaceAll(/\s+/g, "");
+  return compact.slice(0, 2).toUpperCase() || "?";
+}
+
+function MinistryLeaderProfile({ leader }: Readonly<{ leader: Leader }>) {
+  const alt =
+    leader.imageAlt?.trim() ||
+    `${leader.name}, ${leader.title}`;
+  const initials = leaderInitialsFromName(leader.name);
+
+  return (
+    <article className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-5">
+      <div className="mx-auto shrink-0 sm:mx-0">
+        {leader.imageSrc ? (
+          <div className="overflow-hidden rounded-xl border border-(--color-border-subtle)">
+            <Image
+              src={leader.imageSrc}
+              alt={alt}
+              width={144}
+              height={144}
+              className="aspect-square h-32 w-32 object-cover sm:h-36 sm:w-36"
+              sizes="(max-width: 640px) 128px, 144px"
+            />
+          </div>
+        ) : (
+          <div
+            className="flex aspect-square h-32 w-32 items-center justify-center rounded-xl border border-(--color-border-subtle) bg-surface-subtle font-display text-2xl tracking-wide text-(--color-fg-accent) sm:h-36 sm:w-36"
+            aria-hidden
+          >
+            {initials}
+          </div>
+        )}
+      </div>
+      <div className="min-w-0 flex-1 text-center sm:text-left">
+        <h3 className="text-2xl leading-tight">{leader.name}</h3>
+        <p className="mt-1 text-(--color-fg-secondary)">{leader.title}</p>
+        {leader.bio.trim() ? (
+          <p className="mt-3 text-base leading-7 text-(--color-fg-secondary)">
+            {leader.bio}
+          </p>
+        ) : null}
+      </div>
+    </article>
+  );
+}
 
 function MinistryDetailContent({
   ministry,
@@ -52,12 +109,9 @@ function MinistryDetailContent({
           <div className="card-surface p-6">
             <h2 className="text-3xl">Leaders</h2>
             {leaders.length > 0 ? (
-              <div className="mt-4 space-y-4">
+              <div className="mt-6 space-y-8">
                 {leaders.map((leader) => (
-                  <div key={leader.id}>
-                    <h3 className="text-2xl">{leader.name}</h3>
-                    <p className="text-(--color-fg-secondary)">{leader.title}</p>
-                  </div>
+                  <MinistryLeaderProfile key={leader.id} leader={leader} />
                 ))}
               </div>
             ) : (

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
 import EventDetailContent from "@/components/events/EventDetailContent";
 import BackToListingLink from "@/components/shared/BackToListingLink";
@@ -12,6 +13,24 @@ import { getEvent } from "@/lib/wordpress";
 export async function generateStaticParams() {
   const { events } = await import("@/lib/mock-data");
   return getStaticEventParamSlugs(events);
+}
+
+export async function generateMetadata({
+  params,
+}: Readonly<{
+  params: Promise<{ slug: string }>;
+}>): Promise<Metadata> {
+  const { slug } = await params;
+  const event = await getEvent(slug);
+
+  if (!event) {
+    return { title: "Event" };
+  }
+
+  return {
+    title: event.title,
+    description: event.summary,
+  };
 }
 
 async function EventDetailPage({
@@ -36,7 +55,7 @@ async function EventDetailPage({
   }
 
   return (
-    <div className="bg-(--color-bg-canvas) text-(--color-fg-primary)">
+    <div className="overflow-x-clip bg-page-canvas text-(--color-fg-primary)">
       <PageHeader
         leading={<BackToListingLink href="/events">Events</BackToListingLink>}
         eyebrow="Event"

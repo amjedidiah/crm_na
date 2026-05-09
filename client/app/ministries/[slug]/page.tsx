@@ -46,9 +46,15 @@ async function MinistryDetailPage({
     notFound();
   }
 
-  const leaders = allLeaders.filter((leader) =>
-    ministry.leaderIds.includes(leader.id),
+  const leaderOrder = new Map(
+    ministry.leaderIds.map((id, index) => [id, index]),
   );
+  const leaders = allLeaders
+    .filter((leader) => ministry.leaderIds.includes(leader.id))
+    .sort(
+      (a, b) =>
+        (leaderOrder.get(a.id) ?? 0) - (leaderOrder.get(b.id) ?? 0),
+    );
   const events = (await getEvents()).filter(
     (event) => event.ministrySlug === ministry.slug,
   );

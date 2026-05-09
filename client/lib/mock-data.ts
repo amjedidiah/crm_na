@@ -115,13 +115,23 @@ export const leaders: Leader[] = [
   {
     id: "prudent-okoli",
     name: "Pastor Prudent Okoli",
-    title: "Youth Leader, CRM NA",
+    title: "CRM NA Youth Director",
     ministrySlug: "youths",
     region: "USA",
     imageSrc:
       "https://i0.wp.com/crm-na.org/wp-content/uploads/2016/05/Prudential-Okoli-1.jpg",
-    imageAlt: "Portrait placeholder for Pastor Prudent Okoli",
-    bio: "Coordinates CRM NA youth ministry and helped establish the North America youth forum across branches.",
+    imageAlt: "Pastor Prudent Okoli",
+    bio: "CRM NA Youth Director and Co-Pastor of Seattle Christian Center (CRM NA Inc.), Seattle, Washington.",
+  },
+  {
+    id: "okezie-ofoegbu",
+    name: "Pastor Okezie Ofoegbu",
+    title: "Youth Coordinator — Grace Life Center, Maryland",
+    ministrySlug: "youths",
+    region: "USA",
+    imageSrc: LEADER_PLACEHOLDER_IMAGE,
+    imageAlt: "Pastor Okezie Ofoegbu",
+    bio: "Pastors Grace Life Center (Maryland) and assists CRM NA Youth Ministry alongside the national director.",
   },
   {
     id: "joe-atodo",
@@ -396,20 +406,27 @@ export const churches: Church[] = [
 export const ministries: Ministry[] = [
   {
     slug: "youths",
-    name: "Youths",
+    name: "CRM NA Youth Ministry",
     summary:
-      "CRM NA youth ministry with weekly virtual Bible study and leadership development.",
+      "National Youth Forum with weekly virtual Bible studies across North America—senior, junior, and Connecticut gatherings.",
     description: [
-      "The youth ministry gathers students and young adults for Bible study, peer discipleship, and leadership formation across branches.",
-      "Its rhythms are designed to help younger believers grow in Scripture, purity, service, and confidence in the gifts of the Spirit.",
+      "The Charismatic Renewal Ministries North America Youth Forum began under Pastor Prudent Okoli. She is a wife and mother of three, Co-Pastor of Seattle Christian Center (SCC), CRM NA Inc., in Seattle, Washington, and CRM NA Youth Director.",
+      "She is assisted by Pastor Okezie Ofoegbu (Grace Life Center, Maryland) and Dr. Solomon Inikori (Grace and Glory Sanctuary, Houston, Texas). Together they coordinate CRM NA youth ministry nationally.",
+      "They serve alongside a committee of youth leaders: Miracle Okoli, Glory Okoli, Praise Okoli, Chinaza Abonyi, Obiomachi Abonyi, Goziechi Abonyi, Emmanuel Ezeife (Kendo), Jesse Ezeama, Josephwise Chinedu Ezeama, Goodness Ezeama, Jean Dopavogui, Emeka Nzenwa, Feji Inikori, Rukky Inikori, and Jovana Atuhaire.",
+      "Those leaders are supported by countless young believers across North America who are pursuing God’s glory in their generation.",
     ],
-    leaderIds: ["prudent-okoli"],
+    leaderIds: ["prudent-okoli", "okezie-ofoegbu", "solomon-inikori"],
     meetingSchedule: [
-      "Senior Youths Bible Study — Thursdays, 9:00 PM EST",
-      "Junior Youths Bible Study — Wednesdays, 7:00 PM EST",
-      "Connecticut Youths Bible Study — Fridays, 8:00 PM EST",
+      "Senior Youths Virtual Bible Study — Thursdays: 9–10 PM EST · 8–9 PM CST · 6–7 PM PST",
+      "Junior Youths Virtual Bible Study — Wednesdays: 7–8 PM EST · 6–7 PM CST · 4–5 PM PST",
+      "Connecticut Youths Virtual Bible Study — Fridays: 8–9 PM EST · 7–8 PM CST · 5–6 PM PST",
+      "Request Zoom links or host-city details through the contact form — our ministry office routes each note to the youth team.",
     ],
-    focusAreas: ["Discipleship", "Bible study", "Peer leadership"],
+    focusAreas: [
+      "Virtual Bible study",
+      "National Youth Forum",
+      "Peer leadership",
+    ],
     imageSrc: "https://placehold.co/1200x800/23395B/F7F2E8?text=CRM+NA+Youths",
     galleryImages: [],
   },
@@ -464,29 +481,8 @@ export const events: Event[] = [
       "Holiday Inn NW Houston, 3539 N Sam Houston Pkwy West, Houston, TX 77086",
     registrationUrl: CONVENTION_REGISTRATION_URL,
     imageSrc:
-      "https://placehold.co/1600x900/6A1B2D/F7F2E8?text=Convention+2026",
-    galleryImages: [
-      {
-        src: "https://placehold.co/1200x800/6A1B2D/F7F2E8?text=Opening+Night",
-        alt: "Convention opening night worship gathering",
-        caption: "Opening night worship",
-      },
-      {
-        src: "https://placehold.co/1200x800/0F4C5C/F7F2E8?text=Teaching+Session",
-        alt: "Delegates gathered during a teaching session",
-        caption: "Teaching and ministry moments",
-      },
-      {
-        src: "https://placehold.co/1200x800/E36414/F7F2E8?text=Prayer+Altar",
-        alt: "Prayer ministry at the convention altar",
-        caption: "Prayer and response time",
-      },
-      {
-        src: "https://placehold.co/1200x800/FB8B24/1B1B1B?text=Fellowship+Hall",
-        alt: "Convention fellowship and networking moments",
-        caption: "Fellowship across the network",
-      },
-    ],
+      "https://i.ibb.co/RGqCTRFN/Whats-App-Image-2026-05-09-at-17-37-05-1.jpg",
+    galleryImages: [],
   },
 ];
 
@@ -496,6 +492,9 @@ export const GALLERY_CATEGORIES: { value: GalleryCategory; label: string }[] = [
   { value: "ministries", label: "Ministries" },
   { value: "general", label: "General" },
 ];
+
+/** Initial visible album count on `/gallery` before “Load more”. */
+export const GALLERY_ALBUM_PAGE_SIZE = 6;
 
 export const standaloneGalleryAlbums: GalleryAlbum[] = [
   {
