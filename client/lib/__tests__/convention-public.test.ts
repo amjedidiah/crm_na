@@ -36,7 +36,7 @@ describe("convention public URLs", () => {
         returnTo: "/events/crm-usa-national-convention-2026",
       }),
     ).toBe(
-      "https://crmusa2026-convention.crm-na.org/?returnTo=https%3A%2F%2Fcrm-na.org%2Fevents%2Fcrm-usa-national-convention-2026#register",
+      "https://crmusa2026-convention.crm-na.org/?returnTo=https%3A%2F%2Fwww.crm-na.org%2Fevents%2Fcrm-usa-national-convention-2026#register",
     );
   });
 

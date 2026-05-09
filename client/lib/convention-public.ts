@@ -19,6 +19,21 @@ export function toAbsoluteSiteUrl(pathOrUrl: string) {
   }
 }
 
+/** Apex hostname for the public CRM NA site — `returnTo` always uses the `www.` host. */
+const CRM_NA_PUBLIC_HOST = "crm-na.org";
+
+function withWwwCrmNaHost(absoluteUrl: string): string {
+  try {
+    const u = new URL(absoluteUrl);
+    if (u.hostname === CRM_NA_PUBLIC_HOST) {
+      u.hostname = `www.${CRM_NA_PUBLIC_HOST}`;
+    }
+    return u.toString();
+  } catch {
+    return absoluteUrl;
+  }
+}
+
 export function buildConventionRegistrationUrl(options?: {
   returnTo?: string;
 }) {
@@ -26,7 +41,10 @@ export function buildConventionRegistrationUrl(options?: {
   const returnTo = options?.returnTo?.trim();
 
   if (returnTo) {
-    url.searchParams.set("returnTo", toAbsoluteSiteUrl(returnTo));
+    url.searchParams.set(
+      "returnTo",
+      withWwwCrmNaHost(toAbsoluteSiteUrl(returnTo)),
+    );
   }
 
   return url.toString();
