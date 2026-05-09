@@ -6,13 +6,13 @@ function GiveEmptyState() {
   return (
     <>
       <NavbarSolidBackdropHint />
-      <div className="bg-(--color-bg-canvas) text-(--color-fg-primary)">
+      <div className="bg-(--surface-page) text-(--text-primary)">
         <section className="section-padding">
           <div className="container-shell">
             <div className="card-surface max-w-2xl space-y-5 p-8 md:p-12">
-              <p className="eyebrow text-(--color-fg-accent)">Give</p>
+              <p className="eyebrow text-(--text-brand)">Give</p>
               <h1 className="text-4xl font-display leading-tight md:text-5xl">Giving information is unavailable</h1>
-              <p className="text-lg leading-8 text-(--color-fg-secondary)">
+              <p className="text-lg leading-8 text-(--text-secondary)">
                 We could not load giving methods or supporting content. Please contact CRM North America — we will help you give or answer stewardship questions.
               </p>
               <div className="flex flex-wrap gap-4 pt-2">

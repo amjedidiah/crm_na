@@ -10,7 +10,7 @@ function EventDetailNotFound() {
           <h1 className="text-4xl md:text-5xl">
             This event page is not available.
           </h1>
-          <p className="text-lg leading-8 text-(--color-fg-secondary)">
+          <p className="text-lg leading-8 text-(--text-secondary)">
             The link may be outdated, or the gathering may have moved to a new
             listing. Browse all events or reach out for the right details.
           </p>

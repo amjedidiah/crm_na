@@ -15,9 +15,9 @@ interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-[var(--color-bg-accent)] text-[var(--color-fg-on-accent)] hover:bg-[var(--color-bg-accent-strong)] border border-[var(--color-border-accent)]",
+    "bg-brand-accent text-fg-on-accent border border-brand hover:bg-[var(--interactive-hover)]",
   outline:
-    "border border-[var(--color-border-accent)] text-[var(--color-fg-accent)] hover:bg-[var(--color-bg-accent)] hover:text-[var(--color-fg-on-accent)]",
+    "border border-brand text-fg-accent-strong hover:bg-brand-accent hover:text-fg-on-accent",
 };
 
 function Button({

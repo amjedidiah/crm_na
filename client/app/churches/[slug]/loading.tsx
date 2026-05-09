@@ -29,7 +29,7 @@ function ChurchSlugLoading() {
       <div className="relative">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-8 h-52 bg-gradient-page-warm-top-glow"
+          className="pointer-events-none absolute inset-x-0 top-8 h-52 bg-gradient-page-top-glow"
         />
         <section className="section-padding">
           <div className="container-shell space-y-12">

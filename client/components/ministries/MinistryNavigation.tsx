@@ -17,7 +17,7 @@ function MinistryNavigation({
   }
 
   return (
-    <div className="space-y-8 border-t border-(--color-border-subtle) pt-12 text-(--color-fg-primary)">
+    <div className="space-y-8 border-t border-(--border-default) pt-12 text-(--text-primary)">
       <SectionHeader
         eyebrow="Keep exploring"
         title="Other ministry lanes"
@@ -28,13 +28,13 @@ function MinistryNavigation({
           <Link
             key={ministry.slug}
             href={`/ministries/${ministry.slug}`}
-            className="card-surface hover:border-(--color-fg-accent) flex flex-col gap-2 border-(--color-border-subtle) p-5 transition-colors"
+            className="card-surface hover:border-(--text-brand) flex flex-col gap-2 border-(--border-default) p-5 transition-colors"
           >
-            <p className="font-display text-[0.6rem] tracking-[0.22em] text-(--color-fg-accent-text) uppercase">
+            <p className="font-display text-[0.6rem] tracking-[0.22em] text-(--text-accent) uppercase">
               Ministry
             </p>
             <p className="text-xl font-medium">{ministry.name}</p>
-            <p className="text-(--color-fg-secondary) line-clamp-2 text-sm leading-6">
+            <p className="text-(--text-secondary) line-clamp-2 text-sm leading-6">
               {ministry.summary}
             </p>
           </Link>

@@ -48,7 +48,7 @@ async function HomePage() {
       <div className="relative">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-12 h-72 bg-gradient-page-warm-top-glow"
+          className="pointer-events-none absolute inset-x-0 top-12 h-72 bg-gradient-page-top-glow"
         />
         <FadeInWhenVisible>
           <WelcomeSection />
@@ -57,7 +57,7 @@ async function HomePage() {
       <div className="relative bg-surface-subtle">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-3xl -translate-x-1/2 rounded-full bg-gradient-page-cool-center-glow blur-3xl lg:block"
+          className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-3xl -translate-x-1/2 rounded-full bg-gradient-page-depth-glow blur-3xl lg:block"
         />
         <FadeInWhenVisible>
           <FeaturedChurches />

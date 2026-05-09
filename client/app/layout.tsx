@@ -55,7 +55,7 @@ function RootLayout({ children }: Readonly<PropsWithChildren>) {
       lang="en"
       className={`${cinzel.variable} ${cormorant.variable} ${jost.variable}`}
     >
-      <body className="min-h-screen bg-(--color-bg-canvas) text-(--color-fg-primary)">
+      <body className="min-h-screen bg-(--surface-page) text-(--text-primary)">
         <Suspense fallback={null}>
           <ConventionRegistrationBanner />
         </Suspense>

@@ -38,7 +38,7 @@ async function GalleryPage() {
             <div className="card-surface mx-auto max-w-2xl space-y-6 p-8 text-center md:p-12">
               <p className="eyebrow">Gallery</p>
               <h2 className="text-3xl md:text-4xl">No albums yet</h2>
-              <p className="text-lg leading-8 text-(--color-fg-secondary)">
+              <p className="text-lg leading-8 text-(--text-secondary)">
                 New photo albums will appear here after gatherings and ministry
                 highlights. You can still explore events and ministries across
                 the network.
@@ -59,7 +59,7 @@ async function GalleryPage() {
         <div className="relative">
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 top-6 h-56 bg-gradient-page-warm-top-glow"
+            className="pointer-events-none absolute inset-x-0 top-6 h-56 bg-gradient-page-top-glow"
           />
           <FadeInWhenVisible>
             <GalleryFilterSection albums={albums} categories={GALLERY_CATEGORIES} />

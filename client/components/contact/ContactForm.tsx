@@ -420,7 +420,7 @@ function ContactFormInner({
 
       <div className="grid gap-3">
         <span
-          className="text-sm text-(--color-fg-secondary)"
+          className="text-sm text-(--text-secondary)"
           id={purposeLabelId}
         >
           Purpose
@@ -440,10 +440,10 @@ function ContactFormInner({
         className="grid gap-5"
       >
         <div
-          className="space-y-4 rounded border border-(--color-border-subtle) bg-(--color-bg-surface-subtle) p-4"
+          className="space-y-4 rounded border border-(--border-default) bg-(--surface-muted) p-4"
           aria-label="What you are contacting us about"
         >
-          <p className="text-xs font-medium uppercase tracking-[0.18em] text-(--color-fg-muted)">
+          <p className="text-xs font-medium uppercase tracking-[0.18em] text-fg-muted">
             Message details
           </p>
           <ContactListingSelect
@@ -552,7 +552,7 @@ function ContactFormInner({
           {showClientBanner && clientBannerMessages.length > 0 ? (
             <div
               role="alert"
-              className="border border-(--color-border-subtle) bg-(--color-bg-surface-subtle) px-4 py-3 text-sm text-(--color-fg-primary)"
+              className="border border-(--border-default) bg-(--surface-muted) px-4 py-3 text-sm text-(--text-primary)"
             >
               <span className="font-medium">Please review: </span>
               <ul className="mt-2 list-inside list-disc space-y-1">

@@ -31,8 +31,8 @@ function GridImage({
       type="button"
       onClick={onClick}
       className={cn(
-        "group relative aspect-4/3 cursor-pointer overflow-hidden rounded-2xl border border-(--color-border-subtle)",
-        "focus-visible:ring-2 focus-visible:ring-(--color-fg-accent-text) focus-visible:ring-offset-2 focus-visible:ring-offset-(--color-bg-canvas) focus-visible:outline-none",
+        "group relative aspect-4/3 cursor-pointer overflow-hidden rounded-2xl border border-(--border-default)",
+        "focus-visible:ring-2 focus-visible:ring-(--text-accent) focus-visible:ring-offset-2 focus-visible:ring-offset-(--surface-page) focus-visible:outline-none",
       )}
       aria-label={image.alt ? image.alt : `Photo ${index + 1}`}
     >
@@ -62,7 +62,7 @@ function GridImage({
       {loaded ? (
         <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-300 group-hover:bg-black/35">
           <Expand
-            className="size-6 text-(--color-fg-inverse) opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            className="size-6 text-(--text-on-inverse) opacity-0 transition-opacity duration-300 group-hover:opacity-100"
             aria-hidden
           />
         </div>

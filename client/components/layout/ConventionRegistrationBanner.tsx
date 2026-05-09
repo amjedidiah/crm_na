@@ -88,30 +88,30 @@ function ConventionRegistrationBanner() {
       className={cn(
         "fixed top-0 right-0 left-0 z-60 border-b transition-[background-color,border-color,box-shadow,color,backdrop-filter] duration-300",
         scrolled
-          ? "border-(--color-border-accent-soft) bg-(--color-bg-emphasis) text-(--color-fg-inverse-bright) shadow-none backdrop-blur-none"
-          : "border-(--color-border-subtle) bg-(--color-bg-canvas-elevated) text-(--color-fg-primary) shadow-nav backdrop-blur-md",
+          ? "border-(--border-brand-soft) bg-(--surface-inverse) text-(--text-on-inverse-bright) shadow-none backdrop-blur-none"
+          : "border-(--border-default) bg-(--surface-page-elevated) text-(--text-primary) shadow-nav backdrop-blur-md",
       )}
     >
       <div className="container-shell flex flex-col gap-3 py-3 pl-4 pr-14 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-x-4 sm:gap-y-2 sm:py-2.5 sm:pr-12 md:pl-6">
         <p
           className={cn(
             "min-w-0 text-balance text-center text-sm leading-snug transition-colors duration-300 sm:text-left md:text-base",
-            scrolled ? "text-(--color-fg-inverse-bright)" : "max-sm:text-(--color-fg-secondary)",
+            scrolled ? "text-(--text-on-inverse-bright)" : "max-sm:text-(--text-secondary)",
           )}
         >
           <span
             className={cn(
               "font-display mb-1 block text-xs tracking-[0.22em] uppercase sm:mb-0 sm:mr-2 sm:inline",
               scrolled
-                ? "text-(--color-fg-accent-strong)"
-                : "text-(--color-fg-accent-text)",
+                ? "text-(--text-brand-strong)"
+                : "text-(--text-accent)",
             )}
           >
             Registration open
           </span>
           <span
             className={cn(
-              scrolled ? "text-(--color-fg-inverse-soft)" : "text-(--color-fg-primary)",
+              scrolled ? "text-(--text-on-inverse-soft)" : "text-(--text-primary)",
             )}
           >
             National Convention 2026 · Houston,{" "}
@@ -121,7 +121,7 @@ function ConventionRegistrationBanner() {
         </p>
         <a
           href={registerHref}
-          className="font-display flex w-full min-h-11 shrink-0 items-center justify-center border border-(--color-fg-accent-strong) bg-(--color-bg-accent-strong) px-4 py-2.5 text-xs tracking-[0.18em] uppercase text-(--color-fg-on-accent) transition-opacity hover:opacity-95 sm:w-auto sm:min-h-0 sm:py-1.5"
+          className="font-display flex w-full min-h-11 shrink-0 items-center justify-center border border-(--text-brand-strong) bg-(--interactive-hover) px-4 py-2.5 text-xs tracking-[0.18em] uppercase text-(--text-on-brand) transition-opacity hover:opacity-95 sm:w-auto sm:min-h-0 sm:py-1.5"
         >
           Register
         </a>
@@ -132,8 +132,8 @@ function ConventionRegistrationBanner() {
         className={cn(
           "absolute top-1/2 right-2 flex size-11 shrink-0 -translate-y-1/2 items-center justify-center rounded-md transition-colors sm:size-9",
           scrolled
-            ? "text-(--color-fg-inverse-muted) hover:bg-(--color-fg-inverse)/10 hover:text-(--color-fg-inverse-bright)"
-            : "text-(--color-fg-secondary) hover:bg-(--color-bg-accent-soft) hover:text-(--color-fg-primary)",
+            ? "text-(--text-on-inverse-muted) hover:bg-(--text-on-inverse)/10 hover:text-(--text-on-inverse-bright)"
+            : "text-(--text-secondary) hover:bg-(--interactive-muted) hover:text-(--text-primary)",
         )}
         aria-label="Dismiss convention announcement"
       >

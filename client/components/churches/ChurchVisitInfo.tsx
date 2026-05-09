@@ -4,10 +4,10 @@ import TextWithLinks from "@/components/shared/TextWithLinks";
 import { phoneToTelHref } from "@/lib/utils";
 
 const contactLinkClass =
-  "text-(--color-fg-accent-text) underline-offset-2 transition-colors hover:underline";
+  "text-(--text-accent) underline-offset-2 transition-colors hover:underline";
 
 const noteLinkClass =
-  "text-(--color-fg-accent-text) underline-offset-2 transition-colors hover:underline break-all";
+  "text-(--text-accent) underline-offset-2 transition-colors hover:underline break-all";
 
 function ServiceTimes({ times }: Readonly<{ times: ChurchServiceTime[] }>) {
   return (
@@ -15,11 +15,11 @@ function ServiceTimes({ times }: Readonly<{ times: ChurchServiceTime[] }>) {
       {times.map((time) => (
         <div key={`${time.label}-${time.day}`} className="card-surface p-4">
           <h4 className="text-xl">{time.label}</h4>
-          <p className="text-(--color-fg-secondary)">
+          <p className="text-(--text-secondary)">
             {time.day} — {time.time}
           </p>
           {time.note ? (
-            <p className="text-sm text-(--color-fg-secondary)">
+            <p className="text-sm text-(--text-secondary)">
               <TextWithLinks text={time.note} linkClassName={noteLinkClass} />
             </p>
           ) : null}
@@ -43,7 +43,7 @@ function ChurchVisitInfo({ church }: Readonly<{ church: Church }>) {
         {hasContact ? (
           <div className="card-surface p-6">
             <h3 className="text-2xl">Visit information</h3>
-            <div className="mt-4 space-y-2 text-(--color-fg-secondary)">
+            <div className="mt-4 space-y-2 text-(--text-secondary)">
               {church.address ? <p>{church.address}</p> : null}
               {church.phone ? (
                 <p>
@@ -62,7 +62,7 @@ function ChurchVisitInfo({ church }: Readonly<{ church: Church }>) {
               {church.website ? (
                 <a
                   href={church.website}
-                  className="font-display inline-block pt-2 text-xs tracking-[0.2em] uppercase text-(--color-fg-accent-text)"
+                  className="font-display inline-block pt-2 text-xs tracking-[0.2em] uppercase text-(--text-accent)"
                 >
                   Visit church website
                 </a>

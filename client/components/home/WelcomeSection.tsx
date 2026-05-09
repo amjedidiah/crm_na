@@ -40,16 +40,16 @@ function WelcomeSection() {
               ].map((item) => (
                 <Motion
                   key={item.label}
-                  className="rounded-[1.35rem] border border-(--color-border-subtle) bg-(--color-bg-canvas) p-5"
+                  className="rounded-[1.35rem] border border-(--border-default) bg-(--surface-page) p-5"
                   initial={reduceMotion ? false : { opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.4 }}
                   transition={{ duration: reduceMotion ? 0.01 : 0.42, ease }}
                 >
-                  <p className="font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent-text)">
+                  <p className="font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--text-accent)">
                     {item.label}
                   </p>
-                  <p className="mt-3 text-sm leading-7 text-(--color-fg-secondary)">
+                  <p className="mt-3 text-sm leading-7 text-(--text-secondary)">
                     {item.body}
                   </p>
                 </Motion>
@@ -58,14 +58,14 @@ function WelcomeSection() {
             <div className="space-y-5 pt-1">
               <Link
                 href="/about#leadership"
-                className="font-display inline-flex items-center gap-2 text-xs tracking-[0.22em] uppercase text-(--color-fg-accent-text)"
+                className="font-display inline-flex items-center gap-2 text-xs tracking-[0.22em] uppercase text-(--text-accent)"
               >
                 Meet our leadership
                 <ArrowRight className="size-4" aria-hidden />
               </Link>
               <Link
                 href="/devotionals"
-                className="group relative flex flex-col justify-between gap-4 overflow-hidden rounded-3xl border border-(--color-border-subtle) bg-(--color-bg-canvas-elevated) p-6 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-(--color-border-accent)"
+                className="group relative flex flex-col justify-between gap-4 overflow-hidden rounded-3xl border border-(--border-default) bg-(--surface-page-elevated) p-6 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-(--border-brand)"
               >
                 <div
                   aria-hidden
@@ -73,16 +73,16 @@ function WelcomeSection() {
                   style={{ background: "var(--gradient-support-card-overlay)" }}
                 />
                 <div className="relative space-y-3">
-                  <p className="font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent-text)">
+                  <p className="font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--text-accent)">
                     Daily Devotional
                   </p>
                   <h3 className="text-3xl">Start your day with God.</h3>
-                  <p className="max-w-2xl text-sm leading-7 text-(--color-fg-secondary)">
+                  <p className="max-w-2xl text-sm leading-7 text-(--text-secondary)">
                     Open today&apos;s devotional for a focused word of faith,
                     hope, and encouragement shaped for everyday obedience.
                   </p>
                 </div>
-                <span className="relative font-display inline-flex items-center gap-2 text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent-text)">
+                <span className="relative font-display inline-flex items-center gap-2 text-[0.68rem] tracking-[0.24em] uppercase text-(--text-accent)">
                   Read today&apos;s devotional
                   <ArrowRight
                     className="size-4 transition-transform duration-300 group-hover:translate-x-1"
@@ -116,24 +116,24 @@ function WelcomeSection() {
             className="pointer-events-none absolute -right-12 top-8 h-40 w-40 rounded-full blur-2xl"
             style={{ background: "var(--gradient-welcome-orb)" }}
           />
-          <div className="relative mb-8 flex items-end justify-between gap-4 border-b border-(--color-border-subtle) pb-6">
+          <div className="relative mb-8 flex items-end justify-between gap-4 border-b border-(--border-default) pb-6">
             <div>
-              <p className="font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent-text)">
+              <p className="font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--text-accent)">
                 Our vision
               </p>
               <h3 className="mt-2 text-3xl md:text-4xl">
                 {visionContent.title}
               </h3>
             </div>
-            <div className="hidden rounded-full border border-(--color-border-subtle) px-4 py-2 md:block">
-              <span className="font-display text-[0.65rem] tracking-[0.22em] uppercase text-(--color-fg-secondary)">
+            <div className="hidden rounded-full border border-(--border-default) px-4 py-2 md:block">
+              <span className="font-display text-[0.65rem] tracking-[0.22em] uppercase text-(--text-secondary)">
                 North America
               </span>
             </div>
           </div>
           <Motion
             as="ul"
-            className="relative space-y-4 text-lg leading-8 text-(--color-fg-secondary)"
+            className="relative space-y-4 text-lg leading-8 text-(--text-secondary)"
             initial={reduceMotion ? false : "hidden"}
             whileInView="show"
             viewport={{ once: true, amount: 0.35 }}
@@ -163,7 +163,7 @@ function WelcomeSection() {
               >
                 <span
                   aria-hidden
-                  className="mt-2.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-(--color-bg-accent)"
+                  className="mt-2.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-(--interactive-default)"
                 />
                 <span>{paragraph}</span>
               </Motion>

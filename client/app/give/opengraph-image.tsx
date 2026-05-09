@@ -8,10 +8,10 @@ export const size = {
 export const contentType = "image/png";
 
 const giveOgTheme = {
-  background: "--color-bg-emphasis",
-  foreground: "--color-fg-inverse",
-  eyebrow: "--color-fg-accent-strong",
-  subtitle: "--color-fg-accent",
+  background: "--surface-inverse",
+  foreground: "--text-on-inverse",
+  eyebrow: "--text-brand-strong",
+  subtitle: "--text-brand",
 } as const;
 
 function GiveOpengraphImage() {

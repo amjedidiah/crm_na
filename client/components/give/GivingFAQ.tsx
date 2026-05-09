@@ -23,12 +23,12 @@ function FaqRow({
   const paragraphs = item.answer.split(/\n\n+/).map((p) => p.trim()).filter(Boolean);
 
   return (
-    <div className="border-b border-(--color-border-subtle) last:border-b-0">
+    <div className="border-b border-(--border-default) last:border-b-0">
       <h3 className="m-0">
         <button
           id={buttonId}
           type="button"
-          className="flex w-full items-center justify-between gap-4 py-5 text-left font-display text-lg text-(--color-fg-primary) transition-colors hover:text-(--color-fg-accent)"
+          className="flex w-full items-center justify-between gap-4 py-5 text-left font-display text-lg text-(--text-primary) transition-colors hover:text-(--text-brand)"
           aria-expanded={open}
           aria-controls={panelId}
           onClick={onToggle}
@@ -36,21 +36,17 @@ function FaqRow({
           <span>{item.question}</span>
           <ChevronDown
             className={cn(
-              "size-5 shrink-0 text-(--color-fg-secondary) transition-transform duration-200",
+              "size-5 shrink-0 text-(--text-secondary) transition-transform duration-200",
               open && "rotate-180",
             )}
             aria-hidden
           />
         </button>
       </h3>
-      <div
-        id={panelId}
-        aria-labelledby={buttonId}
-        hidden={!open}
-      >
-        <div className="space-y-3 pb-6 pr-2 text-base leading-7 text-(--color-fg-secondary)">
+      <div id={panelId} aria-labelledby={buttonId} hidden={!open}>
+        <div className="space-y-3 pb-6 pr-2 text-base leading-7 text-(--text-secondary)">
           {paragraphs.map((p, index) => (
-            <p key={index}>{p}</p>
+            <p key={`${index.toString()}`}>{p}</p>
           ))}
         </div>
       </div>
@@ -66,15 +62,15 @@ function GivingFAQ({ items }: Readonly<GivingFAQProps>) {
   }
 
   return (
-    <section className="section-padding bg-(--color-bg-muted)/30">
+    <section className="section-padding bg-section-wash-soft">
       <div className="container-shell max-w-3xl space-y-8">
         <div className="space-y-4">
-          <p className="eyebrow text-(--color-fg-accent)">FAQ</p>
-          <h2 className="text-4xl font-display leading-tight text-(--color-fg-primary) md:text-5xl">
+          <p className="eyebrow text-(--text-brand)">FAQ</p>
+          <h2 className="text-4xl font-display leading-tight text-(--text-primary) md:text-5xl">
             Common questions
           </h2>
         </div>
-        <div className="card-surface divide-y divide-(--color-border-subtle) px-6 md:px-10">
+        <div className="card-surface divide-y divide-(--border-default) px-6 md:px-10">
           {items.map((item) => {
             const open = openId === item.id;
             return (

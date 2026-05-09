@@ -33,7 +33,7 @@ async function MinistriesPage() {
           <div className="container-shell">
             <div className="card-surface mx-auto max-w-2xl space-y-6 p-10 text-center">
               <p className="eyebrow">Directory updating</p>
-              <p className="text-(--color-fg-secondary) leading-8">
+              <p className="text-(--text-secondary) leading-8">
                 Ministry profiles are temporarily unavailable. Reach out through
                 the contact page and we will connect you with the right team.
               </p>
@@ -55,7 +55,7 @@ async function MinistriesPage() {
       <div className="relative">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-6 h-56 bg-gradient-page-warm-top-glow"
+          className="pointer-events-none absolute inset-x-0 top-6 h-56 bg-gradient-page-top-glow"
         />
         <section className="section-padding">
           <div className="container-shell">
@@ -63,7 +63,7 @@ async function MinistriesPage() {
           </div>
         </section>
       </div>
-      <section className="border-t border-(--color-border-subtle) bg-surface-subtle section-padding">
+      <section className="border-t border-(--border-default) bg-surface-subtle section-padding">
         <div className="container-shell">
           <MinistryCallToAction />
         </div>

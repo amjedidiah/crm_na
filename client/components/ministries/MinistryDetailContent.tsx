@@ -31,7 +31,7 @@ function MinistryLeaderProfile({ leader }: Readonly<{ leader: Leader }>) {
     <article className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-5">
       <div className="mx-auto shrink-0 sm:mx-0">
         {leader.imageSrc ? (
-          <div className="overflow-hidden rounded-xl border border-(--color-border-subtle)">
+          <div className="overflow-hidden rounded-xl border border-(--border-default)">
             <Image
               src={leader.imageSrc}
               alt={alt}
@@ -43,7 +43,7 @@ function MinistryLeaderProfile({ leader }: Readonly<{ leader: Leader }>) {
           </div>
         ) : (
           <div
-            className="flex aspect-square h-32 w-32 items-center justify-center rounded-xl border border-(--color-border-subtle) bg-surface-subtle font-display text-2xl tracking-wide text-(--color-fg-accent) sm:h-36 sm:w-36"
+            className="flex aspect-square h-32 w-32 items-center justify-center rounded-xl border border-(--border-default) bg-surface-subtle font-display text-2xl tracking-wide text-(--text-brand) sm:h-36 sm:w-36"
             aria-hidden
           >
             {initials}
@@ -52,9 +52,9 @@ function MinistryLeaderProfile({ leader }: Readonly<{ leader: Leader }>) {
       </div>
       <div className="min-w-0 flex-1 text-center sm:text-left">
         <h3 className="text-2xl leading-tight">{leader.name}</h3>
-        <p className="mt-1 text-(--color-fg-secondary)">{leader.title}</p>
+        <p className="mt-1 text-(--text-secondary)">{leader.title}</p>
         {leader.bio.trim() ? (
-          <p className="mt-3 text-base leading-7 text-(--color-fg-secondary)">
+          <p className="mt-3 text-base leading-7 text-(--text-secondary)">
             {leader.bio}
           </p>
         ) : null}
@@ -96,7 +96,7 @@ function MinistryDetailContent({
               {narrative.map((paragraph) => (
                 <p
                   key={paragraph}
-                  className="text-lg leading-8 text-(--color-fg-secondary)"
+                  className="text-lg leading-8 text-(--text-secondary)"
                 >
                   {paragraph}
                 </p>
@@ -115,7 +115,7 @@ function MinistryDetailContent({
                 ))}
               </div>
             ) : (
-              <p className="mt-4 text-(--color-fg-secondary) leading-7">
+              <p className="mt-4 text-(--text-secondary) leading-7">
                 Leader listings are being refreshed for this ministry. Contact the
                 ministry team and we will connect you with the right steward.
               </p>
@@ -124,13 +124,13 @@ function MinistryDetailContent({
           <div className="card-surface p-6">
             <h2 className="text-3xl">Meeting rhythm</h2>
             {ministry.meetingSchedule.length > 0 ? (
-              <ul className="mt-4 space-y-3 text-(--color-fg-secondary)">
+              <ul className="mt-4 space-y-3 text-(--text-secondary)">
                 {ministry.meetingSchedule.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
             ) : (
-              <p className="mt-4 text-(--color-fg-secondary) leading-7">
+              <p className="mt-4 text-(--text-secondary) leading-7">
                 Gathering times are being confirmed. Reach out through the
                 contact page and we will send the latest schedule for this lane.
               </p>

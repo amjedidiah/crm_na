@@ -2,7 +2,7 @@ import PageHeaderSkeleton from "@/components/shared/PageHeaderSkeleton";
 
 function ContactLoading() {
   return (
-    <div className="bg-(--color-bg-canvas) text-(--color-fg-primary)">
+    <div className="bg-(--surface-page) text-(--text-primary)">
       <PageHeaderSkeleton descriptionLineCount={3} />
 
       <section className="section-padding">
@@ -26,7 +26,7 @@ function ContactLoading() {
             <div className="h-4 w-28 animate-pulse rounded bg-shimmer-emphasis-muted" />
             <div className="h-10 max-w-sm animate-pulse rounded bg-shimmer-emphasis-muted" />
             <div className="h-20 animate-pulse rounded bg-shimmer-emphasis-muted" />
-            <div className="space-y-3 border-t border-(--color-border-subtle) pt-5">
+            <div className="space-y-3 border-t border-(--border-default) pt-5">
               <div className="h-4 w-32 animate-pulse rounded bg-shimmer-emphasis-muted" />
               <div className="h-4 w-full animate-pulse rounded bg-shimmer-emphasis-muted" />
               <div className="h-4 max-w-[85%] animate-pulse rounded bg-shimmer-emphasis-muted" />

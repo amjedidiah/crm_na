@@ -18,7 +18,7 @@ function AlbumGrid({ albums, emptyState }: Readonly<AlbumGridProps>) {
     return (
       emptyState ?? (
         <div className="card-surface p-8 text-center">
-          <p className="text-(--color-fg-secondary)">
+          <p className="text-(--text-secondary)">
             No albums are available.
           </p>
         </div>
@@ -44,7 +44,7 @@ function AlbumGrid({ albums, emptyState }: Readonly<AlbumGridProps>) {
             onClick={() =>
               setVisibleCount((count) => count + GALLERY_ALBUM_PAGE_SIZE)
             }
-            className="font-display inline-flex cursor-pointer items-center gap-2 border border-(--color-border-subtle) px-8 py-2.5 text-xs tracking-[0.2em] uppercase text-(--color-fg-secondary) transition-colors hover:border-(--color-border-accent) hover:text-(--color-fg-accent-text)"
+            className="font-display inline-flex cursor-pointer items-center gap-2 border border-(--border-default) px-8 py-2.5 text-xs tracking-[0.2em] uppercase text-(--text-secondary) transition-colors hover:border-(--border-brand) hover:text-(--text-accent)"
           >
             Load more
             <ChevronDown className="size-4" aria-hidden />

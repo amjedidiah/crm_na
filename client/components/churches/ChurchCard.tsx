@@ -20,14 +20,14 @@ function branchListingCta(church: Church): ReactNode {
     return (
       <ChurchLink
         church={church}
-        className="font-display inline-block text-xs tracking-[0.2em] uppercase text-(--color-fg-accent)"
+        className="font-display inline-block text-xs tracking-[0.2em] uppercase text-(--text-brand)"
       >
         {branchCtaLabel(church)}
       </ChurchLink>
     );
   }
   return (
-    <p className="font-display text-xs tracking-[0.2em] uppercase text-(--color-fg-secondary)">
+    <p className="font-display text-xs tracking-[0.2em] uppercase text-(--text-secondary)">
       {branchCtaLabel(church)}
     </p>
   );
@@ -41,7 +41,7 @@ function ChurchCard({ church }: Readonly<{ church: Church }>) {
   ) : (
     <Link
       href={contactHrefForChurchListing(church.slug)}
-      className="font-display inline-block text-xs tracking-[0.2em] uppercase text-(--color-fg-accent)"
+      className="font-display inline-block text-xs tracking-[0.2em] uppercase text-(--text-brand)"
     >
       Contact CRM NA for details
     </Link>
@@ -51,10 +51,10 @@ function ChurchCard({ church }: Readonly<{ church: Church }>) {
     <article className="card-surface flex h-full flex-col gap-4 p-6">
       <p className="eyebrow">{church.region}</p>
       <h3 className="text-3xl">{church.name}</h3>
-      <p className="text-(--color-fg-secondary)">
+      <p className="text-(--text-secondary)">
         {church.city}, {church.stateOrProvince}
       </p>
-      <p className="text-(--color-fg-secondary)">{church.summary}</p>
+      <p className="text-(--text-secondary)">{church.summary}</p>
       <div className="mt-auto pt-4">{cta}</div>
     </article>
   );

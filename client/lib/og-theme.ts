@@ -1,8 +1,8 @@
 export const ogTokenPalette = {
-  "--color-bg-emphasis": "#0B1628",
-  "--color-fg-inverse": "#F5EFE0",
-  "--color-fg-accent": "#C8A85A",
-  "--color-fg-accent-strong": "#E8C87A",
+  "--surface-inverse": "#0B1628",
+  "--text-on-inverse": "#F5EFE0",
+  "--text-brand": "#C8A85A",
+  "--text-brand-strong": "#E8C87A",
 } as const;
 
 export type OgColorToken = keyof typeof ogTokenPalette;

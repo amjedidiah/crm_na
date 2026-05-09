@@ -25,7 +25,7 @@ const cards = [
     headline: "Revival communities",
     href: "/churches",
     icon: Church,
-    accentClass: "bg-(--color-bg-accent-soft)",
+    accentClass: "bg-(--interactive-muted)",
     count: "churchCount",
     description:
       "Browse branch communities across North America and find pastors, service times, and local rhythms.",
@@ -36,7 +36,7 @@ const cards = [
     headline: "Serve with a team",
     href: "/ministries",
     icon: Shapes,
-    accentClass: "bg-(--color-bg-overlay-accent-spotlight)",
+    accentClass: "bg-(--overlay-brand-spotlight)",
     count: "ministryCount",
     description:
       "Move quickly into youth, women, men, and other discipleship pathways where service and growth meet.",
@@ -47,7 +47,7 @@ const cards = [
     headline: "Gathering calendar",
     href: "/events",
     icon: CalendarRange,
-    accentClass: "bg-(--color-bg-overlay-emphasis-soft)",
+    accentClass: "bg-(--overlay-inverse-soft)",
     count: "eventCount",
     description:
       "Track conferences, youth nights, strategy gatherings, and prayer moments across the network.",
@@ -58,7 +58,7 @@ const cards = [
     headline: "Support the mission",
     href: "/give",
     icon: HandCoins,
-    accentClass: "bg-(--color-bg-overlay-emphasis-subtle)",
+    accentClass: "bg-(--overlay-inverse-subtle)",
     count: "support",
     description:
       "Back church life, outreach, ministry work, and pastoral care through clear generosity pathways.",
@@ -115,19 +115,19 @@ function NetworkPulse({
       className="relative z-10 scroll-mt-[calc(var(--nav-height)+var(--site-banner-height)+0.75rem)] -mt-18 px-4 md:-mt-24"
     >
       <div className="container-shell">
-        <div className="shadow-overlap-panel overflow-hidden rounded-[1.75rem] border border-(--color-border-subtle) bg-(--color-bg-canvas-elevated) backdrop-blur-xl">
-          <div className="grid gap-px bg-(--color-border-subtle) lg:grid-cols-[1.15fr_0.85fr]">
+        <div className="shadow-overlap-panel overflow-hidden rounded-[1.75rem] border border-(--border-default) bg-(--surface-page-elevated) backdrop-blur-xl">
+          <div className="grid gap-px bg-(--border-default) lg:grid-cols-[1.15fr_0.85fr]">
             {/* Left: heading panel */}
-            <div className="bg-(--color-bg-emphasis) px-6 py-8 text-(--color-fg-inverse) md:px-8 md:py-10">
-              <div className="space-y-5 text-(--color-fg-inverse)">
-                <p className="font-display text-[0.72rem] tracking-[0.3em] uppercase text-(--color-fg-accent-strong)">
+            <div className="bg-(--surface-inverse) px-6 py-8 text-(--text-on-inverse) md:px-8 md:py-10">
+              <div className="space-y-5 text-(--text-on-inverse)">
+                <p className="font-display text-[0.72rem] tracking-[0.3em] uppercase text-(--text-brand-strong)">
                   Network pulse
                 </p>
                 <h2 className="max-w-xl text-[clamp(2rem,4vw,3.25rem)] leading-tight">
                   One homepage, multiple ways to step into the life of CRM North
                   America.
                 </h2>
-                <p className="max-w-2xl text-base leading-7 text-(--color-fg-inverse-soft) md:text-lg md:leading-8">
+                <p className="max-w-2xl text-base leading-7 text-(--text-on-inverse-soft) md:text-lg md:leading-8">
                   Move quickly from discovery to participation: locate a church,
                   join a ministry lane, scan the calendar, or support the work
                   happening across the network.
@@ -136,7 +136,7 @@ function NetworkPulse({
             </div>
 
             {/* Right: card grid */}
-            <div className="grid gap-px bg-(--color-border-subtle) sm:grid-cols-2">
+            <div className="grid gap-px bg-(--border-default) sm:grid-cols-2">
               {cards.map((card) => {
                 const Icon = card.icon;
                 return (
@@ -158,7 +158,7 @@ function NetworkPulse({
                   >
                     <Link
                       href={card.href}
-                      className="shadow-card-hover-subtle group flex h-full flex-col justify-between bg-(--color-bg-canvas) p-6 transition-[background-color,box-shadow] duration-300 hover:bg-(--color-bg-surface-subtle)"
+                      className="shadow-card-hover-subtle group flex h-full flex-col justify-between bg-(--surface-page) p-6 transition-[background-color,box-shadow] duration-300 hover:bg-(--surface-muted)"
                     >
                       <div className="space-y-4">
                         <div className="flex items-start justify-between gap-4">
@@ -166,27 +166,27 @@ function NetworkPulse({
                             className={`flex size-12 items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-105 ${card.accentClass}`}
                           >
                             <Icon
-                              className="size-5 text-(--color-fg-primary)"
+                              className="size-5 text-(--text-primary)"
                               aria-hidden
                             />
                           </div>
-                          <span className="font-display text-[0.72rem] tracking-[0.26em] uppercase text-(--color-fg-accent-text) tabular-nums">
+                          <span className="font-display text-[0.72rem] tracking-[0.26em] uppercase text-(--text-accent) tabular-nums">
                             {resolveCount(card.count, counts, reduceMotion)}
                           </span>
                         </div>
                         <div className="space-y-2">
-                          <p className="font-display text-[0.7rem] tracking-[0.26em] uppercase text-(--color-fg-accent-text)">
+                          <p className="font-display text-[0.7rem] tracking-[0.26em] uppercase text-(--text-accent)">
                             {card.label}
                           </p>
                           <h3 className="text-2xl leading-tight">
                             {card.headline}
                           </h3>
-                          <p className="text-sm leading-7 text-(--color-fg-secondary)">
+                          <p className="text-sm leading-7 text-(--text-secondary)">
                             {card.description}
                           </p>
                         </div>
                       </div>
-                      <span className="mt-6 inline-flex items-center gap-2 font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent-text)">
+                      <span className="mt-6 inline-flex items-center gap-2 font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--text-accent)">
                         Open
                         <ArrowRight
                           className="size-4 transition-transform duration-300 group-hover:translate-x-1"

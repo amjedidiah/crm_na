@@ -5,74 +5,94 @@
   --nav-height: 4.75rem;
   /* Set by ConventionRegistrationBanner when visible; keeps fixed chrome aligned */
   --site-banner-height: 0px;
-  --color-bg-canvas: #faf6ee;
-  --color-bg-canvas-elevated: rgba(250, 246, 238, 0.95);
-  --color-bg-surface: rgba(255, 255, 255, 0.78);
-  --color-bg-surface-subtle: #f5efe0;
-  --color-bg-input: #ffffff;
-  --color-bg-emphasis: #0b1628;
-  --color-bg-emphasis-strong: #112040;
-  --color-bg-accent: #c8a85a;
-  --color-bg-accent-strong: #e8c87a;
-  --color-bg-accent-soft: rgba(200, 168, 90, 0.16);
-  --color-fg-primary: #1a1a2e;
-  --color-fg-secondary: #6b7080;
-  --color-fg-inverse: #f5efe0;
-  /* Near-white on dark hero / navbar — lighter than --color-fg-inverse */
-  --color-fg-inverse-bright: #fefdfb;
-  --color-fg-inverse-soft: rgba(245, 239, 224, 0.8);
-  --color-fg-inverse-muted: rgba(245, 239, 224, 0.55);
-  --color-fg-accent: #c8a85a;
-  --color-fg-accent-strong: #e8c87a;
-  --color-fg-on-accent: #0b1628;
-  --color-border-subtle: rgba(200, 168, 90, 0.25);
-  --color-border-accent: #c8a85a;
-  /* Darker amber for accent text on light backgrounds — meets WCAG AA 4.5:1 on --color-bg-canvas */
-  --color-fg-accent-text: #7a5215;
-  --color-bg-overlay-emphasis-soft: rgba(17, 32, 64, 0.1);
-  --color-bg-overlay-emphasis-subtle: rgba(11, 22, 40, 0.08);
-  --color-bg-overlay-emphasis-veil: rgba(17, 32, 64, 0.3);
-  --color-bg-overlay-cool-glow: rgba(17, 32, 64, 0.06);
-  --color-bg-overlay-cool-glow-strong: rgba(17, 32, 64, 0.95);
-  --color-bg-overlay-accent-haze: rgba(200, 168, 90, 0.08);
-  --color-bg-overlay-accent-soft-subtle: rgba(200, 168, 90, 0.12);
-  --color-bg-overlay-accent-glow: rgba(200, 168, 90, 0.18);
-  --color-bg-overlay-accent-glow-strong: rgba(200, 168, 90, 0.35);
-  --color-bg-overlay-accent-veil: rgba(232, 200, 122, 0.07);
-  --color-bg-overlay-accent-spotlight: rgba(232, 200, 122, 0.14);
-  --color-bg-overlay-accent-strong-glow: rgba(232, 200, 122, 0.2);
-  --color-bg-overlay-warm-top: rgba(200, 168, 90, 0.1);
-  --color-bg-overlay-canvas-soft: rgba(250, 246, 238, 0.35);
-  --color-bg-overlay-surface-strong: rgba(245, 239, 224, 0.88);
-  --color-bg-overlay-inverse-subtle: rgba(245, 239, 224, 0.06);
-  --color-bg-overlay-inverse-faint: rgba(245, 239, 224, 0.04);
-  --color-bg-overlay-emphasis-rich: rgba(11, 22, 40, 0.92);
-  --color-bg-overlay-emphasis-rich-strong: rgba(17, 32, 64, 0.98);
-  --color-border-accent-soft: rgba(232, 200, 122, 0.25);
-  --color-fg-overlay-grid: rgba(245, 239, 224, 0.08);
-  --color-fg-overlay-grid-strong: rgba(245, 239, 224, 1);
-  --color-status-live: #f87171;
-  --color-status-live-soft: #fca5a5;
+  --surface-page: #faf6ee;
+  --surface-page-elevated: rgba(250, 246, 238, 0.95);
+  --surface-card: rgba(255, 255, 255, 0.78);
+  --surface-muted: #f5efe0;
+  --surface-input: #ffffff;
+  --surface-inverse: #0b1628;
+  --surface-inverse-strong: #112040;
+  --interactive-default: #c8a85a;
+  --interactive-hover: #e8c87a;
+  --interactive-muted: rgba(200, 168, 90, 0.16);
+  --text-primary: #1a1a2e;
+  --text-secondary: #6b7080;
+  --text-on-inverse: #f5efe0;
+  /* Near-white on dark hero / navbar — lighter than --text-on-inverse */
+  --text-on-inverse-bright: #fefdfb;
+  --text-on-inverse-soft: rgba(245, 239, 224, 0.8);
+  --text-on-inverse-muted: rgba(245, 239, 224, 0.55);
+  --text-brand: #c8a85a;
+  --text-brand-strong: #e8c87a;
+  --text-on-brand: #0b1628;
+  --border-default: rgba(200, 168, 90, 0.25);
+  --border-brand: #c8a85a;
+  /* Darker amber for accent text on light backgrounds — meets WCAG AA 4.5:1 on --surface-page */
+  --text-accent: #7a5215;
+  --text-muted: #7d8498;
+  --border-emphasis: rgba(17, 32, 64, 0.42);
+  --surface-section-wash-soft: color-mix(
+    in oklab,
+    var(--surface-muted) 30%,
+    var(--surface-page)
+  );
+  --surface-section-wash-medium: color-mix(
+    in oklab,
+    var(--surface-muted) 40%,
+    var(--surface-page)
+  );
+  --text-error: #9f1239;
+  --border-field-error: rgba(153, 27, 27, 0.38);
+  --bg-field-error: rgba(127, 29, 29, 0.055);
+  --wash-media-hover: color-mix(
+    in oklab,
+    var(--text-on-inverse-bright) 12%,
+    transparent
+  );
+  --overlay-inverse-soft: rgba(17, 32, 64, 0.1);
+  --overlay-inverse-subtle: rgba(11, 22, 40, 0.08);
+  --overlay-inverse-veil: rgba(17, 32, 64, 0.3);
+  --overlay-depth-glow: rgba(17, 32, 64, 0.06);
+  --overlay-depth-glow-strong: rgba(17, 32, 64, 0.95);
+  --overlay-brand-haze: rgba(200, 168, 90, 0.08);
+  --overlay-brand-muted: rgba(200, 168, 90, 0.12);
+  --overlay-brand-glow: rgba(200, 168, 90, 0.18);
+  --overlay-brand-glow-strong: rgba(200, 168, 90, 0.35);
+  --overlay-brand-veil: rgba(232, 200, 122, 0.07);
+  --overlay-brand-spotlight: rgba(232, 200, 122, 0.14);
+  --overlay-brand-highlight: rgba(232, 200, 122, 0.2);
+  --overlay-page-glow: rgba(200, 168, 90, 0.1);
+  --overlay-page-soft: rgba(250, 246, 238, 0.35);
+  --overlay-elevated-wash: rgba(245, 239, 224, 0.88);
+  --wash-on-inverse: rgba(245, 239, 224, 0.06);
+  --wash-on-inverse-faint: rgba(245, 239, 224, 0.04);
+  --overlay-rich: rgba(11, 22, 40, 0.92);
+  --overlay-rich-strong: rgba(17, 32, 64, 0.98);
+  --border-brand-soft: rgba(232, 200, 122, 0.25);
+  --grid-line: rgba(245, 239, 224, 0.08);
+  --grid-line-strong: rgba(245, 239, 224, 1);
+  --status-live: #f87171;
+  --status-live-soft: #fca5a5;
   --gradient-hero-panel:
     radial-gradient(
       circle at top,
-      var(--color-bg-accent-soft),
+      var(--interactive-muted),
       transparent 36%
     ),
     linear-gradient(
       180deg,
-      var(--color-bg-emphasis),
-      var(--color-bg-emphasis-strong)
+      var(--surface-inverse),
+      var(--surface-inverse-strong)
     );
   --gradient-hero-grid:
     linear-gradient(
       to right,
-      var(--color-fg-overlay-grid) 1px,
+      var(--grid-line) 1px,
       transparent 1px
     ),
     linear-gradient(
       to bottom,
-      var(--color-fg-overlay-grid) 1px,
+      var(--grid-line) 1px,
       transparent 1px
     );
   --mask-hero-grid-fade:
@@ -80,161 +100,161 @@
   --gradient-hero-orb-primary:
     radial-gradient(
       circle,
-      var(--color-bg-overlay-accent-glow-strong),
+      var(--overlay-brand-glow-strong),
       transparent 68%
     );
   --gradient-hero-orb-secondary:
     radial-gradient(
       circle,
-      var(--color-bg-overlay-cool-glow-strong),
+      var(--overlay-depth-glow-strong),
       transparent 70%
     );
   --gradient-hero-orb-tertiary:
     radial-gradient(
       circle,
-      var(--color-bg-overlay-accent-spotlight),
+      var(--overlay-brand-spotlight),
       transparent 70%
     );
   --gradient-hero-rule:
-    linear-gradient(to right, var(--color-bg-accent-strong), transparent);
-  --gradient-page-warm-top-glow:
+    linear-gradient(to right, var(--interactive-hover), transparent);
+  --gradient-page-top-glow:
     radial-gradient(
       circle at top,
-      var(--color-bg-overlay-warm-top),
+      var(--overlay-page-glow),
       transparent 68%
     );
   --gradient-page-surface-band:
     linear-gradient(
       180deg,
       transparent,
-      var(--color-bg-canvas-elevated) 18%,
-      var(--color-bg-canvas-elevated) 82%,
+      var(--surface-page-elevated) 18%,
+      var(--surface-page-elevated) 82%,
       transparent
     );
-  --gradient-page-cool-center-glow:
+  --gradient-page-depth-glow:
     radial-gradient(
       circle,
-      var(--color-bg-overlay-cool-glow),
+      var(--overlay-depth-glow),
       transparent 68%
     );
   --gradient-page-highlight-band:
     linear-gradient(
       180deg,
       transparent,
-      var(--color-bg-surface) 16%,
+      var(--surface-card) 16%,
       transparent 100%
     );
   --gradient-page-dual-glow:
     radial-gradient(
       circle at 12% 18%,
-      var(--color-bg-overlay-accent-haze),
+      var(--overlay-brand-haze),
       transparent 32%
     ),
     radial-gradient(
       circle at 85% 40%,
-      var(--color-bg-overlay-cool-glow),
+      var(--overlay-depth-glow),
       transparent 28%
     );
   --gradient-plan-sheen:
     linear-gradient(
       115deg,
       transparent 0%,
-      var(--color-bg-overlay-accent-veil) 42%,
+      var(--overlay-brand-veil) 42%,
       transparent 78%
     );
   --gradient-welcome-orb:
     radial-gradient(
       circle,
-      var(--color-bg-overlay-accent-glow),
+      var(--overlay-brand-glow),
       transparent 68%
     );
   --gradient-reflection-orb:
     radial-gradient(
       circle,
-      var(--color-bg-overlay-accent-glow),
+      var(--overlay-brand-glow),
       transparent 70%
     );
   --gradient-featured-card-overlay:
     radial-gradient(
       circle at top right,
-      var(--color-bg-overlay-accent-strong-glow),
+      var(--overlay-brand-highlight),
       transparent 28%
     ),
     linear-gradient(
       135deg,
-      var(--color-bg-overlay-emphasis-veil),
+      var(--overlay-inverse-veil),
       transparent 55%
     );
   --gradient-spotlight-card-overlay:
     linear-gradient(
       180deg,
-      var(--color-bg-overlay-canvas-soft),
-      var(--color-bg-overlay-surface-strong)
+      var(--overlay-page-soft),
+      var(--overlay-elevated-wash)
     );
   --gradient-support-card-overlay:
     linear-gradient(
       135deg,
-      var(--color-bg-overlay-accent-soft-subtle),
+      var(--overlay-brand-muted),
       transparent 52%,
-      var(--color-bg-overlay-emphasis-subtle)
+      var(--overlay-inverse-subtle)
     );
   --gradient-serve-backdrop:
     radial-gradient(
       circle at 20% -10%,
       transparent 52%,
-      var(--color-bg-canvas) 70%
+      var(--surface-page) 70%
     );
-  --gradient-give-warm-orb:
+  --gradient-give-brand-orb:
     radial-gradient(
       circle,
-      var(--color-bg-overlay-accent-glow),
+      var(--overlay-brand-glow),
       transparent 62%
     );
-  --gradient-give-dark-orb:
+  --gradient-give-depth-orb:
     radial-gradient(
       circle,
-      rgba(17, 32, 64, 0.9),
+      var(--overlay-depth-glow-strong),
       transparent 68%
     );
   --gradient-give-divider:
     linear-gradient(
       to right,
       transparent,
-      var(--color-border-accent-soft),
+      var(--border-brand-soft),
       transparent
     );
   --gradient-live-top-glow:
     radial-gradient(
       ellipse,
-      rgba(232, 200, 122, 0.06),
+      color-mix(in oklab, var(--overlay-page-glow) 60%, transparent),
       transparent 72%
     );
   --gradient-live-preview-screen:
     linear-gradient(
       135deg,
-      var(--color-bg-overlay-emphasis-rich),
-      var(--color-bg-overlay-emphasis-rich-strong)
+      var(--overlay-rich),
+      var(--overlay-rich-strong)
     );
   --gradient-live-preview-grid:
     linear-gradient(
-      var(--color-fg-overlay-grid-strong) 1px,
+      var(--grid-line-strong) 1px,
       transparent 1px
     ),
     linear-gradient(
       to right,
-      var(--color-fg-overlay-grid-strong) 1px,
+      var(--grid-line-strong) 1px,
       transparent 1px
     );
   --gradient-live-preview-glow:
     radial-gradient(
       circle at center,
-      var(--color-bg-overlay-warm-top),
+      var(--overlay-page-glow),
       transparent 60%
     );
   --gradient-prayer-accent-glow:
     radial-gradient(
       circle at top right,
-      var(--color-bg-overlay-accent-spotlight),
+      var(--overlay-brand-spotlight),
       transparent 68%
     );
   --shadow-nav: 0 18px 45px -30px rgba(11, 22, 40, 0.42);
@@ -249,26 +269,106 @@
   --shadow-welcome-lift: 0 28px 60px -28px rgba(11, 22, 40, 0.22);
   --shadow-accent-cta: 0 18px 44px -12px rgba(232, 200, 122, 0.55);
   /* Loading skeletons — mixed from semantic fg tokens (avoid raw zinc/white in TSX) */
-  --color-shimmer-on-emphasis: color-mix(
+  --shimmer-inverse: color-mix(
     in oklab,
-    var(--color-fg-inverse-bright) 14%,
+    var(--text-on-inverse-bright) 14%,
     transparent
   );
-  --color-shimmer-on-emphasis-muted: color-mix(
+  --shimmer-inverse-muted: color-mix(
     in oklab,
-    var(--color-fg-inverse-bright) 10%,
+    var(--text-on-inverse-bright) 10%,
     transparent
   );
-  --color-shimmer-border-emphasis: color-mix(
+  --shimmer-border-inverse: color-mix(
     in oklab,
-    var(--color-fg-inverse-bright) 20%,
+    var(--text-on-inverse-bright) 20%,
     transparent
   );
-  --color-shimmer-on-canvas: color-mix(
+  --shimmer-canvas: color-mix(
     in oklab,
-    var(--color-fg-primary) 8%,
+    var(--text-primary) 8%,
     transparent
   );
+}
+
+/*
+ * Dark theme overrides (toggle with html[data-theme="dark"]).
+ * Default remains light; gradients/shimmers derive from these primitives.
+ */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --surface-page: #0f141c;
+  --surface-page-elevated: rgba(22, 28, 38, 0.94);
+  --surface-card: rgba(30, 38, 52, 0.82);
+  --surface-muted: #171f2a;
+  --surface-input: #1c2533;
+  --surface-inverse: #05090f;
+  --surface-inverse-strong: #0a121f;
+  --interactive-default: #c4a456;
+  --interactive-hover: #ddc277;
+  --interactive-muted: rgba(196, 164, 86, 0.22);
+  --text-primary: #e8e4dc;
+  --text-secondary: #9aa3b2;
+  --text-muted: #8590a0;
+  --text-on-inverse: #f2ece4;
+  --text-on-inverse-bright: #faf8f4;
+  --text-on-inverse-soft: rgba(242, 236, 228, 0.88);
+  --text-on-inverse-muted: rgba(242, 236, 228, 0.52);
+  --text-brand: #d4b76a;
+  --text-brand-strong: #e6cf88;
+  --text-on-brand: #0b1628;
+  --text-accent: #e2c46b;
+  --border-default: rgba(212, 183, 106, 0.22);
+  --border-brand: #d4b76a;
+  --border-brand-soft: rgba(230, 207, 136, 0.35);
+  --border-emphasis: rgba(210, 220, 240, 0.38);
+  --overlay-inverse-soft: rgba(240, 235, 227, 0.1);
+  --overlay-inverse-subtle: rgba(240, 235, 227, 0.08);
+  --overlay-inverse-veil: rgba(240, 235, 227, 0.28);
+  --overlay-depth-glow: rgba(240, 235, 227, 0.06);
+  --overlay-depth-glow-strong: rgba(8, 12, 20, 0.92);
+  --overlay-brand-haze: rgba(212, 183, 106, 0.1);
+  --overlay-brand-muted: rgba(212, 183, 106, 0.14);
+  --overlay-brand-glow: rgba(212, 183, 106, 0.22);
+  --overlay-brand-glow-strong: rgba(212, 183, 106, 0.38);
+  --overlay-brand-veil: rgba(230, 207, 136, 0.09);
+  --overlay-brand-spotlight: rgba(230, 207, 136, 0.16);
+  --overlay-brand-highlight: rgba(230, 207, 136, 0.24);
+  --overlay-page-glow: rgba(212, 183, 106, 0.12);
+  --overlay-page-soft: rgba(15, 20, 28, 0.45);
+  --overlay-elevated-wash: rgba(22, 28, 38, 0.92);
+  --wash-on-inverse: rgba(240, 235, 227, 0.08);
+  --wash-on-inverse-faint: rgba(240, 235, 227, 0.05);
+  --overlay-rich: rgba(4, 8, 14, 0.94);
+  --overlay-rich-strong: rgba(6, 10, 18, 0.98);
+  --grid-line: rgba(240, 235, 227, 0.09);
+  --grid-line-strong: rgba(240, 235, 227, 0.92);
+  --status-live: #f87171;
+  --status-live-soft: #fecaca;
+  --text-error: #fca5a5;
+  --border-field-error: rgba(248, 113, 113, 0.42);
+  --bg-field-error: rgba(248, 113, 113, 0.09);
+  --surface-section-wash-soft: color-mix(
+    in oklab,
+    var(--surface-muted) 30%,
+    var(--surface-page)
+  );
+  --surface-section-wash-medium: color-mix(
+    in oklab,
+    var(--surface-muted) 40%,
+    var(--surface-page)
+  );
+  --shadow-nav: 0 18px 45px -30px rgba(0, 0, 0, 0.55);
+  --shadow-overlap-panel: 0 26px 80px -36px rgba(0, 0, 0, 0.58);
+  --shadow-tile-hover-subtle: 0 12px 32px -16px rgba(0, 0, 0, 0.35);
+  --shadow-card-hover: 0 24px 60px -30px rgba(0, 0, 0, 0.45);
+  --shadow-card-hover-strong: 0 26px 70px -34px rgba(0, 0, 0, 0.55);
+  --shadow-card-hover-soft: 0 22px 55px -28px rgba(0, 0, 0, 0.48);
+  --shadow-panel-hover-emphasis: 0 24px 60px -28px rgba(0, 0, 0, 0.58);
+  --shadow-featured-card: 0 26px 70px -34px rgba(0, 0, 0, 0.62);
+  --shadow-featured-card-hover: 0 34px 80px -34px rgba(0, 0, 0, 0.72);
+  --shadow-welcome-lift: 0 28px 60px -28px rgba(0, 0, 0, 0.38);
+  --shadow-accent-cta: 0 18px 44px -12px rgba(212, 183, 106, 0.42);
 }
 
 html {
@@ -289,8 +389,8 @@ html {
 }
 
 body {
-  background: var(--color-bg-canvas);
-  color: var(--color-fg-primary);
+  background: var(--surface-page);
+  color: var(--text-primary);
   font-family: var(--font-jost), sans-serif;
 }
 
@@ -319,23 +419,23 @@ h4 {
   font-size: 0.75rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--color-fg-accent-text);
+  color: var(--text-accent);
 }
 
 .hero-panel {
   background: var(--gradient-hero-panel);
-  color: var(--color-fg-inverse);
+  color: var(--text-on-inverse);
 }
 
 .card-surface {
-  border: 1px solid var(--color-border-subtle);
-  background: var(--color-bg-surface);
+  border: 1px solid var(--border-default);
+  background: var(--surface-card);
   backdrop-filter: blur(10px);
 }
 
 .dark-strip {
-  background: var(--color-bg-emphasis);
-  color: var(--color-fg-inverse);
+  background: var(--surface-inverse);
+  color: var(--text-on-inverse);
 }
 
 .shadow-nav {
@@ -380,75 +480,75 @@ h4 {
 
 /* Semantic utilities: map class names to design tokens (prefer vs. Tailwind arbitrary var). */
 .text-fg-primary {
-  color: var(--color-fg-primary);
+  color: var(--text-primary);
 }
 
 .text-fg-secondary {
-  color: var(--color-fg-secondary);
+  color: var(--text-secondary);
 }
 
 .text-fg-inverse {
-  color: var(--color-fg-inverse);
+  color: var(--text-on-inverse);
 }
 
 .text-fg-inverse-soft {
-  color: var(--color-fg-inverse-soft);
+  color: var(--text-on-inverse-soft);
 }
 
 .text-fg-inverse-muted {
-  color: var(--color-fg-inverse-muted);
+  color: var(--text-on-inverse-muted);
 }
 
 .text-fg-accent-strong {
-  color: var(--color-fg-accent-strong);
+  color: var(--text-brand-strong);
 }
 
 .text-fg-accent-text {
-  color: var(--color-fg-accent-text);
+  color: var(--text-accent);
 }
 
 .text-fg-on-accent {
-  color: var(--color-fg-on-accent);
+  color: var(--text-on-brand);
 }
 
 .bg-page-canvas {
-  background-color: var(--color-bg-canvas);
+  background-color: var(--surface-page);
 }
 
 .bg-surface-subtle {
-  background-color: var(--color-bg-surface-subtle);
+  background-color: var(--surface-muted);
 }
 
 .bg-emphasis-strong {
-  background-color: var(--color-bg-emphasis-strong);
+  background-color: var(--surface-inverse-strong);
 }
 
 .bg-canvas-elevated {
-  background-color: var(--color-bg-canvas-elevated);
+  background-color: var(--surface-page-elevated);
 }
 
 .bg-brand-accent {
-  background-color: var(--color-bg-accent);
+  background-color: var(--interactive-default);
 }
 
 .bg-portrait-well {
-  background-color: var(--color-bg-emphasis);
+  background-color: var(--surface-inverse);
 }
 
 .border-subtle {
-  border-color: var(--color-border-subtle);
+  border-color: var(--border-default);
 }
 
 .border-fg-inverse-soft {
-  border-color: var(--color-fg-inverse-soft);
+  border-color: var(--text-on-inverse-soft);
 }
 
 .border-accent-soft {
-  border-color: var(--color-border-accent-soft);
+  border-color: var(--border-brand-soft);
 }
 
 .border-t-accent-soft {
-  border-top-color: var(--color-border-accent-soft);
+  border-top-color: var(--border-brand-soft);
 }
 
 .scroll-anchor-target {
@@ -457,16 +557,16 @@ h4 {
   );
 }
 
-.bg-gradient-page-warm-top-glow {
-  background-image: var(--gradient-page-warm-top-glow);
+.bg-gradient-page-top-glow {
+  background-image: var(--gradient-page-top-glow);
 }
 
 .bg-gradient-page-dual-glow {
   background-image: var(--gradient-page-dual-glow);
 }
 
-.bg-gradient-page-cool-center-glow {
-  background-image: var(--gradient-page-cool-center-glow);
+.bg-gradient-page-depth-glow {
+  background-image: var(--gradient-page-depth-glow);
 }
 
 .bg-gradient-page-highlight-band {
@@ -496,51 +596,87 @@ h4 {
 
 .panel-inverse-card {
   border-radius: 1.8rem;
-  border: 1px solid var(--color-border-accent-soft);
-  background-color: var(--color-bg-overlay-inverse-faint);
+  border: 1px solid var(--border-brand-soft);
+  background-color: var(--wash-on-inverse-faint);
 }
 
 .panel-inverse-callout {
   border-radius: 1.2rem;
-  border: 1px solid var(--color-border-accent-soft);
-  background-color: var(--color-bg-overlay-inverse-subtle);
+  border: 1px solid var(--border-brand-soft);
+  background-color: var(--wash-on-inverse);
 }
 
 .lane-callout {
   border-radius: 1.2rem;
-  border: 1px solid var(--color-border-subtle);
-  background-color: var(--color-bg-canvas-elevated);
+  border: 1px solid var(--border-default);
+  background-color: var(--surface-page-elevated);
 }
 
 .surface-band-dual-glow {
-  background-color: var(--color-bg-surface-subtle);
+  background-color: var(--surface-muted);
   background-image: var(--gradient-page-dual-glow);
 }
 
 .nav-jump-pill {
-  border-color: var(--color-border-accent);
-  color: var(--color-fg-accent-strong);
+  border-color: var(--border-brand);
+  color: var(--text-brand-strong);
 }
 
 .hover-accent-strong:hover {
-  background-color: var(--color-bg-accent-strong);
-  color: var(--color-fg-on-accent);
+  background-color: var(--interactive-hover);
+  color: var(--text-on-brand);
 }
 
 .bg-shimmer-emphasis {
-  background-color: var(--color-shimmer-on-emphasis);
+  background-color: var(--shimmer-inverse);
 }
 
 .bg-shimmer-emphasis-muted {
-  background-color: var(--color-shimmer-on-emphasis-muted);
+  background-color: var(--shimmer-inverse-muted);
 }
 
 .border-shimmer-emphasis {
-  border-color: var(--color-shimmer-border-emphasis);
+  border-color: var(--shimmer-border-inverse);
 }
 
 .bg-shimmer-canvas {
-  background-color: var(--color-shimmer-on-canvas);
+  background-color: var(--shimmer-canvas);
+}
+
+.text-fg-muted {
+  color: var(--text-muted);
+}
+
+.text-fg-error {
+  color: var(--text-error);
+}
+
+.border-field-error {
+  border-color: var(--border-field-error);
+}
+
+.bg-field-error {
+  background-color: var(--bg-field-error);
+}
+
+.bg-section-wash-soft {
+  background-color: var(--surface-section-wash-soft);
+}
+
+.bg-section-wash-medium {
+  background-color: var(--surface-section-wash-medium);
+}
+
+.border-brand {
+  border-color: var(--border-brand);
+}
+
+.border-emphasis {
+  border-color: var(--border-emphasis);
+}
+
+.hover-wash-on-inverse:hover {
+  background-color: var(--wash-media-hover);
 }
 
 @keyframes marquee-slide {

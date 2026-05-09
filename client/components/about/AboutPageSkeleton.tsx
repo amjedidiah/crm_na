@@ -17,7 +17,7 @@ function AboutPageSkeleton() {
       <div className="relative">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-10 h-64 bg-gradient-page-warm-top-glow"
+          className="pointer-events-none absolute inset-x-0 top-10 h-64 bg-gradient-page-top-glow"
         />
         <section className="section-padding">
           <div className="container-shell grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">

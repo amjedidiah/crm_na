@@ -55,7 +55,7 @@ async function EventDetailPage({
   }
 
   return (
-    <div className="overflow-x-clip bg-page-canvas text-(--color-fg-primary)">
+    <div className="overflow-x-clip bg-page-canvas text-(--text-primary)">
       <PageHeader
         leading={<BackToListingLink href="/events">Events</BackToListingLink>}
         eyebrow="Event"

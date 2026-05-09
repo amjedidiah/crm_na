@@ -22,7 +22,7 @@ function HomePageSkeleton() {
         {/* BranchMarquee */}
         <div
           aria-hidden
-          className="overflow-hidden border-t border-(--color-fg-inverse)/10 py-3"
+          className="overflow-hidden border-t border-(--text-on-inverse)/10 py-3"
         >
           <div className="flex flex-wrap justify-center gap-x-10 gap-y-2 px-6">
             {Array.from({ length: 8 }).map((_, i) => (
@@ -71,7 +71,7 @@ function HomePageSkeleton() {
       <div className="relative">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-12 h-72 bg-gradient-page-warm-top-glow"
+          className="pointer-events-none absolute inset-x-0 top-12 h-72 bg-gradient-page-top-glow"
         />
         <section className="section-padding pt-16 md:pt-24">
           <div className="container-shell grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
@@ -89,7 +89,7 @@ function HomePageSkeleton() {
       <div className="relative bg-surface-subtle">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-3xl -translate-x-1/2 rounded-full bg-gradient-page-cool-center-glow blur-3xl lg:block"
+          className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-3xl -translate-x-1/2 rounded-full bg-gradient-page-depth-glow blur-3xl lg:block"
         />
         <section className="section-padding">
           <div className="container-shell space-y-10">
@@ -98,7 +98,7 @@ function HomePageSkeleton() {
               <div className="h-12 max-w-2xl animate-pulse rounded bg-shimmer-canvas" />
             </div>
             <div className="grid gap-6 xl:grid-cols-12">
-              <div className="min-h-112 animate-pulse rounded-4xl border border-(--color-border-subtle) bg-shimmer-emphasis-muted xl:col-span-7" />
+              <div className="min-h-112 animate-pulse rounded-4xl border border-(--border-default) bg-shimmer-emphasis-muted xl:col-span-7" />
               <div className="min-h-96 animate-pulse rounded-4xl bg-shimmer-canvas xl:col-span-5" />
               <div className="min-h-72 animate-pulse rounded-[1.75rem] bg-shimmer-canvas xl:col-span-6" />
               <div className="min-h-72 animate-pulse rounded-[1.75rem] bg-shimmer-canvas xl:col-span-6" />

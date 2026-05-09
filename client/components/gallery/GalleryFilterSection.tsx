@@ -25,7 +25,7 @@ function GalleryFilterSection({
   );
 
   return (
-    <section className="section-padding text-(--color-fg-primary)">
+    <section className="section-padding text-(--text-primary)">
       <div className="container-shell space-y-8">
         <div className="flex flex-wrap justify-center gap-3 md:justify-start">
           {categories.map((category) => {
@@ -38,8 +38,8 @@ function GalleryFilterSection({
                 onClick={() => setActiveCategory(category.value)}
                 className={`font-display border px-4 py-2 text-xs tracking-[0.2em] uppercase transition-colors ${
                   active
-                    ? "border-(--color-fg-accent-text) bg-(--color-bg-accent-soft) text-(--color-fg-accent-text)"
-                    : "border-(--color-border-subtle) text-(--color-fg-secondary) hover:border-(--color-border-accent)"
+                    ? "border-(--text-accent) bg-(--interactive-muted) text-(--text-accent)"
+                    : "border-(--border-default) text-(--text-secondary) hover:border-(--border-brand)"
                 }`}
               >
                 {category.label}
@@ -61,10 +61,10 @@ function GalleryFilterSection({
               emptyState={
                 <div className="flex flex-col items-center gap-4 py-16 text-center">
                   <ImageOff
-                    className="size-16 text-(--color-fg-secondary) opacity-60"
+                    className="size-16 text-(--text-secondary) opacity-60"
                     aria-hidden
                   />
-                  <p className="max-w-md text-lg text-(--color-fg-secondary)">
+                  <p className="max-w-md text-lg text-(--text-secondary)">
                     No albums in this category yet. Try another filter or check
                     back after the next gathering.
                   </p>

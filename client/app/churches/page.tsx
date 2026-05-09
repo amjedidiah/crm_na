@@ -31,7 +31,7 @@ async function ChurchesPage() {
           <div className="container-shell">
             <div className="card-surface mx-auto max-w-2xl space-y-6 p-10 text-center">
               <p className="eyebrow">Directory unavailable</p>
-              <p className="text-(--color-fg-secondary) leading-8">
+              <p className="text-(--text-secondary) leading-8">
                 Church listings are temporarily empty. Use the contact page and
                 our team will help you plan a visit or find pastoral coverage.
               </p>
@@ -53,7 +53,7 @@ async function ChurchesPage() {
       <div className="relative">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-6 h-56 bg-gradient-page-warm-top-glow"
+          className="pointer-events-none absolute inset-x-0 top-6 h-56 bg-gradient-page-top-glow"
         />
         <section className="section-padding">
           <div className="container-shell space-y-12">
@@ -61,14 +61,14 @@ async function ChurchesPage() {
           </div>
         </section>
       </div>
-      <section className="border-t border-(--color-border-subtle) bg-surface-subtle section-padding">
+      <section className="border-t border-(--border-default) bg-surface-subtle section-padding">
         <div className="container-shell flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div className="max-w-xl space-y-2">
             <p className="eyebrow">Next steps</p>
             <h2 className="text-3xl tracking-tight md:text-4xl">
               Plan a visit or explore the wider CRM NA story
             </h2>
-            <p className="text-(--color-fg-secondary) leading-8">
+            <p className="text-(--text-secondary) leading-8">
               Reach out for pastoral coverage, ask about a specific branch, or
               read how CRM NA disciples families and leaders.
             </p>

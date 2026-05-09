@@ -28,19 +28,19 @@ function Footer() {
           <div className="space-y-5">
             <div className="flex items-center gap-3">
               <SiteLogo className="h-10 w-10" />
-              <p className="font-display text-(--color-fg-inverse) text-sm tracking-[0.24em] uppercase">
+              <p className="font-display text-(--text-on-inverse) text-sm tracking-[0.24em] uppercase">
                 {SITE_NAME}
               </p>
             </div>
-            <p className="max-w-sm text-sm leading-7 text-(--color-fg-inverse-soft)">
+            <p className="max-w-sm text-sm leading-7 text-(--text-on-inverse-soft)">
               Revival churches, pastoral care, gatherings, and devotional
               pathways for believers across North America.
             </p>
           </div>
 
           <div className="space-y-4">
-            <p className="eyebrow text-(--color-fg-accent-strong)">Explore</p>
-            <div className="grid gap-3 text-sm text-(--color-fg-inverse-soft)">
+            <p className="eyebrow text-(--text-brand-strong)">Explore</p>
+            <div className="grid gap-3 text-sm text-(--text-on-inverse-soft)">
               {primaryLinks.map((link) => (
                 <Link key={link.href} href={link.href}>
                   {link.label}
@@ -50,8 +50,8 @@ function Footer() {
           </div>
 
           <div className="space-y-4">
-            <p className="eyebrow text-(--color-fg-accent-strong)">Navigate</p>
-            <div className="grid gap-3 text-sm text-(--color-fg-inverse-soft)">
+            <p className="eyebrow text-(--text-brand-strong)">Navigate</p>
+            <div className="grid gap-3 text-sm text-(--text-on-inverse-soft)">
               {secondaryLinks.map((link) => (
                 <Link key={link.href} href={link.href}>
                   {link.label}
@@ -61,8 +61,8 @@ function Footer() {
           </div>
 
           <div className="space-y-4">
-            <p className="eyebrow text-(--color-fg-accent-strong)">Connect</p>
-            <div className="grid gap-3 text-sm text-(--color-fg-inverse-soft)">
+            <p className="eyebrow text-(--text-brand-strong)">Connect</p>
+            <div className="grid gap-3 text-sm text-(--text-on-inverse-soft)">
               <a
                 href={`mailto:${SITE_CONTACT.email}`}
                 className="inline-flex items-center gap-3"
@@ -94,12 +94,12 @@ function Footer() {
                 </a>
               ))}
             </div>
-            <p className="text-sm leading-7 text-(--color-fg-inverse-muted)">
+            <p className="text-sm leading-7 text-(--text-on-inverse-muted)">
               {SITE_CONTACT.addressLabel}
             </p>
           </div>
         </div>
-        <div className="border-t border-(--color-fg-inverse-muted) pt-5 text-center text-sm text-(--color-fg-inverse-muted)">
+        <div className="border-t border-(--text-on-inverse-muted) pt-5 text-center text-sm text-(--text-on-inverse-muted)">
           <p>
             © {new Date().getFullYear()} Charismatic Renewal Ministries North
             America. All rights reserved.

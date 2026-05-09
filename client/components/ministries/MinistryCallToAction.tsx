@@ -19,7 +19,7 @@ function MinistryCallToAction({
           <h2 className="text-3xl">
             Serve with the {ministryContext.name} team
           </h2>
-          <p className="max-w-2xl text-lg leading-8 text-(--color-fg-secondary)">
+          <p className="max-w-2xl text-lg leading-8 text-(--text-secondary)">
             Ask how to visit a rhythm, meet leaders, or volunteer. Our ministry
             office routes every note to the right steward.
           </p>
@@ -36,7 +36,7 @@ function MinistryCallToAction({
       <div className="space-y-3">
         <p className="eyebrow">Join a ministry</p>
         <h2 className="text-3xl">Bring your gifts into active service.</h2>
-        <p className="max-w-2xl text-lg leading-8 text-(--color-fg-secondary)">
+        <p className="max-w-2xl text-lg leading-8 text-(--text-secondary)">
           From youth discipleship to men&apos;s and women&apos;s fellowship, CRM
           NA ministries grow stronger when believers step forward to serve.
         </p>

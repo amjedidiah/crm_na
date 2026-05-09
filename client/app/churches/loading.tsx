@@ -9,7 +9,7 @@ function ChurchesLoading() {
       <div className="relative">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-6 h-56 bg-gradient-page-warm-top-glow"
+          className="pointer-events-none absolute inset-x-0 top-6 h-56 bg-gradient-page-top-glow"
         />
         <section className="section-padding">
           <div className="container-shell space-y-12">
@@ -23,7 +23,7 @@ function ChurchesLoading() {
                 ].map((wClass, i) => (
                   <div
                     key={`region-${i.toString()}`}
-                    className={`h-10 ${wClass} animate-pulse rounded border border-(--color-border-subtle) bg-shimmer-canvas`}
+                    className={`h-10 ${wClass} animate-pulse rounded border border-(--border-default) bg-shimmer-canvas`}
                   />
                 ))}
               </div>
@@ -55,7 +55,7 @@ function ChurchesLoading() {
         </section>
       </div>
 
-      <section className="border-t border-(--color-border-subtle) bg-surface-subtle section-padding">
+      <section className="border-t border-(--border-default) bg-surface-subtle section-padding">
         <div className="container-shell flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div className="max-w-xl space-y-2">
             <div className="h-4 w-28 animate-pulse rounded bg-shimmer-canvas" />

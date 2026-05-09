@@ -87,7 +87,7 @@ function FeaturedLargeCard({
     >
       <ChurchLink
         church={church}
-        className="shadow-featured-card group relative block overflow-hidden rounded-4xl border border-(--color-border-accent) bg-(--color-bg-emphasis) p-8 text-(--color-fg-inverse) transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 md:p-10"
+        className="shadow-featured-card group relative block overflow-hidden rounded-4xl border border-(--border-brand) bg-(--surface-inverse) p-8 text-(--text-on-inverse) transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 md:p-10"
       >
         <div
           aria-hidden
@@ -97,65 +97,65 @@ function FeaturedLargeCard({
         <div className="relative flex flex-col gap-8">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div className="space-y-3">
-              <p className="font-display text-[0.72rem] tracking-[0.28em] uppercase text-(--color-fg-accent-strong)">
+              <p className="font-display text-[0.72rem] tracking-[0.28em] uppercase text-(--text-brand-strong)">
                 Featured church
               </p>
               <h3 className="max-w-xl text-[clamp(2.4rem,5vw,4.2rem)] leading-[0.98]">
                 {church.name}
               </h3>
             </div>
-            <span className="rounded-full border border-(--color-fg-inverse-muted) px-4 py-2 font-display text-[0.66rem] tracking-[0.24em] uppercase text-(--color-fg-inverse-soft)">
+            <span className="rounded-full border border-(--text-on-inverse-muted) px-4 py-2 font-display text-[0.66rem] tracking-[0.24em] uppercase text-(--text-on-inverse-soft)">
               {church.region}
             </span>
           </div>
 
           <div className="grid gap-8 md:grid-cols-[1.1fr_0.9fr]">
             <div className="space-y-5">
-              <div className="inline-flex items-center gap-2 rounded-full bg-(--color-bg-accent-soft) px-4 py-2 text-sm text-(--color-fg-inverse)">
+              <div className="inline-flex items-center gap-2 rounded-full bg-(--interactive-muted) px-4 py-2 text-sm text-(--text-on-inverse)">
                 <MapPin
-                  className="size-4 text-(--color-fg-accent-strong)"
+                  className="size-4 text-(--text-brand-strong)"
                   aria-hidden
                 />
                 <span>
                   {church.city}, {church.stateOrProvince}
                 </span>
               </div>
-              <p className="max-w-2xl text-lg leading-8 text-(--color-fg-inverse-soft)">
+              <p className="max-w-2xl text-lg leading-8 text-(--text-on-inverse-soft)">
                 {church.summary}
               </p>
-              <p className="max-w-2xl text-sm leading-7 text-(--color-fg-inverse-soft)">
+              <p className="max-w-2xl text-sm leading-7 text-(--text-on-inverse-soft)">
                 {church.story[0]}
               </p>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-1">
-              <div className="rounded-[1.35rem] border border-(--color-fg-inverse-muted) bg-(--color-bg-overlay-inverse-subtle) p-5">
-                <p className="font-display text-[0.66rem] tracking-[0.24em] uppercase text-(--color-fg-accent-strong)">
+              <div className="rounded-[1.35rem] border border-(--text-on-inverse-muted) bg-(--wash-on-inverse) p-5">
+                <p className="font-display text-[0.66rem] tracking-[0.24em] uppercase text-(--text-brand-strong)">
                   Next gathering
                 </p>
                 <p className="mt-3 text-xl">
                   {primaryService?.label ?? "Sunday Worship"}
                 </p>
-                <p className="mt-2 text-sm text-(--color-fg-inverse-soft)">
+                <p className="mt-2 text-sm text-(--text-on-inverse-soft)">
                   {primaryService?.day ?? "Sunday"} at{" "}
                   {primaryService?.time ?? "10:00 AM"}
                 </p>
               </div>
-              <div className="rounded-[1.35rem] border border-(--color-fg-inverse-muted) bg-(--color-bg-overlay-inverse-subtle) p-5">
-                <p className="font-display text-[0.66rem] tracking-[0.24em] uppercase text-(--color-fg-accent-strong)">
+              <div className="rounded-[1.35rem] border border-(--text-on-inverse-muted) bg-(--wash-on-inverse) p-5">
+                <p className="font-display text-[0.66rem] tracking-[0.24em] uppercase text-(--text-brand-strong)">
                   Local emphasis
                 </p>
                 <p className="mt-3 text-xl">
                   {primaryProgram?.title ?? "Prayer and teaching"}
                 </p>
-                <p className="mt-2 text-sm text-(--color-fg-inverse-soft)">
+                <p className="mt-2 text-sm text-(--text-on-inverse-soft)">
                   {primaryProgram?.cadence ?? "Weekly"}
                 </p>
               </div>
             </div>
           </div>
 
-          <span className="inline-flex items-center gap-2 font-display text-[0.7rem] tracking-[0.24em] uppercase text-(--color-fg-accent-strong)">
+          <span className="inline-flex items-center gap-2 font-display text-[0.7rem] tracking-[0.24em] uppercase text-(--text-brand-strong)">
             {church.website ? "Visit church website" : "Open church page"}
             <ArrowRight
               className="size-4 transition-transform duration-300 group-hover:translate-x-1"
@@ -174,8 +174,8 @@ function SpotlightBranchCard({
 }: Readonly<{ church: Church; reduceMotion: boolean | null }>) {
   const storyLead = church.story[1] ?? church.story[0];
   const livestreamBadge = church.livestreamUrl ? (
-    <span className="inline-flex items-center gap-2 rounded-full border border-(--color-border-subtle) px-3 py-1.5">
-      <Radio className="size-3.5 text-(--color-fg-accent)" />
+    <span className="inline-flex items-center gap-2 rounded-full border border-(--border-default) px-3 py-1.5">
+      <Radio className="size-3.5 text-(--text-brand)" />
       Livestream
     </span>
   ) : null;
@@ -188,7 +188,7 @@ function SpotlightBranchCard({
     >
       <ChurchLink
         church={church}
-        className="card-surface shadow-card-hover-strong group relative block h-full overflow-hidden rounded-4xl p-7 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-(--color-border-accent) md:p-8"
+        className="card-surface shadow-card-hover-strong group relative block h-full overflow-hidden rounded-4xl p-7 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-(--border-brand) md:p-8"
       >
         <div
           aria-hidden
@@ -198,31 +198,31 @@ function SpotlightBranchCard({
         <div className="relative flex h-full flex-col justify-between gap-8">
           <div className="space-y-4">
             <div className="flex items-center justify-between gap-4">
-              <p className="font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent-text)">
+              <p className="font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--text-accent)">
                 Branch spotlight
               </p>
               <Sparkles
-                className="size-5 text-(--color-fg-accent-text)"
+                className="size-5 text-(--text-accent)"
                 aria-hidden
               />
             </div>
             <h3 className="text-4xl leading-tight">{church.name}</h3>
-            <p className="text-lg leading-8 text-(--color-fg-secondary)">
+            <p className="text-lg leading-8 text-(--text-secondary)">
               {church.summary}
             </p>
           </div>
 
           <div className="space-y-4">
-            <div className="flex flex-wrap gap-3 text-sm text-(--color-fg-secondary)">
-              <span className="rounded-full border border-(--color-border-subtle) px-3 py-1.5">
+            <div className="flex flex-wrap gap-3 text-sm text-(--text-secondary)">
+              <span className="rounded-full border border-(--border-default) px-3 py-1.5">
                 {church.city}, {church.stateOrProvince}
               </span>
               {livestreamBadge}
             </div>
-            <p className="text-sm leading-7 text-(--color-fg-secondary)">
+            <p className="text-sm leading-7 text-(--text-secondary)">
               {storyLead}
             </p>
-            <span className="inline-flex items-center gap-2 font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent-text)">
+            <span className="inline-flex items-center gap-2 font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--text-accent)">
               {church.website ? "Visit branch website" : "Explore branch"}
               <ArrowRight
                 className="size-4 transition-transform duration-300 group-hover:translate-x-1"
@@ -250,7 +250,7 @@ function SupportingChurchTile({
     >
       <ChurchLink
         church={church}
-        className="card-surface shadow-card-hover-soft group relative block h-full overflow-hidden rounded-[1.75rem] p-6 transition-[box-shadow,border-color,transform] duration-300 hover:-translate-y-1 hover:border-(--color-border-accent)"
+        className="card-surface shadow-card-hover-soft group relative block h-full overflow-hidden rounded-[1.75rem] p-6 transition-[box-shadow,border-color,transform] duration-300 hover:-translate-y-1 hover:border-(--border-brand)"
       >
         <span
           aria-hidden
@@ -259,25 +259,25 @@ function SupportingChurchTile({
         />
         <div className="relative flex h-full flex-col justify-between gap-8">
           <div className="space-y-3">
-            <p className="eyebrow text-(--color-fg-accent-text)">
+            <p className="eyebrow text-(--text-accent)">
               {church.region}
             </p>
             <h3 className="text-3xl transition-transform duration-300 group-hover:translate-x-0.5">
               {church.name}
             </h3>
-            <p className="text-(--color-fg-secondary)">
+            <p className="text-(--text-secondary)">
               {church.city}, {church.stateOrProvince}
             </p>
-            <p className="text-(--color-fg-secondary) text-sm leading-7">
+            <p className="text-(--text-secondary) text-sm leading-7">
               {church.summary}
             </p>
           </div>
           <div className="space-y-3">
-            <p className="text-(--color-fg-secondary) text-sm leading-7">
+            <p className="text-(--text-secondary) text-sm leading-7">
               {service?.label ?? "Sunday worship"}:{" "}
               {service?.time ?? "10:00 AM"}
             </p>
-            <span className="inline-flex items-center gap-2 font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--color-fg-accent-text)">
+            <span className="inline-flex items-center gap-2 font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--text-accent)">
               {church.website ? "Visit church website" : "See church details"}
               <ArrowRight
                 className="size-4 transition-transform duration-300 group-hover:translate-x-1"

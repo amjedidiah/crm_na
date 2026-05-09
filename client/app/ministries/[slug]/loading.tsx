@@ -3,7 +3,7 @@ import PageHeaderSkeleton from "@/components/shared/PageHeaderSkeleton";
 /** Mirrors `MinistryDetailContent` section sequence after `PageHeader`. */
 function MinistrySlugLoading() {
   return (
-    <div className="overflow-x-clip bg-page-canvas text-(--color-fg-primary)">
+    <div className="overflow-x-clip bg-page-canvas text-(--text-primary)">
       <PageHeaderSkeleton
         descriptionLineCount={3}
         leading={
@@ -14,7 +14,7 @@ function MinistrySlugLoading() {
       <div className="relative">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-gradient-page-warm-top-glow opacity-80"
+          className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-gradient-page-top-glow opacity-80"
         />
         <section className="section-padding">
           <div className="container-shell space-y-14">
@@ -59,7 +59,7 @@ function MinistrySlugLoading() {
               <div className="h-12 w-52 animate-pulse rounded bg-shimmer-canvas" />
             </div>
 
-            <div className="space-y-6 border-t border-(--color-border-subtle) pt-10">
+            <div className="space-y-6 border-t border-(--border-default) pt-10">
               <div className="space-y-3">
                 <div className="h-4 w-28 animate-pulse rounded bg-shimmer-canvas" />
                 <div className="h-10 max-w-md animate-pulse rounded bg-shimmer-canvas" />

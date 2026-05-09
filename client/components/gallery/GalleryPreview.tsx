@@ -17,9 +17,9 @@ function GalleryPreview({
   return (
     <div className="space-y-5">
       <div className="flex items-center gap-3">
-        <div className="bg-(--color-bg-accent-soft) flex size-10 items-center justify-center rounded-full">
+        <div className="bg-(--interactive-muted) flex size-10 items-center justify-center rounded-full">
           <Camera
-            className="size-5 text-(--color-fg-accent-text)"
+            className="size-5 text-(--text-accent)"
             aria-hidden
           />
         </div>
@@ -29,7 +29,7 @@ function GalleryPreview({
         {images.slice(0, MAX_IMAGES).map((image) => (
           <div
             key={`${href}-${image.src}`}
-            className="overflow-hidden rounded-[1.2rem] border border-(--color-border-subtle)"
+            className="overflow-hidden rounded-[1.2rem] border border-(--border-default)"
           >
             <Image
               src={image.src}
@@ -44,7 +44,7 @@ function GalleryPreview({
       </div>
       <Link
         href={href}
-        className="font-display inline-flex items-center gap-2 text-xs tracking-[0.22em] uppercase text-(--color-fg-accent-text)"
+        className="font-display inline-flex items-center gap-2 text-xs tracking-[0.22em] uppercase text-(--text-accent)"
       >
         View more in gallery
         <ArrowRight className="size-4" aria-hidden />

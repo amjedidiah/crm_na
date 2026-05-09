@@ -10,7 +10,7 @@ function LoadingEventsPage() {
       <div className="relative">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-6 h-56 bg-gradient-page-warm-top-glow"
+          className="pointer-events-none absolute inset-x-0 top-6 h-56 bg-gradient-page-top-glow"
         />
         <EventsArchiveSkeleton />
       </div>

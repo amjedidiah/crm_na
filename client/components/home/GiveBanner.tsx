@@ -11,10 +11,10 @@ function GiveBanner() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="section-padding overflow-hidden text-(--color-fg-primary)">
+    <section className="section-padding overflow-hidden text-(--text-primary)">
       <div className="container-shell">
         <Motion
-          className="relative overflow-hidden rounded-4xl bg-(--color-bg-emphasis) p-10 text-(--color-fg-inverse) md:p-14 lg:p-16"
+          className="relative overflow-hidden rounded-4xl bg-(--surface-inverse) p-10 text-(--text-on-inverse) md:p-14 lg:p-16"
           initial={reduceMotion ? false : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.22 }}
@@ -24,11 +24,11 @@ function GiveBanner() {
           <div aria-hidden className="pointer-events-none absolute inset-0">
             <div
               className="absolute -left-32 -top-32 h-112 w-md rounded-full blur-3xl"
-              style={{ background: "var(--gradient-give-warm-orb)" }}
+              style={{ background: "var(--gradient-give-brand-orb)" }}
             />
             <div
               className="absolute -bottom-20 -right-20 h-72 w-72 rounded-full blur-2xl"
-              style={{ background: "var(--gradient-give-dark-orb)" }}
+              style={{ background: "var(--gradient-give-depth-orb)" }}
             />
             {/* Subtle horizontal accent line */}
             <div
@@ -40,7 +40,7 @@ function GiveBanner() {
           {/* Decorative vertical scripture ref */}
           <span
             aria-hidden
-            className="pointer-events-none absolute right-8 top-1/2 hidden select-none font-display text-[5.5rem] leading-none tracking-widest text-(--color-fg-inverse)/4 xl:block"
+            className="pointer-events-none absolute right-8 top-1/2 hidden select-none font-display text-[5.5rem] leading-none tracking-widest text-(--text-on-inverse)/4 xl:block"
             style={{
               writingMode: "vertical-lr",
               transform: "translateY(-50%) rotate(180deg)",
@@ -72,7 +72,7 @@ function GiveBanner() {
                   hidden: { opacity: 0, y: reduceMotion ? 0 : 16 },
                   show: { opacity: 1, y: 0, transition: { duration: 0.45, ease } },
                 }}
-                className="eyebrow text-(--color-fg-accent-strong)"
+                className="eyebrow text-(--text-brand-strong)"
               >
                 Give
               </Motion>
@@ -94,7 +94,7 @@ function GiveBanner() {
                   hidden: { opacity: 0, y: reduceMotion ? 0 : 12 },
                   show: { opacity: 1, y: 0, transition: { duration: 0.4, ease } },
                 }}
-                className="font-display text-[0.65rem] tracking-[0.28em] uppercase text-(--color-fg-accent-strong)"
+                className="font-display text-[0.65rem] tracking-[0.28em] uppercase text-(--text-brand-strong)"
               >
                 — Luke 6:38
               </Motion>
@@ -105,7 +105,7 @@ function GiveBanner() {
                   hidden: { opacity: 0, y: reduceMotion ? 0 : 14 },
                   show: { opacity: 1, y: 0, transition: { duration: 0.42, ease } },
                 }}
-                className="max-w-2xl pt-2 text-base leading-7 text-(--color-fg-inverse-soft) md:text-lg md:leading-8"
+                className="max-w-2xl pt-2 text-base leading-7 text-(--text-on-inverse-soft) md:text-lg md:leading-8"
               >
                 Your generosity helps local branches serve families, raise
                 leaders, stream teaching, and gather believers for conferences,
@@ -134,7 +134,7 @@ function GiveBanner() {
               >
                 <Link
                   href="/give"
-                  className="shadow-accent-cta group inline-flex items-center gap-3 rounded-full bg-(--color-bg-accent-strong) px-8 py-4 font-display text-sm tracking-[0.15em] uppercase text-(--color-fg-on-accent) transition-shadow duration-300"
+                  className="shadow-accent-cta group inline-flex items-center gap-3 rounded-full bg-(--interactive-hover) px-8 py-4 font-display text-sm tracking-[0.15em] uppercase text-(--text-on-brand) transition-shadow duration-300"
                 >
                   Support the mission
                   <ArrowUpRight
@@ -143,7 +143,7 @@ function GiveBanner() {
                   />
                 </Link>
               </Motion>
-              <p className="font-display text-[0.6rem] tracking-[0.24em] uppercase text-(--color-fg-inverse-muted)">
+              <p className="font-display text-[0.6rem] tracking-[0.24em] uppercase text-(--text-on-inverse-muted)">
                 Secure · Online · Tax-deductible
               </p>
             </Motion>

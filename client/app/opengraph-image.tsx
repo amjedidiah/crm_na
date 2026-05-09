@@ -8,10 +8,10 @@ export const size = {
 export const contentType = "image/png";
 
 const defaultOgTheme = {
-  background: "--color-bg-emphasis",
-  foreground: "--color-fg-inverse",
-  eyebrow: "--color-fg-accent",
-  subtitle: "--color-fg-accent-strong",
+  background: "--surface-inverse",
+  foreground: "--text-on-inverse",
+  eyebrow: "--text-brand",
+  subtitle: "--text-brand-strong",
 } as const;
 
 function OpengraphImage() {

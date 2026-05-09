@@ -10,7 +10,7 @@ function GalleryAlbumNotFound() {
           <h1 className="text-4xl md:text-5xl">
             This gallery album is not available.
           </h1>
-          <p className="text-lg leading-8 text-(--color-fg-secondary)">
+          <p className="text-lg leading-8 text-(--text-secondary)">
             The link may be outdated, or the album may have been removed. Browse
             all albums or reach out if you are looking for specific photos.
           </p>

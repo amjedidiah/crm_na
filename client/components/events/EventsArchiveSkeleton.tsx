@@ -1,10 +1,10 @@
 /** Skeleton for `EventsArchiveSection` — mirrors tabs row, calendar + grid region. */
 function EventsArchiveSkeleton() {
   return (
-    <section className="section-padding text-(--color-fg-primary)">
+    <section className="section-padding text-(--text-primary)">
       <div className="container-shell space-y-10">
         <div
-          className="flex flex-wrap gap-2 border-b border-(--color-border-subtle) pb-4"
+          className="flex flex-wrap gap-2 border-b border-(--border-default) pb-4"
           aria-hidden
         >
           {Array.from({ length: 3 }).map((_, i) => (

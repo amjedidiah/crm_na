@@ -26,11 +26,11 @@ function ContactListingSelect({
 
   return (
     <div className="grid gap-2">
-      <label htmlFor={id} className="text-sm text-(--color-fg-secondary)">
+      <label htmlFor={id} className="text-sm text-(--text-secondary)">
         {label}
       </label>
       {hint ? (
-        <p id={`${id}-hint`} className="text-xs text-(--color-fg-muted)">
+        <p id={`${id}-hint`} className="text-xs text-fg-muted">
           {hint}
         </p>
       ) : null}
@@ -43,7 +43,7 @@ function ContactListingSelect({
         onChange={(e) => {
           onChange(e.target.value);
         }}
-        className={`border border-(--color-border-subtle) bg-(--color-bg-input) px-4 py-3 text-(--color-fg-primary) ${error ? "border-red-800/35 bg-red-950/4" : ""}`}
+        className={`border border-(--border-default) bg-(--surface-input) px-4 py-3 text-(--text-primary) ${error ? "border-field-error bg-field-error" : ""}`}
       >
         {options.map((opt) => (
           <option key={opt.value || "__none__"} value={opt.value}>
@@ -52,7 +52,7 @@ function ContactListingSelect({
         ))}
       </select>
       {error ? (
-        <span id={errId} className="text-sm text-red-900/90 dark:text-red-200/90" role="alert">
+        <span id={errId} className="text-sm text-fg-error" role="alert">
           {error}
         </span>
       ) : null}

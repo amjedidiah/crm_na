@@ -10,7 +10,7 @@ function ChurchSlugNotFound() {
           <h1 className="text-4xl md:text-5xl">
             This church page is not available here.
           </h1>
-          <p className="text-lg leading-8 text-(--color-fg-secondary)">
+          <p className="text-lg leading-8 text-(--text-secondary)">
             The branch may use another website, be listed without a dedicated page,
             or the link may be outdated. Browse the directory or contact CRM NA for
             help.

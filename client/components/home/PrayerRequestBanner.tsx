@@ -22,18 +22,18 @@ function PrayerRequestBanner() {
         >
           <Link
             href={contactHref("prayer-request")}
-            className="group bg-(--color-bg-surface-subtle) text-(--color-fg-primary) flex flex-col items-start gap-4 rounded-3xl border border-(--color-border-subtle) px-6 py-5 transition-[transform,border-color] duration-300 hover:-translate-y-0.5 hover:border-(--color-border-accent) md:flex-row md:items-center md:justify-between"
+            className="group bg-(--surface-muted) text-(--text-primary) flex flex-col items-start gap-4 rounded-3xl border border-(--border-default) px-6 py-5 transition-[transform,border-color] duration-300 hover:-translate-y-0.5 hover:border-(--border-brand) md:flex-row md:items-center md:justify-between"
           >
             <div className="flex items-center gap-4">
               <Motion
-                className="bg-(--color-bg-accent-soft) flex size-12 shrink-0 items-center justify-center rounded-2xl"
+                className="bg-(--interactive-muted) flex size-12 shrink-0 items-center justify-center rounded-2xl"
                 whileHover={
                   reduceMotion ? undefined : { scale: 1.04, rotate: -3 }
                 }
                 transition={{ type: "spring", stiffness: 380, damping: 22 }}
               >
                 <HandHeart
-                  className="size-6 text-(--color-fg-accent-text)"
+                  className="size-6 text-(--text-accent)"
                   aria-hidden
                 />
               </Motion>
@@ -41,12 +41,12 @@ function PrayerRequestBanner() {
                 <p className="text-base md:text-lg">
                   We would love to pray with you.
                 </p>
-                <p className="text-(--color-fg-secondary) text-sm leading-6">
+                <p className="text-(--text-secondary) text-sm leading-6">
                   Share a request and our leaders will stand with you in faith.
                 </p>
               </div>
             </div>
-            <span className="font-display text-(--color-fg-accent-text) inline-flex shrink-0 items-center gap-2 text-xs tracking-[0.2em] uppercase transition-transform duration-300 group-hover:translate-x-1">
+            <span className="font-display text-(--text-accent) inline-flex shrink-0 items-center gap-2 text-xs tracking-[0.2em] uppercase transition-transform duration-300 group-hover:translate-x-1">
               Submit a prayer request
               <ArrowRight className="size-4" aria-hidden />
             </span>

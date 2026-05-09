@@ -62,6 +62,7 @@ Use the same repo shape as `/Users/jay/Projects/freelance/crm_praise_center`:
 ### Canonical public routes to create
 
 - [x] `/`
+- [x] `/about`
 - [x] `/who-we-are`
 - [x] `/churches`
 - [x] `/churches/[slug]`
@@ -70,11 +71,9 @@ Use the same repo shape as `/Users/jay/Projects/freelance/crm_praise_center`:
 - [x] `/ministries/youths`
 - [x] `/events`
 - [x] `/events/[slug]`
-- [x] `/publications`
-- [x] `/publications/devotionals`
-- [x] `/publications/blog`
-- [x] `/publications/[slug]`
-- [x] `/media`
+- [x] `/devotionals` — editorial / devotional listing (legacy `/publications` and nested paths redirect here; see `client/next.config.ts`)
+- [x] `/gallery`
+- [x] `/gallery/[slug]`
 - [x] `/contact`
 - [x] `/give`
 
@@ -95,9 +94,11 @@ Use the same repo shape as `/Users/jay/Projects/freelance/crm_praise_center`:
 - [x] `client/app/ministries/[slug]/loading.tsx`
 - [x] `client/app/events/loading.tsx`
 - [x] `client/app/events/[slug]/loading.tsx`
-- [x] `client/app/publications/[slug]/loading.tsx`
-- [x] `client/app/publications/devotionals/loading.tsx`
-- [x] `client/app/publications/blog/loading.tsx`
+- [x] `client/app/devotionals/loading.tsx`
+- [x] `client/app/gallery/loading.tsx`
+- [x] `client/app/gallery/[slug]/loading.tsx`
+- [x] `client/app/about/loading.tsx`
+- [x] `client/app/give/loading.tsx`
 
 ## Redirect Scaffold
 
@@ -105,18 +106,26 @@ These are redirects, not co-equal public routes:
 
 - [x] `/contact-us` -> `/contact`
 - [x] `/crm-word-of-life` -> `/churches/crm-word-of-life`
-- [x] `/crm-praise-center` -> `/churches/crm-praise-center`
+- [x] `/crm-praise-center` -> `https://www.crmpraisecenter.org/` (external canonical site)
+- [x] `/crm-ottawa` -> `https://crm-can.org/`
+- [x] `/churches/crm-ottawa` -> `https://crm-can.org/`
 - [x] `/crm-rhode-island` -> `/churches/crm-rhode-island`
 - [x] `/grace-glory-sanctuary` -> `/churches/grace-glory-sanctuary`
 - [x] `/cwl-charismatic-women-league` -> `/ministries/cwl-charismatic-women-league`
 - [x] `/kings-men` -> `/ministries/kings-men`
 - [x] `/youths` -> `/ministries/youths`
-- [x] `/sermon` -> `/media`
+- [x] `/sermon` -> `/gallery`
+- [x] `/media` -> `/gallery`
+- [x] `/publications` -> `/devotionals`
+- [x] `/publications/devotionals` -> `/devotionals`
+- [x] `/publications/blog` -> `/devotionals`
+- [x] `/publications/:slug` -> `/devotionals`
+- [x] `/devotionals/:slug` -> `/devotionals`
 - [x] `/vision` -> `/who-we-are#vision`
 - [x] `/history` -> `/who-we-are#history`
 - [x] `/core-values` -> `/who-we-are#core-values`
 - [x] `/our-pastors` -> `/who-we-are#leadership`
-- [x] `/watch-us-live` -> `/media#live`
+- [x] `/watch-us-live` -> `/gallery`
 
 Implementation location:
 
@@ -138,25 +147,27 @@ Implementation location:
 - [x] `client/components/shared/PageHeader.tsx`
 - [x] `client/components/shared/SectionHeader.tsx`
 - [x] `client/components/shared/MapEmbed.tsx`
-- [x] `client/components/shared/ComingSoon.tsx`
 
 ### Home
 
 - [x] `client/components/home/HeroSection.tsx`
+- [x] `client/components/home/NetworkPulse.tsx`
 - [x] `client/components/home/WelcomeSection.tsx`
-- [x] `client/components/home/EventsArea.tsx`
-- [x] `client/components/home/WatchLiveSection.tsx`
 - [x] `client/components/home/FeaturedChurches.tsx`
+- [x] `client/components/home/ServeWithMinistries.tsx`
+- [x] `client/components/home/EventsArea.tsx`
+- [x] `client/components/home/GalleryHighlightsSection.tsx`
 - [x] `client/components/home/GiveBanner.tsx`
+- [x] `client/components/home/PrayerRequestBanner.tsx`
 
-### About
+### About (`/about`)
 
 - [x] `client/components/about/AboutOverview.tsx`
-- [x] `client/components/about/VisionContent.tsx`
-- [x] `client/components/about/CoreValuesGrid.tsx`
-- [x] `client/components/about/HistoryTimeline.tsx`
-- [x] `client/components/about/LeadershipPreview.tsx`
+- [x] `client/components/about/OverseerWelcome.tsx`
+- [x] `client/components/about/VisionMissionStrategy.tsx`
+- [x] `client/components/about/HistoryHighlights.tsx`
 - [x] `client/components/about/LeadershipSection.tsx`
+- [x] `client/components/about/AboutNextSteps.tsx`
 
 ### Churches
 
@@ -189,15 +200,17 @@ Implementation location:
 - [x] `client/components/leadership/LeadershipGrid.tsx`
 - [x] `client/components/leadership/LeadershipHierarchy.tsx`
 
-### Media and publications
+### Gallery
 
-- [x] `client/components/media/MediaCard.tsx`
-- [x] `client/components/media/MediaGrid.tsx`
-- [x] `client/components/media/LivestreamEmbed.tsx`
-- [x] `client/components/media/FeaturedSermon.tsx`
-- [x] `client/components/publications/PublicationCard.tsx`
-- [x] `client/components/publications/PublicationsListView.tsx`
-- [x] `client/components/publications/PublicationDetailContent.tsx`
+- [x] `client/components/gallery/GalleryFilterSection.tsx`
+- [x] `client/components/gallery/AlbumCard.tsx`
+- [x] `client/components/gallery/AlbumGrid.tsx`
+- [x] `client/components/gallery/AlbumDetailContent.tsx`
+- [x] `client/components/gallery/PhotoGrid.tsx`
+- [x] `client/components/gallery/Lightbox.tsx`
+- [x] `client/components/gallery/GalleryPreview.tsx`
+
+Editorial / devotional content is composed on **`/devotionals`** (no `client/components/publications/` tree; legacy `/publications/*` URLs redirect per `client/next.config.ts`).
 
 ### Contact
 
@@ -238,7 +251,7 @@ Implementation location:
 
 ### Mock-data expectations
 
-- [x] seed mock content for all canonical routes, including sermon-first `/media`, anchored `/who-we-are`, and `/publications/[slug]`
+- [x] seed mock content for all canonical routes, including `/gallery` (legacy `/media` / `/sermon` redirect targets), anchored `/who-we-are`, and publication-shaped data consumed by `/devotionals`
 - [x] keep mock content entity-based, not page-builder-fragment based
 - [x] normalize legacy content into structured records for churches, ministries, leaders, events, and media
 - [x] model publications as editorial content with body copy and author metadata, not outbound placeholders
@@ -288,7 +301,7 @@ Implementation location:
 - [ ] map branch pages into `church`
 - [ ] map legacy `/youths`, `/cwl-charismatic-women-league`, and `/kings-men` content into `ministry`
 - [ ] map legacy `/vision`, `/history`, `/core-values`, and `/our-pastors` into anchored sections on `/who-we-are`
-- [ ] map legacy `/publications` content into slug-backed editorial entries for `/publications/[slug]`
+- [ ] map legacy `/publications` content into slug-backed editorial entries surfaced on `/devotionals` (and/or future detail routes when re-enabled)
 - [ ] tag each publication record with a `publication_type` value (`blog` or `devotional`) during migration
 - [ ] remove placeholder/demo content during migration entry
 
@@ -327,9 +340,8 @@ Implementation location:
 ### Sprint 3
 
 - [x] events
-- [x] `/publications`
-- [x] `/publications/[slug]`
-- [x] `/media`
+- [x] `/devotionals` (with legacy `/publications/*` redirects)
+- [x] `/gallery` (with legacy `/media` / sermon / watch-us-live redirects)
 - [x] `/contact`
 - [x] `/give`
 

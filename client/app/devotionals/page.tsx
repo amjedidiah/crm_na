@@ -14,11 +14,11 @@ async function DevotionalBody() {
     return (
       <div className="flex flex-col items-center gap-4 py-16 text-center">
         <BookOpen
-          className="size-16 text-(--color-fg-secondary)"
+          className="size-16 text-(--text-secondary)"
           strokeWidth={1.5}
         />
         <p className="text-2xl">No devotional for today</p>
-        <p className="max-w-sm text-sm text-(--color-fg-secondary)">
+        <p className="max-w-sm text-sm text-(--text-secondary)">
           Check back soon for the next daily reading.
         </p>
       </div>
@@ -31,17 +31,17 @@ async function DevotionalBody() {
 function DevotionalSkeleton() {
   return (
     <div className="mx-auto max-w-4xl animate-pulse space-y-6">
-      <div className="h-36 rounded-[1.8rem] bg-(--color-bg-surface-subtle)" />
-      <div className="h-72 rounded-[1.8rem] bg-(--color-bg-surface-subtle)" />
-      <div className="h-24 rounded-[1.8rem] bg-(--color-bg-surface-subtle)" />
-      <div className="h-24 rounded-[1.8rem] bg-(--color-bg-surface-subtle)" />
+      <div className="h-36 rounded-[1.8rem] bg-(--surface-muted)" />
+      <div className="h-72 rounded-[1.8rem] bg-(--surface-muted)" />
+      <div className="h-24 rounded-[1.8rem] bg-(--surface-muted)" />
+      <div className="h-24 rounded-[1.8rem] bg-(--surface-muted)" />
     </div>
   );
 }
 
 function DevotionalsPage() {
   return (
-    <div className="bg-(--color-bg-canvas) text-(--color-fg-primary)">
+    <div className="bg-(--surface-page) text-(--text-primary)">
       <PageHeader
         eyebrow="Devotionals"
         title="Daily Devotional"

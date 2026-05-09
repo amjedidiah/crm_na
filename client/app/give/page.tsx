@@ -32,7 +32,7 @@ function GivePage() {
   const zeffyHref = getPrimaryZeffyHref(content.methods);
 
   return (
-    <div className="bg-(--color-bg-canvas) text-(--color-fg-primary)">
+    <div className="bg-(--surface-page) text-(--text-primary)">
       <GiveHero
         eyebrow="Give"
         title="Partner with CRM North America"

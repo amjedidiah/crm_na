@@ -29,7 +29,7 @@ async function ContactPage({
   const query = resolveContactPageQuery(raw);
 
   return (
-    <div className="bg-(--color-bg-canvas) text-(--color-fg-primary)">
+    <div className="bg-(--surface-page) text-(--text-primary)">
       <PageHeader
         eyebrow="Contact"
         title="We would love to connect with you"

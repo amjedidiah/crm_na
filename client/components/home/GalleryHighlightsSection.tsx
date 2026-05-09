@@ -27,7 +27,7 @@ function GalleryHighlightsSection({
           <div className="card-surface p-8">
             <p className="eyebrow">Gallery</p>
             <h3 className="mt-3 text-3xl">Fresh gallery albums will appear here.</h3>
-            <p className="mt-4 max-w-3xl text-lg leading-8 text-(--color-fg-secondary)">
+            <p className="mt-4 max-w-3xl text-lg leading-8 text-(--text-secondary)">
               As events, ministries, and special network moments are documented,
               this section will point visitors into the full gallery archive.
             </p>
@@ -36,14 +36,14 @@ function GalleryHighlightsSection({
         <div className="flex flex-wrap items-center gap-5">
           <Link
             href="/gallery"
-            className="font-display inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-(--color-fg-accent-text)"
+            className="font-display inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-(--text-accent)"
           >
             Browse the full gallery
             <ArrowRight className="size-4" aria-hidden />
           </Link>
           <Link
             href="/events"
-            className="font-display inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-(--color-fg-secondary)"
+            className="font-display inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-(--text-secondary)"
           >
             View upcoming events
             <ArrowRight className="size-4" aria-hidden />

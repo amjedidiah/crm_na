@@ -15,7 +15,7 @@ type TextareaProps = BaseProps &
 type FormFieldProps = InputProps | TextareaProps;
 
 const invalidFieldClass =
-  "border-red-800/35 bg-red-950/[0.04] aria-invalid:border-red-800/45";
+  "border-field-error bg-field-error aria-invalid:border-field-error";
 
 function FormField(props: FormFieldProps) {
   if (props.textarea) {
@@ -24,17 +24,17 @@ function FormField(props: FormFieldProps) {
     const errId = error ? `${fieldId}-error` : undefined;
     return (
       <label className="grid gap-2">
-        <span className="text-sm text-(--color-fg-secondary)">{label}</span>
+        <span className="text-sm text-(--text-secondary)">{label}</span>
         <textarea
           id={fieldId}
           name={name}
           aria-invalid={Boolean(error)}
           aria-describedby={errId}
-          className={`min-h-32 border border-(--color-border-subtle) bg-(--color-bg-input) px-4 py-3 text-(--color-fg-primary) ${error ? invalidFieldClass : ""} ${className ?? ""}`}
+          className={`min-h-32 border border-(--border-default) bg-(--surface-input) px-4 py-3 text-(--text-primary) ${error ? invalidFieldClass : ""} ${className ?? ""}`}
           {...rest}
         />
         {error ? (
-          <span id={errId} className="text-sm text-red-900/90 dark:text-red-200/90" role="alert">
+          <span id={errId} className="text-sm text-fg-error" role="alert">
             {error}
           </span>
         ) : null}
@@ -48,17 +48,17 @@ function FormField(props: FormFieldProps) {
 
   return (
     <label className="grid gap-2">
-      <span className="text-sm text-(--color-fg-secondary)">{label}</span>
+      <span className="text-sm text-(--text-secondary)">{label}</span>
       <input
         id={fieldId}
         name={name}
         aria-invalid={Boolean(error)}
         aria-describedby={errId}
-        className={`border border-(--color-border-subtle) bg-(--color-bg-input) px-4 py-3 text-(--color-fg-primary) ${error ? invalidFieldClass : ""} ${className ?? ""}`}
+        className={`border border-(--border-default) bg-(--surface-input) px-4 py-3 text-(--text-primary) ${error ? invalidFieldClass : ""} ${className ?? ""}`}
         {...rest}
       />
       {error ? (
-        <span id={errId} className="text-sm text-red-900/90 dark:text-red-200/90" role="alert">
+        <span id={errId} className="text-sm text-fg-error" role="alert">
           {error}
         </span>
       ) : null}

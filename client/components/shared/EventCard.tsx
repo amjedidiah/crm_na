@@ -17,31 +17,31 @@ function EventCard({ event }: Readonly<{ event: Event }>) {
       <div className="min-h-0 flex-1 space-y-4">
         <div className="space-y-2">
           <p className="eyebrow">When</p>
-          <p className="font-display text-sm tracking-wide text-(--color-fg-primary)">
+          <p className="font-display text-sm tracking-wide text-(--text-primary)">
             {formatEventDateRange(event.startDate, event.endDate)}
           </p>
         </div>
 
         <div className="space-y-2">
           <h3 className="text-3xl leading-tight">{event.title}</h3>
-          <p className="border-l-2 border-(--color-border-accent-soft) pl-4 text-base leading-7 text-(--color-fg-secondary)">
+          <p className="border-l-2 border-(--border-brand-soft) pl-4 text-base leading-7 text-(--text-secondary)">
             {event.summary}
           </p>
         </div>
       </div>
 
-      <div className="mt-6 flex flex-col gap-3 border-t border-(--color-border-subtle) pt-6">
+      <div className="mt-6 flex flex-col gap-3 border-t border-(--border-default) pt-6">
         {location ? (
           <div className="flex gap-3">
             <MapPin
-              className="mt-0.5 size-4 shrink-0 text-(--color-fg-accent)"
+              className="mt-0.5 size-4 shrink-0 text-(--text-brand)"
               aria-hidden
             />
             <div className="min-w-0 space-y-1">
-              <p className="font-display text-[0.65rem] tracking-[0.2em] text-(--color-fg-secondary) uppercase">
+              <p className="font-display text-[0.65rem] tracking-[0.2em] text-(--text-secondary) uppercase">
                 Where
               </p>
-              <p className="text-sm leading-snug text-(--color-fg-primary)">
+              <p className="text-sm leading-snug text-(--text-primary)">
                 {location}
               </p>
             </div>
@@ -49,13 +49,13 @@ function EventCard({ event }: Readonly<{ event: Event }>) {
         ) : null}
         <EventLink
           event={event}
-          className="font-display inline-flex text-xs tracking-[0.2em] uppercase text-(--color-fg-accent)"
+          className="font-display inline-flex text-xs tracking-[0.2em] uppercase text-(--text-brand)"
         >
           {eventListingLabel(event)}
         </EventLink>
         <Link
           href={contactHrefForEvent(event.slug)}
-          className="font-display inline-flex text-xs tracking-[0.2em] uppercase text-(--color-fg-secondary) underline decoration-(--color-border-subtle) underline-offset-4 hover:text-(--color-fg-primary)"
+          className="font-display inline-flex text-xs tracking-[0.2em] uppercase text-(--text-secondary) underline decoration-(--border-default) underline-offset-4 hover:text-(--text-primary)"
         >
           Contact about this event
         </Link>

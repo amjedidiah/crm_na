@@ -57,7 +57,7 @@ function LightboxSlide({ image }: Readonly<{ image: GalleryImage }>) {
       {loaded ? null : (
         <div className="absolute inset-0 flex items-center justify-center">
           <div
-            className="size-10 animate-spin rounded-full border-2 border-(--color-fg-inverse-muted) border-t-(--color-fg-inverse)"
+            className="size-10 animate-spin rounded-full border-2 border-(--text-on-inverse-muted) border-t-(--text-on-inverse)"
             aria-hidden
           />
         </div>
@@ -79,7 +79,7 @@ function LightboxSlide({ image }: Readonly<{ image: GalleryImage }>) {
 
       {image.caption ? (
         <div className="absolute right-0 bottom-0 left-0 bg-linear-to-t from-black/80 to-transparent p-4 pt-12">
-          <p className="text-sm leading-6 text-(--color-fg-inverse)">
+          <p className="text-sm leading-6 text-(--text-on-inverse)">
             {image.caption}
           </p>
         </div>
@@ -211,12 +211,12 @@ function Lightbox({
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      <div className="absolute top-0 right-0 left-0 z-20 flex items-center justify-between p-4 text-(--color-fg-inverse)">
+      <div className="absolute top-0 right-0 left-0 z-20 flex items-center justify-between p-4 text-(--text-on-inverse)">
         <span
           id={counterId}
           aria-live="polite"
           aria-atomic="true"
-          className="text-sm font-medium text-(--color-fg-inverse-muted)"
+          className="text-sm font-medium text-(--text-on-inverse-muted)"
         >
           Image {safeIndex + 1} of {images.length}
         </span>
@@ -224,7 +224,7 @@ function Lightbox({
           ref={closeButtonRef}
           type="button"
           onClick={onClose}
-          className="cursor-pointer rounded-full p-2 text-(--color-fg-inverse-muted) transition-colors hover:bg-white/10 hover:text-(--color-fg-inverse)"
+          className="cursor-pointer rounded-full p-2 text-(--text-on-inverse-muted) transition-colors hover-wash-on-inverse hover:text-(--text-on-inverse)"
           aria-label="Close photo viewer"
         >
           <X className="size-6" aria-hidden />
@@ -235,7 +235,7 @@ function Lightbox({
         <button
           type="button"
           onClick={onPrevious}
-          className="absolute left-2 z-20 cursor-pointer rounded-full p-2 text-(--color-fg-inverse-muted) transition-colors hover:bg-white/10 hover:text-(--color-fg-inverse) sm:left-4"
+          className="absolute left-2 z-20 cursor-pointer rounded-full p-2 text-(--text-on-inverse-muted) transition-colors hover-wash-on-inverse hover:text-(--text-on-inverse) sm:left-4"
           aria-label="Previous image"
         >
           <ChevronLeft className="size-8" aria-hidden />
@@ -246,7 +246,7 @@ function Lightbox({
         <button
           type="button"
           onClick={onNext}
-          className="absolute right-2 z-20 cursor-pointer rounded-full p-2 text-(--color-fg-inverse-muted) transition-colors hover:bg-white/10 hover:text-(--color-fg-inverse) sm:right-4"
+          className="absolute right-2 z-20 cursor-pointer rounded-full p-2 text-(--text-on-inverse-muted) transition-colors hover-wash-on-inverse hover:text-(--text-on-inverse) sm:right-4"
           aria-label="Next image"
         >
           <ChevronRight className="size-8" aria-hidden />

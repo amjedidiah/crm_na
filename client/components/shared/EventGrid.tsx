@@ -17,7 +17,7 @@ function EventGrid({
 
   return (
     <Motion
-      className="grid gap-6 text-(--color-fg-primary) md:grid-cols-2 xl:grid-cols-3"
+      className="grid gap-6 text-(--text-primary) md:grid-cols-2 xl:grid-cols-3"
       initial={enableMotion ? { opacity: 0, y: 10 } : false}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.32 }}

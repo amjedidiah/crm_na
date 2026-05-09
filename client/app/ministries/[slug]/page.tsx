@@ -60,7 +60,7 @@ async function MinistryDetailPage({
   );
 
   return (
-    <div className="overflow-x-clip bg-page-canvas text-(--color-fg-primary)">
+    <div className="overflow-x-clip bg-page-canvas text-(--text-primary)">
       <PageHeader
         leading={
           <BackToListingLink href="/ministries">Ministries</BackToListingLink>
@@ -72,7 +72,7 @@ async function MinistryDetailPage({
       <div className="relative">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-gradient-page-warm-top-glow opacity-80"
+          className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-gradient-page-top-glow opacity-80"
         />
         <MinistryDetailContent
           ministry={ministry}

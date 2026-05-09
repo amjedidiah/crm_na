@@ -25,11 +25,11 @@ function ContactPurposeTabs({
         const selected = purpose === activePurpose;
         const tabId = `contact-purpose-tab-${purpose}`;
         const base =
-          "rounded-lg px-3 py-2 text-sm transition-[background-color,border-color,color,box-shadow] duration-200 md:px-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-emphasis) focus-visible:ring-offset-2 focus-visible:ring-offset-(--color-bg-canvas)";
+          "rounded-lg px-3 py-2 text-sm transition-[background-color,border-color,color,box-shadow] duration-200 md:px-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--border-emphasis)] focus-visible:ring-offset-2 focus-visible:ring-offset-(--surface-page)";
         const idle =
-          "border border-(--color-border-subtle) bg-(--color-bg-input) text-(--color-fg-secondary) shadow-sm hover:border-(--color-border-emphasis) hover:bg-(--color-bg-surface-subtle) hover:text-(--color-fg-primary)";
+          "border border-(--border-default) bg-(--surface-input) text-(--text-secondary) shadow-sm hover:border-[var(--border-emphasis)] hover:bg-(--surface-muted) hover:text-(--text-primary)";
         const active =
-          "border border-(--color-border-emphasis) bg-(--color-bg-surface-subtle) font-medium text-(--color-fg-primary) shadow-sm";
+          "border border-emphasis bg-(--surface-muted) font-medium text-(--text-primary) shadow-sm";
         return (
           <button
             key={purpose}

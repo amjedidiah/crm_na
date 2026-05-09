@@ -10,7 +10,7 @@ function MinistrySlugNotFound() {
           <h1 className="text-4xl md:text-5xl">
             This ministry page is not available.
           </h1>
-          <p className="text-lg leading-8 text-(--color-fg-secondary)">
+          <p className="text-lg leading-8 text-(--text-secondary)">
             The ministry may have moved, the link may be outdated, or the profile
             is still being prepared. Browse the directory or reach out for a
             personal introduction.

@@ -28,13 +28,13 @@ function AlbumDetailContent({ album }: Readonly<{ album: GalleryAlbum }>) {
   }, [len]);
 
   return (
-    <section className="section-padding text-(--color-fg-primary)">
+    <section className="section-padding text-(--text-primary)">
       <div className="container-shell space-y-8">
         {album.sourceHref ? (
           <div className="flex flex-wrap gap-4">
             <Link
               href={album.sourceHref}
-              className="font-display inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-(--color-fg-accent-text)"
+              className="font-display inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-(--text-accent)"
             >
               Return to source page
               <ArrowRight className="size-4" aria-hidden />
@@ -44,7 +44,7 @@ function AlbumDetailContent({ album }: Readonly<{ album: GalleryAlbum }>) {
 
         {len === 0 ? (
           <div className="card-surface p-10 text-center">
-            <p className="text-lg text-(--color-fg-secondary)">
+            <p className="text-lg text-(--text-secondary)">
               This album does not have any photos yet. Check back soon or browse
               other albums in the gallery.
             </p>

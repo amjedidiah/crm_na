@@ -112,7 +112,7 @@ function EventListSection({
   if (totalEventCount === 0) {
     return (
       <section
-        className="section-padding text-(--color-fg-primary)"
+        className="section-padding text-(--text-primary)"
         aria-labelledby="events-empty-heading"
       >
         <div className="container-shell">
@@ -120,7 +120,7 @@ function EventListSection({
             <h2 id="events-empty-heading" className="text-3xl">
               No events are scheduled yet
             </h2>
-            <p className="text-lg leading-8 text-(--color-fg-secondary)">
+            <p className="text-lg leading-8 text-(--text-secondary)">
               Check back soon, or reach out and we will point you to the next
               gathering on the calendar.
             </p>
@@ -145,9 +145,9 @@ function EventListSection({
   } else if (rangeFromUrl) {
     archivePanelBody = (
       <div className="card-surface space-y-4 p-10 text-center">
-        <p className="text-lg text-(--color-fg-secondary)">
+        <p className="text-lg text-(--text-secondary)">
           No events in this tab match{" "}
-          <span className="text-(--color-fg-primary)">
+          <span className="text-(--text-primary)">
             {formatDateRangeSummary(rangeFromUrl)}
           </span>
           {'.'}
@@ -169,18 +169,18 @@ function EventListSection({
     }
     archivePanelBody = (
       <div className="card-surface p-10 text-center">
-        <p className="text-lg text-(--color-fg-secondary)">{emptyTabMessage}</p>
+        <p className="text-lg text-(--text-secondary)">{emptyTabMessage}</p>
       </div>
     );
   }
 
   return (
     <section
-      className="section-padding text-(--color-fg-primary)"
+      className="section-padding text-(--text-primary)"
       aria-describedby={rangeFromUrl ? rangeStatusId : undefined}
     >
       <div className="container-shell space-y-10">
-        <div className="flex flex-wrap gap-2 border-b border-(--color-border-subtle) pb-1">
+        <div className="flex flex-wrap gap-2 border-b border-(--border-default) pb-1">
           <div
             role="tablist"
             aria-label="Event timeframe"
@@ -200,8 +200,8 @@ function EventListSection({
                   className={cn(
                     "font-display rounded-t px-5 py-3 text-xs tracking-[0.2em] uppercase transition-colors",
                     selected
-                      ? "border-b-2 border-(--color-fg-accent) text-(--color-fg-primary)"
-                      : "text-(--color-fg-secondary) hover:text-(--color-fg-primary)",
+                      ? "border-b-2 border-(--text-brand) text-(--text-primary)"
+                      : "text-(--text-secondary) hover:text-(--text-primary)",
                   )}
                   onClick={() => setActiveTab(tab.id)}
                 >

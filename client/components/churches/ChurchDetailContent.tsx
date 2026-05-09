@@ -25,7 +25,7 @@ function ChurchDetailContent({
               {church.story.map((paragraph) => (
                 <p
                   key={paragraph}
-                  className="max-w-4xl text-lg leading-8 text-(--color-fg-secondary)"
+                  className="max-w-4xl text-lg leading-8 text-(--text-secondary)"
                 >
                   {paragraph}
                 </p>

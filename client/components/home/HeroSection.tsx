@@ -31,7 +31,7 @@ const MARQUEE_ITEMS = [
 
 const contentEase = [0.22, 1, 0.36, 1] as const;
 const inverseOutlineClass =
-  "border-(--color-fg-inverse-soft) text-(--color-fg-inverse) hover:bg-(--color-bg-accent-strong) hover:text-(--color-fg-on-accent)";
+  "border-(--text-on-inverse-soft) text-(--text-on-inverse) hover:bg-(--interactive-hover) hover:text-(--text-on-brand)";
 
 function HeroGridOverlay() {
   return (
@@ -55,7 +55,7 @@ function HeroCursorSpotlight({
   const sx = useSpring(mx, { stiffness: 64, damping: 18, mass: 0.6 });
   const sy = useSpring(my, { stiffness: 64, damping: 18, mass: 0.6 });
 
-  const spotlight = useMotionTemplate`radial-gradient(620px circle at ${sx}px ${sy}px, var(--color-bg-overlay-accent-spotlight), transparent 65%)`;
+  const spotlight = useMotionTemplate`radial-gradient(620px circle at ${sx}px ${sy}px, var(--overlay-brand-spotlight), transparent 65%)`;
 
   useEffect(() => {
     if (reduceMotion) return;
@@ -183,7 +183,7 @@ function HeroScrollCue({
       }}
       whileHover={reduceMotion ? undefined : { scale: 1.03 }}
       whileTap={reduceMotion ? undefined : { scale: 0.97 }}
-      className="flex cursor-pointer flex-col items-center gap-2 pt-4 text-(--color-fg-inverse-muted) transition-colors hover:text-(--color-fg-inverse-soft) focus-visible:rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--color-fg-accent-strong) mx-auto"
+      className="flex cursor-pointer flex-col items-center gap-2 pt-4 text-(--text-on-inverse-muted) transition-colors hover:text-(--text-on-inverse-soft) focus-visible:rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--text-brand-strong) mx-auto"
     >
       <span className="font-display text-[0.65rem] tracking-[0.28em] uppercase">
         Explore
@@ -228,7 +228,7 @@ function BranchMarquee({
   return (
     <div
       aria-hidden
-      className="pointer-events-none overflow-hidden border-t border-(--color-fg-inverse)/10 py-3"
+      className="pointer-events-none overflow-hidden border-t border-(--text-on-inverse)/10 py-3"
     >
       <div
         className="flex whitespace-nowrap"
@@ -242,7 +242,7 @@ function BranchMarquee({
           MARQUEE_ITEMS.map((name) => (
             <span
               key={`${setIdx}-${name}`}
-              className="mx-8 font-display text-[0.58rem] tracking-[0.3em] uppercase text-(--color-fg-inverse-muted)"
+              className="mx-8 font-display text-[0.58rem] tracking-[0.3em] uppercase text-(--text-on-inverse-muted)"
             >
               {name}
             </span>
@@ -285,7 +285,7 @@ function HeroSection() {
             variants={fadeUpVariants(reduceMotion, 22, 0.55)}
             className="space-y-4"
           >
-            <p className="eyebrow text-(--color-fg-accent-strong)">
+            <p className="eyebrow text-(--text-brand-strong)">
               CRM North America
             </p>
             <Motion
@@ -315,7 +315,7 @@ function HeroSection() {
           <Motion
             as="p"
             variants={fadeUpVariants(reduceMotion, 22, 0.55)}
-            className="max-w-3xl text-lg leading-8 text-(--color-fg-inverse) md:text-xl"
+            className="max-w-3xl text-lg leading-8 text-(--text-on-inverse) md:text-xl"
           >
             {SITE_DESCRIPTION}
           </Motion>

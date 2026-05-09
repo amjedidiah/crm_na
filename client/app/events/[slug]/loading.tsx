@@ -3,7 +3,7 @@ import PageHeaderSkeleton from "@/components/shared/PageHeaderSkeleton";
 /** Mirrors `EventDetailContent` structure after `PageHeader`. */
 function LoadingEventDetailPage() {
   return (
-    <div className="overflow-x-clip bg-page-canvas text-(--color-fg-primary)">
+    <div className="overflow-x-clip bg-page-canvas text-(--text-primary)">
       <PageHeaderSkeleton
         descriptionLineCount={3}
         leading={
@@ -14,7 +14,7 @@ function LoadingEventDetailPage() {
       <div className="relative">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-gradient-page-warm-top-glow opacity-80"
+          className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-gradient-page-top-glow opacity-80"
         />
         <section className="section-padding">
           <div className="container-shell space-y-14">

@@ -31,16 +31,16 @@ function ServeWithMinistries({ ministries }: Readonly<ServeWithMinistriesProps>)
               <Link
                 key={card.slug}
                 href={`/ministries/${card.slug}`}
-                className="card-surface hover:border-(--color-fg-accent) flex h-full flex-col p-6 transition-colors"
+                className="card-surface hover:border-(--text-brand) flex h-full flex-col p-6 transition-colors"
               >
-                <p className="font-display text-(--color-fg-accent-text) text-[0.62rem] tracking-[0.3em] uppercase">
+                <p className="font-display text-(--text-accent) text-[0.62rem] tracking-[0.3em] uppercase">
                   Ministry
                 </p>
                 <h3 className="mt-2 text-2xl">{card.name}</h3>
-                <p className="text-(--color-fg-secondary) mt-3 grow text-sm leading-6">
+                <p className="text-(--text-secondary) mt-3 grow text-sm leading-6">
                   {card.summary}
                 </p>
-                <span className="text-(--color-fg-accent-text) font-display mt-5 inline-flex items-center gap-2 text-[0.65rem] tracking-[0.24em] uppercase">
+                <span className="text-(--text-accent) font-display mt-5 inline-flex items-center gap-2 text-[0.65rem] tracking-[0.24em] uppercase">
                   Learn more
                   <ArrowRight className="size-4" aria-hidden />
                 </span>
@@ -51,17 +51,17 @@ function ServeWithMinistries({ ministries }: Readonly<ServeWithMinistriesProps>)
               className="card-surface group flex h-full flex-col justify-between border-dashed p-6 md:col-span-2"
             >
               <div>
-                <p className="font-display text-(--color-fg-accent-text) text-[0.62rem] tracking-[0.3em] uppercase">
+                <p className="font-display text-(--text-accent) text-[0.62rem] tracking-[0.3em] uppercase">
                   Your gift matters
                 </p>
                 <h3 className="mt-2 text-2xl">There is a place for you on the team</h3>
-                <p className="text-(--color-fg-secondary) mt-3 max-w-2xl text-sm leading-6">
+                <p className="text-(--text-secondary) mt-3 max-w-2xl text-sm leading-6">
                   From youth ministry to women&apos;s discipleship, men&apos;s accountability, and
                   creative media, these teams are a glimpse of the larger story—open more doors as
                   faithful stewards arrive.
                 </p>
               </div>
-              <span className="text-(--color-fg-accent-text) font-display mt-6 inline-flex items-center gap-2 text-[0.65rem] tracking-[0.24em] uppercase">
+              <span className="text-(--text-accent) font-display mt-6 inline-flex items-center gap-2 text-[0.65rem] tracking-[0.24em] uppercase">
                 View the full ministry index
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden />
               </span>

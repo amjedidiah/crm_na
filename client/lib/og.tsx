@@ -2,10 +2,10 @@ import { ImageResponse } from "next/og";
 import { resolveOgColor, type OgTheme } from "@/lib/og-theme";
 
 const defaultOgTheme: OgTheme = {
-  background: "--color-bg-emphasis",
-  foreground: "--color-fg-inverse",
-  eyebrow: "--color-fg-accent",
-  subtitle: "--color-fg-accent-strong",
+  background: "--surface-inverse",
+  foreground: "--text-on-inverse",
+  eyebrow: "--text-brand",
+  subtitle: "--text-brand-strong",
 };
 
 export function buildOgImage(

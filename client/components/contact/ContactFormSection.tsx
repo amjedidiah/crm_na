@@ -28,7 +28,7 @@ function ContactFormSection({
   const eventSelectOptions = buildEventContactSelectOptions(events);
 
   return (
-    <section className="section-padding text-(--color-fg-primary)">
+    <section className="section-padding text-(--text-primary)">
       <div className="container-shell grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
         <ContactForm
           churchSelectOptions={churchSelectOptions}

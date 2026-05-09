@@ -33,9 +33,9 @@ async function EventsArea({ previewCount }: Readonly<{ previewCount?: number }>)
         />
         {featuredEvent ? (
           <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
-            <article className="border border-(--color-border-subtle) bg-(--color-bg-surface-subtle) text-(--color-fg-primary) flex h-full flex-col justify-between rounded-[1.85rem] p-8">
+            <article className="border border-(--border-default) bg-(--surface-muted) text-(--text-primary) flex h-full flex-col justify-between rounded-[1.85rem] p-8">
               <div className="space-y-5">
-                <div className="flex items-center gap-3 text-(--color-fg-accent-text)">
+                <div className="flex items-center gap-3 text-(--text-accent)">
                   <CalendarDays className="size-5" aria-hidden />
                   <p className="font-display text-[0.68rem] tracking-[0.28em] uppercase">
                     Next gathering
@@ -45,17 +45,17 @@ async function EventsArea({ previewCount }: Readonly<{ previewCount?: number }>)
                   <h3 className="text-4xl md:text-5xl">
                     {featuredEvent.title}
                   </h3>
-                  <p className="text-(--color-fg-accent-text) text-base leading-7">
+                  <p className="text-(--text-accent) text-base leading-7">
                     {formatDate(featuredEvent.startDate)}
                     {featuredEvent.endDate
                       ? ` to ${formatDate(featuredEvent.endDate)}`
                       : ""}
                   </p>
                 </div>
-                <p className="max-w-2xl text-base leading-8 text-(--color-fg-secondary) md:text-lg">
+                <p className="max-w-2xl text-base leading-8 text-(--text-secondary) md:text-lg">
                   {featuredEvent.summary}
                 </p>
-                <div className="flex items-center gap-3 text-sm text-(--color-fg-secondary)">
+                <div className="flex items-center gap-3 text-sm text-(--text-secondary)">
                   <MapPin className="size-4 shrink-0" aria-hidden />
                   <span>{featuredEvent.location}</span>
                 </div>
@@ -63,7 +63,7 @@ async function EventsArea({ previewCount }: Readonly<{ previewCount?: number }>)
               <div className="mt-8 flex flex-wrap gap-4">
                 <EventLink
                   event={featuredEvent}
-                  className="font-display inline-flex items-center gap-2 bg-(--color-bg-accent-strong) px-5 py-3 text-xs tracking-[0.2em] uppercase text-(--color-fg-on-accent)"
+                  className="font-display inline-flex items-center gap-2 bg-(--interactive-hover) px-5 py-3 text-xs tracking-[0.2em] uppercase text-(--text-on-brand)"
                 >
                   {featuredEventLabel(featuredEvent.mode === "slug-redirect")}
                   <ArrowRight className="size-4" aria-hidden />
@@ -73,7 +73,7 @@ async function EventsArea({ previewCount }: Readonly<{ previewCount?: number }>)
                     href={featuredEvent.livestreamUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="font-display inline-flex items-center gap-2 border border-(--color-border-subtle) px-5 py-3 text-xs tracking-[0.2em] uppercase text-(--color-fg-primary)"
+                    className="font-display inline-flex items-center gap-2 border border-(--border-default) px-5 py-3 text-xs tracking-[0.2em] uppercase text-(--text-primary)"
                   >
                     Join online
                     <ArrowUpRight className="size-4" aria-hidden />
@@ -87,7 +87,7 @@ async function EventsArea({ previewCount }: Readonly<{ previewCount?: number }>)
           <div className="card-surface space-y-4 p-8">
             <p className="eyebrow">Events</p>
             <h3 className="text-3xl">Upcoming CRM NA gatherings will appear here.</h3>
-            <p className="max-w-3xl text-lg leading-8 text-(--color-fg-secondary)">
+            <p className="max-w-3xl text-lg leading-8 text-(--text-secondary)">
               The network calendar remains the stable place to watch for branch
               gatherings, conferences, and online moments as fresh events are
               published.
@@ -97,14 +97,14 @@ async function EventsArea({ previewCount }: Readonly<{ previewCount?: number }>)
         <div className="flex flex-wrap items-center gap-5">
           <Link
             href="/events"
-            className="font-display inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-(--color-fg-accent-text)"
+            className="font-display inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-(--text-accent)"
           >
             View all events
             <ArrowRight className="size-4" aria-hidden />
           </Link>
           <Link
             href="/churches"
-            className="font-display inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-(--color-fg-secondary)"
+            className="font-display inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-(--text-secondary)"
           >
             Find a weekly church rhythm
             <ArrowRight className="size-4" aria-hidden />

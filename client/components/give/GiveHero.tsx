@@ -18,11 +18,11 @@ function GiveHero({
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div
           className="absolute -left-32 -top-32 h-112 w-md rounded-full blur-3xl"
-          style={{ background: "var(--gradient-give-warm-orb)" }}
+          style={{ background: "var(--gradient-give-brand-orb)" }}
         />
         <div
           className="absolute -bottom-20 -right-20 h-72 w-72 rounded-full blur-2xl"
-          style={{ background: "var(--gradient-give-dark-orb)" }}
+          style={{ background: "var(--gradient-give-depth-orb)" }}
         />
         <div
           className="absolute bottom-0 left-0 h-px w-full"

@@ -39,8 +39,8 @@ function ChurchesDirectoryClient({
             className={cn(
               "cursor-pointer font-display border px-4 py-2.5 text-xs tracking-[0.2em] uppercase transition-colors",
               label === region
-                ? "border-(--color-border-accent) bg-(--color-bg-accent) text-(--color-fg-on-accent)"
-                : "border-(--color-border-subtle) text-(--color-fg-secondary) hover:border-(--color-border-accent) hover:text-(--color-fg-primary)",
+                ? "border-(--border-brand) bg-(--interactive-default) text-(--text-on-brand)"
+                : "border-(--border-default) text-(--text-secondary) hover:border-(--border-brand) hover:text-(--text-primary)",
             )}
           >
             {label}
@@ -51,7 +51,7 @@ function ChurchesDirectoryClient({
       {empty ? (
         <div className="card-surface p-8 text-center md:p-12">
           <p className="eyebrow">No locations in this region</p>
-          <p className="mt-3 text-(--color-fg-secondary)">
+          <p className="mt-3 text-(--text-secondary)">
             Try All or another region, or contact the national office and we will
             help you connect.
           </p>
@@ -60,7 +60,7 @@ function ChurchesDirectoryClient({
 
       {sortedForRegion.length > 0 ? (
         <div className="space-y-6">
-          <p className="max-w-3xl text-(--color-fg-secondary) leading-8">
+          <p className="max-w-3xl text-(--text-secondary) leading-8">
             Filter by region. Cards that offer a branch link take you to our page or the
             congregation’s primary site; all other listings open contact with Churches
             selected and that branch’s slug included so we can route your note correctly.

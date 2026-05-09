@@ -10,7 +10,7 @@ function MinistryGrid({
   leaders: Leader[];
 }>) {
   return (
-    <div className="space-y-10 text-(--color-fg-primary)">
+    <div className="space-y-10 text-(--text-primary)">
       <SectionHeader
         eyebrow="Serve with us"
         title="Ministry showcase"

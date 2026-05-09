@@ -11,6 +11,7 @@ Implementation steps live in [`docs/app_scaffold_checklist.md`](./app_scaffold_c
 - [x] Phase 3 local WordPress scaffolding is present in the repo through `server/docker-compose.yml`, `server/README.md`, `server/DATA_MODELLING_GUIDE.md`, and the revalidation mu-plugin.
 - [x] Phase 4 seams are partially implemented in the repo through redirects, metadata routes, sitemap/robots files, contact server actions, and a `client/lib/wordpress.ts` abstraction.
 - [ ] Live WordPress GraphQL queries have **not** replaced mock data yet; the current `client/lib/wordpress.ts` is still mock-data-backed.
+- [x] **Routing drift (implemented vs original audit spec):** the marketing app uses **`/about`** as the primary About page, **`/devotionals`** for editorial / devotional listings, and **`/gallery`** as the photo hub. Legacy **`/publications/*`**, **`/media`**, **`/sermon`**, and **`/watch-us-live`** URLs are **permanent redirects** to those surfaces (see [`client/next.config.ts`](../client/next.config.ts)). The dedicated `client/components/publications/` UI tree was removed as unused; publication-shaped data still exists in the model and mock layer for `/devotionals`.
 
 ## Recommendation
 
@@ -111,9 +112,9 @@ Non-negotiable design direction:
 | `/history/` | Strong CRM NA-specific history. | Redirect to `/who-we-are#history` after migrating the content into the consolidated About page. |
 | `/our-pastors/` | Useful leadership content, weak structure. | Redirect to `/who-we-are#leadership` after rebuilding leadership on structured leader records inside the About page. |
 | `/events/` | Plugin-heavy archive with no upcoming events during audit. | Keep as a first-class route, but replace the public UI with custom Next.js pages. |
-| `/sermon/` | Empty. | Redirect this legacy route to `/media`. |
-| `/watch-us-live/` | Contains stale theme-demo sermon/audio content. | Remove it as a standalone destination and redirect it to `/media#live`. |
-| `/publications/` | Empty. | Keep the URL, but rebuild it as a Pastor's Corner-style editorial archive with detail pages under `/publications/[slug]`. |
+| `/sermon/` | Empty. | Legacy route redirects to **`/gallery`** in the Next app (see `client/next.config.ts`). |
+| `/watch-us-live/` | Contains stale theme-demo sermon/audio content. | Legacy route redirects to **`/gallery`** (no site-wide `#live` hub in the current app; livestream links are per church/event where modeled). |
+| `/publications/` | Empty. | Legacy **`/publications/*`** URLs redirect to **`/devotionals`**; editorial detail permalinks under `/devotionals/[slug]` are not exposed yet (dynamic slug redirects fold to the listing). |
 | `/churches/` | Real directory intent, weak execution. | Keep as the canonical church directory. |
 | `/crm-word-of-life/` | Good branch-page content model. | Migrate into `church` content and redirect to `/churches/crm-word-of-life`. |
 | `/crm-praise-center/` | Rich branch-page content model. | Migrate into `church` content and redirect to `/churches/crm-praise-center`. |
@@ -123,7 +124,7 @@ Non-negotiable design direction:
 | `/cwl-charismatic-women-league/` | Empty. | Migrate into `ministry` content and redirect to `/ministries/cwl-charismatic-women-league`. |
 | `/kings-men/` | Empty. | Migrate into `ministry` content and redirect to `/ministries/kings-men`. |
 | `/youths/` | One of the strongest ministry pages on the site. | Migrate this content into `ministry` and redirect the legacy route to `/ministries/youths`. |
-| `/media/` | Empty. | Keep as the canonical media hub, make it sermon-first, and host the permanent live section at `#live`. |
+| `/media/` | Empty. | Legacy route redirects to **`/gallery`** (photo albums hub). Supplement with per-record livestream URLs on churches/events as needed. |
 | `/contact-us/` | Contact route exists, but with placeholder content. | Replace with `/contact` and redirect the legacy slug. |
 
 ## Canonical IA And Routing Defaults
@@ -131,7 +132,8 @@ Non-negotiable design direction:
 ### Canonical public routes
 
 - `/`
-- `/who-we-are`
+- `/about` — primary About / consolidated story + leadership surface
+- `/who-we-are` — compatibility path; implemented as a redirect to `/about`
 - `/churches`
 - `/churches/[slug]`
 - `/ministries`
@@ -139,11 +141,9 @@ Non-negotiable design direction:
 - `/ministries/youths`
 - `/events`
 - `/events/[slug]`
-- `/publications`
-- `/publications/devotionals`
-- `/publications/blog`
-- `/publications/[slug]`
-- `/media`
+- `/devotionals` — editorial / devotional listing (legacy `/publications/*` redirects here)
+- `/gallery`
+- `/gallery/[slug]`
 - `/contact`
 - `/give`
 
@@ -151,7 +151,9 @@ Non-negotiable design direction:
 
 Legacy flat routes remain as redirects only:
 
-- `/crm-praise-center/` -> `/churches/crm-praise-center`
+- `/crm-praise-center/` -> external canonical site (`https://www.crmpraisecenter.org/`)
+- `/crm-ottawa/` -> `https://crm-can.org/`
+- `/churches/crm-ottawa` -> `https://crm-can.org/`
 - `/crm-word-of-life/` -> `/churches/crm-word-of-life`
 - `/crm-rhode-island/` -> `/churches/crm-rhode-island`
 - `/grace-glory-sanctuary/` -> `/churches/grace-glory-sanctuary`
@@ -159,22 +161,24 @@ Legacy flat routes remain as redirects only:
 - `/kings-men/` -> `/ministries/kings-men`
 - `/contact-us/` -> `/contact`
 - `/youths/` -> `/ministries/youths`
-- `/sermon/` -> `/media`
+- `/media/` -> `/gallery`
+- `/publications` -> `/devotionals` (and nested `/publications/*` paths per `client/next.config.ts`)
+- `/devotionals/[slug]` -> `/devotionals` (detail permalinks not exposed yet)
+- `/sermon/` -> `/gallery`
 - `/vision/` -> `/who-we-are#vision`
 - `/history/` -> `/who-we-are#history`
 - `/core-values/` -> `/who-we-are#core-values`
 - `/our-pastors/` -> `/who-we-are#leadership`
-- `/watch-us-live/` -> `/media#live`
+- `/watch-us-live/` -> `/gallery`
 
 ### IA rules
 
-- There is **no `/about` route** in the initial spec.
-- `/who-we-are/` is the About landing page and the canonical home for vision, history, core values, and leadership through anchored sections.
-- `/media/` is the media hub and owns the permanent livestream destination at `#live`.
-- Youth content lives at `/ministries/youths`, not as a flat top-level route.
-- `/publications/` is the canonical archive URL; type-filtered listings live at `/publications/devotionals` and `/publications/blog`.
-- `/publications/[slug]` is the canonical publication detail route.
+- **`/about`** is the primary About landing in the Next app; **`/who-we-are`** is retained and redirects to **`/about`** (legacy flat URLs still target `/who-we-are#…` anchors in `client/next.config.ts`).
+- **`/gallery`** is the photo-album hub; legacy **`/media`**, **`/sermon`**, and **`/watch-us-live`** redirect there.
+- Youth content lives at **`/ministries/youths`**, not as a flat top-level route.
+- **Editorial / devotional** content is listed at **`/devotionals`**; legacy **`/publications/*`** URLs redirect to that listing (slug detail routes are not separate pages yet).
 - Churches and ministries must remain separate models and separate public listings.
+- Live join links are modeled on **`church.livestreamUrl`** and **`event.livestreamUrl`** where needed, not a single site-wide media hash route.
 
 ## Content Model
 
@@ -204,7 +208,7 @@ Legacy flat routes remain as redirects only:
 - a ministry owns demographic or functional fellowship information
 - events can relate to a church, a ministry, or both
 - media should support sermons, livestream replays, and general teaching content
-- publications should support long-form editorial content with slug-backed detail pages, author metadata, and a `type` field (`"blog"` | `"devotional"`) for type-filtered sub-listings at `/publications/blog` and `/publications/devotionals`
+- publications should support long-form editorial content with slug-backed detail pages, author metadata, and a `type` field (`"blog"` | `"devotional"`); the **current** Next listing route is **`/devotionals`**, with legacy **`/publications/*`** URLs redirected in `client/next.config.ts`
 
 ## High-Level Implementation Phases
 
@@ -250,8 +254,8 @@ Current repo status:
 ## Defaults And Assumptions
 
 - Default route strategy: nested canonical routes with legacy redirects.
-- Default About strategy: `/who-we-are` is the consolidated About page with anchored sub-sections.
-- Default live strategy: `/watch-us-live` is retired and redirected to `/media#live`.
-- Default publications strategy: `/publications` is the canonical archive URL; `/publications/devotionals` and `/publications/blog` are type-filtered sub-listings; `/publications/[slug]` is the detail route. All three listing pages share a single `PublicationsListView` RSC.
-- Default sermon handling: `/sermon` redirects to `/media`.
+- Default About strategy: **`/about`** is the consolidated About page; **`/who-we-are`** redirects to **`/about`**; legacy flat URLs still land on **`/who-we-are#…`** anchors per `client/next.config.ts`.
+- Default live strategy: **`/watch-us-live`** is redirected to **`/gallery`** alongside **`/media`** and **`/sermon`**; use record-level **`livestreamUrl`** fields for join links.
+- Default publications strategy: **`/devotionals`** is the listing route in the Next app; legacy **`/publications`** and nested paths redirect there; shared list/detail presentation components previously sketched as `PublicationsListView` were removed as unused—reintroduce a dedicated RSC/module when permalinked detail pages return.
+- Default sermon handling: **`/sermon`** redirects to **`/gallery`**.
 - Default youth handling: `/youths` redirects to `/ministries/youths`.

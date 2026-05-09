@@ -23,7 +23,7 @@ function EventDetailContent({ event }: Readonly<{ event: Event }>) {
           />
           <div className="grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:items-start">
             {event.imageSrc ? (
-              <div className="overflow-hidden rounded-[1.8rem] border border-(--color-border-subtle)">
+              <div className="overflow-hidden rounded-[1.8rem] border border-(--border-default)">
                 <Image
                   src={event.imageSrc}
                   alt={event.title}
@@ -35,14 +35,14 @@ function EventDetailContent({ event }: Readonly<{ event: Event }>) {
               </div>
             ) : (
               <div
-                className="flex aspect-4/3 flex-col items-center justify-center gap-4 rounded-[1.8rem] border border-(--color-border-subtle) bg-surface-subtle px-8 text-center"
+                className="flex aspect-4/3 flex-col items-center justify-center gap-4 rounded-[1.8rem] border border-(--border-default) bg-surface-subtle px-8 text-center"
                 aria-label="Event visual placeholder"
               >
                 <CalendarDays
-                  className="size-16 text-(--color-fg-accent)"
+                  className="size-16 text-(--text-brand)"
                   aria-hidden
                 />
-                <p className="text-sm text-(--color-fg-secondary)">
+                <p className="text-sm text-(--text-secondary)">
                   Event imagery coming soon
                 </p>
               </div>
@@ -51,7 +51,7 @@ function EventDetailContent({ event }: Readonly<{ event: Event }>) {
               {event.description.map((paragraph) => (
                 <p
                   key={paragraph}
-                  className="text-lg leading-8 text-(--color-fg-secondary)"
+                  className="text-lg leading-8 text-(--text-secondary)"
                 >
                   {paragraph}
                 </p>
@@ -65,16 +65,16 @@ function EventDetailContent({ event }: Readonly<{ event: Event }>) {
         >
           <div className="card-surface space-y-4 p-6">
             <h2 className="text-2xl">When</h2>
-            <p className="text-lg text-(--color-fg-secondary)">
+            <p className="text-lg text-(--text-secondary)">
               {formatEventDateRange(event.startDate, event.endDate)}
             </p>
           </div>
           {location ? (
             <div className="card-surface space-y-4 p-6">
               <h2 className="text-2xl">Where</h2>
-              <p className="flex gap-3 text-lg text-(--color-fg-secondary)">
+              <p className="flex gap-3 text-lg text-(--text-secondary)">
                 <MapPin
-                  className="mt-1 size-5 shrink-0 text-(--color-fg-accent)"
+                  className="mt-1 size-5 shrink-0 text-(--text-brand)"
                   aria-hidden
                 />
                 <span>{location}</span>

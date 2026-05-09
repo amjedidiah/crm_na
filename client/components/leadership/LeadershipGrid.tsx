@@ -9,7 +9,7 @@ function LeadershipGrid({
   variant?: "default" | "preview";
 }>) {
   return (
-    <div className="grid gap-6 text-(--color-fg-primary) md:grid-cols-2 xl:grid-cols-3">
+    <div className="grid gap-6 text-(--text-primary) md:grid-cols-2 xl:grid-cols-3">
       {leaders.map((leader, index) => (
         <LeaderCard
           key={leader.id}
