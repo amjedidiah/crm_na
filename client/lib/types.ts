@@ -59,6 +59,7 @@ export interface Ministry {
   slug: string;
   name: string;
   legacyPath?: string;
+  email?: string;
   summary: string;
   description: string[];
   leaderIds: string[];
@@ -79,6 +80,7 @@ export interface Event {
   startDate: string;
   endDate?: string;
   location: string;
+  email?: string;
   churchSlug?: string;
   ministrySlug?: string;
   externalUrl?: string;

@@ -10,15 +10,16 @@ import {
 import { contactPurposeLabel } from "@/lib/contact-purposes";
 import {
   summarizeSubmittedContact,
-  type SubmittedContactSummary,
 } from "@/lib/contact-submitted-summary";
+import { resolveContactEmailRecipients } from "@/lib/contact-delivery";
+import type { SubmittedContactSummary } from "@/lib/contact-submitted-summary";
 import { CONTACT_EMAIL, SITE_CONTACT, SITE_NAME } from "@/lib/mock-data";
 import type { ContactFormPurpose } from "@/lib/types";
 
 export interface SendContactEmailInput {
   fromEmail: string;
   fromName: string;
-  purpose: string;
+  purpose: ContactFormPurpose;
   message: string;
   /** Directory church slug when contacting about a specific listing. */
   churchSlug?: string;
@@ -129,9 +130,17 @@ export async function sendContactEmail(input: SendContactEmailInput) {
   const subject = contactFormEmailSubject(input);
   const text = staffNotificationText(input);
   const html = staffNotificationHtml(input);
+  const recipients = resolveContactEmailRecipients(
+    input.purpose,
+    input.churchSlug,
+    input.ministrySlug,
+    input.eventSlug,
+    CONTACT_EMAIL_TO ?? CONTACT_EMAIL,
+  );
 
   await transporter.sendMail({
-    to: CONTACT_EMAIL_TO ?? CONTACT_EMAIL,
+    to: recipients.to,
+    cc: recipients.cc,
     from: SMTP_USER,
     replyTo: input.fromEmail,
     subject,
