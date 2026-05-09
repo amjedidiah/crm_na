@@ -1,9 +1,32 @@
-import Image from "next/image";
+"use client";
+
+import { useCallback, useState } from "react";
 import Link from "next/link";
+import { AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import Lightbox from "@/components/gallery/Lightbox";
+import PhotoGrid from "@/components/gallery/PhotoGrid";
+import { clampGalleryIndex } from "@/lib/gallery-utils";
 import type { GalleryAlbum } from "@/lib/types";
 
 function AlbumDetailContent({ album }: Readonly<{ album: GalleryAlbum }>) {
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const len = album.images.length;
+
+  const closeLightbox = useCallback(() => setSelectedIndex(null), []);
+
+  const goNext = useCallback(() => {
+    setSelectedIndex((index) =>
+      index === null ? index : clampGalleryIndex(index + 1, len),
+    );
+  }, [len]);
+
+  const goPrevious = useCallback(() => {
+    setSelectedIndex((index) =>
+      index === null ? index : clampGalleryIndex(index - 1, len),
+    );
+  }, [len]);
+
   return (
     <section className="section-padding text-(--color-fg-primary)">
       <div className="container-shell space-y-8">
@@ -18,31 +41,35 @@ function AlbumDetailContent({ album }: Readonly<{ album: GalleryAlbum }>) {
             </Link>
           </div>
         ) : null}
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {album.images.map((image) => (
-            <figure
-              key={`${album.slug}-${image.src}`}
-              className="card-surface overflow-hidden"
-            >
-              <div className="aspect-4/3 overflow-hidden">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  width={1200}
-                  height={900}
-                  className="h-full w-full object-cover"
-                  unoptimized
-                />
-              </div>
-              {image.caption ? (
-                <figcaption className="p-4 text-sm leading-7 text-(--color-fg-secondary)">
-                  {image.caption}
-                </figcaption>
-              ) : null}
-            </figure>
-          ))}
-        </div>
+
+        {len === 0 ? (
+          <div className="card-surface p-10 text-center">
+            <p className="text-lg text-(--color-fg-secondary)">
+              This album does not have any photos yet. Check back soon or browse
+              other albums in the gallery.
+            </p>
+          </div>
+        ) : (
+          <PhotoGrid
+            images={album.images}
+            onImageClick={(index) =>
+              setSelectedIndex(clampGalleryIndex(index, len))
+            }
+          />
+        )}
       </div>
+
+      <AnimatePresence>
+        {selectedIndex !== null && len > 0 ? (
+          <Lightbox
+            images={album.images}
+            currentIndex={clampGalleryIndex(selectedIndex, len)}
+            onClose={closeLightbox}
+            onNext={goNext}
+            onPrevious={goPrevious}
+          />
+        ) : null}
+      </AnimatePresence>
     </section>
   );
 }

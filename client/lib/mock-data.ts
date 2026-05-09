@@ -497,64 +497,32 @@ export const GALLERY_CATEGORIES: { value: GalleryCategory; label: string }[] = [
 export const GALLERY_ALBUM_PAGE_SIZE = 6;
 
 export const standaloneGalleryAlbums: GalleryAlbum[] = [
-  {
-    id: "general-prayer-retreat",
-    slug: "prayer-retreat-weekend",
-    title: "Prayer Retreat Weekend",
-    date: "2026-03-07",
-    category: "general",
-    coverImage: {
-      src: "https://placehold.co/1200x800/5A189A/F7F2E8?text=Prayer+Retreat",
-      alt: "CRM NA prayer retreat worship session",
-      caption: "Retreat worship and intercession",
-    },
-    images: [
-      {
-        src: "https://placehold.co/1200x800/5A189A/F7F2E8?text=Retreat+Worship",
-        alt: "Worship during the prayer retreat",
-        caption: "Extended worship sessions",
-      },
-      {
-        src: "https://placehold.co/1200x800/7B2CBF/F7F2E8?text=Morning+Prayer",
-        alt: "Morning prayer circle during the retreat",
-        caption: "Morning prayer watches",
-      },
-      {
-        src: "https://placehold.co/1200x800/9D4EDD/F7F2E8?text=Teaching+Circle",
-        alt: "Teaching circle during the retreat weekend",
-        caption: "Word, prayer, and response",
-      },
-    ],
-  },
-  {
-    id: "general-network-fellowship",
-    slug: "network-fellowship-summer",
-    title: "Network Fellowship Summer",
-    date: "2025-08-16",
-    category: "general",
-    coverImage: {
-      src: "https://placehold.co/1200x800/1D3557/F7F2E8?text=Network+Fellowship",
-      alt: "CRM NA fellowship table and conversation",
-      caption: "Summer fellowship across branches",
-    },
-    images: [
-      {
-        src: "https://placehold.co/1200x800/1D3557/F7F2E8?text=Shared+Meal",
-        alt: "Shared meal during a CRM NA network fellowship",
-        caption: "Shared meals and reconnection",
-      },
-      {
-        src: "https://placehold.co/1200x800/457B9D/F7F2E8?text=Families+Together",
-        alt: "Families gathered together in fellowship",
-        caption: "Families across the network",
-      },
-      {
-        src: "https://placehold.co/1200x800/A8DADC/1B1B1B?text=Prayer+Circle",
-        alt: "Closing prayer circle after a fellowship event",
-        caption: "Closing prayer and encouragement",
-      },
-    ],
-  },
+  // {
+  //   id: "general-prayer-retreat",
+  //   slug: "prayer-retreat-weekend",
+  //   title: "Prayer Retreat Weekend",
+  //   date: "2026-03-07",
+  //   category: "general",
+  //   coverImage: {
+  //     src: "https://placehold.co/1200x800/5A189A/F7F2E8?text=Prayer+Retreat",
+  //     alt: "CRM NA prayer retreat worship session",
+  //     caption: "Retreat worship and intercession",
+  //   },
+  //   images: [],
+  // },
+  // {
+  //   id: "general-network-fellowship",
+  //   slug: "network-fellowship-summer",
+  //   title: "Network Fellowship Summer",
+  //   date: "2025-08-16",
+  //   category: "general",
+  //   coverImage: {
+  //     src: "https://placehold.co/1200x800/5A189A/F7F2E8?text=Network+Fellowship",
+  //     alt: "CRM NA network fellowship summer gathering",
+  //     caption: "Network fellowship summer gathering",
+  //   },
+  //   images: [],
+  // },
 ];
 
 export const publications: Publication[] = [

@@ -1,8 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { GalleryAlbum, GalleryCategory } from "@/lib/types";
+import { AnimatePresence } from "framer-motion";
+import { ImageOff } from "lucide-react";
 import AlbumGrid from "@/components/gallery/AlbumGrid";
+import Motion from "@/components/shared/Motion";
+import { filterAlbumsByCategory } from "@/lib/gallery-utils";
+import type { GalleryAlbum, GalleryCategory } from "@/lib/types";
 
 interface GalleryFilterSectionProps {
   albums: GalleryAlbum[];
@@ -15,18 +19,15 @@ function GalleryFilterSection({
 }: Readonly<GalleryFilterSectionProps>) {
   const [activeCategory, setActiveCategory] = useState<GalleryCategory>("all");
 
-  const filteredAlbums = useMemo(
-    () =>
-      activeCategory === "all"
-        ? albums
-        : albums.filter((album) => album.category === activeCategory),
+  const filtered = useMemo(
+    () => filterAlbumsByCategory(albums, activeCategory),
     [activeCategory, albums],
   );
 
   return (
     <section className="section-padding text-(--color-fg-primary)">
       <div className="container-shell space-y-8">
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap justify-center gap-3 md:justify-start">
           {categories.map((category) => {
             const active = category.value === activeCategory;
 
@@ -46,7 +47,32 @@ function GalleryFilterSection({
             );
           })}
         </div>
-        <AlbumGrid albums={filteredAlbums} />
+
+        <AnimatePresence mode="wait">
+          <Motion
+            key={activeCategory}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.25 }}
+          >
+            <AlbumGrid
+              albums={filtered}
+              emptyState={
+                <div className="flex flex-col items-center gap-4 py-16 text-center">
+                  <ImageOff
+                    className="size-16 text-(--color-fg-secondary) opacity-60"
+                    aria-hidden
+                  />
+                  <p className="max-w-md text-lg text-(--color-fg-secondary)">
+                    No albums in this category yet. Try another filter or check
+                    back after the next gathering.
+                  </p>
+                </div>
+              }
+            />
+          </Motion>
+        </AnimatePresence>
       </div>
     </section>
   );
