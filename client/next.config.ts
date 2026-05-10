@@ -43,7 +43,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/grace-glory-sanctuary",
-        destination: "/churches/grace-glory-sanctuary",
+        destination: "https://crmhouston.org/",
         permanent: true,
       },
       {

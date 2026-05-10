@@ -303,7 +303,7 @@ export const churches: Church[] = [
   },
   {
     slug: "grace-glory-sanctuary",
-    mode: "internal-page",
+    mode: "slug-redirect",
     directoryOrder: 5,
     legacyPath: "/grace-glory-sanctuary/",
     name: "Grace & Glory Sanctuary",
@@ -312,11 +312,13 @@ export const churches: Church[] = [
     stateOrProvince: "Texas",
     country: "United States",
     summary:
-      "A Houston-based church center with resident and senior leadership functions.",
+      "Charismatic Renewal Ministries, Houston—Grace and Glory Sanctuary—with worship, teaching, and visitor details on the branch website.",
     story: [
-      "Grace & Glory Sanctuary is one of the core CRM NA branches in the United States and a key gathering point for regional believers.",
-      "The Houston church centers its life around worship, leadership formation, intercession, and faithful pastoral presence.",
+      "Grace & Glory Sanctuary (GGS) is a core CRM NA branch in the Houston area and a gathering point for regional believers.",
+      "The church centers its life around worship, leadership formation, intercession, and faithful pastoral presence.",
+      "Schedules, news, giving, and contact information are maintained at CRM Houston's dedicated site.",
     ],
+    website: "https://crmhouston.org/",
     address: "10055 Belknap Road, Suite 109, Sugar Land, TX 77498",
     phone: "+1 859-354-7486",
     email: "ggs.crmhouston@gmail.com",
