@@ -32,10 +32,14 @@ export const CONTACT_PHONE = SITE_CONTACT.phone;
 export const GIVING_URL =
   "https://www.zeffy.com/en-US/donation-form/donate-to-facilitate-the-work-of-this-ministry";
 export const SOCIAL_LINKS: SocialLink[] = [
-  // {
-  //   label: "YouTube",
-  //   href: "https://youtube.com/@crmna",
-  // },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/people/Charismatic-Renewal-Ministries-USA/61558526575060/",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/crm_usa_na",
+  },
 ];
 
 const LEADER_PLACEHOLDER_IMAGE = "https://i.ibb.co/DP3Wjy63/avatar.png";
