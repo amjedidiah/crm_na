@@ -1,7 +1,10 @@
 import SectionHeader from "@/components/shared/SectionHeader";
-import { aboutHistoryHighlights } from "@/lib/about-content";
+import type { TimelineEntry } from "@/lib/types";
 
-function HistoryHighlights({ id }: Readonly<{ id?: string }>) {
+function HistoryHighlights({
+  id,
+  historyHighlights,
+}: Readonly<{ id?: string; historyHighlights: TimelineEntry[] }>) {
   return (
     <section id={id} className="section-padding scroll-anchor-target">
       <div className="container-shell space-y-8">
@@ -11,7 +14,7 @@ function HistoryHighlights({ id }: Readonly<{ id?: string }>) {
           description="The full CRM North America story spans prayer calls, conferences, relocation, and the emergence of church centers—here are anchor moments from that journey."
         />
         <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-          {aboutHistoryHighlights.map((entry) => (
+          {historyHighlights.map((entry) => (
             <li key={`${entry.year}-${entry.title}`}>
               <article className="card-surface flex h-full flex-col p-6">
                 <p className="eyebrow">{entry.year}</p>

@@ -15,6 +15,7 @@ import {
   SITE_TITLE,
 } from "@/lib/mock-data";
 import {
+  getAboutContent,
   getChurches,
   getEvents,
   getGalleryAlbums,
@@ -30,14 +31,13 @@ export const metadata: Metadata = {
   },
 };
 
-export const revalidate = 60;
-
 async function HomePage() {
-  const [churches, events, galleryAlbums, ministries] = await Promise.all([
+  const [churches, events, galleryAlbums, ministries, about] = await Promise.all([
     getChurches(),
     getEvents(),
     getGalleryAlbums(),
     getMinistries(),
+    getAboutContent(),
   ]);
   const conventionEvent =
     events.find((event) => event.slug === CONVENTION_EVENT_SLUG) ?? null;
@@ -56,7 +56,10 @@ async function HomePage() {
           className="pointer-events-none absolute inset-x-0 top-12 h-72 bg-gradient-page-top-glow"
         />
         <FadeInWhenVisible>
-          <WelcomeSection />
+          <WelcomeSection
+            whoWeAreIntro={about.whoWeAreIntro}
+            visionContent={about.visionSnippet}
+          />
         </FadeInWhenVisible>
       </div>
       <div className="relative bg-surface-subtle">

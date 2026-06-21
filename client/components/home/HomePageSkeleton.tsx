@@ -1,8 +1,6 @@
-import { isConventionHeroPromoEnabled } from "@/lib/convention-hero-promo";
-
-/** Loading placeholder for the home route — mirrors section rhythm of `app/page.tsx` / `HeroSection`. */
+/** Loading placeholder mirrors convention-first hero layout while the home route loads. */
 function HomePageSkeleton() {
-  const showConventionPromo = isConventionHeroPromoEnabled();
+  const showConventionPromo = true;
 
   return (
     <div className="overflow-x-clip bg-page-canvas text-fg-primary">

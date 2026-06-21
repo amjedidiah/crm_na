@@ -8,13 +8,29 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-function crm_na_revalidate_supported_post_type($post_type) {
-	$supported = array('church', 'leader', 'ministry', 'event', 'media_item', 'publication', 'page');
-	return in_array($post_type, $supported, true);
-}
+/**
+ * Supported post types for this phase.
+ * Keys are WordPress post_type slugs; values are sent to Next.js as post_type.
+ */
+const CRM_NA_REVALIDATION_POST_TYPES = [
+	'church'     => 'church',
+	'leader'     => 'leader',
+	'ministry'   => 'ministry',
+	'event'      => 'event',
+	'media_item' => 'media_item',
+	'page'       => 'page',
+];
 
-function crm_na_trigger_next_revalidation($post_id, $post) {
-	if (wp_is_post_revision($post_id) || !crm_na_revalidate_supported_post_type($post->post_type)) {
+add_action('save_post', function (int $post_id, WP_Post $post): void {
+	if (
+		wp_is_post_revision($post_id) ||
+		wp_is_post_autosave($post_id) ||
+		$post->post_status !== 'publish'
+	) {
+		return;
+	}
+
+	if (!array_key_exists($post->post_type, CRM_NA_REVALIDATION_POST_TYPES)) {
 		return;
 	}
 
@@ -27,12 +43,14 @@ function crm_na_trigger_next_revalidation($post_id, $post) {
 
 	wp_remote_post(
 		trailingslashit($frontend) . 'api/revalidate?secret=' . rawurlencode($secret),
-		array(
-			'headers' => array('Content-Type' => 'application/json'),
-			'body'    => wp_json_encode(array('path' => '/')),
-			'timeout' => 10,
-		)
+		[
+			'body'     => wp_json_encode([
+				'post_type' => CRM_NA_REVALIDATION_POST_TYPES[$post->post_type],
+				'slug'      => $post->post_name,
+			]),
+			'headers'  => ['Content-Type' => 'application/json'],
+			'timeout'  => 5,
+			'blocking' => false,
+		]
 	);
-}
-
-add_action('save_post', 'crm_na_trigger_next_revalidation', 10, 2);
+}, 10, 2);

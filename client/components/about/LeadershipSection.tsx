@@ -1,7 +1,7 @@
 import type { Leader } from "@/lib/types";
 import LeadershipGrid from "@/components/leadership/LeadershipGrid";
 import SectionHeader from "@/components/shared/SectionHeader";
-import { aboutLeadership } from "@/lib/about-content";
+import type { AboutLeadershipIntroContent } from "@/lib/wordpress/about-types";
 
 const OVERSEER_ID = "peter-ezekwenna";
 
@@ -16,9 +16,11 @@ function orderWithOverseerFirst(leaders: Leader[]): Leader[] {
 function LeadershipSection({
   leaders,
   id,
+  leadershipIntro,
 }: Readonly<{
   leaders: Leader[];
   id?: string;
+  leadershipIntro: AboutLeadershipIntroContent;
 }>) {
   const orderedLeaders = orderWithOverseerFirst(leaders);
   const hasLeaders = orderedLeaders.length > 0;
@@ -31,11 +33,11 @@ function LeadershipSection({
       <div className="container-shell space-y-8">
         <SectionHeader
           eyebrow="Leadership"
-          title={aboutLeadership.title}
-          description={aboutLeadership.description}
+          title={leadershipIntro.title}
+          description={leadershipIntro.description}
         />
         <div className="grid gap-3 sm:grid-cols-3">
-          {aboutLeadership.lanes.map((lane) => (
+          {leadershipIntro.lanes.map((lane) => (
             <div
               key={lane}
               className="lane-callout px-4 py-3 text-sm leading-7 text-fg-secondary"
@@ -55,9 +57,9 @@ function LeadershipSection({
             <LeadershipGrid leaders={orderedLeaders} />
           ) : (
             <div className="card-surface p-8 text-center">
-              <p className="text-3xl">{aboutLeadership.emptyTitle}</p>
+              <p className="text-3xl">{leadershipIntro.emptyTitle}</p>
               <p className="mx-auto mt-3 max-w-2xl text-lg leading-8 text-fg-secondary">
-                {aboutLeadership.emptyDescription}
+                {leadershipIntro.emptyDescription}
               </p>
             </div>
           )}

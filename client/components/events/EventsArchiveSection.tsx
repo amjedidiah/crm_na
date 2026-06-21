@@ -1,3 +1,4 @@
+import { connection } from "next/server";
 import { Suspense } from "react";
 import EventListSection from "@/components/events/EventListSection";
 import EventsArchiveSkeleton from "@/components/events/EventsArchiveSkeleton";
@@ -8,6 +9,7 @@ import {
 import { getEvents } from "@/lib/wordpress";
 
 async function EventsArchiveSection() {
+  await connection();
   const events = await getEvents();
   const todayCalendarDate = getCalendarDateStringInTimeZone(new Date());
   const buckets = partitionEventsByLifecycle(events, todayCalendarDate);

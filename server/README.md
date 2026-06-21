@@ -18,5 +18,6 @@ This directory mirrors the `/Users/jay/Projects/freelance/crm_praise_center/serv
 
 ## Revalidation
 
-The mu-plugin in `mu-plugins/nextjs-revalidation.php` is intended to ping the
-Next.js app whenever a supported post type changes.
+The mu-plugin in `mu-plugins/nextjs-revalidation.php` sends `{ post_type, slug }` to the Next.js `/api/revalidate` route on published saves. Configure `NEXT_PUBLIC_SITE_URL` and `REVALIDATE_SECRET` in the WordPress environment.
+
+See [DATA_MODELLING_GUIDE.md](DATA_MODELLING_GUIDE.md) for CPT/ACF setup and [scripts/install-plugins.sh](scripts/install-plugins.sh) for local plugin installation.

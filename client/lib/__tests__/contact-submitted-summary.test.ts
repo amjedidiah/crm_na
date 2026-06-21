@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-
+import { mockContactListings } from "@/lib/__tests__/contact-test-fixtures";
 import {
   buildContactFormSuccessMessage,
   summarizeSubmittedContact,
@@ -7,7 +7,7 @@ import {
 
 describe("summarizeSubmittedContact", () => {
   test("general purpose has no listing line", () => {
-    const s = summarizeSubmittedContact("general", undefined, undefined, undefined);
+    const s = summarizeSubmittedContact("general", mockContactListings);
     expect(s.purposeLabel).toBe("General");
     expect(s.listingSummary).toBeUndefined();
   });
@@ -15,16 +15,15 @@ describe("summarizeSubmittedContact", () => {
   test("churches with known slug includes church name", () => {
     const s = summarizeSubmittedContact(
       "churches",
+      mockContactListings,
       "crm-word-of-life",
-      undefined,
-      undefined,
     );
     expect(s.purposeLabel).toBe("Churches");
     expect(s.listingSummary).toContain("CRM Word of Life");
   });
 
   test("churches without slug notes none selected", () => {
-    const s = summarizeSubmittedContact("churches", undefined, undefined, undefined);
+    const s = summarizeSubmittedContact("churches", mockContactListings);
     expect(s.listingSummary).toContain("No specific church");
   });
 });
@@ -33,11 +32,9 @@ describe("buildContactFormSuccessMessage", () => {
   test("mentions purpose and email when confirmation sent", () => {
     const msg = buildContactFormSuccessMessage(
       "prayer-request",
+      mockContactListings,
       true,
       "u@example.com",
-      undefined,
-      undefined,
-      undefined,
     );
     expect(msg).toContain("prayer");
     expect(msg).toContain("u@example.com");

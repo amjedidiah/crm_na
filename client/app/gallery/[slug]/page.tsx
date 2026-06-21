@@ -5,16 +5,13 @@ import AlbumDetailContent from "@/components/gallery/AlbumDetailContent";
 import BackToListingLink from "@/components/shared/BackToListingLink";
 import PageHeader from "@/components/shared/PageHeader";
 import { SITE_NAME } from "@/lib/mock-data";
+import { isStaticParamsPlaceholder, staticParamsWithPlaceholder } from "@/lib/static-params-utils";
 import { getGalleryAlbum, getGalleryAlbums } from "@/lib/wordpress";
 import { formatDate } from "@/lib/utils";
 
 export async function generateStaticParams() {
-  try {
-    const albums = await getGalleryAlbums();
-    return albums.map((album) => ({ slug: album.slug }));
-  } catch {
-    return [];
-  }
+  const albums = await getGalleryAlbums();
+  return staticParamsWithPlaceholder(albums);
 }
 
 export async function generateMetadata({
@@ -23,6 +20,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }>): Promise<Metadata> {
   const { slug } = await params;
+  if (isStaticParamsPlaceholder(slug)) notFound();
   const album = await getGalleryAlbum(slug);
 
   if (!album) {
@@ -52,6 +50,7 @@ async function GalleryAlbumPage({
   params: Promise<{ slug: string }>;
 }>) {
   const { slug } = await params;
+  if (isStaticParamsPlaceholder(slug)) notFound();
   const album = await getGalleryAlbum(slug);
 
   if (!album) {

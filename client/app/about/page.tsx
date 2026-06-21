@@ -7,7 +7,7 @@ import OverseerWelcome from "@/components/about/OverseerWelcome";
 import VisionMissionStrategy from "@/components/about/VisionMissionStrategy";
 import PageHeader from "@/components/shared/PageHeader";
 import { aboutSectionLinks } from "@/lib/about-content";
-import { getLeaders } from "@/lib/wordpress";
+import { getAboutContent, getLeaders } from "@/lib/wordpress";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 };
 
 async function AboutPage() {
-  const leaders = await getLeaders();
+  const [about, leaders] = await Promise.all([getAboutContent(), getLeaders()]);
   const overseer =
     leaders.find((leader) => leader.id === "peter-ezekwenna") ?? null;
 
@@ -49,15 +49,27 @@ async function AboutPage() {
           aria-hidden
           className="pointer-events-none absolute inset-x-0 top-10 h-64 bg-gradient-page-top-glow"
         />
-        <AboutOverview id="about" />
+        <AboutOverview id="about" overview={about.overview} />
       </div>
       <div className="bg-surface-subtle">
-        <OverseerWelcome id="welcome" overseer={overseer} />
+        <OverseerWelcome
+          id="welcome"
+          overseer={overseer}
+          welcomeMessage={about.welcomeMessage}
+        />
       </div>
-      <VisionMissionStrategy />
-      <HistoryHighlights id="history" />
+      <VisionMissionStrategy
+        vision={about.vision}
+        mission={about.mission}
+        strategy={about.strategy}
+      />
+      <HistoryHighlights id="history" historyHighlights={about.historyHighlights} />
       <div className="surface-band-dual-glow">
-        <LeadershipSection id="leadership" leaders={leaders} />
+        <LeadershipSection
+          id="leadership"
+          leaders={leaders}
+          leadershipIntro={about.leadershipIntro}
+        />
       </div>
       <AboutNextSteps />
     </div>

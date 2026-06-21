@@ -1,5 +1,5 @@
 import { contactPurposeLabel } from "@/lib/contact-purposes";
-import { churches, events, ministries } from "@/lib/mock-data";
+import type { ContactListings } from "@/lib/contact-query";
 import type { ContactFormPurpose } from "@/lib/types";
 
 export type SubmittedContactSummary = Readonly<{
@@ -8,9 +8,12 @@ export type SubmittedContactSummary = Readonly<{
   listingSummary?: string;
 }>;
 
-function churchListingSummary(churchSlug?: string): string {
+function churchListingSummary(
+  listings: ContactListings,
+  churchSlug?: string,
+): string {
   if (churchSlug) {
-    const row = churches.find((c) => c.slug === churchSlug);
+    const row = listings.churches.find((c) => c.slug === churchSlug);
     return row
       ? `Specific church: ${row.name} (${row.city}, ${row.stateOrProvince})`
       : `Church listing reference: ${churchSlug}`;
@@ -18,9 +21,12 @@ function churchListingSummary(churchSlug?: string): string {
   return "No specific church selected in the directory.";
 }
 
-function ministryListingSummary(ministrySlug?: string): string {
+function ministryListingSummary(
+  listings: ContactListings,
+  ministrySlug?: string,
+): string {
   if (ministrySlug) {
-    const row = ministries.find((m) => m.slug === ministrySlug);
+    const row = listings.ministries.find((m) => m.slug === ministrySlug);
     return row
       ? `Specific ministry: ${row.name}`
       : `Ministry listing reference: ${ministrySlug}`;
@@ -28,9 +34,12 @@ function ministryListingSummary(ministrySlug?: string): string {
   return "No specific ministry selected.";
 }
 
-function eventListingSummary(eventSlug?: string): string {
+function eventListingSummary(
+  listings: ContactListings,
+  eventSlug?: string,
+): string {
   if (eventSlug) {
-    const row = events.find((ev) => ev.slug === eventSlug);
+    const row = listings.events.find((ev) => ev.slug === eventSlug);
     return row
       ? `Specific event: ${row.title}`
       : `Event listing reference: ${eventSlug}`;
@@ -40,6 +49,7 @@ function eventListingSummary(eventSlug?: string): string {
 
 export function summarizeSubmittedContact(
   purpose: ContactFormPurpose,
+  listings: ContactListings,
   churchSlug?: string,
   ministrySlug?: string,
   eventSlug?: string,
@@ -47,13 +57,22 @@ export function summarizeSubmittedContact(
   const purposeLabel = contactPurposeLabel(purpose);
 
   if (purpose === "churches") {
-    return { purposeLabel, listingSummary: churchListingSummary(churchSlug) };
+    return {
+      purposeLabel,
+      listingSummary: churchListingSummary(listings, churchSlug),
+    };
   }
   if (purpose === "ministries") {
-    return { purposeLabel, listingSummary: ministryListingSummary(ministrySlug) };
+    return {
+      purposeLabel,
+      listingSummary: ministryListingSummary(listings, ministrySlug),
+    };
   }
   if (purpose === "events") {
-    return { purposeLabel, listingSummary: eventListingSummary(eventSlug) };
+    return {
+      purposeLabel,
+      listingSummary: eventListingSummary(listings, eventSlug),
+    };
   }
 
   return { purposeLabel };
@@ -79,6 +98,7 @@ function teamAckLine(purpose: ContactFormPurpose): string {
 /** Short on-page success copy after submit (mirrors email intent per purpose). */
 export function buildContactFormSuccessMessage(
   purpose: ContactFormPurpose,
+  listings: ContactListings,
   confirmationSent: boolean,
   visitorEmail: string,
   churchSlug?: string,
@@ -87,6 +107,7 @@ export function buildContactFormSuccessMessage(
 ): string {
   const s = summarizeSubmittedContact(
     purpose,
+    listings,
     churchSlug,
     ministrySlug,
     eventSlug,

@@ -11,10 +11,12 @@ import { contactPurposeLabel } from "@/lib/contact-purposes";
 import {
   summarizeSubmittedContact,
 } from "@/lib/contact-submitted-summary";
+import type { ContactListings } from "@/lib/contact-query";
 import { resolveContactEmailRecipients } from "@/lib/contact-delivery";
 import type { SubmittedContactSummary } from "@/lib/contact-submitted-summary";
 import { CONTACT_EMAIL, SITE_CONTACT, SITE_NAME } from "@/lib/mock-data";
 import type { ContactFormPurpose } from "@/lib/types";
+import { getContactListings } from "@/lib/wordpress";
 
 export interface SendContactEmailInput {
   fromEmail: string;
@@ -130,11 +132,13 @@ export async function sendContactEmail(input: SendContactEmailInput) {
   const subject = contactFormEmailSubject(input);
   const text = staffNotificationText(input);
   const html = staffNotificationHtml(input);
+  const listings = await getContactListings();
   const recipients = resolveContactEmailRecipients(
     input.purpose,
     input.churchSlug,
     input.ministrySlug,
     input.eventSlug,
+    listings,
     CONTACT_EMAIL_TO ?? CONTACT_EMAIL,
   );
 
@@ -224,10 +228,14 @@ function confirmationLeadLines(
   }
 }
 
-function confirmationText(input: SendContactConfirmationInput): string {
+function confirmationText(
+  input: SendContactConfirmationInput,
+  listings: ContactListings,
+): string {
   const first = input.name.trim().split(/\s+/)[0] ?? "there";
   const summary = summarizeSubmittedContact(
     input.purpose,
+    listings,
     input.churchSlug,
     input.ministrySlug,
     input.eventSlug,
@@ -240,10 +248,14 @@ function confirmationText(input: SendContactConfirmationInput): string {
   return lines.join("\n");
 }
 
-function confirmationHtml(input: SendContactConfirmationInput): string {
+function confirmationHtml(
+  input: SendContactConfirmationInput,
+  listings: ContactListings,
+): string {
   const first = input.name.trim().split(/\s+/)[0] ?? "there";
   const summary = summarizeSubmittedContact(
     input.purpose,
+    listings,
     input.churchSlug,
     input.ministrySlug,
     input.eventSlug,
@@ -283,8 +295,9 @@ export async function sendContactConfirmationEmail(
   }
 
   const transporter = createTransporter();
-  const text = confirmationText(input);
-  const html = confirmationHtml(input);
+  const listings = await getContactListings();
+  const text = confirmationText(input, listings);
+  const html = confirmationHtml(input, listings);
 
   await transporter.sendMail({
     to: input.to,

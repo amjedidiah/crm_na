@@ -1,4 +1,5 @@
-import { CONTACT_EMAIL, churches, events, ministries } from "@/lib/mock-data";
+import { CONTACT_EMAIL } from "@/lib/mock-data";
+import type { ContactListings } from "@/lib/contact-query";
 import type { ContactFormPurpose } from "@/lib/types";
 
 /** Slugs included in outbound contact email only when purpose matches. */
@@ -28,17 +29,19 @@ function localContactEmailForContext(
   churchSlug: string | undefined,
   ministrySlug: string | undefined,
   eventSlug: string | undefined,
+  listings: ContactListings,
 ): string | undefined {
   if (purpose === "churches" && churchSlug) {
-    return churches.find((church) => church.slug === churchSlug)?.email;
+    return listings.churches.find((church) => church.slug === churchSlug)?.email;
   }
 
   if (purpose === "ministries" && ministrySlug) {
-    return ministries.find((ministry) => ministry.slug === ministrySlug)?.email;
+    return listings.ministries.find((ministry) => ministry.slug === ministrySlug)
+      ?.email;
   }
 
   if (purpose === "events" && eventSlug) {
-    return events.find((event) => event.slug === eventSlug)?.email;
+    return listings.events.find((event) => event.slug === eventSlug)?.email;
   }
 
   return undefined;
@@ -49,6 +52,7 @@ export function resolveContactEmailRecipients(
   churchSlug: string | undefined,
   ministrySlug: string | undefined,
   eventSlug: string | undefined,
+  listings: ContactListings,
   nationalRecipient = CONTACT_EMAIL,
 ): {
   to: string;
@@ -60,6 +64,7 @@ export function resolveContactEmailRecipients(
     churchSlug,
     ministrySlug,
     eventSlug,
+    listings,
   )?.trim();
 
   const excluded = new Set([

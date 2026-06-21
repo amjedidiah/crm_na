@@ -1,10 +1,5 @@
 import { CONTACT_FORM_PURPOSES } from "@/lib/contact-purposes";
-import {
-  getChurchBySlug,
-  getEventBySlug,
-  getMinistryBySlug,
-} from "@/lib/mock-data";
-import type { ContactFormPurpose } from "@/lib/types";
+import type { Church, ContactFormPurpose, Event, Ministry } from "@/lib/types";
 
 const PURPOSE_SET = new Set<string>(CONTACT_FORM_PURPOSES);
 
@@ -22,6 +17,12 @@ export function parseKebabSlugParam(value: unknown): string | undefined {
   if (!trimmed || trimmed.length > 120) return undefined;
   if (!KEBAB_SLUG.test(trimmed)) return undefined;
   return trimmed;
+}
+
+export interface ContactListings {
+  churches: Church[];
+  ministries: Ministry[];
+  events: Event[];
 }
 
 export interface ContactPageQueryState {
@@ -58,6 +59,7 @@ export interface ContactPageSearchParamsInput {
  */
 export function resolveContactPageQuery(
   params: ContactPageSearchParamsInput,
+  listings: ContactListings,
 ): ContactPageQueryState {
   const purpose = normalizeContactPurpose(params.purpose);
   const rawChurch =
@@ -81,7 +83,7 @@ export function resolveContactPageQuery(
   let eventSlugUnresolved: string | undefined;
 
   if (purpose === "churches" && rawChurch) {
-    const church = getChurchBySlug(rawChurch);
+    const church = listings.churches.find((row) => row.slug === rawChurch);
     if (church) {
       churchSlug = church.slug;
       churchContextLabel = church.name;
@@ -91,7 +93,7 @@ export function resolveContactPageQuery(
   }
 
   if (purpose === "ministries" && rawMinistry) {
-    const ministry = getMinistryBySlug(rawMinistry);
+    const ministry = listings.ministries.find((row) => row.slug === rawMinistry);
     if (ministry) {
       ministrySlug = ministry.slug;
       ministryContextLabel = ministry.name;
@@ -101,7 +103,7 @@ export function resolveContactPageQuery(
   }
 
   if (purpose === "events" && rawEvent) {
-    const event = getEventBySlug(rawEvent);
+    const event = listings.events.find((row) => row.slug === rawEvent);
     if (event) {
       eventSlug = event.slug;
       eventContextLabel = event.title;

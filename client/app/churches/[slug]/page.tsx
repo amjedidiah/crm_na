@@ -8,11 +8,12 @@ import {
   getStaticParamSlugs,
   isInternalChurchPage,
 } from "@/lib/church-utils";
-import { getChurch, getLeaders } from "@/lib/wordpress";
+import { isStaticParamsPlaceholder, staticParamsWithPlaceholder } from "@/lib/static-params-utils";
+import { getChurch, getChurches, getLeaders } from "@/lib/wordpress";
 
 export async function generateStaticParams() {
-  const { churches } = await import("@/lib/mock-data");
-  return getStaticParamSlugs(churches);
+  const churches = await getChurches();
+  return staticParamsWithPlaceholder(getStaticParamSlugs(churches));
 }
 
 export async function generateMetadata({
@@ -21,6 +22,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }>): Promise<Metadata> {
   const { slug } = await params;
+  if (isStaticParamsPlaceholder(slug)) notFound();
   const church = await getChurch(slug);
   if (!church || !isInternalChurchPage(church)) {
     return { title: "Church" };
@@ -41,6 +43,7 @@ async function ChurchDetailPage({
   params: Promise<{ slug: string }>;
 }>) {
   const { slug } = await params;
+  if (isStaticParamsPlaceholder(slug)) notFound();
   const church = await getChurch(slug);
 
   if (!church) {

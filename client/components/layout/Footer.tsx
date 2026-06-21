@@ -4,6 +4,8 @@ import SiteLogo from "@/components/brand/SiteLogo";
 import { contactHref } from "@/lib/contact-hrefs";
 import { SITE_CONTACT, SITE_NAME, SOCIAL_LINKS } from "@/lib/mock-data";
 
+const FULL_YEAR = new Date().getFullYear();
+
 const primaryLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
@@ -101,7 +103,7 @@ function Footer() {
         </div>
         <div className="border-t border-(--text-on-inverse-muted) pt-5 text-center text-sm text-(--text-on-inverse-muted)">
           <p>
-            © {new Date().getFullYear()} Charismatic Renewal Ministries North
+            © {FULL_YEAR} Charismatic Renewal Ministries North
             America. All rights reserved.
           </p>
         </div>

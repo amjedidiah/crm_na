@@ -3,6 +3,7 @@ import ContactFormSection from "@/components/contact/ContactFormSection";
 import PageHeader from "@/components/shared/PageHeader";
 import { resolveContactPageQuery } from "@/lib/contact-query";
 import { SITE_NAME } from "@/lib/mock-data";
+import { getContactListings } from "@/lib/wordpress";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -25,8 +26,8 @@ async function ContactPage({
     event?: string;
   }>;
 }>) {
-  const raw = await searchParams;
-  const query = resolveContactPageQuery(raw);
+  const [raw, listings] = await Promise.all([searchParams, getContactListings()]);
+  const query = resolveContactPageQuery(raw, listings);
 
   return (
     <div className="bg-(--surface-page) text-(--text-primary)">
@@ -35,7 +36,7 @@ async function ContactPage({
         title="We would love to connect with you"
         description="CRM North America is one revival family across nations. Share a prayer request, plan a visit, ask about a church or ministry, or reach us about an event — we read every message."
       />
-      <ContactFormSection query={query} />
+      <ContactFormSection query={query} listings={listings} />
     </div>
   );
 }

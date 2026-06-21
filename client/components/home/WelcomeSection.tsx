@@ -4,12 +4,21 @@ import Link from "next/link";
 import { useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import SectionHeader from "@/components/shared/SectionHeader";
-import { visionContent, whoWeAreIntro } from "@/lib/mock-data";
 import Motion from "@/components/shared/Motion";
+import type {
+  VisionSnippetContent,
+  WhoWeAreIntroContent,
+} from "@/lib/wordpress/about-types";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-function WelcomeSection() {
+function WelcomeSection({
+  whoWeAreIntro,
+  visionContent,
+}: Readonly<{
+  whoWeAreIntro: WhoWeAreIntroContent;
+  visionContent: VisionSnippetContent;
+}>) {
   const reduceMotion = useReducedMotion();
 
   return (
@@ -121,9 +130,7 @@ function WelcomeSection() {
               <p className="font-display text-[0.68rem] tracking-[0.24em] uppercase text-(--text-accent)">
                 Our vision
               </p>
-              <h3 className="mt-2 text-3xl md:text-4xl">
-                {visionContent.title}
-              </h3>
+              <h3 className="mt-2 text-3xl md:text-4xl">{visionContent.title}</h3>
             </div>
             <div className="hidden rounded-full border border-(--border-default) px-4 py-2 md:block">
               <span className="font-display text-[0.65rem] tracking-[0.22em] uppercase text-(--text-secondary)">

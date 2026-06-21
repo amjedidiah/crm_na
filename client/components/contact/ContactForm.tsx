@@ -23,7 +23,7 @@ import {
   CONTACT_FORM_PURPOSES,
   contactPurposeLabel,
 } from "@/lib/contact-purposes";
-import { resolveContactPageQuery } from "@/lib/contact-query";
+import { resolveContactPageQuery, type ContactListings } from "@/lib/contact-query";
 import type { ContactSelectOption } from "@/lib/contact-select-options";
 import { replaceContactUrlFromState } from "@/lib/contact-url";
 import type { ContactUrlSlugState } from "@/lib/contact-url";
@@ -42,6 +42,7 @@ const contactCoreFieldsSchema = contactSchema.pick({
 });
 
 export type ContactFormInitial = Readonly<{
+  listings: ContactListings;
   churchSelectOptions: readonly ContactSelectOption[];
   ministrySelectOptions: readonly ContactSelectOption[];
   eventSelectOptions: readonly ContactSelectOption[];
@@ -61,39 +62,119 @@ const purposeSelectOptions: ContactSelectOption[] = CONTACT_FORM_PURPOSES.map(
   }),
 );
 
-function readContactQueryFromLocationSearch(search: string) {
+function readContactQueryFromLocationSearch(
+  search: string,
+  listings: ContactListings,
+) {
   const params = new URLSearchParams(search);
-  return resolveContactPageQuery({
-    purpose: params.get("purpose") ?? undefined,
-    churchSlug: params.get("churchSlug") ?? undefined,
-    ministrySlug: params.get("ministrySlug") ?? undefined,
-    eventSlug: params.get("eventSlug") ?? undefined,
-    church: params.get("church") ?? undefined,
-    ministry: params.get("ministry") ?? undefined,
-    event: params.get("event") ?? undefined,
-  });
+  return resolveContactPageQuery(
+    {
+      purpose: params.get("purpose") ?? undefined,
+      churchSlug: params.get("churchSlug") ?? undefined,
+      ministrySlug: params.get("ministrySlug") ?? undefined,
+      eventSlug: params.get("eventSlug") ?? undefined,
+      church: params.get("church") ?? undefined,
+      ministry: params.get("ministry") ?? undefined,
+      event: params.get("event") ?? undefined,
+    },
+    listings,
+  );
 }
 
 function slugStateForUrl(
   purpose: ContactFormPurpose,
-  churchSlug: string | undefined,
-  ministrySlug: string | undefined,
-  eventSlug: string | undefined,
-  churchSlugUnresolved?: string,
-  ministrySlugUnresolved?: string,
-  eventSlugUnresolved?: string,
+  slugs: ContactFormSlugState,
 ): ContactUrlSlugState {
   return {
     churchSlug:
       purpose === "churches"
-        ? (churchSlug ?? churchSlugUnresolved)
+        ? (slugs.churchSlug ?? slugs.churchSlugUnresolved)
         : undefined,
     ministrySlug:
       purpose === "ministries"
-        ? (ministrySlug ?? ministrySlugUnresolved)
+        ? (slugs.ministrySlug ?? slugs.ministrySlugUnresolved)
         : undefined,
     eventSlug:
-      purpose === "events" ? (eventSlug ?? eventSlugUnresolved) : undefined,
+      purpose === "events"
+        ? (slugs.eventSlug ?? slugs.eventSlugUnresolved)
+        : undefined,
+  };
+}
+
+type ContactFormSlugState = {
+  churchSlug?: string;
+  ministrySlug?: string;
+  eventSlug?: string;
+  churchSlugUnresolved?: string;
+  ministrySlugUnresolved?: string;
+  eventSlugUnresolved?: string;
+};
+
+function slugStateForPurpose(
+  purpose: ContactFormPurpose,
+  slugs: ContactFormSlugState,
+): ContactFormSlugState {
+  return {
+    churchSlug: purpose === "churches" ? slugs.churchSlug : undefined,
+    ministrySlug: purpose === "ministries" ? slugs.ministrySlug : undefined,
+    eventSlug: purpose === "events" ? slugs.eventSlug : undefined,
+    churchSlugUnresolved:
+      purpose === "churches" ? slugs.churchSlugUnresolved : undefined,
+    ministrySlugUnresolved:
+      purpose === "ministries" ? slugs.ministrySlugUnresolved : undefined,
+    eventSlugUnresolved:
+      purpose === "events" ? slugs.eventSlugUnresolved : undefined,
+  };
+}
+
+type PurposeSlugCarryInput = {
+  nextPurpose: ContactFormPurpose;
+  prevPurpose: ContactFormPurpose;
+  purpose: ContactFormPurpose;
+  slug?: string;
+  unresolvedSlug?: string;
+};
+
+function carrySlugForPurposeChange({
+  nextPurpose,
+  prevPurpose,
+  purpose,
+  slug,
+  unresolvedSlug,
+}: PurposeSlugCarryInput): string | undefined {
+  if (nextPurpose !== purpose || prevPurpose !== purpose) {
+    return undefined;
+  }
+  return slug ?? unresolvedSlug;
+}
+
+function urlSlugsAfterPurposeChange(
+  nextPurpose: ContactFormPurpose,
+  prevPurpose: ContactFormPurpose,
+  slugs: ContactFormSlugState,
+): ContactUrlSlugState {
+  return {
+    churchSlug: carrySlugForPurposeChange({
+      nextPurpose,
+      prevPurpose,
+      purpose: "churches",
+      slug: slugs.churchSlug,
+      unresolvedSlug: slugs.churchSlugUnresolved,
+    }),
+    ministrySlug: carrySlugForPurposeChange({
+      nextPurpose,
+      prevPurpose,
+      purpose: "ministries",
+      slug: slugs.ministrySlug,
+      unresolvedSlug: slugs.ministrySlugUnresolved,
+    }),
+    eventSlug: carrySlugForPurposeChange({
+      nextPurpose,
+      prevPurpose,
+      purpose: "events",
+      slug: slugs.eventSlug,
+      unresolvedSlug: slugs.eventSlugUnresolved,
+    }),
   };
 }
 
@@ -111,6 +192,7 @@ function firstIssueByPath(
 }
 
 function ContactFormInner({
+  listings,
   churchSelectOptions,
   ministrySelectOptions,
   eventSelectOptions,
@@ -211,34 +293,25 @@ function ContactFormInner({
   }, [eventSlugUnresolved]);
 
   const pushUrl = useCallback(
-    (
-      nextPurpose: ContactFormPurpose,
-      cs: string | undefined,
-      ms: string | undefined,
-      es: string | undefined,
-      cu: string | undefined,
-      mu: string | undefined,
-      eu: string | undefined,
-    ) => {
+    (nextPurpose: ContactFormPurpose, slugs: ContactFormSlugState) => {
       replaceContactUrlFromState(
         pathname,
         nextPurpose,
-        slugStateForUrl(nextPurpose, cs, ms, es, cu, mu, eu),
+        slugStateForUrl(nextPurpose, slugs),
       );
     },
     [pathname],
   );
 
   useEffect(() => {
-    pushUrl(
-      initialPurpose,
-      initialPurpose === "churches" ? initialChurchSlug : undefined,
-      initialPurpose === "ministries" ? initialMinistrySlug : undefined,
-      initialPurpose === "events" ? initialEventSlug : undefined,
-      initialPurpose === "churches" ? initialChurchSlugUnresolved : undefined,
-      initialPurpose === "ministries" ? initialMinistrySlugUnresolved : undefined,
-      initialPurpose === "events" ? initialEventSlugUnresolved : undefined,
-    );
+    pushUrl(initialPurpose, {
+      churchSlug: initialChurchSlug,
+      ministrySlug: initialMinistrySlug,
+      eventSlug: initialEventSlug,
+      churchSlugUnresolved: initialChurchSlugUnresolved,
+      ministrySlugUnresolved: initialMinistrySlugUnresolved,
+      eventSlugUnresolved: initialEventSlugUnresolved,
+    });
   }, [
     pathname,
     initialPurpose,
@@ -253,7 +326,10 @@ function ContactFormInner({
 
   useEffect(() => {
     function onPopState() {
-      const q = readContactQueryFromLocationSearch(globalThis.location.search);
+      const q = readContactQueryFromLocationSearch(
+        globalThis.location.search,
+        listings,
+      );
       setPurpose(q.purpose);
       setChurchSlug(q.churchSlug);
       setMinistrySlug(q.ministrySlug);
@@ -267,7 +343,7 @@ function ContactFormInner({
     return () => {
       globalThis.removeEventListener("popstate", onPopState);
     };
-  }, []);
+  }, [listings]);
 
   useEffect(() => {
     if (state.message && !state.success) {
@@ -279,59 +355,36 @@ function ContactFormInner({
   }, [state.message, state.success]);
 
   function handlePurposeChange(next: ContactFormPurpose) {
+    const slugFields: ContactFormSlugState = {
+      churchSlug,
+      ministrySlug,
+      eventSlug,
+      churchSlugUnresolved,
+      ministrySlugUnresolved,
+      eventSlugUnresolved,
+    };
+
     if (next === purpose) {
-      pushUrl(
-        purpose,
-        churchSlug,
-        ministrySlug,
-        eventSlug,
-        churchSlugUnresolved,
-        ministrySlugUnresolved,
-        eventSlugUnresolved,
-      );
+      pushUrl(purpose, slugFields);
       return;
     }
 
     const prevPurpose = purpose;
-    const prevChurchSlug = churchSlug;
-    const prevMinistrySlug = ministrySlug;
-    const prevEventSlug = eventSlug;
-    const prevChurchUnresolved = churchSlugUnresolved;
-    const prevMinistryUnresolved = ministrySlugUnresolved;
-    const prevEventUnresolved = eventSlugUnresolved;
+    const nextSlugState = slugStateForPurpose(next, slugFields);
 
     setPurpose(next);
-    if (next !== "churches") {
-      setChurchSlug(undefined);
-      setChurchSlugUnresolved(undefined);
-    }
-    if (next !== "ministries") {
-      setMinistrySlug(undefined);
-      setMinistrySlugUnresolved(undefined);
-    }
-    if (next !== "events") {
-      setEventSlug(undefined);
-      setEventSlugUnresolved(undefined);
-    }
+    setChurchSlug(nextSlugState.churchSlug);
+    setMinistrySlug(nextSlugState.ministrySlug);
+    setEventSlug(nextSlugState.eventSlug);
+    setChurchSlugUnresolved(nextSlugState.churchSlugUnresolved);
+    setMinistrySlugUnresolved(nextSlugState.ministrySlugUnresolved);
+    setEventSlugUnresolved(nextSlugState.eventSlugUnresolved);
 
-    const urlChurch =
-      next === "churches" && prevPurpose === "churches"
-        ? (prevChurchSlug ?? prevChurchUnresolved)
-        : undefined;
-    const urlMinistry =
-      next === "ministries" && prevPurpose === "ministries"
-        ? (prevMinistrySlug ?? prevMinistryUnresolved)
-        : undefined;
-    const urlEvent =
-      next === "events" && prevPurpose === "events"
-        ? (prevEventSlug ?? prevEventUnresolved)
-        : undefined;
-
-    replaceContactUrlFromState(pathname, next, {
-      churchSlug: urlChurch,
-      ministrySlug: urlMinistry,
-      eventSlug: urlEvent,
-    });
+    replaceContactUrlFromState(
+      pathname,
+      next,
+      urlSlugsAfterPurposeChange(next, prevPurpose, slugFields),
+    );
   }
 
   async function handleFormSubmit(
@@ -468,15 +521,13 @@ function ContactFormInner({
                 const slug = next || undefined;
                 setChurchSlug(slug);
                 setChurchSlugUnresolved(undefined);
-                pushUrl(
-                  purpose,
-                  slug,
+                pushUrl(purpose, {
+                  churchSlug: slug,
                   ministrySlug,
                   eventSlug,
-                  undefined,
                   ministrySlugUnresolved,
                   eventSlugUnresolved,
-                );
+                });
               }}
             />
           ) : null}
@@ -492,15 +543,13 @@ function ContactFormInner({
                 const slug = next || undefined;
                 setMinistrySlug(slug);
                 setMinistrySlugUnresolved(undefined);
-                pushUrl(
-                  purpose,
+                pushUrl(purpose, {
                   churchSlug,
-                  slug,
+                  ministrySlug: slug,
                   eventSlug,
                   churchSlugUnresolved,
-                  undefined,
                   eventSlugUnresolved,
-                );
+                });
               }}
             />
           ) : null}
@@ -516,15 +565,13 @@ function ContactFormInner({
                 const slug = next || undefined;
                 setEventSlug(slug);
                 setEventSlugUnresolved(undefined);
-                pushUrl(
-                  purpose,
+                pushUrl(purpose, {
                   churchSlug,
                   ministrySlug,
-                  slug,
+                  eventSlug: slug,
                   churchSlugUnresolved,
                   ministrySlugUnresolved,
-                  undefined,
-                );
+                });
               }}
             />
           ) : null}

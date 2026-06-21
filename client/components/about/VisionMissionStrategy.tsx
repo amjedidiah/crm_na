@@ -1,11 +1,19 @@
 import SectionHeader from "@/components/shared/SectionHeader";
-import {
-  aboutMission,
-  aboutStrategy,
-  aboutVision,
-} from "@/lib/about-content";
+import type {
+  AboutMissionContent,
+  AboutStrategyContent,
+  AboutVisionContent,
+} from "@/lib/wordpress/about-types";
 
-function VisionMissionStrategy() {
+function VisionMissionStrategy({
+  vision,
+  mission,
+  strategy,
+}: Readonly<{
+  vision: AboutVisionContent;
+  mission: AboutMissionContent;
+  strategy: AboutStrategyContent;
+}>) {
   return (
     <section className="dark-strip section-padding relative overflow-hidden">
       <div
@@ -26,13 +34,13 @@ function VisionMissionStrategy() {
           >
             <p className="eyebrow text-fg-accent-strong">Vision</p>
             <h3 className="mt-3 text-2xl leading-snug text-fg-inverse">
-              {aboutVision.title}
+              {vision.title}
             </h3>
             <p className="mt-4 text-sm leading-7 text-fg-inverse-muted">
-              {aboutVision.description}
+              {vision.description}
             </p>
             <div className="mt-6 space-y-4 border-t border-solid border-t-accent-soft pt-6">
-              {aboutVision.body.map((paragraph) => (
+              {vision.body.map((paragraph) => (
                 <p
                   key={paragraph}
                   className="text-base leading-7 text-fg-inverse-soft"
@@ -52,14 +60,14 @@ function VisionMissionStrategy() {
               Molding believers, influencing the world.
             </h3>
             <p className="mt-4 text-sm leading-7 text-fg-inverse-muted">
-              {aboutMission.description}
+              {mission.description}
             </p>
             <div className="mt-6 space-y-4 border-t border-solid border-t-accent-soft pt-6">
               <p className="text-base font-medium leading-7 text-fg-inverse-soft">
-                {aboutMission.title}
+                {mission.title}
               </p>
               <ul className="space-y-3">
-                {aboutMission.commitments.map((commitment) => (
+                {mission.commitments.map((commitment) => (
                   <li key={commitment} className="flex gap-3">
                     <span
                       aria-hidden
@@ -80,13 +88,13 @@ function VisionMissionStrategy() {
           >
             <p className="eyebrow text-fg-accent-strong">Our strategy</p>
             <h3 className="mt-3 text-2xl leading-snug text-fg-inverse">
-              {aboutStrategy.title}
+              {strategy.title}
             </h3>
             <p className="mt-4 text-sm leading-7 text-fg-inverse-muted">
-              {aboutStrategy.description}
+              {strategy.description}
             </p>
             <ul className="mt-6 space-y-3 border-t border-solid border-t-accent-soft pt-6">
-              {aboutStrategy.items.map((item) => (
+              {strategy.items.map((item) => (
                 <li
                   key={item}
                   className="text-base leading-7 text-fg-inverse-soft"
@@ -96,7 +104,7 @@ function VisionMissionStrategy() {
               ))}
             </ul>
             <p className="panel-inverse-callout mt-6 p-4 text-sm leading-7 text-fg-inverse-soft">
-              {aboutStrategy.mandate}
+              {strategy.mandate}
             </p>
           </div>
         </div>

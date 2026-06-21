@@ -8,11 +8,12 @@ import {
   getStaticEventParamSlugs,
   isInternalEventPage,
 } from "@/lib/event-utils";
-import { getEvent } from "@/lib/wordpress";
+import { isStaticParamsPlaceholder, staticParamsWithPlaceholder } from "@/lib/static-params-utils";
+import { getEvent, getEvents } from "@/lib/wordpress";
 
 export async function generateStaticParams() {
-  const { events } = await import("@/lib/mock-data");
-  return getStaticEventParamSlugs(events);
+  const events = await getEvents();
+  return staticParamsWithPlaceholder(getStaticEventParamSlugs(events));
 }
 
 export async function generateMetadata({
@@ -21,6 +22,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }>): Promise<Metadata> {
   const { slug } = await params;
+  if (isStaticParamsPlaceholder(slug)) notFound();
   const event = await getEvent(slug);
 
   if (!event) {
@@ -39,6 +41,7 @@ async function EventDetailPage({
   params: Promise<{ slug: string }>;
 }>) {
   const { slug } = await params;
+  if (isStaticParamsPlaceholder(slug)) notFound();
   const event = await getEvent(slug);
 
   if (!event) {

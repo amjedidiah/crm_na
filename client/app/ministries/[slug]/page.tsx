@@ -3,11 +3,12 @@ import { notFound } from "next/navigation";
 import MinistryDetailContent from "@/components/ministries/MinistryDetailContent";
 import BackToListingLink from "@/components/shared/BackToListingLink";
 import PageHeader from "@/components/shared/PageHeader";
+import { isStaticParamsPlaceholder, staticParamsWithPlaceholder } from "@/lib/static-params-utils";
 import { getEvents, getLeaders, getMinistries, getMinistry } from "@/lib/wordpress";
 
 export async function generateStaticParams() {
-  const { ministries } = await import("@/lib/mock-data");
-  return ministries.map((ministry) => ({ slug: ministry.slug }));
+  const ministries = await getMinistries();
+  return staticParamsWithPlaceholder(ministries);
 }
 
 export async function generateMetadata({
@@ -16,6 +17,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }>): Promise<Metadata> {
   const { slug } = await params;
+  if (isStaticParamsPlaceholder(slug)) notFound();
   const ministry = await getMinistry(slug);
   if (!ministry) {
     return { title: "Ministry" };
@@ -36,6 +38,7 @@ async function MinistryDetailPage({
   params: Promise<{ slug: string }>;
 }>) {
   const { slug } = await params;
+  if (isStaticParamsPlaceholder(slug)) notFound();
   const [ministry, allMinistries, allLeaders] = await Promise.all([
     getMinistry(slug),
     getMinistries(),

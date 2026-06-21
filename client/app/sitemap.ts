@@ -2,13 +2,13 @@ import type { MetadataRoute } from "next";
 import { churchShouldAppearInSitemap } from "@/lib/church-utils";
 import { eventShouldAppearInSitemap } from "@/lib/event-utils";
 import {
-  churches,
-  events,
+  getChurches,
+  getEvents,
   getGalleryAlbums,
-  ministries,
-} from "@/lib/mock-data";
+  getMinistries,
+} from "@/lib/wordpress";
 
-function sitemap(): MetadataRoute.Sitemap {
+async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
   const staticRoutes = [
@@ -22,7 +22,13 @@ function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/give",
   ];
-  const galleryAlbums = getGalleryAlbums();
+
+  const [churches, ministries, events, galleryAlbums] = await Promise.all([
+    getChurches(),
+    getMinistries(),
+    getEvents(),
+    getGalleryAlbums(),
+  ]);
 
   return [
     ...staticRoutes.map((route) => ({

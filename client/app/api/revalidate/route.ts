@@ -1,5 +1,6 @@
-import { revalidatePath } from "next/cache";
+import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
+import { resolveRevalidationTags } from "@/lib/revalidation-tags";
 
 export async function POST(request: NextRequest) {
   const secret = request.nextUrl.searchParams.get("secret");
@@ -8,10 +9,15 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: false, message: "Invalid secret." }, { status: 401 });
   }
 
-  const body = await request.json().catch(() => ({}));
-  const path = typeof body.path === "string" ? body.path : "/";
+  const body = await request.json().catch(() => null);
+  const postType: string | undefined = body?.post_type;
+  const slug: string | undefined = body?.slug;
 
-  revalidatePath(path);
+  const tags = resolveRevalidationTags(postType, slug);
 
-  return NextResponse.json({ ok: true, revalidated: path });
+  for (const tag of tags) {
+    revalidateTag(tag, {});
+  }
+
+  return NextResponse.json({ ok: true, revalidated: true, tags, slug: slug ?? null });
 }
