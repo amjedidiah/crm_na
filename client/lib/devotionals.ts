@@ -1,10 +1,12 @@
 import type { Devotional } from "@/lib/types";
 import mayData from "@/lib/devotionals-may-2026.json";
 import juneData from "@/lib/devotionals-june-2026.json";
+import julyData from "@/lib/devotionals-july-2026.json";
 
 const devotionals: Devotional[] = [
   ...(mayData as Devotional[]),
   ...(juneData as Devotional[]),
+  ...(julyData as Devotional[]),
 ];
 
 export function getDevotionalByDate(date: string): Devotional | null {
