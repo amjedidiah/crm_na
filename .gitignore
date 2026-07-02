@@ -50,6 +50,8 @@ crmusa2026-convention/blob-report/
 # WordPress local runtime artifacts
 server/uploads/*
 !server/uploads/.gitkeep
+server/plugins/
+server/themes/
 
 # Supabase local artifacts
 crmusa2026-convention/supabase/.temp/
